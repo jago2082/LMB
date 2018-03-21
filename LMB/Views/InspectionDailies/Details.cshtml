@@ -1,0 +1,234 @@
+﻿@model LMB.Models.InspectionDaily
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>InspectionDaily</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdClient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdClient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdProject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdProject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumInspection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumInspection)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Control)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Control)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Section)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Section)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeInspection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeInspection)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Scope)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Scope)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdValueCheckList)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdValueCheckList)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LongitudeIni)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LongitudeIni)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LatitudeIni)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LatitudeIni)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateInspection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateInspection)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommentGeneral)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommentGeneral)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdAttach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdAttach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sync)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sync)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LongitudeEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LongitudeEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LatitudeEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LatitudeEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateInspectionEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateInspectionEnd)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdInspection }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

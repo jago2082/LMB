@@ -1,0 +1,1650 @@
+﻿@model LMB.Models.RawData
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RawData</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FileNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FileNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.District)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.District)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.County)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.County)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Control)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Control)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Section)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Section)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Milepnt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Milepnt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StrNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StrNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DupRtOver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DupRtOver)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RtStrFunc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RtStrFunc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Blanks1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blanks1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RtDesign)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RtDesign)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RtBusSfx)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RtBusSfx)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RtSystem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RtSystem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RtNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RtNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RtDir)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RtDir)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BRefMrk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BRefMrk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BRefMkSfx)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BRefMkSfx)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BRfMkign)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BRfMkign)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BRfMkDispl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BRfMkDispl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlaceCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlaceCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FeatXed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FeatXed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CritBdg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CritBdg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MiPtDatePr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MiPtDatePr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AMiPtDateInt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AMiPtDateInt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Blanks2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blanks2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FacCarried)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FacCarried)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RtMinVrtClear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RtMinVrtClear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OLD16Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OLD16Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OLD17Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OLD17Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DetourLgth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DetourLgth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Toll)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Toll)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Custodian)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Custodian)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaintSect)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaintSect)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CSJWhnBlt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CSJWhnBlt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuncClass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuncClass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YrBuilt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YrBuilt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LanesOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LanesOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LanesUnder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LanesUnder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AADT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AADT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AADTYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AADTYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DesignLoad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesignLoad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApprWidth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApprWidth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Median)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Median)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Skew)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skew)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StrFlared)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StrFlared)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrfSafeFeat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrfSafeFeat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HistSignif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HistSignif)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NavControls)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NavControls)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NavHrzClear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NavHrzClear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OperStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OperStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoadType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoadType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Load1000lb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Load1000lb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServOnUnder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServOnUnder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MnSpanTy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MnSpanTy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MjAprSpTy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MjAprSpTy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MnAprSpTy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MnAprSpTy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CulvType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CulvType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TunnelTy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TunnelTy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubstrMSpan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubstrMSpan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubMjAprSp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubMjAprSp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubMnAprSp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubMnAprSp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoMSpan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoMSpan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoMjAprSp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoMjAprSp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoMnAprSp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoMnAprSp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalNoSpans)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalNoSpans)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotHrzClear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotHrzClear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxSpLgth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxSpLgth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StrLgth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StrLgth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LtSdwalk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LtSdwalk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RtSdwalk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RtSdwalk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RdwyWidth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RdwyWidth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeckWidth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeckWidth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VrtClrOver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VrtClrOver)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VrtClrRefFeat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VrtClrRefFeat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VrtClrUnder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VrtClrUnder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LatClrRefFeat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LatClrRefFeat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RtLatClear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RtLatClear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LtLatClear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LtLatClear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Blanks3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blanks3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeckCond)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeckCond)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SuperCond)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SuperCond)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubstrCond)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubstrCond)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChanProt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChanProt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Culvert)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Culvert)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OperRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OperRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RdApprCond)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RdApprCond)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StrEval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StrEval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeckGeom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeckGeom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UClrVrtHrz)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UClrVrtHrz)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SafeLoadCap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SafeLoadCap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WaterwayAdeq)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WaterwayAdeq)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApprRdAlign)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApprRdAlign)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TyWrkRepl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TyWrkRepl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LgthImprov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LgthImprov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecFlags)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecFlags)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FHWAResvd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FHWAResvd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostImprov1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostImprov1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastInspec)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastInspec)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DesInspFreq)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesInspFreq)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FracCritDet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FracCritDet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UndwtrInspec)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UndwtrInspec)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialInspec)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialInspec)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FracCritDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FracCritDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UwtrInsDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UwtrInsDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecInspDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecInspDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BdgImprCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BdgImprCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RdImprCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RdImprCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotProjCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotProjCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YrImprCostEst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YrImprCostEst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BorderBdg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BorderBdg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BorderBdgNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BorderBdgNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DefHwyDesn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DefHwyDesn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParlStrDesn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParlStrDesn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DirofTraffic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DirofTraffic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TempStrDesn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TempStrDesn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NHS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OldFAU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OldFAU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FHWAResvd_105)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FHWAResvd_105)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YrReconstr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YrReconstr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WidenCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WidenCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeckTyMSp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeckTyMSp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MSpWrSurf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MSpWrSurf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeckMjAprSp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeckMjAprSp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MjAprSpWrSrf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MjAprSpWrSrf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DkMnAprSp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DkMnAprSp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MnAprSpWrSrf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MnAprSpWrSrf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AADTTruckPct)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AADTTruckPct)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DesNatlNtwk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesNatlNtwk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PierProtect)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PierProtect)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NBIBdgLgth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NBIBdgLgth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScourCrit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScourCrit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FutureAADT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FutureAADT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FutAADTYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FutAADTYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MnNavVrtClear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MnNavVrtClear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrigCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrigCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DefObs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DefObs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SuffRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SuffRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.XrefPrinRtID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.XrefPrinRtID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.XrfStrFncPRt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.XrfStrFncPRt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SuffRatFlag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SuffRatFlag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScourVuln)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScourVuln)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OvHtLoadDmg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OvHtLoadDmg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Blanks4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blanks4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.XRfIRID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.XRfIRID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.XRfIRStrFunc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.XRfIRStrFunc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Blanks5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blanks5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DistUse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DistUse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRControl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRControl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRSection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRSection)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRMilept)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRMilept)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRStrNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRStrNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRDuplOver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRDuplOver)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRStrFunct)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRStrFunct)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRDesignation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRDesignation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRBusSfx)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRBusSfx)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRHwySys)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRHwySys)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRHwyNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRHwyNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRDir)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRDir)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CIRRefMrk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CIRRefMrk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CIRRefMkSfx)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CIRRefMkSfx)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CIRRfMkSign)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CIRRfMkSign)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CIRRfMkDispl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CIRRfMkDispl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRHrzClear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRHrzClear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRMnVrtClear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRMnVrtClear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRBypsLgth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRBypsLgth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRToll)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRToll)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRFuncClass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRFuncClass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRAADT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRAADT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRAADTYr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRAADTYr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRDefHwyDes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRDefHwyDes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRParlStr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRParlStr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRTrafDir)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRTrafDir)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRTempStr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRTempStr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRNHS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRNHS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OldFAU_IR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OldFAU_IR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRAADTTrkPct)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRAADTTrkPct)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRNatlNtwk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRNatlNtwk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRFutAADT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRFutAADT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRFAADTYr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRFAADTYr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Blanks6)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blanks6)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FHWAStrEval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FHWAStrEval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FHWADkGeom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FHWADkGeom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FHWAUClrVrtHrz)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FHWAUClrVrtHrz)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BaseHwyNet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaseHwyNet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LRSInvRte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LRSInvRte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LRSSubRte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LRSSubRte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Blanks7)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blanks7)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GPSLatitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GPSLatitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Blanks8)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blanks8)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GPSLongitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GPSLongitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GPSColMeth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GPSColMeth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MethOperRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MethOperRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MethInvRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MethInvRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FedLand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FedLand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRBaseHwyNet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRBaseHwyNet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRLRSInvRte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRLRSInvRte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AIRLRSSubRte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AIRLRSSubRte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Blanks9)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blanks9)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDRawData }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

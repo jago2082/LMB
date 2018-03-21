@@ -1,0 +1,278 @@
+﻿    @model IEnumerable<LMB.Models.InspectionDaily>
+   
+
+@{
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.css" />
+<script type="text/javascript">
+   
+
+</script>
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="rawdata_table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IDUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdClient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumInspection)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Company)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Control)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Section)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeInspection)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Scope)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdValueCheckList)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Longitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Latitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LongitudeIni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LatitudeIni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateInspection)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommentGeneral)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdAttach)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sync)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LongitudeEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LatitudeEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateInspectionEnd)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDUser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdClient)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdProject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumInspection)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Company)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Control)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Section)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeInspection)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Scope)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdValueCheckList)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Longitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Latitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LongitudeIni)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LatitudeIni)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateInspection)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommentGeneral)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdAttach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sync)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LongitudeEnd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LatitudeEnd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateInspectionEnd)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "SendMovile", new { id = item.IdInspection }, new { @class = "title='Send Movile'  btn btn-primary btn-lg glyphicon glyphicon-download" })
+                </td>
+                <td>
+                    <a id="alumno" data-target="#modalUser"data-toggle="modal"data-id=@item.IdInspection href="#" class="sepV_a" title="Agregar alumnos"><span class='btn btn-warning btn-lg glyphicon glyphicon-edit'></span></a>
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Create", new { }, new { @class = "btn btn-success btn-lg glyphicon glyphicon-plus" })
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Alert", new { id = item.IdInspection }, new { @class = "btn btn-info btn-lg glyphicon glyphicon-bell" })
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Delete", new { id = item.IdInspection }, new { @class = "btn btn-danger btn-lg glyphicon glyphicon-remove" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<!-- Modal -->
+<div id="modalUser" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <input type="text" name="bookId" id="bookId" value="" />
+
+                
+                <div class="form-group">
+                    <label for="sel1">Select list:</label>
+                    <select class="form-control" id="sel1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                @Html.ActionLink("Save", "Edit", new { id = "" }, new { @class = "ui-btn", data_val = "abc" })                                                                                                     
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+
+            inicializar(e);
+            
+        }
+    );
+
+       
+
+        function tabla() {
+            var table = $("#rawdata_table").DataTable();
+            table.columns([0, 13, 14, 16, 17, 20, 21, 22, 23, 24, 25, 26]).visible(false, false);
+            table.columns.adjust().draw(false); // adjust column sizing and redraw
+        }
+        function modal(e) {
+            $('#modalUser').on('show.bs.modal', function (e) {
+                var id = $(e.relatedTarget).data().id;
+                $(e.currentTarget).find('#bookId2').val(id);
+            });
+        }
+
+        function inicializar(e) {
+            tabla();
+            modal(e);
+            }
+        @Html.Raw(ViewBag.Select);
+    </script>
+}
