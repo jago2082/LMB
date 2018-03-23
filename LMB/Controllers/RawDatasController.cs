@@ -21,7 +21,7 @@ namespace LMB.Controllers
         // GET: RawDatas
         public async Task<ActionResult> Index()
         {
-            return View(await db.RawDatas.ToListAsync());
+            return View(await db.RawData.ToListAsync());
         }
 
         public ActionResult LoadData()
@@ -35,7 +35,7 @@ namespace LMB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RawData rawData = await db.RawDatas.FindAsync(id);
+            RawData rawData = await db.RawData.FindAsync(id);
             if (rawData == null)
             {
                 return HttpNotFound();
@@ -322,8 +322,8 @@ namespace LMB.Controllers
                         try
                         {
 
-                            db.RawDatas.Add(rdt);
-                            db.InspectionDailies.Add(inspectiondaily);
+                            db.RawData.Add(rdt);
+                            db.InspectionDaily.Add(inspectiondaily);
                             db.SaveChanges();
                         }
                         catch (Exception ex)
@@ -375,7 +375,7 @@ namespace LMB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RawData rawData = await db.RawDatas.FindAsync(id);
+            RawData rawData = await db.RawData.FindAsync(id);
             if (rawData == null)
             {
                 return HttpNotFound();
@@ -409,7 +409,7 @@ namespace LMB.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.RawDatas.Add(rawData);
+                db.RawData.Add(rawData);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -447,7 +447,7 @@ namespace LMB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RawData rawData = await db.RawDatas.FindAsync(id);
+            RawData rawData = await db.RawData.FindAsync(id);
             if (rawData == null)
             {
                 return HttpNotFound();
@@ -460,8 +460,8 @@ namespace LMB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            RawData rawData = await db.RawDatas.FindAsync(id);
-            db.RawDatas.Remove(rawData);
+            RawData rawData = await db.RawData.FindAsync(id);
+            db.RawData.Remove(rawData);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

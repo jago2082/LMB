@@ -256,6 +256,7 @@
     <Compile Include="Models\TypeInspectionProject.cs" />
     <Compile Include="Models\TypeNovelty.cs" />
     <Compile Include="Models\TypePicture.cs" />
+    <Compile Include="Models\UnderClearanceRecord.cs" />
     <Compile Include="Models\UserDB.cs" />
     <Compile Include="Models\UserProject.cs" />
     <Compile Include="Models\Users.cs" />

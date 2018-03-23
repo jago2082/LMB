@@ -155,7 +155,7 @@
                     @Html.DisplayFor(modelItem => item.IdValueCheckList)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Status)
+                     @Html.DisplayFor(modelItem => item.Status)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Longitude)
@@ -191,10 +191,18 @@
                     @Html.DisplayFor(modelItem => item.DateInspectionEnd)
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "SendMovile", new { id = item.IdInspection }, new { @class = "title='Send Movile'  btn btn-primary btn-lg glyphicon glyphicon-download" })
+                    @if (item.Status == 5)
+                    {
+                        @Html.ActionLink(" ", "SendMovile", new { id = item.IdInspection }, new { @class = "linkdisabled title='Send Movile'  btn btn-primary btn-lg glyphicon glyphicon-download" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink(" ", "SendMovile", new { id = item.IdInspection }, new { @class = "title='Send Movile'  btn btn-primary btn-lg glyphicon glyphicon-download" })
+                    }
+                    
                 </td>
                 <td>
-                    <a id="alumno" data-target="#modalUser"data-toggle="modal"data-id=@item.IdInspection href="#" class="sepV_a" title="Agregar alumnos"><span class='btn btn-warning btn-lg glyphicon glyphicon-edit'></span></a>
+                    <a id="alumno" data-target="#modalUser"data-toggle="modal"data-id=@item.IdInspection href="#" class="unlock" title="Agregar alumnos"><span class='btn btn-warning btn-lg glyphicon glyphicon-edit'></span></a>
                 </td>
                 <td>
                     @Html.ActionLink(" ", "Create", new { }, new { @class = "btn btn-success btn-lg glyphicon glyphicon-plus" })
@@ -236,11 +244,12 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="save">Save</button>
                 @Html.ActionLink("Save", "Edit", new { id = "" }, new { @class = "ui-btn", data_val = "abc" })                                                                                                     
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="closemodal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
+        
     </div>
 </div>
 @section Scripts {
@@ -269,10 +278,28 @@
             });
         }
 
+        function lock() {
+            $(".linkdisabled").click(function () {
+                return false;
+            });
+
+        }
+
         function inicializar(e) {
             tabla();
             modal(e);
+            lock();
             }
         @Html.Raw(ViewBag.Select);
     </script>
+    <script>
+            var Url = '@Url.Action("Save", "InspectionDailies")'
+            $("#save").on("click", function () {
+                $.post(Url, { id: "1" }, function (data) {
+                    $("#modalUser").trigger('click');
+                    location.reload();
+                });
+        });
+
+</script>      
 }

@@ -25,7 +25,7 @@ namespace LMB.Controllers
             user.FirstName = "Pepe";
             users.Add(user);
             ViewBag.user =  new SelectList(users, "IDUser",)*/
-            return View(await db.InspectionDailies.ToListAsync());
+            return View(await db.InspectionDaily.ToListAsync());
         }
 
         // GET: InspectionDailies/Details/5
@@ -36,7 +36,7 @@ namespace LMB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            InspectionDaily inspectionDaily = await db.InspectionDailies.FindAsync(id);
+            InspectionDaily inspectionDaily = await db.InspectionDaily.FindAsync(id);
             if (inspectionDaily == null)
             {
                 return HttpNotFound();
@@ -59,7 +59,7 @@ namespace LMB.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.InspectionDailies.Add(inspectionDaily);
+                db.InspectionDaily.Add(inspectionDaily);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -75,7 +75,7 @@ namespace LMB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            InspectionDaily inspectionDaily = await db.InspectionDailies.FindAsync(id);
+            InspectionDaily inspectionDaily = await db.InspectionDaily.FindAsync(id);
             if (inspectionDaily == null)
             {
                 return HttpNotFound();
@@ -107,7 +107,7 @@ namespace LMB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            InspectionDaily inspectionDaily = await db.InspectionDailies.FindAsync(id);
+            InspectionDaily inspectionDaily = await db.InspectionDaily.FindAsync(id);
             if (inspectionDaily == null)
             {
                 return HttpNotFound();
@@ -120,8 +120,17 @@ namespace LMB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            InspectionDaily inspectionDaily = await db.InspectionDailies.FindAsync(id);
-            db.InspectionDailies.Remove(inspectionDaily);
+            InspectionDaily inspectionDaily = await db.InspectionDaily.FindAsync(id);
+            db.InspectionDaily.Remove(inspectionDaily);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost, ActionName("Save")]
+        public async Task<ActionResult> Save(int id)
+        {
+            InspectionDaily inspectionDaily = await db.InspectionDaily.FindAsync(id);
+            db.InspectionDaily.Remove(inspectionDaily);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
