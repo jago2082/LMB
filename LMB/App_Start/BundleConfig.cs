@@ -21,6 +21,8 @@ namespace LMB
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                       "~/Scripts/sweetalert2.all.min.js",
+                       "~/Scripts/sweetalert2.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

@@ -10,6 +10,7 @@ namespace LMB.Models
     {
         [Key]
         public int IdRecommendationType  { get; set; }
+        public string idvalue { get; set; }
 
         public string Description { get; set; }
     }

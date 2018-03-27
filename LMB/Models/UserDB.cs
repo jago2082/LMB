@@ -18,5 +18,6 @@ namespace LMB.Models
         public int IsActive { get; set; }
         public int IdClient { get; set; }
         public int IsUpdate { get; set; }
+
     }
 }

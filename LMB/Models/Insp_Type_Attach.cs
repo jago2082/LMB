@@ -14,5 +14,13 @@ namespace LMB.Models
         public Nullable<int> IDInspection { get; set; }
         public Nullable<int> IDTypePicture { get; set; }
         public string ImageString { get; set; }
+
+        public string Caption { get; set; }
+
+        public int IdDirection { get; set; }
+
+        public string Comment { get; set; }
+
+        public string PhotoCameraNum { get; set; }
     }
 }

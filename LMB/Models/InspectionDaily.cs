@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace LMB.Models
         public int IDUser { get; set; }
         public Nullable<int> IdClient { get; set; }
         public Nullable<int> IdProject { get; set; }
+        [StringLength(60)]
+        [Index("InspectionDailyNumInspectionIndex",  IsUnique = true)]
         public string NumInspection { get; set; }
         public string DO { get; set; }
         public string Company { get; set; }
@@ -42,6 +45,7 @@ namespace LMB.Models
         public Nullable<double> LatitudeEnd { get; set; }
         public string DateInspectionEnd { get; set; }
 
-        
+
+
     }
 }

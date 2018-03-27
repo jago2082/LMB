@@ -216,6 +216,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CombosHelper.cs" />
+    <Compile Include="Helpers\Message.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CamposClient.cs" />
@@ -223,6 +225,7 @@
     <Compile Include="Models\CheckListQuestion.cs" />
     <Compile Include="Models\CheckListSection.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\CustomInspDaily.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\DirectionPhotoType.cs" />
     <Compile Include="Models\FuncionalidadClient.cs" />
@@ -435,6 +438,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\logo.png" />
+    <Content Include="img\Logo1.JPG" />
+    <Content Include="img\splash.png" />
     <Content Include="Libraries\sweetalert\css\sweetalert2.css" />
     <Content Include="Libraries\sweetalert\js\sweetalert2.common.js" />
     <Content Include="Libraries\sweetalert\js\sweetalert2.js" />
@@ -563,6 +569,8 @@
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\sweetalert2.all.min.js" />
+    <Content Include="Scripts\sweetalert2.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -616,12 +624,12 @@
     <Content Include="Views\RawDatas\Details.cshtml" />
     <Content Include="Views\RawDatas\Edit.cshtml" />
     <Content Include="Views\RawDatas\Index.cshtml" />
+    <Content Include="Views\RawDatas\LoadData.cshtml" />
     <Content Include="Views\InspectionDailies\Create.cshtml" />
     <Content Include="Views\InspectionDailies\Delete.cshtml" />
     <Content Include="Views\InspectionDailies\Details.cshtml" />
     <Content Include="Views\InspectionDailies\Edit.cshtml" />
     <Content Include="Views\InspectionDailies\Index.cshtml" />
-    <Content Include="Views\RawDatas\LoadData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

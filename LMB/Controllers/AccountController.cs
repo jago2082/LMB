@@ -449,7 +449,7 @@ namespace LMB.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("LoadData", "RawDatas");
+            return RedirectToAction("Index", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

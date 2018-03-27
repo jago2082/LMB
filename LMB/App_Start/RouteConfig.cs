@@ -15,8 +15,8 @@ namespace LMB
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{id}/{param}",
+                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional, param = UrlParameter.Optional }
             );
         }
     }
