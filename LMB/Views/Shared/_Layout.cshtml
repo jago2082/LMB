@@ -8,8 +8,7 @@
 
 </head>
 <body>
-    @if (User.Identity.Name != "")
-    {
+   
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -35,12 +34,6 @@
             <hr />
             <footer></footer>
         </div>
-    }
-    else
-    {
-        @Html.Partial("Login")
-    }
-
 
 
     @Scripts.Render("~/bundles/jquery")

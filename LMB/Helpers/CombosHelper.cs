@@ -13,6 +13,11 @@ namespace LMB.Helpers
         public static List<UserDB> GetUsersDB()
         {
             var userdbs = db.UserDB;
+            userdbs.Add(new UserDB
+            {
+                IDUser = 0,
+                UserName="[Select User]",
+            });
             return userdbs.OrderBy(c => c.UserName).ToList();
         }
 

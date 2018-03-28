@@ -21,8 +21,8 @@ namespace LMB.Controllers
         public async Task<ActionResult> Index()
         {
             var userdb = db.UserDB.ToList();
-            ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "FirstName");
-            return View(await db.InspectionDaily.ToListAsync());
+            ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "UserName");
+            return View(await db.InspectionDaily.Where(i => i.Status ==5).ToListAsync());
         }
 
         // GET: InspectionDailies/Details/5
@@ -51,7 +51,7 @@ namespace LMB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IdInspection,IDUser,IdClient,IdProject,NumInspection,DO,Company,Control,Section,Address,City,TypeInspection,Scope,Date,Hour,IdValueCheckList,Status,Longitude,Latitude,LongitudeIni,LatitudeIni,DateInspection,CommentGeneral,IdAttach,Sync,LongitudeEnd,LatitudeEnd,DateInspectionEnd")] InspectionDaily inspectionDaily)
+        public async Task<ActionResult> Create(InspectionDaily inspectionDaily)
         {
             if (ModelState.IsValid)
             {
@@ -84,7 +84,7 @@ namespace LMB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdInspection,IDUser,IdClient,IdProject,NumInspection,DO,Company,Control,Section,Address,City,TypeInspection,Scope,Date,Hour,IdValueCheckList,Status,Longitude,Latitude,LongitudeIni,LatitudeIni,DateInspection,CommentGeneral,IdAttach,Sync,LongitudeEnd,LatitudeEnd,DateInspectionEnd")] InspectionDaily inspectionDaily)
+        public async Task<ActionResult> Edit(InspectionDaily inspectionDaily)
         {
             if (ModelState.IsValid)
             {
@@ -154,9 +154,10 @@ namespace LMB.Controllers
             try
             {
                 inspectionDaily.IDUser = param;
-                inspectionDaily.Status = id;
+                inspectionDaily.Status = 2;
                 db.Entry(inspectionDaily).State = EntityState.Modified;
                 await db.SaveChangesAsync();
+                TempData["msg"] = "<script>alert('Change succesfully');</script>";
             }
             catch (Exception)
             {
@@ -165,7 +166,7 @@ namespace LMB.Controllers
             }
             ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "FirstName");
             return RedirectToAction("Index");
-           
+
         }
         // GET: InspectionDailies/Delete/5
         public async Task<ActionResult> Delete(int? id)

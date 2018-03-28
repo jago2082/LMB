@@ -340,10 +340,10 @@ namespace LMB.Controllers
                         dbContextTransaction.Rollback();
                         reader.Close();
                         message.mensaje = ex.InnerException.InnerException.ToString();
-                        if (message.mensaje.Contains("duplicate key")) 
+                        if (message.mensaje.Contains("duplicate key"))
                         {
 
-                            ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'inspection duplicate in row "+loop+"', 'error');</script>";
+                            ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'inspection duplicate in row " + loop + "', 'error');</script>";
                         }
                         return View("LoadData");
 
@@ -439,7 +439,7 @@ namespace LMB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit( RawData rawData)
+        public async Task<ActionResult> Edit(RawData rawData)
         {
             if (ModelState.IsValid)
             {

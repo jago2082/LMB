@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LMB.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -14,10 +15,18 @@ namespace LMB
         protected void Application_Start()
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<Models.DataContext, Migrations.Configuration>());
+            //CheckRolesAndSuperUser();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        private void CheckRolesAndSuperUser()
+        {
+            UsersHelper.CheckRole("Admin");
+            UsersHelper.CheckRole("User");
+            UsersHelper.CheckSuperUser();
         }
     }
 }

@@ -4,6 +4,15 @@
     ViewBag.Title = "Index";
 }
 
+<style>
+    table.dataTable thead tr {
+  background-color: #73ADF5;
+}
+    .grey {
+  background-color: #e4e1e1;
+}
+</style>
+
 <h2>Index</h2>
 
 <p>
@@ -12,15 +21,6 @@
 <table class="table" id="rawdata_table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IDUser)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdClient)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdProject)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.NumInspection)
             </th>
@@ -105,15 +105,6 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IDUser)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdClient)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdProject)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.NumInspection)
                 </td>
                 <td>
@@ -188,25 +179,25 @@
                 <td>
                     @if (item.Status == 5)
                     {
-                        @Html.ActionLink(" ", "SendMovile", new { id = item.IdInspection }, new { @class = "linkdisabled title='Send Movile'  btn btn-primary btn-lg glyphicon glyphicon-download" })
+                        @Html.ActionLink(" ", "SendMovile", new { id = item.IdInspection }, new { @class = "linkdisabled title='Send Movile'  btn btn-primary btn-lg glyphicon glyphicon-download", @title = "Send Movile" })
                     }
                     else
                     {
-                        @Html.ActionLink(" ", "SendMovile", new { id = item.IdInspection }, new { @class = "title='Send Movile'  btn btn-primary btn-lg glyphicon glyphicon-download" })
+                        @Html.ActionLink(" ", "SendMovile", new { id = item.IdInspection }, new { @class = "btn btn-primary btn-lg glyphicon glyphicon-download",@title= "Send Movile" })
                     }
 
                 </td>
                 <td>
-                    <a id="alumno" data-target="#modalUser" data-toggle="modal" data-id=@item.IdInspection href="#" class="unlock" title="Agregar alumnos"><span class='btn btn-warning btn-lg glyphicon glyphicon-edit'></span></a>
+                    <a id="alumno" data-target="#modalUser" data-toggle="modal" data-id=@item.IdInspection href="#" class="unlock" title="Assign user"><span class='btn btn-warning btn-lg glyphicon glyphicon-edit'></span></a>
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "Create", new { }, new { @class = "btn btn-success btn-lg glyphicon glyphicon-plus" })
+                    @Html.ActionLink(" ", "Create", new { }, new { @class = "btn btn-success btn-lg glyphicon glyphicon-plus", @title = "Create" })
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "Alert", new { id = item.IdInspection }, new { @class = "btn btn-info btn-lg glyphicon glyphicon-bell" })
+                    @Html.ActionLink(" ", "Alert", new { id = item.IdInspection }, new { @class = "btn btn-info btn-lg glyphicon glyphicon-bell",@title = "Alert" })
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "Delete", new { id = item.IdInspection }, new { @class = "btn btn-danger btn-lg glyphicon glyphicon-remove" })
+                    @Html.ActionLink(" ", "Delete", new { id = item.IdInspection }, new { @class = "btn btn-danger btn-lg glyphicon glyphicon-remove", @title = "Delete" })
                 </td>
             </tr>
         }
@@ -230,34 +221,42 @@
 
 
                 <div class="form-group">
-                    <label for="sel1">Select list:</label>
-                    @Html.DropDownList("sel1", (IEnumerable<SelectListItem>)ViewBag.Userdb, new { @class= "form - control", @onchange= "getval(this);" });
+                    <label for="sel1">User</label>
+                    @Html.DropDownList("Userdb", null, "[Select a User]", htmlAttributes: new { @class = "form-control", @onchange = "getval(this);" })
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="save">Save</button>
+                <button type="button" class="btn btn-success" id="save">Save</button>
                 <button id="closemodal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
 
     </div>
 </div>
+@Html.Raw(TempData["msg"])
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
+        var message='';
         $(document).ready(function (e) {
             inicializar(e);
         }
     );
-
-
-
         function tabla() {
-            var table = $("#rawdata_table").DataTable();
-            //table.columns([0, 13, 14, 16, 17, 20, 21, 22, 23, 24, 25, 26]).visible(false, false);
-            //table.columns.adjust().draw(false); // adjust column sizing and redraw
+            var table = $("#rawdata_table").DataTable({
+                "createdRow": function (row, data, dataIndex) {
+                    if (data[12] == "5") {
+                        $(row).addClass('grey');
+
+                    }
+
+
+                }
+
+            });
+
         }
         function modal(e) {
             $('#modalUser').on('show.bs.modal', function (e) {
@@ -294,10 +293,12 @@
                 return;
             }
             $.post(Url, { id: idinsp, param: user }, function (data) {
+                swal('Info', 'Success', 'success');
                 $("#modalUser").trigger('click');
                 location.reload();
             });
         });
 
     </script>
+
 }

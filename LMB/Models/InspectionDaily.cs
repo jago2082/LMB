@@ -17,14 +17,22 @@ namespace LMB.Models
         public Nullable<int> IdProject { get; set; }
         [StringLength(60)]
         [Index("InspectionDailyNumInspectionIndex",  IsUnique = true)]
+        [Display(Name ="Bridge No.")]
         public string NumInspection { get; set; }
+
+        [Display(Name = "District")]
         public string DO { get; set; }
+
+        [Display(Name = "County")]
         public string Company { get; set; }
 
         public int Control { get; set; }
 
         public string Section { get; set; }
+        [Display(Name = "Location")]
         public string Address { get; set; }
+
+        [Display(Name = "7 Fac Carried")]
         public string City { get; set; }
         public Nullable<int> TypeInspection { get; set; }
         public string Scope { get; set; }
