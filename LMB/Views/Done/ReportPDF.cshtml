@@ -1,0 +1,70 @@
+﻿@model LMB.Models.Pdf
+
+@{
+    ViewBag.Title = "ReportPDF";
+    Layout = null;
+}
+<style>
+    #table-print {
+        margin-right: auto;
+        margin-left: auto;
+    }
+</style>
+<h2>ReportPDF</h2>
+<center>
+    <table class="table" id="table-print">
+        <thead>
+            <tr>
+                <th>
+                </th>
+                <th>
+                </th>
+                <th>
+                </th>
+            </tr>
+
+            <tr>
+                <td>
+                    <img src="https://2.bp.blogspot.com/-14Vx-OJ6Q90/VugU6p-HCiI/AAAAAAAABgc/ZoagDOWZSuUOK82_dLOSENG11Wn_sWk7Q/s1600/El%2Bpuente%2Bmas%2Blargo%2Bde%2BUruguay%2Bno%2Bse%2Busa.jpg" alt="Alternate Text" width="400" height="400" />
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Insp_Type_Attach.IDTypePicture)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Insp_Type_Attach.IdDirection)
+                </td>
+            </tr>
+            <tr></tr>  
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>      
+            <tr>
+                <td>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjUm7e2LF_r9ddFtMlvNGSprPioSnJA1JqfGiBmcm2uByI1B-X" alt="Alternate Text" width="400" height="400" />
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Insp_Type_Attach.IDTypePicture)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Insp_Type_Attach.IdDirection)
+                </td>
+            </tr>
+    </table>
+
+    <strong> @Html.DisplayNameFor(model => model.InspectionDaily.Company)</strong>   @Html.DisplayFor(model => model.InspectionDaily.Company)
+    <strong>@Html.DisplayNameFor(model => model.InspectionDaily.NumInspection)</strong>@Html.DisplayFor(model => model.InspectionDaily.NumInspection)
+</center>
+<footer>
+    <center>
+        LMB Engineering, Inc (F-346) Contract No.:88-7IDP5059
+        </br>
+        2017 Off System Cycle / San Antonio District
+    </center>
+</footer>
+@section Scripts {
+    @Scripts.Render("~/bundles/bootstrap")
+}

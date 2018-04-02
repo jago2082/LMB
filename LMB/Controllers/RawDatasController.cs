@@ -317,7 +317,7 @@ namespace LMB.Controllers
                             //{ message.mensaje = "La inpeccion ya se encuentra registrada "; message.fila = loop; break; }
                             inspectiondaily.NumInspection = numinsp;
                             inspectiondaily.DO = rdt.District;
-                            inspectiondaily.Company = rdt.District;
+                            inspectiondaily.Company = rdt.County;
                             inspectiondaily.Control = int.Parse(rdt.Control);
                             inspectiondaily.Section = rdt.Section;
                             inspectiondaily.Scope = rdt.FeatXed;

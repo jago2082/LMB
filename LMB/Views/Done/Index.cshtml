@@ -171,10 +171,10 @@
                     @Html.DisplayFor(modelItem => item.DateInspectionEnd)
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "Alert", new { id = item.IdInspection }, new { @class = "btn btn-info btn-lg glyphicon glyphicon-bell",@title = "Alert" })
+                    @Html.ActionLink(" ", "Edit", new { id = item.IdInspection }, new { @class = "btn btn-info btn-lg glyphicon glyphicon-edit disabled", @title = "Edit" })
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "Delete", new { id = item.IdInspection }, new { @class = "btn btn-danger btn-lg glyphicon glyphicon-remove", @title = "Delete" })
+                    @Html.ActionLink(" ", "PDFReport", new { id = item.IdInspection }, new { @class = "btn-lg glyphicon glyphicon-list-alt", @title = "Report" })
                 </td>
             </tr>
         }

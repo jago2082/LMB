@@ -89,5 +89,7 @@ namespace LMB.Models
         public DbSet<InspectionRaiting> InspectionRaiting { get; set; }
 
         public DbSet<UnderClearanceRecord> UnderClearanceRecord { get; set; }
+
+        public System.Data.Entity.DbSet<LMB.Models.Pdf> Pdfs { get; set; }
     }
 }

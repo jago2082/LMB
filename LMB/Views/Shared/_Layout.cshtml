@@ -8,8 +8,7 @@
 
 </head>
 <body>
-   
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -24,6 +23,7 @@
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("Load Data", "LoadData", "RawDatas")</li>
                         <li>@Html.ActionLink("Inspection", "Index", "InspectionDailies")</li>
+                        <li>@Html.ActionLink("Done", "Index", "Done")</li>
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
