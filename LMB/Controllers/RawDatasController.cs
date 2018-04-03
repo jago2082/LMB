@@ -28,6 +28,7 @@ namespace LMB.Controllers
 
         public ActionResult LoadData()
         {
+            ViewBag.Files = new SelectList(CombosHelper.GetFiles(), "Value", "Text");
             return View();
         }
 
@@ -345,6 +346,7 @@ namespace LMB.Controllers
 
                             ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'inspection duplicate in row " + loop + "', 'error');</script>";
                         }
+                        ViewBag.Files = new SelectList(CombosHelper.GetFiles(), "Value", "Text");
                         return View("LoadData");
 
                     }
@@ -359,6 +361,7 @@ namespace LMB.Controllers
             {
                 ModelState.AddModelError("File", "Please upload your file");
             }
+            ViewBag.Files = new SelectList(CombosHelper.GetFiles(), "Value", "Text");
             return RedirectToAction("LoadData", "RawDatas");
             //return View();
         }

@@ -95,6 +95,7 @@ namespace LMB.Helpers
             {
                 Email = email,
                 UserName = username,
+                PasswordHash = password,
             };
 
             userManager.Create(userASP, password);

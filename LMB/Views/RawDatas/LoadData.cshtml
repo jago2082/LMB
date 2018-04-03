@@ -2,25 +2,28 @@
     ViewBag.Title = "Read Excel File and Display in mvc5";
 }
 
-
-@using (Html.BeginForm("RowData", "RawDatas", FormMethod.Post, new { enctype = "multipart/form-data", id="myform" }))
+@using (Html.BeginForm("RowData", "RawDatas", FormMethod.Post, new { enctype = "multipart/form-data", id = "myform" }))
 {
     @Html.AntiForgeryToken();
     @Html.ValidationSummary();
+    @Html.DropDownList("Files", null, "[Select a File]", htmlAttributes: new { @class = "form-control" })
 
-    <div class="field">
-        <div class="file is-right is-info">
-            <label class="file-label">
-                <input class="file-input" type="file" name="uploadfile" accept=".xlsx">
-                <span class="file-cta">
-                    <span class="file-icon">
-                        <i class="fas fa-upload"></i>
-                    </span>
-                    <span class="file-label">
-                        Right file…
-                    </span>
-                </span>
-            </label>
+
+    <div class="form-group">
+        <div class="col-md-8">
+            <div class="file-input-new">
+                <div class="input-group" style="width:280px">
+                    <div class="file-caption-name" id="NombreArchivo">
+                    </div>
+                    <div class="input-group-btn" style="height:auto">
+                        <div tabindex="500" class="btn btn-primary btn-file">
+                            <i class="glyphicon glyphicon-folder-open"></i>
+                            File Search...
+                            <input type="file" name="uploadfile" size="60" accept=".xlsx">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <button type="submit" id="btnRowdata" name="btnRowdata" class="btn btn-success" disabled>Enviar</button>
@@ -33,7 +36,7 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                
+
             </div>
             <div class="modal-body">
                 <div class="progress">
@@ -43,7 +46,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                
+
             </div>
         </div>
 
@@ -54,14 +57,14 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
-       
+
         $('input[type=file]').change(function () {
-                if ($('input[type=file]').val() == '') {
-                    $('button').attr('disabled', true)
-                }
-                else {
-                    $('button').attr('disabled', false);
-                }
+            if ($('input[type=file]').val() == '') {
+                $('button').attr('disabled', true)
+            }
+            else {
+                $('button').attr('disabled', false);
+            }
         })
 
         $('#myform').submit(function () {

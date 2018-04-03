@@ -52,10 +52,14 @@ namespace LMB.Controllers
         {
             if (ModelState.IsValid)
             {
+                userDB.IsActive = 1;
+                userDB.IdClient = 1;
+                userDB.IsUpdate = 0;
                 db.UserDB.Add(userDB);
                 await db.SaveChangesAsync();
                 UsersHelper.CreateUserASP(userDB.Email, userDB.UserName, "User");
-                return RedirectToAction("Index");
+                ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'Select a File!.', 'error');</script>";
+                return RedirectToAction("Create");
             }
 
             return View(userDB);

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace LMB.Helpers
 {
@@ -21,7 +22,32 @@ namespace LMB.Helpers
             return userdbs.OrderBy(c => c.UserName).ToList();
         }
 
+        public static List<SelectListItem> GetFiles()
+        {
+            var listItems = new List<SelectListItem>();
+            listItems.Add(new SelectListItem {
+                Text = "Row Data from District",
+                Value = "1",
+            });
 
+            listItems.Add(new SelectListItem
+            {
+                Text = "Brigde Inspection Follow-up",
+                Value = "2",
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Configuration Checklist",
+                Value = "3",
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "PonTex Detail Bridge",
+                Value = "4",
+            });
+
+            return listItems.OrderBy(c => c.Value).ToList();
+        }
         public void Dispose()
         {
             db.Dispose();

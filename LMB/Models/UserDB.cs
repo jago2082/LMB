@@ -14,18 +14,23 @@ namespace LMB.Models
         public int IDUser { get; set; }
 
         [Required(ErrorMessage ="The field {0} is required")]
+        [Display(Name = "User Name")]
         public string UserName { get; set; }
         [Required(ErrorMessage = "The field {0} is required")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Required(ErrorMessage = "The field {0} is required")]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "The field {0} is required")]
         [DataType(DataType.EmailAddress)]
         [MaxLength(256,ErrorMessage ="The field {0} must be maximun {1} characters length")]
+        [Display(Name = "Email Address")]
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "Choose Password")]
         public string Password { get; set; }
         [Required(ErrorMessage = "The field {0} is required")]
         public int IsActive { get; set; }
