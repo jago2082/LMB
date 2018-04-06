@@ -91,5 +91,7 @@ namespace LMB.Models
         public DbSet<UnderClearanceRecord> UnderClearanceRecord { get; set; }
 
         public System.Data.Entity.DbSet<LMB.Models.Pdf> Pdfs { get; set; }
+
+        public System.Data.Entity.DbSet<LMB.Models.InspectionStates> InspectionStates { get; set; }
     }
 }

@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace LMB.Controllers
 {
+    [Authorize]
     public class DoneController : Controller
     {
         private DataContext db = new DataContext();

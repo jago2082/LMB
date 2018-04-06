@@ -22,9 +22,25 @@ namespace LMB.Helpers
             return userdbs.OrderBy(c => c.UserName).ToList();
         }
 
+        public static List<InspectionStates> GetInspectionStates()
+        {
+            var inspectionStates = db.InspectionStates;
+            inspectionStates.Add(new InspectionStates
+            {
+                IdInspectionStates = 0,
+                Description = "[Select State]",
+            });
+            return inspectionStates.OrderBy(s => s.Description).ToList();
+        }
+
         public static List<SelectListItem> GetFiles()
         {
             var listItems = new List<SelectListItem>();
+            listItems.Add(new SelectListItem
+            {
+                Text = "[Select a File]",
+                Value = "0",
+            });
             listItems.Add(new SelectListItem {
                 Text = "Row Data from District",
                 Value = "1",

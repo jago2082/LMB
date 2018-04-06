@@ -220,6 +220,7 @@
     <Compile Include="Controllers\DoneController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InspectionDailiesController.cs" />
+    <Compile Include="Controllers\InspectionStatesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RawDatasController.cs" />
     <Compile Include="Controllers\UserDBsController.cs" />
@@ -250,6 +251,7 @@
     <Compile Include="Models\InspectionDetailCount.cs" />
     <Compile Include="Models\InspectionHSEValue.cs" />
     <Compile Include="Models\InspectionRaiting.cs" />
+    <Compile Include="Models\InspectionStates.cs" />
     <Compile Include="Models\Insp_Attach.cs" />
     <Compile Include="Models\Insp_Question_Attach.cs" />
     <Compile Include="Models\Insp_Type_Attach.cs" />
@@ -633,6 +635,8 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="App_Browsers\qt.browser" />
+    <None Include="Properties\PublishProfiles\LMB.pubxml" />
+    <None Include="Properties\PublishProfiles\WebDevLMB.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -725,11 +729,6 @@
     <Content Include="Views\RawDatas\Edit.cshtml" />
     <Content Include="Views\RawDatas\Index.cshtml" />
     <Content Include="Views\RawDatas\LoadData.cshtml" />
-    <Content Include="Views\InspectionDailies\Create.cshtml" />
-    <Content Include="Views\InspectionDailies\Delete.cshtml" />
-    <Content Include="Views\InspectionDailies\Details.cshtml" />
-    <Content Include="Views\InspectionDailies\Edit.cshtml" />
-    <Content Include="Views\InspectionDailies\Index.cshtml" />
     <Content Include="Views\UserDBs\Create.cshtml" />
     <Content Include="Views\UserDBs\Delete.cshtml" />
     <Content Include="Views\UserDBs\Details.cshtml" />
@@ -737,6 +736,16 @@
     <Content Include="Views\UserDBs\Index.cshtml" />
     <Content Include="Views\Done\Index.cshtml" />
     <Content Include="Views\Done\ReportPDF.cshtml" />
+    <Content Include="Views\InspectionStates\Create.cshtml" />
+    <Content Include="Views\InspectionStates\Delete.cshtml" />
+    <Content Include="Views\InspectionStates\Details.cshtml" />
+    <Content Include="Views\InspectionStates\Edit.cshtml" />
+    <Content Include="Views\InspectionStates\Index.cshtml" />
+    <Content Include="Views\InspectionDailies\Create.cshtml" />
+    <Content Include="Views\InspectionDailies\Delete.cshtml" />
+    <Content Include="Views\InspectionDailies\Details.cshtml" />
+    <Content Include="Views\InspectionDailies\Edit.cshtml" />
+    <Content Include="Views\InspectionDailies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

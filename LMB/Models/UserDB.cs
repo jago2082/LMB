@@ -41,5 +41,7 @@ namespace LMB.Models
 
         public string FullName { get { return String.Format("{0} {1}", FirstName, LastName); }  }
 
+        public virtual ICollection<InspectionDaily> InspectionDailys { get; set; }
+
     }
 }

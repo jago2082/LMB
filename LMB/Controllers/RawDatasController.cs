@@ -308,7 +308,7 @@ namespace LMB.Controllers
                             //rdt.AIRLRSInvRte = data[202].ToString();
                             //rdt.AIRLRSSubRte = data[203].ToString();
                             //rdt.Blanks9 = data[204].ToString();
-                            inspectiondaily.IDUser = 9999;
+                            inspectiondaily.IDUser = 1;
                             inspectiondaily.IdClient = 1;
                             var idproject = validarcontrol(rdt.Control);
                             inspectiondaily.IdProject = idproject;
@@ -323,7 +323,7 @@ namespace LMB.Controllers
                             inspectiondaily.Section = rdt.Section;
                             inspectiondaily.Scope = rdt.FeatXed;
                             inspectiondaily.IdValueCheckList = 6;
-                            inspectiondaily.Status = 5;
+                            inspectiondaily.IdInspectionStates = 5;
                             inspectiondaily.City = rdt.FacCarried;
                             inspectiondaily.TypeInspection = 1;
                             inspectiondaily.Address = rdt.Location;

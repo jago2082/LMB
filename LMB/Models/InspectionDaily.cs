@@ -17,7 +17,7 @@ namespace LMB.Models
         public Nullable<int> IdProject { get; set; }
         [StringLength(60)]
         [Index("InspectionDailyNumInspectionIndex",  IsUnique = true)]
-        [Display(Name ="Bridge No.")]
+        [Display(Name ="BridgeNo.           ")]
         public string NumInspection { get; set; }
 
         [Display(Name = "District")]
@@ -40,10 +40,11 @@ namespace LMB.Models
         public string Hour { get; set; }
         public Nullable<int> IdValueCheckList { get; set; }
         public Nullable<int> Status { get; set; }
-
         public Nullable<double> Longitude { get; set; }
         public Nullable<double> Latitude { get; set; }
+        [Display(Name = "Longitude")]
         public Nullable<double> LongitudeIni { get; set; }
+        [Display(Name = "Latitude")]
         public Nullable<double> LatitudeIni { get; set; }
         public string DateInspection { get; set; }
         public string CommentGeneral { get; set; }
@@ -53,7 +54,11 @@ namespace LMB.Models
         public Nullable<double> LatitudeEnd { get; set; }
         public string DateInspectionEnd { get; set; }
 
+        public int IdInspectionStates { get; set; }
 
+        public InspectionStates InspectionState { get; set; }
+
+        public UserDB UserDBs { get; set; }
 
     }
 }

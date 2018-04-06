@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<LMB.Models.InspectionDaily>
+@using Newtonsoft.Json.Serialization
 
 @{
     ViewBag.Title = "Index";
@@ -6,12 +7,12 @@
 
 <style>
     table.dataTable thead tr {
-  background-color: #73ADF5;
-}
+        background-color: #73ADF5;
+    }
 
-.grey {
-  background-color: #b6ff00;
-}
+    .grey {
+        background-color: #b6ff00;
+    }
 </style>
 
 <h2>Index</h2>
@@ -22,6 +23,7 @@
 <table class="table" id="rawdata_table">
     <thead>
         <tr>
+            <th></th>
             <th>
                 @Html.DisplayNameFor(model => model.NumInspection)
             </th>
@@ -59,40 +61,13 @@
                 @Html.DisplayNameFor(model => model.IdValueCheckList)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Longitude)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Latitude)
+                @Html.DisplayNameFor(model => model.InspectionState.Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LongitudeIni)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LatitudeIni)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateInspection)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CommentGeneral)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdAttach)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sync)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LongitudeEnd)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LatitudeEnd)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateInspectionEnd)
             </th>
             <th></th>
             <th></th>
@@ -105,6 +80,9 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    <input type="checkbox" name="id" value="@item.IdInspection" />
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.NumInspection)
                 </td>
@@ -142,13 +120,7 @@
                     @Html.DisplayFor(modelItem => item.IdValueCheckList)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Longitude)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Latitude)
+                    @Html.DisplayFor(modelItem => item.InspectionState.Description)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.LongitudeIni)
@@ -157,34 +129,13 @@
                     @Html.DisplayFor(modelItem => item.LatitudeIni)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DateInspection)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CommentGeneral)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdAttach)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Sync)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LongitudeEnd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LatitudeEnd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateInspectionEnd)
-                </td>
-                <td>
-                    @if (item.Status == 5)
+                    @if (item.IdInspectionStates == 5)
                     {
                         @Html.ActionLink(" ", "SendMovile", new { id = item.IdInspection }, new { @class = "linkdisabled title='Send Movile'  btn btn-primary btn-lg glyphicon glyphicon-download", @title = "Send Movile" })
                     }
                     else
                     {
-                        @Html.ActionLink(" ", "SendMovile", new { id = item.IdInspection }, new { @class = "btn btn-primary btn-lg glyphicon glyphicon-download",@title= "Send Movile" })
+                        @Html.ActionLink(" ", "SendMovile", new { id = item.IdInspection }, new { @class = "btn btn-primary btn-lg glyphicon glyphicon-download", @title = "Send Movile" })
                     }
 
                 </td>
@@ -195,7 +146,7 @@
                     @Html.ActionLink(" ", "Create", new { }, new { @class = "btn btn-success btn-lg glyphicon glyphicon-plus", @title = "Create" })
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "Alert", new { id = item.IdInspection }, new { @class = "btn btn-info btn-lg glyphicon glyphicon-bell",@title = "Alert" })
+                    @Html.ActionLink(" ", "Alert", new { id = item.IdInspection }, new { @class = "btn btn-info btn-lg glyphicon glyphicon-bell", @title = "Alert" })
                 </td>
                 <td>
                     @Html.ActionLink(" ", "Delete", new { id = item.IdInspection }, new { @class = "btn btn-danger btn-lg glyphicon glyphicon-remove", @title = "Delete" })
@@ -205,7 +156,9 @@
     </tbody>
 </table>
 
-
+@*<td>
+    <a id="alumno" data-target="#modalUser" data-toggle="modal" data-id="" onclick="getSelected()" href="#" class="unlock" title="Assign user"><span class='btn btn-warning btn-lg glyphicon glyphicon-edit'></span></a>
+</td>*@
 <!-- Modal -->
 <div id="modalUser" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -217,7 +170,7 @@
                 <h4 class="modal-title">Assign User</h4>
             </div>
             <div class="modal-body">
-                <input type="hidden" name="bookId" id="bookId" value="" />
+                <input type="text" name="bookId" id="bookId" value="" />
                 <input type="hidden" name="userId" id="userId" value="" />
 
 
@@ -240,24 +193,25 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        var message='';
+        var message = '';
+        var table = "";
+        var sel = [];
+        var list;
         $(document).ready(function (e) {
             inicializar(e);
         }
     );
         function tabla() {
-            var table = $("#rawdata_table").DataTable({
+            table = $("#rawdata_table").DataTable({
                 "createdRow": function (row, data, dataIndex) {
-                    if (data[12] == "5") {
+                    if (data[13] == "Other") {
                         $(row).addClass('grey');
 
                     }
 
-
                 }
 
             });
-
         }
         function modal(e) {
             $('#modalUser').on('show.bs.modal', function (e) {
@@ -288,17 +242,32 @@
         }
 
         $("#save").on("click", function () {
+
             var idinsp = $('#bookId').val();
             if (user == 0) {
                 swal('¡Alert!', 'Select a User!.', 'error');
                 return;
             }
-            $.post(Url, { id: idinsp, param: user }, function (data) {
+            var ids = { "data": [{ "list": list, "user": user }] }
+            $.post(Url, ids)
+            .done(function (data) {
                 swal('Info', 'Success', 'success');
                 $("#modalUser").trigger('click');
                 location.reload();
+            })
+            .fail(function (xhr, status, error) {
+                swal('Error', xhr.responseText, 'error');
             });
+
         });
+
+        function getSelected() {
+            $('input[type=checkbox]:checked').each(function (i) {
+                sel[i] = $(this).val();
+            })
+            list = sel.join();
+            $("#bookId").val(sel);
+        }
 
     </script>
 

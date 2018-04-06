@@ -8,128 +8,112 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using LMB.Models;
-using LMB.Helpers;
 
 namespace LMB.Controllers
 {
     [Authorize]
-    public class UserDBsController : Controller
+    public class InspectionStatesController : Controller
     {
         private DataContext db = new DataContext();
 
-        // GET: UserDBs
+        // GET: InspectionStates
         public async Task<ActionResult> Index()
         {
-            return View(await db.UserDB.ToListAsync());
+            return View(await db.InspectionStates.ToListAsync());
         }
 
-        // GET: UserDBs/Details/5
+        // GET: InspectionStates/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserDB userDB = await db.UserDB.FindAsync(id);
-            if (userDB == null)
+            InspectionStates inspectionStates = await db.InspectionStates.FindAsync(id);
+            if (inspectionStates == null)
             {
                 return HttpNotFound();
             }
-            return View(userDB);
+            return View(inspectionStates);
         }
 
-        // GET: UserDBs/Create
+        // GET: InspectionStates/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: UserDBs/Create
+        // POST: InspectionStates/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(UserDB userDB)
+        public async Task<ActionResult> Create([Bind(Include = "IdInspectionStates,Description")] InspectionStates inspectionStates)
         {
             if (ModelState.IsValid)
             {
-                userDB.IsActive = 1;
-                userDB.IdClient = 1;
-                userDB.IsUpdate = 0;
-                db.UserDB.Add(userDB);
+                db.InspectionStates.Add(inspectionStates);
                 await db.SaveChangesAsync();
-                UsersHelper.CreateUserASP(userDB.Email, userDB.UserName, "User");
-                ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'Select a File!.', 'error');</script>";
-                return RedirectToAction("Create");
+                return RedirectToAction("Index");
             }
 
-            return View(userDB);
+            return View(inspectionStates);
         }
 
-        // GET: UserDBs/Edit/5
+        // GET: InspectionStates/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var userDB = await db.UserDB.FindAsync(id);
-            if (userDB == null)
+            InspectionStates inspectionStates = await db.InspectionStates.FindAsync(id);
+            if (inspectionStates == null)
             {
                 return HttpNotFound();
             }
-            return View(userDB);
+            return View(inspectionStates);
         }
 
-        // POST: UserDBs/Edit/5
+        // POST: InspectionStates/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(UserDB userDB)
+        public async Task<ActionResult> Edit([Bind(Include = "IdInspectionStates,Description")] InspectionStates inspectionStates)
         {
             if (ModelState.IsValid)
             {
-                var db2 = new DataContext();
-                var currentuser = db2.UserDB.Find(userDB.IDUser);
-                if (currentuser.Email != userDB.Email )
-                {
-                    UsersHelper.UpdateEmail(currentuser.Email, userDB.Email);
-                    
-                }
-                db2.Dispose();
-                db.Entry(userDB).State = EntityState.Modified;
+                db.Entry(inspectionStates).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                
                 return RedirectToAction("Index");
             }
-            return View(userDB);
+            return View(inspectionStates);
         }
 
-        // GET: UserDBs/Delete/5
+        // GET: InspectionStates/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var userDB = await db.UserDB.FindAsync(id);
-            if (userDB == null)
+            InspectionStates inspectionStates = await db.InspectionStates.FindAsync(id);
+            if (inspectionStates == null)
             {
                 return HttpNotFound();
             }
-            return View(userDB);
+            return View(inspectionStates);
         }
 
-        // POST: UserDBs/Delete/5
+        // POST: InspectionStates/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            var userDB = await db.UserDB.FindAsync(id);
-            db.UserDB.Remove(userDB);
+            InspectionStates inspectionStates = await db.InspectionStates.FindAsync(id);
+            db.InspectionStates.Remove(inspectionStates);
             await db.SaveChangesAsync();
-            UsersHelper.DeleteUser(userDB.Email);
             return RedirectToAction("Index");
         }
 

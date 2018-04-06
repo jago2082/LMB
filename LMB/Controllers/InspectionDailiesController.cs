@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using LMB.Models;
 using LMB.Helpers;
+using Newtonsoft.Json.Linq;
 
 namespace LMB.Controllers
 {
@@ -20,9 +21,10 @@ namespace LMB.Controllers
         // GET: InspectionDailies
         public async Task<ActionResult> Index()
         {
-            var userdb = db.UserDB.ToList();
+
+            var inspectionDaily = db.InspectionDaily.Include(i => i.InspectionState);
             ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "UserName");
-            return View(await db.InspectionDaily.Where(i => i.Status ==5).ToListAsync());
+            return View(await inspectionDaily.Where(i => i.IdInspectionStates != 2).ToListAsync());
         }
 
         // GET: InspectionDailies/Details/5
@@ -32,7 +34,7 @@ namespace LMB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            InspectionDaily inspectionDaily = await db.InspectionDaily.FindAsync(id);
+            var inspectionDaily = await db.InspectionDaily.FindAsync(id);
             if (inspectionDaily == null)
             {
                 return HttpNotFound();
@@ -43,6 +45,7 @@ namespace LMB.Controllers
         // GET: InspectionDailies/Create
         public ActionResult Create()
         {
+            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdInspectionStates", "Description");
             return View();
         }
 
@@ -57,45 +60,13 @@ namespace LMB.Controllers
             {
                 db.InspectionDaily.Add(inspectionDaily);
                 await db.SaveChangesAsync();
-                ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "FirstName");
                 return RedirectToAction("Index");
             }
 
+            ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "FirstName");
+            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdInspectionStates", "Description", inspectionDaily.IdInspectionStates);
             return View(inspectionDaily);
         }
-
-        // GET: InspectionDailies/Edit/5
-        public async Task<ActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            InspectionDaily inspectionDaily = await db.InspectionDaily.FindAsync(id);
-            if (inspectionDaily == null)
-            {
-                return HttpNotFound();
-            }
-            return View(inspectionDaily);
-        }
-
-        // POST: InspectionDailies/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(InspectionDaily inspectionDaily)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(inspectionDaily).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "FirstName");
-                return RedirectToAction("Index");
-            }
-            return View(inspectionDaily);
-        }
-
 
         public async Task<ActionResult> Save(int? id, int param)
         {
@@ -108,7 +79,7 @@ namespace LMB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            InspectionDaily inspectionDaily = await db.InspectionDaily.FindAsync(id);
+            var inspectionDaily = await db.InspectionDaily.FindAsync(id);
             if (inspectionDaily == null)
             {
                 return HttpNotFound();
@@ -126,13 +97,15 @@ namespace LMB.Controllers
 
                 throw;
             }
+
             ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "FirstName");
+            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdInspectionStates", "Description", inspectionDaily.IdInspectionStates);
             return RedirectToAction("Index");
         }
 
-        // POST: InspectionDailies/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+         // POST: InspectionDailies/Edit/5
+         //To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+         //more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost, ActionName("Save")]
         public async Task<ActionResult> Saved(int id, int param)
         {
@@ -155,6 +128,7 @@ namespace LMB.Controllers
             {
                 inspectionDaily.IDUser = param;
                 inspectionDaily.Status = 2;
+                inspectionDaily.IdInspectionStates = 2;
                 db.Entry(inspectionDaily).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 TempData["msg"] = "<script>alert('Change succesfully');</script>";
@@ -165,9 +139,79 @@ namespace LMB.Controllers
                 throw;
             }
             ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "FirstName");
+            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdInspectionStates", "Description", inspectionDaily.IdInspectionStates);
             return RedirectToAction("Index");
 
         }
+
+
+        [HttpPost, ActionName("Save")]
+        public async Task<ActionResult> Saved(string[] ids)
+        {
+            dynamic jsonObject = ids;
+            int id = 2;
+
+            var inspectionDaily = await db.InspectionDaily.FindAsync(id);
+            if (inspectionDaily == null)
+            {
+                return HttpNotFound();
+            }
+
+            try
+            {
+                inspectionDaily.IDUser = id;
+                inspectionDaily.Status = 2;
+                inspectionDaily.IdInspectionStates = 2;
+                db.Entry(inspectionDaily).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                TempData["msg"] = "<script>alert('Change succesfully');</script>";
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "FirstName");
+            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdInspectionStates", "Description", inspectionDaily.IdInspectionStates);
+            return RedirectToAction("Index");
+
+        }
+
+        // GET: InspectionDailies/Edit/5
+        public async Task<ActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            InspectionDaily inspectionDaily = await db.InspectionDaily.FindAsync(id);
+            if (inspectionDaily == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "FirstName");
+            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdInspectionStates", "Description", inspectionDaily.IdInspectionStates);
+            return View(inspectionDaily);
+        }
+
+        // POST: InspectionDailies/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(InspectionDaily inspectionDaily)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(inspectionDaily).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "FirstName");
+            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdInspectionStates", "Description", inspectionDaily.IdInspectionStates);
+            return View(inspectionDaily);
+        }
+
         // GET: InspectionDailies/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
@@ -175,7 +219,7 @@ namespace LMB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            InspectionDaily inspectionDaily = await db.InspectionDaily.FindAsync(id);
+            var inspectionDaily = await db.InspectionDaily.FindAsync(id);
             if (inspectionDaily == null)
             {
                 return HttpNotFound();
@@ -188,10 +232,9 @@ namespace LMB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            InspectionDaily inspectionDaily = await db.InspectionDaily.FindAsync(id);
+            var inspectionDaily = await db.InspectionDaily.FindAsync(id);
             db.InspectionDaily.Remove(inspectionDaily);
             await db.SaveChangesAsync();
-            ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "FirstName");
             return RedirectToAction("Index");
         }
 
