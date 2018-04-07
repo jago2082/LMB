@@ -519,9 +519,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="img\logo.png" />
-    <Content Include="img\Logo1.JPG" />
-    <Content Include="img\splash.png" />
+    <Content Include="img\home.png" />
+    <Content Include="img\Logo1.png" />
+    <Content Include="img\Logo2.png" />
+    <Content Include="img\Logo3.png" />
     <Content Include="Libraries\sweetalert\css\sweetalert2.css" />
     <Content Include="Libraries\sweetalert\js\sweetalert2.common.js" />
     <Content Include="Libraries\sweetalert\js\sweetalert2.js" />
@@ -638,6 +639,7 @@
     <None Include="Properties\PublishProfiles\LMB.pubxml" />
     <None Include="Properties\PublishProfiles\WebDevLMB.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <None Include="Scripts\jquery-2.1.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />

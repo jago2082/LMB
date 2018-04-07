@@ -20,6 +20,9 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<div id="buttons">
+    <a id="alumno" data-target="#modalUser" data-toggle="modal" data-id="" onclick="getSelected()" href="#" class="unlock" title="Assign user"><span class='btn btn-warning btn-lg glyphicon glyphicon-edit'></span></a>
+</div>
 <table class="table" id="rawdata_table">
     <thead>
         <tr>
@@ -156,9 +159,7 @@
     </tbody>
 </table>
 
-@*<td>
-    <a id="alumno" data-target="#modalUser" data-toggle="modal" data-id="" onclick="getSelected()" href="#" class="unlock" title="Assign user"><span class='btn btn-warning btn-lg glyphicon glyphicon-edit'></span></a>
-</td>*@
+
 <!-- Modal -->
 <div id="modalUser" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -214,10 +215,10 @@
             });
         }
         function modal(e) {
-            $('#modalUser').on('show.bs.modal', function (e) {
-                var id = $(e.relatedTarget).data().id;
-                $(e.currentTarget).find('#bookId').val(id);
-            });
+            //$('#modalUser').on('show.bs.modal', function (e) {
+            //    var id = $(e.relatedTarget).data().id;
+            //    $(e.currentTarget).find('#bookId').val(id);
+            //});
         }
 
         function lock() {
@@ -248,8 +249,9 @@
                 swal('¡Alert!', 'Select a User!.', 'error');
                 return;
             }
-            var ids = { "data": [{ "list": list, "user": user }] }
-            $.post(Url, ids)
+            
+            
+            $.post(Url, { "listaIds": list, "user": user })
             .done(function (data) {
                 swal('Info', 'Success', 'success');
                 $("#modalUser").trigger('click');

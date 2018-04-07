@@ -3,37 +3,148 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <style>
+        body {
+            background: #27ccf7;
+        }
+
+        div {
+            display: block;
+        }
+
+        /* -- Cabeçalho e Rodapé --*/
+        .header, .footer {
+            height: 165px;
+        }
+
+        /* -- *main, apenas para colocar um espaço entre o Menu superior e o conteúdo --*/
+        .main {
+            margin-top: 55px;
+        }
+
+        /* -- Identidade --*/
+        .navbar-brand {
+            width: 250px;
+            padding-left: 50%;
+            padding-right: 50%;
+        }
+
+        /* -- Barra de navegação --*/
+        .navbar {
+            z-index: 2;
+            min-height: 50px;
+            background: rgba(0, 63, 79, 0.1);
+            border: none;
+            border-radius: 0;
+            margin: 0;
+            padding: 20px 20px;
+            /*pointer-events: none;*/
+            position: relative;
+        }
+
+        .menu-superior {
+            background-color: #e75126;
+        }
+
+        .menu-inferior {
+            border-top: 5px solid #ed8441;
+            background: #e75126;
+        }
+
+        /**/
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        li a {
+            display: block;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .click_up li a {
+            color: white;
+        }
+
+        .click_down li a {
+            color: white;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .click_up li a:hover:not(.active) {
+            background: #1976D2;
+            color: white;
+        }
+
+        .click_down li a:hover:not(.active) {
+            background: #1976D2;
+            color: white;
+        }
+
+        /* -- Conteudo -- */
+        .in_line_menu {
+            font-size: 30px;
+        }
+
+        .box1 {
+            padding-top: 10px;
+            height: 400px;
+            background: #e7e7e7;
+        }
+    </style>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-        <div class="navbar navbar-default">
+    <div class="header">
+        <nav class="navbar">
+
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <img src="~/img/logo.png" alt="Image" style="width:50px;height:50px;max-width: 100%; height: auto; padding-top: 5px" />
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Load Data", "LoadData", "RawDatas")</li>
-                        <li>@Html.ActionLink("Inspection", "Index", "InspectionDailies")</li>
-                        <li>@Html.ActionLink("Done", "Index", "Done")</li>
-                    </ul>
-                    @Html.Partial("_LoginPartial")
+
+                <div class="header-block clearfix">
+                    <!-- Marca a alternância se agrupando para melhor visualização, em dispositivo móvel -->
+                    <div class="menu-superior">
+                        <ul class="nav nav-pills click_up">
+                            <li><a class="navbar-brand" href="#">LMB</a><span class="in_line_menu">|</span></li>
+                            <li style="float:right">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                            }
+                        </ul>
+                    </div><!--/.menu-superior-->
+
+                    <div class="menu-inferior">
+                        <ul class="nav nav-pills click_down">
+                            <li style="float:left">@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li style="float:left">@Html.ActionLink("Load Data", "LoadData", "RawDatas")</li>
+                            <li style="float:left">@Html.ActionLink("Pending Inspections", "Index", "InspectionDailies")</li>
+                            <li style="float:left">@Html.ActionLink("Done Inspections", "Index", "Done")</li>
+                        </ul>
+                    </div><!--/.menu-inferior-->
                 </div>
             </div>
-        </div>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer></footer>
-        </div>
+        </nav>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer></footer>
+    </div>
 
 
     @Scripts.Render("~/bundles/jquery")

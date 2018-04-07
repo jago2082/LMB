@@ -5,19 +5,27 @@
 }
 <style>
     h1 {
-        margin-left:231px;
+        margin-left: 231px;
     }
+
     h2 {
-        margin-left:231px;
+        margin-left: 231px;
+    }
+
+    #welcome_User {
+        display: block;
+        margin-top: -654px;
     }
 </style>
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
-        <h1><span id="welcom" class="clearfix" style="color:orangered">WELCOME</span></h1>
-        <h2>@User.Identity.GetUserName() </h2>
-        <img id="background" class="background" src="~/img/Logo1.JPG" width="800" height="800" />
+        <img id="background" class="background" src="~/img/home.png" style="margin-left: -127px;" width="800" height="800" />
+        <div id="welcome_User">
+            <h1><span id="welcom" class="clearfix" style="color:orangered">WELCOME</span></h1>
+            <h2>@User.Identity.GetUserName() </h2>
+        </div>
     </div>
 </div>
-    @section Scripts {
-        @Scripts.Render("~/bundles/bootstrap")
-    }
+@section Scripts {
+    @Scripts.Render("~/bundles/bootstrap")
+}

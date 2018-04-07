@@ -78,7 +78,7 @@
                     }
                     else {
                         var filename = $('input[type=file]').val().replace(/.*(\/|\\)/, '');
-                        $('#Fname').val(filename);
+                        $('#Fname').text(filename);
                         $('button').attr('disabled', false);
                     }
                 })

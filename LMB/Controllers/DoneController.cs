@@ -18,7 +18,8 @@ namespace LMB.Controllers
         // GET: InspectionDailies
         public async Task<ActionResult> Index()
         {
-            return View(await db.InspectionDaily.Where(i => i.Status == 2).ToListAsync());
+            var inspectionDaily = db.InspectionDaily.Include(i => i.InspectionState);
+            return View(await inspectionDaily.Where(i => i.IdInspectionStates == 2).ToListAsync());
         }
 
         public async Task<ActionResult> PDFReport(int? id)
