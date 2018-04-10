@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@model LMB.Models.UserDB
 
 @{
     ViewBag.Title = "Home Page";
@@ -22,7 +22,7 @@
         <img id="background" class="background" src="~/img/home.png" style="margin-left: -127px;" width="800" height="800" />
         <div id="welcome_User">
             <h1><span id="welcom" class="clearfix" style="color:orangered">WELCOME</span></h1>
-            <h2>@User.Identity.GetUserName() </h2>
+            <h2>@Html.LabelForModel(Model.FullName)</h2>
         </div>
     </div>
 </div>

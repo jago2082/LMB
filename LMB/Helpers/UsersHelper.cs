@@ -136,6 +136,12 @@ namespace LMB.Helpers
             await MailHelper.SendMail(email, subject, body);
         }
 
+
+        public static UserDB finduser(string user)
+        {
+            var userR = db.UserDB.Where(u => u.UserName == user).FirstOrDefault();
+            return userR;
+        }
         public void Dispose()
         {
             userContext.Dispose();

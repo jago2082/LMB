@@ -6,14 +6,11 @@ using System.Web;
 
 namespace LMB.Models
 {
-    public class InspectionStates
+    public class TypeName
     {
         [Key]
-        public int IdInspectionStates { get; set; }
+        public int IdType { get; set; }
 
-        [Display(Name ="Status")]
         public string Description { get; set; }
-
-        public virtual ICollection<InspectionDaily> InspectionDailys { get; set; }
     }
 }

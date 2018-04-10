@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -42,18 +43,17 @@
             border: none;
             border-radius: 0;
             margin: 0;
-            padding: 20px 20px;
             /*pointer-events: none;*/
             position: relative;
         }
 
         .menu-superior {
-            background-color: #e75126;
+            background-color: #fbf7f7;
         }
 
         .menu-inferior {
             border-top: 5px solid #ed8441;
-            background: #e75126;
+            background: #005E8C;
         }
 
         /**/
@@ -84,12 +84,12 @@
         }
 
         .click_up li a:hover:not(.active) {
-            background: #1976D2;
+            background: #E75126;
             color: white;
         }
 
         .click_down li a:hover:not(.active) {
-            background: #1976D2;
+            background: #E75126;
             color: white;
         }
 
@@ -117,9 +117,12 @@
                 <div class="header-block clearfix">
                     <!-- Marca a alternância se agrupando para melhor visualização, em dispositivo móvel -->
                     <div class="menu-superior">
+                        <img src="~/img/logo.png" width="10" height="10" class="navbar-brand" />
                         <ul class="nav nav-pills click_up">
-                            <li><a class="navbar-brand" href="#">LMB</a><span class="in_line_menu">|</span></li>
                             <li style="float:right">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                            <li style="float:right">
+                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage"})
+                            </li>
                             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                             {
                                 @Html.AntiForgeryToken()

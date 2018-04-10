@@ -21,11 +21,6 @@
             <input type="text" class="form-control" id="Fname" name="Fname">
         </div>
         <div class="form-group">
-            <label for="pwd">Description</label>
-            <input type="text" class="form-control" id="pwd">
-        </div>
-
-        <div class="form-group">
             <label for="pwd">Upload</label>
             <input type="file" name="uploadfile" size="60" accept=".xlsx">
         </div>
@@ -78,7 +73,7 @@
                     }
                     else {
                         var filename = $('input[type=file]').val().replace(/.*(\/|\\)/, '');
-                        $('#Fname').text(filename);
+                        $('#Fname').val(filename);
                         $('button').attr('disabled', false);
                     }
                 })

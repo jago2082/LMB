@@ -322,13 +322,16 @@ namespace LMB.Controllers
                             inspectiondaily.Control = int.Parse(rdt.Control);
                             inspectiondaily.Section = rdt.Section;
                             inspectiondaily.Scope = rdt.FeatXed;
-                            inspectiondaily.IdValueCheckList = 6;
+                            inspectiondaily.IdValueCheckList = 70;
+                            inspectiondaily.IdAttach = 1;
                             inspectiondaily.IdInspectionStates = 5;
                             inspectiondaily.City = rdt.FacCarried;
                             inspectiondaily.TypeInspection = 1;
                             inspectiondaily.Address = rdt.Location;
                             inspectiondaily.LatitudeIni = rdt.Latitude;
                             inspectiondaily.LongitudeIni = rdt.Longitude;
+                            inspectiondaily.Structure = rdt.StrNo;
+                            inspectiondaily.MaintanSection = rdt.MaintSect;
                             db.RawData.Add(rdt);
                             db.InspectionDaily.Add(inspectiondaily);
                             db.SaveChanges();

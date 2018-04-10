@@ -13,14 +13,20 @@ namespace LMB.Models
         public int IDAttach { get; set; }
         public Nullable<int> IDInspection { get; set; }
         public Nullable<int> IDTypePicture { get; set; }
+
+        public TypePicture TypePicture { get; set; }
         public string ImageString { get; set; }
 
         public string Caption { get; set; }
 
-        public int IdDirection { get; set; }
+        public int IdDirectionPhotoType { get; set; }
+
+        public DirectionPhotoType DirectionPhotoType { get; set; }
 
         public string Comment { get; set; }
 
         public string PhotoCameraNum { get; set; }
+
+        public virtual ICollection<InspectionDaily> InspectionDailys { get; set; }
     }
 }

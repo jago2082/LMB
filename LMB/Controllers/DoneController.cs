@@ -18,29 +18,34 @@ namespace LMB.Controllers
         // GET: InspectionDailies
         public async Task<ActionResult> Index()
         {
-            var inspectionDaily = db.InspectionDaily.Include(i => i.InspectionState);
+            var inspectionDaily = db.InspectionDaily.Include(i => i.InspectionState)
+                .Include(t => t.Insp_Type_Attach);
             return View(await inspectionDaily.Where(i => i.IdInspectionStates == 2).ToListAsync());
         }
 
-        public async Task<ActionResult> PDFReport(int? id)
+        public ActionResult PDFReport(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var inspectionDaily = await db.InspectionDaily.FindAsync(id);
-            Pdf pdf = new Pdf();
+            var inspectionDaily = db.InspectionDaily.Include(i => i.InspectionState)
+                .Include(tp => tp.Insp_Type_Attach.TypePicture)
+                .Include(t => t.Insp_Type_Attach.DirectionPhotoType)
+                .Where(j => j.IdInspection ==id).ToList();
+
+
             if (inspectionDaily == null)
             {
                 return HttpNotFound();
             }
 
-            pdf.InspectionDaily = inspectionDaily;
-            Insp_Type_Attach insp_Type_Attach = new Insp_Type_Attach();
-            insp_Type_Attach.IDTypePicture = 2;
-            insp_Type_Attach.IdDirection = 5;
-            pdf.Insp_Type_Attach = insp_Type_Attach;
-            return new ViewAsPdf("ReportPDF", pdf);
+
+            //return View("ReportPDF", inspectionDaily);
+            return new ViewAsPdf("ReportPDF", inspectionDaily);
+            //{
+            //    RotativaOptions = { CustomSwitches = "--print-media-type --header-center \"text\"" ,PageSize=Rotativa.Core.Options.Size.Legal}
+            //};
         }
 
         protected override void Dispose(bool disposing)

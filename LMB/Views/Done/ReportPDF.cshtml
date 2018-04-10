@@ -1,70 +1,71 @@
-﻿@model LMB.Models.Pdf
+﻿@model IEnumerable<LMB.Models.InspectionDaily>
 
 @{
-    ViewBag.Title = "ReportPDF";
     Layout = null;
+    ViewBag.Title = "Done";
 }
+
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
 <style>
-    #table-print {
-        margin-right: auto;
-        margin-left: auto;
+    div.centrado {
+        text-align: center;
     }
+
+        div.centrado table {
+            margin: 0 auto;
+            text-align: left;
+        }
 </style>
-<h2>ReportPDF</h2>
-<center>
-    <table class="table" id="table-print">
+
+<div class="centrado">
+    <table>
         <thead>
             <tr>
-                <th>
-                </th>
-                <th>
-                </th>
-                <th>
-                </th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var logo = string.Empty;
+                <tr>
+                    <td rowspan="2">
+                        @if (!string.IsNullOrEmpty(item.Insp_Type_Attach.ImageString))
+                        {
 
-            <tr>
-                <td>
-                    <img src="https://2.bp.blogspot.com/-14Vx-OJ6Q90/VugU6p-HCiI/AAAAAAAABgc/ZoagDOWZSuUOK82_dLOSENG11Wn_sWk7Q/s1600/El%2Bpuente%2Bmas%2Blargo%2Bde%2BUruguay%2Bno%2Bse%2Busa.jpg" alt="Alternate Text" width="400" height="400" />
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Insp_Type_Attach.IDTypePicture)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Insp_Type_Attach.IdDirection)
-                </td>
-            </tr>
-            <tr></tr>  
-            <tr></tr>
-            <tr></tr>
-            <tr></tr>
-            <tr></tr>
-            <tr></tr>
-            <tr></tr>
-            <tr></tr>      
-            <tr>
-                <td>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjUm7e2LF_r9ddFtMlvNGSprPioSnJA1JqfGiBmcm2uByI1B-X" alt="Alternate Text" width="400" height="400" />
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Insp_Type_Attach.IDTypePicture)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Insp_Type_Attach.IdDirection)
-                </td>
-            </tr>
+                            string image = string.Format("data:image/png;base64,{0}", item.Insp_Type_Attach.ImageString);
+                            <img src=@image width="300" height="300" style="display:block;margin-left:auto;margin-right:auto" />
+                            //var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(image);
+                            //logo = System.Convert.ToBase64String(plainTextBytes);
+
+
+                        }
+
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Insp_Type_Attach.TypePicture.Description)
+                    </td>
+                </tr>
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Insp_Type_Attach.DirectionPhotoType.Description)
+                        </td>
+                    </tr>
+            }
+        </tbody>
     </table>
+    <footer>
 
-    <strong> @Html.DisplayNameFor(model => model.InspectionDaily.Company)</strong>   @Html.DisplayFor(model => model.InspectionDaily.Company)
-    <strong>@Html.DisplayNameFor(model => model.InspectionDaily.NumInspection)</strong>@Html.DisplayFor(model => model.InspectionDaily.NumInspection)
-</center>
-<footer>
-    <center>
-        LMB Engineering, Inc (F-346) Contract No.:88-7IDP5059
+        <strong> LMB Engineering, Inc </strong> (F-346) Contract No.:88-7IDP5059
         </br>
         2017 Off System Cycle / San Antonio District
-    </center>
-</footer>
-@section Scripts {
-    @Scripts.Render("~/bundles/bootstrap")
-}
+    </footer>
+</div>
+

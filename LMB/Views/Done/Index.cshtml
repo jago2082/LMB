@@ -52,16 +52,7 @@
                 @Html.DisplayNameFor(model => model.Hour)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdValueCheckList)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.InspectionState.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Longitude)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Latitude)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LongitudeIni)
@@ -74,21 +65,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CommentGeneral)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdAttach)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sync)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LongitudeEnd)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LatitudeEnd)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateInspectionEnd)
             </th>
             <th></th>
             <th></th>
@@ -132,16 +108,7 @@
                     @Html.DisplayFor(modelItem => item.Hour)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IdValueCheckList)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.InspectionState.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Longitude)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Latitude)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.LongitudeIni)
@@ -156,25 +123,10 @@
                     @Html.DisplayFor(modelItem => item.CommentGeneral)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IdAttach)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Sync)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LongitudeEnd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LatitudeEnd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateInspectionEnd)
-                </td>
-                <td>
                     @Html.ActionLink(" ", "Edit", new { id = item.IdInspection }, new { @class = "btn btn-info btn-lg glyphicon glyphicon-edit disabled", @title = "Edit" })
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "PDFReport", new { id = item.IdInspection }, new { @class = "btn-lg glyphicon glyphicon-list-alt", @title = "Report" })
+                    @Html.ActionLink(" ", "PDFReport", new { id = item.IdInspection }, new { @class = "btn-lg glyphicon glyphicon-list-alt", @title = "Report", @target= "_blank" })
                 </td>
             </tr>
         }
