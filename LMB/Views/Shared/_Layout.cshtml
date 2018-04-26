@@ -49,6 +49,7 @@
 
         .menu-superior {
             background-color: #fbf7f7;
+            height: 38px;
         }
 
         .menu-inferior {
@@ -117,41 +118,43 @@
                 <div class="header-block clearfix">
                     <!-- Marca a alternância se agrupando para melhor visualização, em dispositivo móvel -->
                     <div class="menu-superior">
-                        <img src="~/img/logo.png" width="10" height="10" class="navbar-brand" />
+                        <img src="~/img/logo.png" style="width:50px;margin-left:66px;" />
                         <ul class="nav nav-pills click_up">
-                            <li style="float:right">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-                            <li style="float:right">
-                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage"})
+                            <li style="float:right;margin-top: 10px;">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                            <li style="float:right;margin-top: 10px;">
+                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                             </li>
-                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                            {
-                                @Html.AntiForgeryToken()
+                            <li style="float:right;margin-top: 10px;">
+                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                {
+                                    @Html.AntiForgeryToken()
                                 <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-                            }
-                        </ul>
-                    </div><!--/.menu-superior-->
+                                }
+                                </li>
+                            </ul>
+                        </div><!--/.menu-superior-->
 
-                    <div class="menu-inferior">
-                        <ul class="nav nav-pills click_down">
-                            <li style="float:left">@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li style="float:left">@Html.ActionLink("Load Data", "LoadData", "RawDatas")</li>
-                            <li style="float:left">@Html.ActionLink("Pending Inspections", "Index", "InspectionDailies")</li>
-                            <li style="float:left">@Html.ActionLink("Done Inspections", "Index", "Done")</li>
-                        </ul>
-                    </div><!--/.menu-inferior-->
+                        <div class="menu-inferior">
+                            <ul class="nav nav-pills click_down">
+                                <li style="float:left">@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li style="float:left">@Html.ActionLink("Load Data", "LoadData", "RawDatas")</li>
+                                <li style="float:left">@Html.ActionLink("Pending Inspections", "Index", "InspectionDailies")</li>
+                                <li style="float:left">@Html.ActionLink("Done Inspections", "Index", "Done")</li>
+                            </ul>
+                        </div><!--/.menu-inferior-->
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer></footer>
-    </div>
+            </nav>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer></footer>
+        </div>
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
 </html>

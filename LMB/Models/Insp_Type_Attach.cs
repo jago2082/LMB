@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace LMB.Models
 {
@@ -15,7 +17,12 @@ namespace LMB.Models
         public Nullable<int> IDTypePicture { get; set; }
 
         public TypePicture TypePicture { get; set; }
+
+        [DataType(DataType.ImageUrl)]
         public string ImageString { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase LogoFile { get; set; }
 
         public string Caption { get; set; }
 

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<LMB.Models.Insp_Type_Attach>
+
+@{
+    LMB.Models.Insp_Type_Attach inspectionTypeA = Model.FirstOrDefault();
+}
+
+<style>
+    table.dataTable thead tr {
+        background-color: #73ADF5;
+    }
+
+    .grey {
+        background-color: #e4e1e1;
+    }
+</style>
+Bridge: @inspectionTypeA.IDInspection
+<table class="table" id="rawdata_table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Caption)
+            </th>
+            <th>
+                Photo App
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoCameraNum)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Caption)
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImageString))
+                    {
+                        <label>OK</label>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhotoCameraNum)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "EditP", new { id = item.IDAttach }, new { @class = "btn-lg glyphicon glyphicon-list-alt", @title = "Report" })                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@Html.Raw(TempData["msg"])
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            inicializar(e);
+        }
+    );
+        function tabla() {
+            var table = $("#rawdata_table").DataTable();
+
+        }
+
+        function inicializar(e) {
+            tabla();
+        }
+    </script>
+
+
+}

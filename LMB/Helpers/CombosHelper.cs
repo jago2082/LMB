@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Collections;
 
 namespace LMB.Helpers
 {
@@ -31,6 +32,29 @@ namespace LMB.Helpers
                 Description = "[Select State]",
             });
             return inspectionStates.OrderBy(s => s.Description).ToList();
+        }
+
+        public static List<TypePicture> TypePicture()
+        {
+            var typecture = db.TypePicture;
+            typecture.Add(new TypePicture
+            {
+                IdTypePicture =0,
+                Description = "[Select TypePicture]",
+            });
+
+            return typecture.OrderBy(t => t.Description).ToList();
+        }
+
+        public static List<DirectionPhotoType> PothoType()
+        {
+            var directionpothotype = db.DirectionPhotoType;
+            directionpothotype.Add(new DirectionPhotoType
+            {
+                IdDirectionPhotoType = 0,
+                Description = "[Select DirectionPhotoType]",
+            });
+            return directionpothotype.OrderBy(t => t.Description).ToList();
         }
 
         public static List<SelectListItem> GetFiles()

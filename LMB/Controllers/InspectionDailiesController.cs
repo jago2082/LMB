@@ -19,7 +19,8 @@ namespace LMB.Controllers
         public async Task<ActionResult> Index()
         {
 
-            var inspectionDaily = db.InspectionDaily.Include(i  => i.InspectionState);
+            var inspectionDaily = db.InspectionDaily.Include(i  => i.InspectionState)
+                .Include(u => u.UserDBs);
             ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "UserName");
             return View(await inspectionDaily.Where(i => i.IdInspectionStates != 2).ToListAsync());
         }
@@ -81,8 +82,8 @@ namespace LMB.Controllers
                 {
                     inspectionDaily.IDUser = int.Parse(user);
                     inspectionDaily.Date = DateTime.Now;
-                    inspectionDaily.Status = 2;
-                    inspectionDaily.IdInspectionStates = 2;
+                    inspectionDaily.Status = 4;
+                    inspectionDaily.IdInspectionStates = 4;
                     db.Entry(inspectionDaily).State = EntityState.Modified;
                     await db.SaveChangesAsync();
                     

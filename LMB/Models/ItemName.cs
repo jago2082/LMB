@@ -6,13 +6,11 @@ using System.Web;
 
 namespace LMB.Models
 {
-    public class TypeName
+    public class ItemName
     {
         [Key]
-        public int IdType { get; set; }
+        public int IdItemName { get; set; }
 
-        public string Description { get; set; }
-
-        public int IdProject { get; set; }
+        public string description { get; set; }
     }
 }

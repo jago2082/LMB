@@ -165,6 +165,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Z.EntityFramework.Plus.EF6, Version=1.7.17.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.EntityFramework.Plus.EF6.1.7.17\lib\net45\Z.EntityFramework.Plus.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -228,6 +232,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CombosHelper.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\Message.cs" />
     <Compile Include="Helpers\UsersHelper.cs" />
@@ -238,10 +243,12 @@
     <Compile Include="Models\CheckListQuestion.cs" />
     <Compile Include="Models\CheckListSection.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Counties.cs" />
     <Compile Include="Models\CrossSectionValues.cs" />
     <Compile Include="Models\CustomInspDaily.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\DirectionPhotoType.cs" />
+    <Compile Include="Models\District.cs" />
     <Compile Include="Models\FuncionalidadClient.cs" />
     <Compile Include="Models\HSEQuestion.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -256,8 +263,10 @@
     <Compile Include="Models\Insp_Attach.cs" />
     <Compile Include="Models\Insp_Question_Attach.cs" />
     <Compile Include="Models\Insp_Type_Attach.cs" />
+    <Compile Include="Models\ItemName.cs" />
     <Compile Include="Models\ItemUnderType.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ModelPDF.cs" />
     <Compile Include="Models\NombreCampos.cs" />
     <Compile Include="Models\NoveltyInspection.cs" />
     <Compile Include="Models\Pdf.cs" />
@@ -752,6 +761,8 @@
     <Content Include="Views\InspectionDailies\Details.cshtml" />
     <Content Include="Views\InspectionDailies\Edit.cshtml" />
     <Content Include="Views\InspectionDailies\Index.cshtml" />
+    <Content Include="Views\Done\LoadPhoto.cshtml" />
+    <Content Include="Views\Done\EditP.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

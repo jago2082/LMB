@@ -31,5 +31,12 @@ namespace LMB.Models
         public string FieldDataSVC { get; set; }
         public int RefFeSVC { get; set; }
         public int ItemSVC { get; set; }
+
+        public int RefFeRLCTo { get; set; }
+        public int RefFeLLCTo { get; set; }
+        public int RefFeTHCTo { get; set; }
+        public int RefFeMPVTo { get; set; }
+        public int RefFeMMVTo { get; set; }
+        public int RefFeSVCTo { get; set; }
     }
 }

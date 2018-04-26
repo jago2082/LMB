@@ -312,7 +312,7 @@ namespace LMB.Controllers
                             inspectiondaily.IdClient = 1;
                             var idproject = validarcontrol(rdt.Control);
                             inspectiondaily.IdProject = idproject;
-                            var numinsp = String.Format("{0}{1}-{2}-{3}{4}", rdt.District, rdt.County, rdt.Control, rdt.Section, rdt.StrNo);
+                            var numinsp = String.Format("{0}-{1}-{2}-{3}-{4}", rdt.District, rdt.County, rdt.Control, rdt.Section, rdt.StrNo);
                             var exist = db.InspectionDaily.Where(i => i.NumInspection == numinsp).FirstOrDefault();
                             //if (exist != null)
                             //{ message.mensaje = "La inpeccion ya se encuentra registrada "; message.fila = loop; break; }
@@ -324,6 +324,7 @@ namespace LMB.Controllers
                             inspectiondaily.Scope = rdt.FeatXed;
                             inspectiondaily.IdValueCheckList = 70;
                             inspectiondaily.IdAttach = 1;
+                            inspectiondaily.Hour = rdt.YrBuilt;
                             inspectiondaily.IdInspectionStates = 5;
                             inspectiondaily.City = rdt.FacCarried;
                             inspectiondaily.TypeInspection = 1;

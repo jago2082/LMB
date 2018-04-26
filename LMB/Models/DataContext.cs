@@ -97,5 +97,11 @@ namespace LMB.Models
         public System.Data.Entity.DbSet<LMB.Models.Pdf> Pdfs { get; set; }
 
         public System.Data.Entity.DbSet<LMB.Models.InspectionStates> InspectionStates { get; set; }
+
+        public System.Data.Entity.DbSet<LMB.Models.District> Districts { get; set; }
+
+        public System.Data.Entity.DbSet<LMB.Models.Counties> Counties { get; set; }
+
+        public System.Data.Entity.DbSet<LMB.Models.ItemName> ItemNames { get; set; }
     }
 }
