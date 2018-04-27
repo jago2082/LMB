@@ -23,9 +23,6 @@
                 @Html.DisplayNameFor(model => model.UserDBs.FullName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Hour)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.DO)
             </th>
             <th>
@@ -112,10 +109,10 @@
                     @Html.DisplayFor(modelItem => item.DateInspection)
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "Edit", new { id = item.IdInspection }, new { @class = "btn btn-info btn-lg glyphicon glyphicon-edit", @title = "Edit" })
+                    @Html.ActionLink(" ", "Edit", new { id = item.IdInspection }, new { @class = "btn btn-info btn-lg glyphicon glyphicon-edit", @title = "Load Pictures", @onclick="Progress()"})
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "PDFReport", new { id = item.IdInspection }, new { @class = "btn-lg glyphicon glyphicon-list-alt", @title = "Report", @target= "_blank" })
+                    @Html.ActionLink(" ", "PDFReport", new { id = item.IdInspection }, new { @class = "btn btn-success btn-lg glyphicon glyphicon glyphicon-file", @title = "Report", @target= "_blank" })
                 </td>
             </tr>
         }
@@ -142,6 +139,10 @@
             tabla();
         }
     </script>
-
+<script type="text/javascript">
+    function Progress() {
+        $('#mod-progress').modal()
+    };
+</script>
 
 }

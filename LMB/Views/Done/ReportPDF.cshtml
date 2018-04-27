@@ -9,97 +9,104 @@
     Layout = null;
     ViewBag.Title = "Done";
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style>
+        div.centrado {
+            text-align: center;
+        }
 
-<style>
-    div.centrado {
-        text-align: center;
-    }
+        #info {
+            width: auto;
+        }
 
-    #info {
-        width: auto;
-    }
+        span {
+            background-color: lightgray !important;
+        }
 
-    span {
-        background-color: lightgray !important;
-    }
-
-    div.centrado table {
-        margin: 0 auto;
-        text-align: left;
-    }
-</style>
-
-<div class="centrado">
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
+        div.centrado table {
+            margin: 0 auto;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="centrado">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
             {
                 var logo = string.Empty;
-                <tr>
-                    <td rowspan="2">
-                        @if (!string.IsNullOrEmpty(item.ImageString))
-                        {
+                    <tr>
+                        <td rowspan="2">
+                            @if (!string.IsNullOrEmpty(item.ImageString))
+                            {
 
-                            string image = string.Format("data:image/png;base64,{0}", item.ImageString);
-                            <img src=@image width="800" height="400" style="display:block;margin-left:auto;margin-right:auto" />
-                            //var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(image);
-                            //logo = System.Convert.ToBase64String(plainTextBytes);
-
-
-                        }
+                                string image = string.Format("data:image/png;base64,{0}", item.ImageString);
+                                <img src=@image width="800" height="400" style="display:block;margin-left:auto;margin-right:auto" />
+                                //var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(image);
+                                //logo = System.Convert.ToBase64String(plainTextBytes);
 
 
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                </tr>
-                <tr>
+                            }
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PTDescription)
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <div>
-        <div id="info" class="centrado">
-            <span>
-                <strong>
-                    @Html.DisplayNameFor(model => model.Company)
-                </strong>
-                @inspection.Company
-                <strong>
-                    @Html.DisplayNameFor(model => model.NumInspection)
-                </strong>
-                @inspection.NumInspection
-                <strong>
-                    @Html.DisplayNameFor(model => model.DateInspectionEnd)
-                </strong>
-                @inspection.DateInspectionEnd
-            </span>
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PTDescription)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>
+            <div id="info" class="centrado">
+                <span>
+                    <strong>
+                        @Html.DisplayNameFor(model => model.Company)
+                    </strong>
+                    @inspection.Company
+                    <strong>
+                        @Html.DisplayNameFor(model => model.NumInspection)
+                    </strong>
+                    @inspection.NumInspection
+                    <strong>
+                        @Html.DisplayNameFor(model => model.DateInspectionEnd)
+                    </strong>
+                    @inspection.DateInspectionEnd
+                </span>
+            </div>
         </div>
     </div>
-    </br>
-    <footer>
-
-        <strong>
-            LMB Engineering, Inc. (F-3456) Contract No.: 88-7IDP5059</br>
-            2017 Off System Cycle / San Antonio District</br>
-        </strong>
-        DO NOT DISCLOSE - INFORMATION CONFIDENTIAL UNDER THE TEXAS HOMELAND SECURITY ACT AND 23 USC SECTION</br> 409, SAFETY SENSITIVE INFORMATION.
-    </footer>
-</div>
+</body>
+</html>
 

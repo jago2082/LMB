@@ -39,6 +39,7 @@ namespace LMB.Models
         public int IdClient { get; set; }
         public int IsUpdate { get; set; }
 
+        [Display(Name ="User")]
         public string FullName { get { return String.Format("{0} {1}", FirstName, LastName); }  }
 
         public int IdInspection { get; set; }

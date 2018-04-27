@@ -4,41 +4,51 @@
     ViewBag.Title = "EditP";
 }
 
-<h2>EditP</h2>
+
+@Styles.Render("~/Content/css")
 
 
-@using (Html.BeginForm("EditP", "Done", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@*PROGRESS BAR MODAL*@
+<div class="modal fade" id="mod-progress" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-Loading">
+            <div class="row">
+                <div class="col-md-12 col-sm-6">
+                    <div class="progress blue">
+                        <span class="progress-left">
+                            <span class="progress-bar"></span>
+                        </span>
+                        <span class="progress-right">
+                            <span class="progress-bar"></span>
+                        </span>
+                        <div class="progress-value">Loading..</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+@using (Html.BeginForm("EditP", "Done", FormMethod.Post, new { enctype = "multipart/form-data", id = "myform" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Insp_Type_Attach</h4>
+        <h4>Bridge No. @Html.DisplayFor(model => model.numinspection)</h4>
+        <hr />
+        <label>Please enter the Information</label>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.IDAttach)
-
+        @Html.HiddenFor(model => model.IDInspection)
         <div class="form-group">
-            @Html.LabelFor(model => model.IDInspection, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IDInspection, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IDInspection, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IDTypePicture, "IDTypePicture", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TypePicture.Description, "Type Picture", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IDTypePicture", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IDTypePicture, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ImageString, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <span class="btn btn-default btn-file">
-                    @Html.TextBoxFor(modelo => modelo.LogoFile, new { type = "file" ,id="LogoFile", name="LogoFile"})
-                </span>
             </div>
         </div>
 
@@ -51,7 +61,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdDirectionPhotoType, "IdDirectionPhotoType", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DirectionPhotoType.Description, "Direction Photo Type", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IdDirectionPhotoType", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdDirectionPhotoType, "", new { @class = "text-danger" })
@@ -75,6 +85,15 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.ImageString, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <span class="btn btn-default btn-file">
+                    @Html.TextBoxFor(modelo => modelo.LogoFile, new { type = "file", id = "LogoFile", name = "LogoFile" , accept= "image/*" })
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
@@ -89,3 +108,8 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<script type="text/javascript">
+    $('#myform').submit(function () {
+        $('#mod-progress').modal()
+    });
+</script>

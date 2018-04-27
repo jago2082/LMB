@@ -104,12 +104,19 @@
             height: 400px;
             background: #e7e7e7;
         }
+
+        .modal-dialog {
+            background-color: rgba(138,221,45,0) !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
     </style>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
+    
     <div class="header">
         <nav class="navbar">
 
@@ -120,41 +127,49 @@
                     <div class="menu-superior">
                         <img src="~/img/logo.png" style="width:50px;margin-left:66px;" />
                         <ul class="nav nav-pills click_up">
-                            <li style="float:right;margin-top: 10px;">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-                            <li style="float:right;margin-top: 10px;">
-                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                            </li>
-                            <li style="float:right;margin-top: 10px;">
-                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                                {
-                                    @Html.AntiForgeryToken()
-                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-                                }
+                            @if (Request.IsAuthenticated)
+                            {
+                                <li style="float:right;margin-top: 10px;">
+                                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                                 </li>
-                            </ul>
-                        </div><!--/.menu-superior-->
+                                <li style="float:right;margin-top: 10px;">
+                                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                                    }
+                                </li>
+                            }
+                            else
+                            {
+                                <li style="float:right;margin-top: 10px;">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                            }
 
-                        <div class="menu-inferior">
-                            <ul class="nav nav-pills click_down">
-                                <li style="float:left">@Html.ActionLink("Home", "Index", "Home")</li>
-                                <li style="float:left">@Html.ActionLink("Load Data", "LoadData", "RawDatas")</li>
-                                <li style="float:left">@Html.ActionLink("Pending Inspections", "Index", "InspectionDailies")</li>
-                                <li style="float:left">@Html.ActionLink("Done Inspections", "Index", "Done")</li>
-                            </ul>
-                        </div><!--/.menu-inferior-->
-                    </div>
+
+                        </ul>
+                    </div><!--/.menu-superior-->
+
+                    <div class="menu-inferior">
+                        <ul class="nav nav-pills click_down">
+                            <li style="float:left">@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li style="float:left">@Html.ActionLink("Load Data", "LoadData", "RawDatas")</li>
+                            <li style="float:left">@Html.ActionLink("Pending Inspections", "Index", "InspectionDailies")</li>
+                            <li style="float:left">@Html.ActionLink("Done Inspections", "Index", "Done")</li>
+                        </ul>
+                    </div><!--/.menu-inferior-->
                 </div>
-            </nav>
-        </div>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer></footer>
-        </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer></footer>
+    </div>
 
 
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
-    </body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
 </html>

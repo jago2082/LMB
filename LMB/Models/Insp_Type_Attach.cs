@@ -19,10 +19,14 @@ namespace LMB.Models
         public TypePicture TypePicture { get; set; }
 
         [DataType(DataType.ImageUrl)]
+        [Display(Name ="Image")]
         public string ImageString { get; set; }
 
         [NotMapped]
         public HttpPostedFileBase LogoFile { get; set; }
+
+        [NotMapped]
+        public string numinspection { get; set; }
 
         public string Caption { get; set; }
 

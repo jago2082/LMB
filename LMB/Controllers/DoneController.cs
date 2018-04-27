@@ -34,12 +34,18 @@ namespace LMB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var Insp_Type_Attach = db.Insp_Type_Attach.Where(i => i.IDInspection == id).ToList();
+            var ins = db.InspectionDaily.Find(id);
+            var Insp_Type_Attach1 = db.Insp_Type_Attach.Include(i => i.DirectionPhotoType);
+            var Insp_Type_Attach = Insp_Type_Attach1
+                .Where(i => i.IDInspection == id).ToList();
             if (Insp_Type_Attach == null)
             {
                 return HttpNotFound();
             }
-
+            foreach (var item in Insp_Type_Attach)
+            {
+                item.numinspection = ins.NumInspection;
+            }
             return View("LoadPhoto", Insp_Type_Attach);
         }
 
@@ -131,12 +137,19 @@ namespace LMB.Controllers
                 return HttpNotFound();
             }
 
-            
-            return new  ViewAsPdf("ReportPDF", lismpdf);
-            //return new ViewAsPdf("ReportPDF", inspectionDaily);
-            //{
-            //    RotativaOptions = { CustomSwitches = "--print-media-type --header-center \"text\"" ,PageSize=Rotativa.Core.Options.Size.Legal}
-            //};
+            string header = Server.MapPath("~/PDF/Header.html");//Path of PrintFooter.html File
+            string footer = Server.MapPath("~/PDF/Footer.html");//Path of PrintFooter.html File
+            string customSwitches = string.Format("--header-html  \"{0}\" " +
+                                   "--header-spacing \"0\" " +
+                                   "--footer-html \"{1}\" " +
+                                   "--footer-spacing \"10\" " +
+                                   "--footer-font-size \"10\" " +
+                                   "--header-font-size \"10\" ", header, footer);
+
+            return new ViewAsPdf("ReportPDF", lismpdf)
+            {
+                RotativaOptions = { CustomSwitches = customSwitches, PageSize=Rotativa.Core.Options.Size.Letter}
+            };
         }
 
 
@@ -147,10 +160,12 @@ namespace LMB.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var InspTypeAttach = await db.Insp_Type_Attach.FindAsync(id);
+            var inspection = await db.InspectionDaily.FindAsync(InspTypeAttach.IDInspection);
             if (InspTypeAttach == null)
             {
                 return HttpNotFound();
             }
+            InspTypeAttach.numinspection = inspection.NumInspection;
             ViewBag.IDTypePicture = new SelectList(CombosHelper.TypePicture(), "IdTypePicture", "Description");
             ViewBag.IdDirectionPhotoType = new SelectList(CombosHelper.PothoType(), "IdDirectionPhotoType", "Description");
             return View(InspTypeAttach);

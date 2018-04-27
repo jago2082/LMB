@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<LMB.Models.Insp_Type_Attach>
 
 @{
-    LMB.Models.Insp_Type_Attach inspectionTypeA = Model.FirstOrDefault();
+    LMB.Models.Insp_Type_Attach inspectionTypeA = Model.FirstOrDefault();  
 }
 
 <style>
@@ -13,12 +13,15 @@
         background-color: #e4e1e1;
     }
 </style>
-Bridge: @inspectionTypeA.IDInspection
+Bridge: @inspectionTypeA.numinspection
 <table class="table" id="rawdata_table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Caption)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DirectionPhotoType.Description)
             </th>
             <th>
                 Photo App
@@ -35,6 +38,14 @@ Bridge: @inspectionTypeA.IDInspection
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Caption)
+                </td>
+                <td>
+                   @if (!string.IsNullOrEmpty(item.DirectionPhotoType.Description))
+                   {
+                       var description = string.Format("Looking {0}",item.DirectionPhotoType.Description);
+                       @description;
+                   }
+                   
                 </td>
                 <td>
                     @if (!string.IsNullOrEmpty(item.ImageString))
@@ -64,7 +75,10 @@ Bridge: @inspectionTypeA.IDInspection
         }
     );
         function tabla() {
-            var table = $("#rawdata_table").DataTable();
+            var table = $("#rawdata_table").DataTable({
+                "bFilter": false,
+                "bLengthChange": false
+            });
 
         }
 
