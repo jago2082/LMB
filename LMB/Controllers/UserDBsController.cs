@@ -12,7 +12,7 @@ using LMB.Helpers;
 
 namespace LMB.Controllers
 {
-    [Authorize]
+    
     public class UserDBsController : Controller
     {
         private DataContext db = new DataContext();
@@ -56,10 +56,19 @@ namespace LMB.Controllers
                 userDB.IsActive = 1;
                 userDB.IdClient = 1;
                 userDB.IsUpdate = 0;
-                db.UserDB.Add(userDB);
-                await db.SaveChangesAsync();
-                UsersHelper.CreateUserASP(userDB.Email, userDB.UserName, "User");
-                ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'Select a File!.', 'error');</script>";
+                try
+                {
+                    db.UserDB.Add(userDB);
+                    await db.SaveChangesAsync();
+                    UsersHelper.CreateUserASP(userDB.Email, userDB.UserName, "User");
+                    ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'Select a File!.', 'error');</script>";
+                }
+                catch (Exception ex)
+                {
+
+                    ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', '"+ ex.Message.ToString() +"', 'error');</script>";
+                }
+                
                 return RedirectToAction("Create");
             }
 

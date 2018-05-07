@@ -94,14 +94,20 @@ namespace LMB.Models
 
         public DbSet<TypeName> TypeName { get; set; }
 
-        public System.Data.Entity.DbSet<LMB.Models.Pdf> Pdfs { get; set; }
+        public System.Data.Entity.DbSet<Pdf> Pdfs { get; set; }
 
-        public System.Data.Entity.DbSet<LMB.Models.InspectionStates> InspectionStates { get; set; }
+        public System.Data.Entity.DbSet<InspectionStates> InspectionStates { get; set; }
 
-        public System.Data.Entity.DbSet<LMB.Models.District> Districts { get; set; }
+        public System.Data.Entity.DbSet<District> Districts { get; set; }
 
-        public System.Data.Entity.DbSet<LMB.Models.Counties> Counties { get; set; }
+        public System.Data.Entity.DbSet<Counties> Counties { get; set; }
 
-        public System.Data.Entity.DbSet<LMB.Models.ItemName> ItemNames { get; set; }
+        public System.Data.Entity.DbSet<ItemName> ItemNames { get; set; }
+
+        public System.Data.Entity.DbSet<Configuration> Configurations { get; set; }
+
+        public System.Data.Entity.DbSet<Reports> Reports { get; set; }
+
+        public System.Data.Entity.DbSet<LMB.Models.LoadRatingReport> LoadRatingReports { get; set; }
     }
 }

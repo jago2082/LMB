@@ -84,7 +84,7 @@ namespace LMB.Helpers
             };
 
             userManager.Create(userASP, email);
-            userManager.AddToRole(userASP.Id, roleName);
+            //userManager.AddToRole(userASP.Id, roleName);
         }
 
         public static void CreateUserASP(string email,string username, string roleName, string password)

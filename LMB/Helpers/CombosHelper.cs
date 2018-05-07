@@ -28,7 +28,7 @@ namespace LMB.Helpers
             var inspectionStates = db.InspectionStates;
             inspectionStates.Add(new InspectionStates
             {
-                IdInspectionStates = 0,
+                IdStatus = 0,
                 Description = "[Select State]",
             });
             return inspectionStates.OrderBy(s => s.Description).ToList();

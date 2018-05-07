@@ -5,16 +5,24 @@
 }
 
 <style>
-     #map {
+    #map_canvas {
         height: 400px;
         width: 100%;
-       }
-    #buttons{
-        display:block;
-        float:right;
     }
+
+    #buttons {
+        display: block;
+        float: right;
+    }
+
     table.dataTable thead tr {
-        background-color: #73ADF5;
+        background: rgba(0, 63, 79, 0.1);
+    }
+
+    .dataTables_filter {
+        float: left !important;
+        margin-left: -189px;
+        margin-top: -42px;
     }
 
     .grey {
@@ -26,13 +34,16 @@
     }
 
     .green {
-        background-color: #def1d7;
+        background-color: #F3F781;
     }
 </style>
+<div id="inspection_status">
+    <img src="~/img/inspectionstatus.png" style="display: block;float: right;" />
+</div>
 <div id="buttons">
-    @Html.ActionLink(" ", "Create", new { }, new { @class = "btn btn-success btn-lg glyphicon glyphicon-plus", @title = "Create Inspection" })
     <a id="alumno" data-target="#modalUser" data-toggle="modal" data-id="" onclick="getSelected()" href="#" class="unlock" title="Assign user"><span class='btn btn-warning btn-lg glyphicon glyphicon-edit'></span></a>
-    <a id="deleteIns" data-target="#modalDelete" data-toggle="modal" data-id="" onclick="getSelectedDel()" href="#" class="unlock" title="Delete Inspection"><span class='btn btn-danger btn-lg glyphicon glyphicon-remove'></span></a>
+    @Html.ActionLink(" ", "Create", new { }, new { @class = "btn btn-success btn-lg glyphicon glyphicon-plus", @title = "Create" })
+    <a id="deleteIns" data-target="#modalDelete" data-toggle="modal" data-id="" onclick="getSelectedDel()" href="#" class="unlock" title="Assign user"><span class='btn btn-danger btn-lg glyphicon glyphicon-remove'></span></a>
 </div>
 <table class="table" id="rawdata_table">
     <thead>
@@ -129,13 +140,16 @@
         }
     </tbody>
 </table>
-             
-
-<div id="map-canvas"></div>
-
+<div id="map_canvas"></div>
+@*<select id="type" onchange="filterMarkers(this.value);">
+        <option value="">Please select User</option>
+        <option value="second">second</option>
+        <option value="car">car</option>
+        <option value="third">third</option>
+    </select>*@
 
 <!-- Modal -->
-<div id="modalUser" data-backdrop = "false" class="modal fade" role="dialog">
+<div id="modalUser" data-backdrop="false" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -212,11 +226,11 @@
                 scrollCollapse: true,
                 "createdRow": function (row, data, dataIndex) {
                     if (data[11] == "Almost time expires") {
-                        $(row).addClass('grey');
-                    } else if (data[11] == "Unsigned") {
                         $(row).addClass('lila');
-                    } else if (data[11] == "Assigned") {
+                    } else if (data[11] == "In Mobile") {
                         $(row).addClass('green');
+                    } else if (data[11] == "Assigned") {
+                        $(row).addClass('grey');
                     }
 
                 }
@@ -241,6 +255,8 @@
             tabla();
             modal(e);
             lock();
+
+
         }
         @Html.Raw(ViewBag.Select);
     </script>
@@ -299,6 +315,11 @@
                 sel[i] = $(this).val();
             })
             list = sel.join();
+            if (list == "") {
+                swal('¡Alert!', 'Select a Inspection !.', 'error');
+                location.reload();
+                return false;
+            }
             $("#bookId").val(sel);
         }
 
@@ -307,36 +328,41 @@
                 sel[j] = $(this).val();
             })
             list = sel.join();
+            swal('¡Alert!', 'Select a Inspection !.', 'error');
+            location.reload();
+            return false;
             $("#inspId").val(sel);
         }
 
     </script>
-@*<script>
-function myMap() {
-var mapProp= {
-    center: new google.maps.LatLng(98.215124, -30.115936),
-    zoom:5,
-};
-var map = new google.maps.Map(document.getElementById("map-canvas"), mapProp);
-}
-</script>
+    <script>
+        markers1 = @Html.Raw(ViewBag.Markers);
+        var map;
+        var centerll = {lat: 23.63, lng: -102.55};
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: centerll,
+                zoom: 6
+            });
+            for (i = 0; i < markers1.length; i++) {
+                addMarker(markers1[i]);
+            }
+            function addMarker(marker) {
+                var category = marker[4];
+                var title = marker[1];
+                var pos = new google.maps.LatLng(marker[2], marker[3]);
+                var content = marker[1];
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtXkyMiqOFCmYS1MwDzynfAvf-jA9Xr-E&callback=myMap"></script>*@
-<script>
-          var map;
-          function initMap() {
-              var latlng = new google.maps.LatLng(30.161615, -98.255301);
-              map = new google.maps.Map(document.getElementById('map-canvas'), {
-                center: latlng,
-              zoom: 8
-            });
-            var marker = new google.maps.Marker({
-                position: latlng,
-                map: map,
-                title: 'ROCKY CREEK'
-            });
-          }
+                marker1 = new google.maps.Marker({
+                    title: title,
+                    position: pos,
+                    category: category,
+                    map: map
+                });
+            }
+        }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwT17mYT6U4lLdhLb7sFQjq2smSkUQuEQ&callback=initMap"
-            async defer></script>
-}
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwT17mYT6U4lLdhLb7sFQjq2smSkUQuEQ&callback=initMap">
+</script>
+    }

@@ -9,7 +9,7 @@ namespace LMB.Models
     public class InspectionStates
     {
         [Key]
-        public int IdInspectionStates { get; set; }
+        public int IdStatus { get; set; }
 
         [Display(Name ="Status")]
         public string Description { get; set; }

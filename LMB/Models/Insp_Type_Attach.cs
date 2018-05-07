@@ -36,6 +36,7 @@ namespace LMB.Models
 
         public string Comment { get; set; }
 
+        [Display(Name = "Photo Camera No.")]
         public string PhotoCameraNum { get; set; }
 
         public virtual ICollection<InspectionDaily> InspectionDailys { get; set; }

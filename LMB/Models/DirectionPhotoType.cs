@@ -11,6 +11,7 @@ namespace LMB.Models
         [Key]
         public int IdDirectionPhotoType { get; set; }
 
+        [Display(Name = "Direccion")]
         public string Description { get; set; }
 
         public virtual ICollection<Insp_Type_Attach> Insp_Type_Attach { get; set; }

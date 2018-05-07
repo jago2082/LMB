@@ -11,7 +11,6 @@ using LMB.Models;
 
 namespace LMB.Controllers
 {
-    [Authorize]
     public class InspectionStatesController : Controller
     {
         private DataContext db = new DataContext();
@@ -48,7 +47,7 @@ namespace LMB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IdInspectionStates,Description")] InspectionStates inspectionStates)
+        public async Task<ActionResult> Create([Bind(Include = "IdStatus,Description")] InspectionStates inspectionStates)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +79,7 @@ namespace LMB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdInspectionStates,Description")] InspectionStates inspectionStates)
+        public async Task<ActionResult> Edit([Bind(Include = "IdStatus,Description")] InspectionStates inspectionStates)
         {
             if (ModelState.IsValid)
             {

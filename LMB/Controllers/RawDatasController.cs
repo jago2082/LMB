@@ -323,9 +323,9 @@ namespace LMB.Controllers
                             inspectiondaily.Section = rdt.Section;
                             inspectiondaily.Scope = rdt.FeatXed;
                             inspectiondaily.IdValueCheckList = 70;
-                            inspectiondaily.IdAttach = 1;
+                            inspectiondaily.IdAttach = 4;
                             inspectiondaily.Hour = rdt.YrBuilt;
-                            inspectiondaily.IdInspectionStates = 5;
+                            inspectiondaily.IdStatus = 5;
                             inspectiondaily.City = rdt.FacCarried;
                             inspectiondaily.TypeInspection = 1;
                             inspectiondaily.Address = rdt.Location;

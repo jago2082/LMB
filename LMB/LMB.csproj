@@ -115,6 +115,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -123,6 +127,14 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -228,6 +240,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DoneController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -244,6 +257,7 @@
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\Message.cs" />
     <Compile Include="Helpers\UsersHelper.cs" />
+    <Compile Include="Helpers\UtilsHelper.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CamposClient.cs" />
@@ -251,6 +265,7 @@
     <Compile Include="Models\CheckListQuestion.cs" />
     <Compile Include="Models\CheckListSection.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Configuration.cs" />
     <Compile Include="Models\Counties.cs" />
     <Compile Include="Models\CrossSectionValues.cs" />
     <Compile Include="Models\CustomInspDaily.cs" />
@@ -273,6 +288,7 @@
     <Compile Include="Models\Insp_Type_Attach.cs" />
     <Compile Include="Models\ItemName.cs" />
     <Compile Include="Models\ItemUnderType.cs" />
+    <Compile Include="Models\LoadRatingReport.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ModelPDF.cs" />
     <Compile Include="Models\NombreCampos.cs" />
@@ -285,6 +301,7 @@
     <Compile Include="Models\ReferenceFeatureUnderType.cs" />
     <Compile Include="Models\RegistrySerial.cs" />
     <Compile Include="Models\RegistrySerialAttach.cs" />
+    <Compile Include="Models\Reports.cs" />
     <Compile Include="Models\ServerConfiguration.cs" />
     <Compile Include="Models\StatusReferenceSerial.cs" />
     <Compile Include="Models\TypeFuncionalidad.cs" />
@@ -540,6 +557,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="img\home.png" />
+    <Content Include="img\inspectionstatus.png" />
     <Content Include="img\logo.png" />
     <Content Include="img\Logo1.png" />
     <Content Include="img\Logo2.png" />
@@ -763,11 +781,6 @@
     <Content Include="Views\UserDBs\Index.cshtml" />
     <Content Include="Views\Done\Index.cshtml" />
     <Content Include="Views\Done\ReportPDF.cshtml" />
-    <Content Include="Views\InspectionStates\Create.cshtml" />
-    <Content Include="Views\InspectionStates\Delete.cshtml" />
-    <Content Include="Views\InspectionStates\Details.cshtml" />
-    <Content Include="Views\InspectionStates\Edit.cshtml" />
-    <Content Include="Views\InspectionStates\Index.cshtml" />
     <Content Include="Views\InspectionDailies\Create.cshtml" />
     <Content Include="Views\InspectionDailies\Delete.cshtml" />
     <Content Include="Views\InspectionDailies\Details.cshtml" />
@@ -775,6 +788,12 @@
     <Content Include="Views\InspectionDailies\Index.cshtml" />
     <Content Include="Views\Done\LoadPhoto.cshtml" />
     <Content Include="Views\Done\EditP.cshtml" />
+    <Content Include="Views\InspectionStates\Create.cshtml" />
+    <Content Include="Views\InspectionStates\Delete.cshtml" />
+    <Content Include="Views\InspectionStates\Details.cshtml" />
+    <Content Include="Views\InspectionStates\Edit.cshtml" />
+    <Content Include="Views\InspectionStates\Index.cshtml" />
+    <Content Include="Views\Done\LoadRating.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -40,7 +40,7 @@ namespace LMB.Models
         public Nullable<System.DateTime> Date { get; set; }
         public string Hour { get; set; }
         public Nullable<int> IdValueCheckList { get; set; }
-        public Nullable<int> Status { get; set; }
+        public Nullable<int> IdStatus { get; set; }
         public Nullable<double> Longitude { get; set; }
         public Nullable<double> Latitude { get; set; }
         [Display(Name = "Longitude")]
@@ -49,6 +49,7 @@ namespace LMB.Models
         public Nullable<double> LatitudeIni { get; set; }
         public string DateInspection { get; set; }
         public string CommentGeneral { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int IdAttach { get; set; }
 
         public Insp_Type_Attach Insp_Type_Attach { get; set; }
@@ -57,7 +58,7 @@ namespace LMB.Models
         public Nullable<double> LatitudeEnd { get; set; }
         public string DateInspectionEnd { get; set; }
 
-        public int IdInspectionStates { get; set; }
+        //public int IdInspectionStates { get; set; }
 
         public string Structure { get; set; }
 

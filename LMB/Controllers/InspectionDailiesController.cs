@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using LMB.Models;
 using LMB.Helpers;
+using Newtonsoft.Json;
 
 namespace LMB.Controllers
 {
@@ -18,11 +19,12 @@ namespace LMB.Controllers
         // GET: InspectionDailies
         public async Task<ActionResult> Index()
         {
-
+            var markers  = UtilsHelper.GetMarcadores();
             var inspectionDaily = db.InspectionDaily.Include(i  => i.InspectionState)
                 .Include(u => u.UserDBs);
             ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "UserName");
-            return View(await inspectionDaily.Where(i => i.IdInspectionStates != 2).ToListAsync());
+            ViewBag.Markers = JsonConvert.SerializeObject(markers);
+            return View(await inspectionDaily.Where(i => i.IdStatus != 2).ToListAsync());
         }
 
         // GET: InspectionDailies/Details/5
@@ -43,7 +45,7 @@ namespace LMB.Controllers
         // GET: InspectionDailies/Create
         public ActionResult Create()
         {
-            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdInspectionStates", "Description");
+            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdStatus", "Description");
             return View();
         }
 
@@ -62,7 +64,7 @@ namespace LMB.Controllers
             }
 
             ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "FirstName");
-            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdInspectionStates", "Description", inspectionDaily.IdInspectionStates);
+            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdStatus", "Description", inspectionDaily.IdStatus);
             return View(inspectionDaily);
         }
 
@@ -82,8 +84,7 @@ namespace LMB.Controllers
                 {
                     inspectionDaily.IDUser = int.Parse(user);
                     inspectionDaily.Date = DateTime.Now;
-                    inspectionDaily.Status = 4;
-                    inspectionDaily.IdInspectionStates = 4;
+                    inspectionDaily.IdStatus = 4;
                     db.Entry(inspectionDaily).State = EntityState.Modified;
                     await db.SaveChangesAsync();
                     
@@ -99,7 +100,7 @@ namespace LMB.Controllers
             
             TempData["msg"] = "<script>alert('Change succesfully');</script>";
             ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "FirstName");
-            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdInspectionStates", "Description", inspectionDaily.IdInspectionStates);
+            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdStatus", "Description", inspectionDaily.IdStatus);
             return RedirectToAction("Index");
 
         }
@@ -117,7 +118,7 @@ namespace LMB.Controllers
                 return HttpNotFound();
             }
             ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "FirstName");
-            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdInspectionStates", "Description", inspectionDaily.IdInspectionStates);
+            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdStatus", "Description", inspectionDaily.IdStatus);
             return View(inspectionDaily);
         }
 
@@ -135,7 +136,7 @@ namespace LMB.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "FirstName");
-            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdInspectionStates", "Description", inspectionDaily.IdInspectionStates);
+            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdStatus", "Description", inspectionDaily.IdStatus);
             return View(inspectionDaily);
         }
 
@@ -180,7 +181,7 @@ namespace LMB.Controllers
 
             TempData["msg"] = "<script>alert('Delete succesfully');</script>";
             ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "FirstName");
-            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdInspectionStates", "Description", inspectionDaily.IdInspectionStates);
+            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdStatus", "Description", inspectionDaily.IdStatus);
             return RedirectToAction("Index");
         }
 

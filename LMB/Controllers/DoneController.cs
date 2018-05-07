@@ -25,7 +25,12 @@ namespace LMB.Controllers
             var inspectionDaily = db.InspectionDaily.Include(i => i.InspectionState)
                 .Include(t => t.Insp_Type_Attach)
                 .Include(u => u.UserDBs);
-            return View(await inspectionDaily.Where(i => i.IdInspectionStates == 2).ToListAsync());
+            return View(await inspectionDaily.Where(i => i.IdStatus == 2).ToListAsync());
+        }
+
+        public ActionResult LoadRating()
+        {
+            return View("LoadRating");
         }
 
         public ActionResult Edit(int? id)
@@ -62,7 +67,7 @@ namespace LMB.Controllers
                 return RedirectToAction("Index");
             }
             
-            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdInspectionStates", "Description", inspectionDaily.IdInspectionStates);
+            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdStatus", "Description", inspectionDaily.IdStatus);
             return View(inspectionDaily);
         }
 
@@ -97,6 +102,8 @@ namespace LMB.Controllers
             List<ModelPDF> lismpdf = new List<ModelPDF>();
            
             var result = db.Insp_Type_Attach.Where(i => i.IDInspection == id).ToList();
+            var inspd = db.InspectionDaily.Find(id);
+            var district = db.Districts.Where(d => d.NAME == inspd.Company).FirstOrDefault();
             try
             {
                 foreach (var item in result)
@@ -108,7 +115,7 @@ namespace LMB.Controllers
                     var directionPhotoType = db.DirectionPhotoType.Find(item.IdDirectionPhotoType);
                     inspectionDaily.PTDescription = directionPhotoType.Description;
                     var inspectd = db.InspectionDaily.Find(item.IDInspection);
-                    inspectionDaily.Company = inspectd.Company;
+                    inspectionDaily.Company =  district.ABBR;
                     inspectionDaily.NumInspection = inspectd.NumInspection;
                     inspectionDaily.DateInspectionEnd = inspectd.DateInspectionEnd;
                     lismpdf.Add(inspectionDaily);
@@ -145,10 +152,11 @@ namespace LMB.Controllers
                                    "--footer-spacing \"10\" " +
                                    "--footer-font-size \"10\" " +
                                    "--header-font-size \"10\" ", header, footer);
+            //return View("ReportPDF", lismpdf);
 
             return new ViewAsPdf("ReportPDF", lismpdf)
             {
-                RotativaOptions = { CustomSwitches = customSwitches, PageSize=Rotativa.Core.Options.Size.Letter}
+                RotativaOptions = { CustomSwitches = customSwitches, PageSize = Rotativa.Core.Options.Size.Letter }
             };
         }
 
