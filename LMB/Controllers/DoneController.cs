@@ -66,7 +66,7 @@ namespace LMB.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            
+
             ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdStatus", "Description", inspectionDaily.IdStatus);
             return View(inspectionDaily);
         }
@@ -100,10 +100,13 @@ namespace LMB.Controllers
 
             //             }).Where(i => i.idInspection == id).ToList();
             List<ModelPDF> lismpdf = new List<ModelPDF>();
-           
+
             var result = db.Insp_Type_Attach.Where(i => i.IDInspection == id).ToList();
             var inspd = db.InspectionDaily.Find(id);
+            int? numinsp = id;
             var district = db.Districts.Where(d => d.NAME == inspd.Company).FirstOrDefault();
+            string dist = district.ABBR;
+            string dateprint = inspd.DateInspectionEnd;
             try
             {
                 foreach (var item in result)
@@ -115,7 +118,7 @@ namespace LMB.Controllers
                     var directionPhotoType = db.DirectionPhotoType.Find(item.IdDirectionPhotoType);
                     inspectionDaily.PTDescription = directionPhotoType.Description;
                     var inspectd = db.InspectionDaily.Find(item.IDInspection);
-                    inspectionDaily.Company =  district.ABBR;
+                    inspectionDaily.Company = district.ABBR;
                     inspectionDaily.NumInspection = inspectd.NumInspection;
                     inspectionDaily.DateInspectionEnd = inspectd.DateInspectionEnd;
                     lismpdf.Add(inspectionDaily);
@@ -127,7 +130,7 @@ namespace LMB.Controllers
 
                 throw;
             }
-            
+
 
             //foreach (var item in inspectionDail)
             //{
@@ -145,19 +148,27 @@ namespace LMB.Controllers
             }
 
             string header = Server.MapPath("~/PDF/Header.html");//Path of PrintFooter.html File
-            string footer = Server.MapPath("~/PDF/Footer.html");//Path of PrintFooter.html File
             string customSwitches = string.Format("--header-html  \"{0}\" " +
                                    "--header-spacing \"0\" " +
                                    "--footer-html \"{1}\" " +
                                    "--footer-spacing \"10\" " +
                                    "--footer-font-size \"10\" " +
-                                   "--header-font-size \"10\" ", header, footer);
-            //return View("ReportPDF", lismpdf);
+                                   "--header-font-size \"10\" ", header, Url.Action("Footer", "Done", new { id=numinsp, area = "" }, "http"));
+            //return View("Reporte", lismpdf);
 
             return new ViewAsPdf("ReportPDF", lismpdf)
             {
-                RotativaOptions = { CustomSwitches = customSwitches, PageSize = Rotativa.Core.Options.Size.Letter }
+                RotativaOptions = { CustomSwitches = customSwitches, PageSize = Rotativa.Core.Options.Size.Legal }
             };
+        }
+
+        [AllowAnonymous]
+        public ActionResult Footer( int? id)
+        {
+            var numinsp = db.InspectionDaily.Find(id);
+            var district = db.Districts.Where(d => d.NAME == numinsp.Company).FirstOrDefault();
+            numinsp.Company = district.ABBR;
+            return View(numinsp);
         }
 
 

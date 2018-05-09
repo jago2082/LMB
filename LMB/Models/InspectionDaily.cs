@@ -58,7 +58,7 @@ namespace LMB.Models
         public Nullable<double> LatitudeEnd { get; set; }
         public string DateInspectionEnd { get; set; }
 
-        //public int IdInspectionStates { get; set; }
+        public int? Flag { get; set; }
 
         public string Structure { get; set; }
 
