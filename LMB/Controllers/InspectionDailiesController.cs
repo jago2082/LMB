@@ -23,6 +23,7 @@ namespace LMB.Controllers
             var inspectionDaily = db.InspectionDaily.Include(i  => i.InspectionState)
                 .Include(u => u.UserDBs);
             ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "UserName");
+            ViewBag.type = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "UserName");
             ViewBag.Markers = JsonConvert.SerializeObject(markers);
             return View(await inspectionDaily.Where(i => i.IdStatus != 2).ToListAsync());
         }

@@ -6,11 +6,12 @@
 
 <style>
     table.dataTable thead tr {
-  background-color: #73ADF5;
+ background: rgba(0, 63, 79, 0.1);
 }
     .grey {
   background-color: #e4e1e1;
 }
+
 </style>
 
 <table class="table" id="rawdata_table">
@@ -112,10 +113,15 @@
                     @Html.ActionLink(" ", "Edit", new { id = item.IdInspection }, new { @class = "btn btn-info btn-lg glyphicon glyphicon-edit", @title = "Load Pictures", @onclick="Progress()"})
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "PDFReport", new { id = item.IdInspection }, new { @class = "btn btn-success btn-lg glyphicon glyphicon glyphicon-file", @title = "Report", @target= "_blank" })
+                    @Html.ActionLink(" ", "PDFReport", new { id = item.IdInspection }, new { @class = "btn btn-success btn-lg glyphicon glyphicon glyphicon-file", @title = "Open Report", @target = "_blank" })
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Reports", new { id = item.IdInspection }, new { @class = "btn btn-success btn-lg glyphicon glyphicon glyphicon-file", @title = "Other Report", @target = "_blank" })
                 </td>
             </tr>
         }
+
+
     </tbody>
 </table>
 

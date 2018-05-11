@@ -1,0 +1,96 @@
+﻿@model IEnumerable<LMB.Models.InspectionDaily>
+@{
+    ViewBag.Title = "Done";
+}
+<style>
+    table.dataTable thead tr {
+        background: rgba(0, 63, 79, 0.1);
+    }
+
+    .grey {
+        background-color: #e4e1e1;
+    }
+</style>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Report #</th>
+            <th scope="col">Name Report</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>
+                @Html.ActionLink("Bridge Inspection Follow-Up Action Worksheet", "ReportInspFollowUp")
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>
+                @Html.ActionLink("Bridge Summary Sheet", "ReportSummarySheet")
+            </td>
+
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>
+                @Html.ActionLink("Bridge Load Rating Statement", "LoadRating")
+            </td>
+           
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>
+                @Html.ActionLink("Bridge Structural Condition History", "ReportStructuralCondition")
+            </td>
+
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td>
+                @Html.ActionLink("Bridge Inventory Record", "ReportInventoryRecord")
+            </td>
+</tr>
+        <tr>
+            <th scope="row">6</th>
+            <td>
+                @Html.ActionLink("Underclearance Record", "ReportUnderClear")
+            </td>
+            
+        </tr>
+        <tr>
+            <th scope="row">7</th>
+            <td>
+                @Html.ActionLink("Channel Cross-Section Measurements Record", "ReportChannelCross")
+            </td>
+        
+        </tr>
+    </tbody>
+</table>
+
+@Html.Raw(TempData["msg"])
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            inicializar(e);
+        }
+    );
+        function tabla() {
+            var table = $("#rawdata_table").DataTable();
+
+        }
+
+        function inicializar(e) {
+            tabla();
+        }
+    </script>
+    <script type="text/javascript">
+    function Progress() {
+        $('#mod-progress').modal()
+    };
+    </script>
+}

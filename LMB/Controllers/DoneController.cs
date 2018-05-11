@@ -11,6 +11,7 @@ using Z.EntityFramework.Plus;
 using LMB.Helpers;
 using System.Web;
 using System.IO;
+using Rotativa.Core.Options;
 
 namespace LMB.Controllers
 {
@@ -30,7 +31,94 @@ namespace LMB.Controllers
 
         public ActionResult LoadRating()
         {
-            return View("LoadRating");
+            int id = 5;
+            var insp = db.InspectionDaily.Find(id);
+            var inspList = db.ValueCheckList.ToList().Where(ins => ins.IdInspection == id);
+
+            var item58 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 1 && ins.IdChecklistQuestion == 1).FirstOrDefault();
+
+            var item59 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion== 2).Min(value => value.Value);
+            var item60 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 3).Min(value => value.Value);
+            var item62 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion ==4).Min(value => value.Value);
+            LoadRatingReport LoadRatingReport = new LoadRatingReport();
+            LoadRatingReport.ValuesCheclist = inspList.ToList();
+            LoadRatingReport.InspectionDaily = insp;
+            LoadRatingReport.Item58 = Convert.ToString(item58.Value);
+            if (item59.Value==10)
+                LoadRatingReport.Item59 = "N";
+            else
+                LoadRatingReport.Item59 = Convert.ToString(item59.Value);
+            if (item60.Value==10)
+                LoadRatingReport.Item60 = "N";
+            else
+                LoadRatingReport.Item60 = Convert.ToString(item60.Value);
+            if (item62.Value == 10)
+                LoadRatingReport.Item62 = "N";
+            else
+                LoadRatingReport.Item62 = Convert.ToString(item60.Value);
+            return View("LoadRating",LoadRatingReport);
+        }
+
+        public ActionResult ReportBill()
+        {
+            var insp = db.InspectionDaily.ToList();
+            var TotalA= db.InspectionDaily.ToList().Where(ing=>ing.CommentGeneral=="A").Count();
+            var TotalAA = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync=="A").Count();
+            var TotalAB = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "B").Count();
+            var TotalAC = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "C").Count();
+            var TotalAD = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "D").Count();
+            var TotalAE = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "E").Count();
+            var TotalAF = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "F").Count();
+            var TotalAG = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "G").Count();
+            var TotalAH = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "H").Count();
+            var TotalAX = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "X").Count();
+
+            var TotalB = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "B").Count();
+            var TotalBA = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "A").Count();
+            var TotalBB = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "B").Count();
+            var TotalBC = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "C").Count();
+            var TotalBD = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "D").Count();
+            var TotalBE = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "E").Count();
+            var TotalBF = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "F").Count();
+            var TotalBG = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "G").Count();
+            var TotalBH = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "H").Count();
+            var TotalBX = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "X").Count();
+
+            return View("ReportBill", insp);
+        }
+
+        public ActionResult ReportInspFollowUp()
+        {
+            return View("ReportInspFollowUp");
+        }
+
+        public ActionResult ReportSummarySheet()
+        {
+            return View("ReportSummarySheet");
+        }
+        public ActionResult ReportStructuralCondition()
+        {
+            return View("ReportStructuralCondition");
+        }
+
+        public ActionResult ReportInventoryRecord()
+        {
+            return View("ReportInventoryRecord");
+        }
+
+        public ActionResult ReportChannelCross()
+        {
+            return View("ReportChannelCross");
+        }
+
+        public ActionResult ReportUnderClear()
+        {
+            return View("ReportUnderClear");
+        }
+
+        public ActionResult Reports()
+        {
+            return View("Reports");
         }
 
         public ActionResult Edit(int? id)
@@ -66,7 +154,7 @@ namespace LMB.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-
+            
             ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdStatus", "Description", inspectionDaily.IdStatus);
             return View(inspectionDaily);
         }
@@ -100,7 +188,7 @@ namespace LMB.Controllers
 
             //             }).Where(i => i.idInspection == id).ToList();
             List<ModelPDF> lismpdf = new List<ModelPDF>();
-
+           
             var result = db.Insp_Type_Attach.Where(i => i.IDInspection == id).ToList();
             var inspd = db.InspectionDaily.Find(id);
             int? numinsp = id;
@@ -151,19 +239,17 @@ namespace LMB.Controllers
             string customSwitches = string.Format("--header-html  \"{0}\" " +
                                    "--header-spacing \"0\" " +
                                    "--footer-html \"{1}\" " +
-                                   "--footer-spacing \"10\" " +
-                                   "--footer-font-size \"10\" " +
-                                   "--header-font-size \"10\" ", header, Url.Action("Footer", "Done", new { id=numinsp, area = "" }, "http"));
+                                   "--header-font-size \"10\" ", header, Url.Action("Footer", "Done", new { id = numinsp, area = "" }, "http"));
             //return View("Reporte", lismpdf);
 
             return new ViewAsPdf("ReportPDF", lismpdf)
             {
-                RotativaOptions = { CustomSwitches = customSwitches, PageSize = Rotativa.Core.Options.Size.Legal }
+                RotativaOptions = { CustomSwitches = customSwitches,PageSize = Size.Legal }
             };
         }
 
         [AllowAnonymous]
-        public ActionResult Footer( int? id)
+        public ActionResult Footer(int? id)
         {
             var numinsp = db.InspectionDaily.Find(id);
             var district = db.Districts.Where(d => d.NAME == numinsp.Company).FirstOrDefault();

@@ -23,6 +23,25 @@ namespace LMB.Helpers
             return userdbs.OrderBy(c => c.UserName).ToList();
         }
 
+        /// <summary>
+        /// Funcion que retorno los usuarios ordenados por full name 
+        /// </summary>
+        /// <param name="bandera"></param>
+        /// <returns>Una lista de usuario ordenados por fullname</returns>
+        public static List<UserDB> GetUsersDB( int bandera)
+        {
+            var userdbs = db.UserDB;
+            userdbs.Add(new UserDB
+            {
+                IDUser = 0,
+                UserName = "[Select User]",
+            });
+            return userdbs.OrderBy(c => c.FirstName).ToList();
+
+        }
+
+
+
         public static List<InspectionStates> GetInspectionStates()
         {
             var inspectionStates = db.InspectionStates;

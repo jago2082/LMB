@@ -13,6 +13,7 @@
     #buttons {
         display: block;
         float: right;
+       
     }
 
     table.dataTable thead tr {
@@ -26,24 +27,24 @@
     }
 
     .grey {
-        background-color: #FAFAFA;
+        background-color: #eefbf6;
     }
 
     .lila {
-        background-color: #efdddd;
+        background-color: #f7eeee;
     }
 
     .green {
-        background-color: #F3F781;
+        background-color: #fcfde1;
     }
 </style>
 <div id="inspection_status">
-    <img src="~/img/inspectionstatus.png" style="display: block;float: right;" />
+    <img src="~/img/inspectionstatus.png" height="50" style="display: block;float: right;" />
 </div>
 <div id="buttons">
     <a id="alumno" data-target="#modalUser" data-toggle="modal" data-id="" onclick="getSelected()" href="#" class="unlock" title="Assign user"><span class='btn btn-warning btn-lg glyphicon glyphicon-edit'></span></a>
-    @Html.ActionLink(" ", "Create", new { }, new { @class = "btn btn-success btn-lg glyphicon glyphicon-plus", @title = "Create" })
-    <a id="deleteIns" data-target="#modalDelete" data-toggle="modal" data-id="" onclick="getSelectedDel()" href="#" class="unlock" title="Assign user"><span class='btn btn-danger btn-lg glyphicon glyphicon-remove'></span></a>
+    @Html.ActionLink(" ", "Create", new { }, new { @class = "btn btn-success btn-lg glyphicon glyphicon-plus", @title = "Create Inspection" })
+    <a id="deleteIns" data-target="#modalDelete" data-toggle="modal" data-id="" onclick="getSelectedDel()" href="#" class="unlock" title="Delete Inspection"><span class='btn btn-danger btn-lg glyphicon glyphicon-remove'></span></a>
 </div>
 <table class="table" id="rawdata_table">
     <thead>
@@ -141,6 +142,7 @@
     </tbody>
 </table>
 <div id="map_canvas"></div>
+@Html.DropDownList("type", null, "[Select a User]", htmlAttributes: new { @onchange = "filterMarkers(this);" })
 @*<select id="type" onchange="filterMarkers(this.value);">
         <option value="">Please select User</option>
         <option value="second">second</option>
@@ -336,33 +338,87 @@
 
     </script>
     <script>
+        var gmarkers1 = [];
+        var User;
         markers1 = @Html.Raw(ViewBag.Markers);
         var map;
-        var centerll = {lat: 23.63, lng: -102.55};
+        var centerll = {lat: 30.161615, lng: -98.255301};
         function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
+            map = new google.maps.Map(document.getElementById('map_canvas'), {
                 center: centerll,
-                zoom: 6
+                zoom: 8
             });
             for (i = 0; i < markers1.length; i++) {
                 addMarker(markers1[i]);
             }
             function addMarker(marker) {
-                var category = marker[4];
-                var title = marker[1];
-                var pos = new google.maps.LatLng(marker[2], marker[3]);
-                var content = marker[1];
+                var image;
+                var category = marker.User;
+                var title = marker.User;
+                var pos = new google.maps.LatLng(marker.latitude, - marker.longitude);
+                var content = marker.Status;
+                var pinImage ="http://www.googlemapsmarkers.com/v1/fafafa/";
+                var pinImagelila ="http://www.googlemapsmarkers.com/v1/efdddd/";
+                var pinImageyellow ="http://www.googlemapsmarkers.com/v1/f3f781/";
+                var standar = "http://www.googlemapsmarkers.com/v1/ff0000/";
+                switch(content) {
+                    case "Almost time expires":
+                        image=pinImagelila;
+                        break;
 
+                    case "In Mobile":
+                        image=pinImageyellow;
+                        break;
+                    case "Assigned":
+                        image=pinImage;
+                        break;
+                    default:
+                        image=standar;
+                        break;
+                }
                 marker1 = new google.maps.Marker({
                     title: title,
                     position: pos,
+                    icon: image,
                     category: category,
                     map: map
                 });
+
+                gmarkers1.push(marker1);
+
+                // Marker click listener
+                google.maps.event.addListener(marker1, 'click', (function (marker1, content) {
+                    return function () {
+                        console.log('Gmarker 1 gets pushed');
+                        infowindow.setContent(content);
+                        infowindow.open(map, marker1);
+                        map.panTo(this.getPosition());
+                        map.setZoom(15);
+                    }
+                })(marker1, content));
+            }
+
+            /**
+             * Function to filter markers by category
+             */
+
+            filterMarkers = function (category) {
+                category = $("#type option:selected").text();
+                for (i = 0; i < markers1.length; i++) {
+                    marker = gmarkers1[i];
+                    // If is same category or category not picked
+                    if (marker.category == category || category.length === 0) {
+                        marker.setVisible(true);
+                    }
+                        // Categories don't match 
+                    else {
+                        marker.setVisible(false);
+                    }
+                }
             }
         }
     </script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwT17mYT6U4lLdhLb7sFQjq2smSkUQuEQ&callback=initMap">
-</script>
-    }
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwT17mYT6U4lLdhLb7sFQjq2smSkUQuEQ&callback=initMap">
+    </script>
+}

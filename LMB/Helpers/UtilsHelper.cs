@@ -21,8 +21,8 @@ namespace LMB.Helpers
                 marker marker = new marker();
                 marker.User = item.UserDBs.UserName;
                 marker.Status = item.InspectionState.Description;
-                marker.latitude = item.LatitudeIni;
-                marker.longitude = item.LongitudeIni;
+                marker.latitude = item.LatitudeIni / 1000000;
+                marker.longitude = item.LongitudeIni / 1000000;
                 markers.Add(marker);
             }
             

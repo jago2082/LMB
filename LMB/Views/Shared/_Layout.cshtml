@@ -52,7 +52,7 @@
         }
 
         .menu-inferior {
-            border-top: 5px solid #ed8441;
+            border-top: 5px solid #d41b1b;
             background: #005E8C;
         }
 
@@ -84,12 +84,12 @@
         }
 
         .click_up li a:hover:not(.active) {
-            background: #E75126;
+            background: #d41b1b;
             color: white;
         }
 
         .click_down li a:hover:not(.active) {
-            background: #E75126;
+            background: #d41b1b;
             color: white;
         }
 
@@ -124,7 +124,7 @@
                 <div class="header-block clearfix">
                     <!-- Marca a alternância se agrupando para melhor visualização, em dispositivo móvel -->
                     <div class="menu-superior">
-                        <img src="~/img/logo.png" style="width:50px;margin-left:66px;" />
+                        <img src="~/img/logo.png" style="width:70px;margin-left:10px;" />
                         <ul class="nav nav-pills click_up">
                             @if (Request.IsAuthenticated)
                             {
@@ -154,7 +154,9 @@
                             <li style="float:left">@Html.ActionLink("Load Data", "LoadData", "RawDatas")</li>
                             <li style="float:left">@Html.ActionLink("Pending Inspections", "Index", "InspectionDailies")</li>
                             <li style="float:left">@Html.ActionLink("Done Inspections", "Index", "Done")</li>
-                        </ul>
+                            <li style="float:left">@Html.ActionLink("Configuration", "ReportBill", "Done")</li>
+                            <li style="float:left">@Html.ActionLink("User Manual", "Reports", "Done")</li>
+                         </ul>
                     </div><!--/.menu-inferior-->
                 </div>
             </div>
