@@ -116,10 +116,16 @@ namespace LMB.Controllers
             return View("ReportUnderClear");
         }
 
+
         public ActionResult Reports()
         {
             return View("Reports");
         }
+        //public ActionResult Reports( int id)
+        //{
+        //    var inspec = db.InspectionDaily.Find(id);
+        //    return View("Reports",inspec);
+        //}
 
         public ActionResult Edit(int? id)
         {

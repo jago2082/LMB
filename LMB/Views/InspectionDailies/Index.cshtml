@@ -13,7 +13,6 @@
     #buttons {
         display: block;
         float: right;
-       
     }
 
     table.dataTable thead tr {
@@ -348,6 +347,9 @@
                 center: centerll,
                 zoom: 8
             });
+            var infowindow = new google.maps.InfoWindow({
+                content: ''
+            });
             for (i = 0; i < markers1.length; i++) {
                 addMarker(markers1[i]);
             }
@@ -357,9 +359,9 @@
                 var title = marker.User;
                 var pos = new google.maps.LatLng(marker.latitude, - marker.longitude);
                 var content = marker.Status;
-                var pinImage ="http://www.googlemapsmarkers.com/v1/fafafa/";
-                var pinImagelila ="http://www.googlemapsmarkers.com/v1/efdddd/";
-                var pinImageyellow ="http://www.googlemapsmarkers.com/v1/f3f781/";
+                var pinImage ="http://www.googlemapsmarkers.com/v1/eefbf6/";
+                var pinImagelila ="http://www.googlemapsmarkers.com/v1/f7eeee/";
+                var pinImageyellow ="http://www.googlemapsmarkers.com/v1/fcfde1/";
                 var standar = "http://www.googlemapsmarkers.com/v1/ff0000/";
                 switch(content) {
                     case "Almost time expires":
@@ -404,16 +406,28 @@
 
             filterMarkers = function (category) {
                 category = $("#type option:selected").text();
+                if(category=="[Select a User]")
+                {
+                    visibleall();
+                    return;
+                }
                 for (i = 0; i < markers1.length; i++) {
                     marker = gmarkers1[i];
                     // If is same category or category not picked
                     if (marker.category == category || category.length === 0) {
                         marker.setVisible(true);
                     }
-                        // Categories don't match 
+                        // Categories don't match
                     else {
                         marker.setVisible(false);
                     }
+                }
+            }
+            function visibleall(){
+
+                for (i = 0; i < markers1.length; i++) {
+                    marker = gmarkers1[i];
+                    marker.setVisible(true);
                 }
             }
         }

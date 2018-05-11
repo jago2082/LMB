@@ -559,12 +559,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\CompassReport.gif" />
     <Content Include="img\home.png" />
+    <Content Include="img\imageChannel.jpg" />
     <Content Include="img\inspectionstatus.png" />
     <Content Include="img\logo.png" />
     <Content Include="img\Logo1.png" />
     <Content Include="img\Logo2.png" />
     <Content Include="img\Logo3.png" />
+    <Content Include="img\LogoContractor.gif" />
+    <Content Include="img\RepStructural.jpg" />
+    <Content Include="img\SelloLMB.jpg" />
     <Content Include="Libraries\sweetalert\css\sweetalert2.css" />
     <Content Include="Libraries\sweetalert\js\sweetalert2.common.js" />
     <Content Include="Libraries\sweetalert\js\sweetalert2.js" />
@@ -799,6 +804,14 @@
     <Content Include="Views\Done\LoadRating.cshtml" />
     <Content Include="Views\Done\Footer.cshtml" />
     <Content Include="Views\Done\Reporte.cshtml" />
+    <Content Include="Views\Done\ReportBill.cshtml" />
+    <Content Include="Views\Done\ReportChannelCross.cshtml" />
+    <Content Include="Views\Done\ReportInspFollowUp.cshtml" />
+    <Content Include="Views\Done\ReportInventoryRecord.cshtml" />
+    <Content Include="Views\Done\Reports.cshtml" />
+    <Content Include="Views\Done\ReportStructuralCondition.cshtml" />
+    <Content Include="Views\Done\ReportSummarySheet.cshtml" />
+    <Content Include="Views\Done\ReportUnderClear.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
