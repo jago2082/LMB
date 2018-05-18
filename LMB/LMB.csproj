@@ -259,6 +259,7 @@
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\Message.cs" />
+    <Compile Include="Helpers\MessageLF.cs" />
     <Compile Include="Helpers\UsersHelper.cs" />
     <Compile Include="Helpers\UtilsHelper.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -291,6 +292,7 @@
     <Compile Include="Models\Insp_Type_Attach.cs" />
     <Compile Include="Models\ItemName.cs" />
     <Compile Include="Models\ItemUnderType.cs" />
+    <Compile Include="Models\LoadMultiFiles.cs" />
     <Compile Include="Models\LoadRatingReport.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ModelPDF.cs" />
@@ -812,6 +814,7 @@
     <Content Include="Views\Done\ReportStructuralCondition.cshtml" />
     <Content Include="Views\Done\ReportSummarySheet.cshtml" />
     <Content Include="Views\Done\ReportUnderClear.cshtml" />
+    <Content Include="Views\Done\LoadMultiFiles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -140,14 +140,8 @@
         }
     </tbody>
 </table>
-<div id="map_canvas"></div>
 @Html.DropDownList("type", null, "[Select a User]", htmlAttributes: new { @onchange = "filterMarkers(this);" })
-@*<select id="type" onchange="filterMarkers(this.value);">
-        <option value="">Please select User</option>
-        <option value="second">second</option>
-        <option value="car">car</option>
-        <option value="third">third</option>
-    </select>*@
+<div id="map_canvas"></div>
 
 <!-- Modal -->
 <div id="modalUser" data-backdrop="false" class="modal fade" role="dialog">

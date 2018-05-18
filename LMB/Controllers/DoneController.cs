@@ -12,6 +12,7 @@ using LMB.Helpers;
 using System.Web;
 using System.IO;
 using Rotativa.Core.Options;
+using Newtonsoft.Json;
 
 namespace LMB.Controllers
 {
@@ -148,6 +149,72 @@ namespace LMB.Controllers
             return View("LoadPhoto", Insp_Type_Attach);
         }
 
+
+        public ActionResult LoadMultiFiles()
+        {
+            ViewBag.ok = " ";
+            return View("LoadMultiFiles");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> LoadMultiFiles(HttpPostedFileBase[] files)
+        {
+            List<MessageLF> mensajes = new List<MessageLF>();
+            if (ModelState.IsValid)
+            {   //iterating through multiple file collection   
+                foreach (HttpPostedFileBase file in files)
+                {
+                    //Checking file is available to save.  
+                    if (file != null)
+                    {
+                        try
+                        {
+                            MessageLF mensaje = new MessageLF();
+                            mensaje.nombre = file.FileName.ToString();
+                            //string [] name = file.FileName.Split('.');
+                            string name = file.FileName;
+                            //var nameaux= name[0].ToString();
+                            var nameaux = name.ToString();
+                            var inptyata = db.Insp_Type_Attach.Where(i => i.PhotoCameraNum == nameaux).FirstOrDefault();
+                            if (inptyata != null)
+                            {
+                                byte[] thePictureAsBytes = new byte[file.ContentLength];
+                                using (BinaryReader theReader = new BinaryReader(file.InputStream))
+                                {
+                                    thePictureAsBytes = theReader.ReadBytes(file.ContentLength);
+                                }
+                                string thePictureDataAsString = Convert.ToBase64String(thePictureAsBytes);
+                                inptyata.ImageString = thePictureDataAsString;
+                                db.Entry(inptyata).State = EntityState.Modified;
+                                await db.SaveChangesAsync();
+                                mensaje.status = "OK";
+                                mensajes.Add(mensaje);
+                                continue;
+
+                            }
+                            else
+                            {
+                                mensaje.status = "Faild";
+                                mensajes.Add(mensaje);
+                                continue;
+                            }
+                            
+                        }
+                        catch (Exception ex)
+                        {
+
+                            ViewBag.UploadStatus = "<script type='text/javascript'>swal('¡Alert!', '"+ ex.Message.ToString() +"', 'error');</script>";
+                            return View("LoadMultiFiles");
+                        }
+                       
+                    }
+
+                }
+                ViewBag.ok = JsonConvert.SerializeObject( mensajes);
+            }
+            return View("LoadMultiFiles");
+        }
         // POST: InspectionDailies/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.

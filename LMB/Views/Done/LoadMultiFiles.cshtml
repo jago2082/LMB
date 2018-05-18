@@ -1,0 +1,77 @@
+﻿@model LMB.Models.LoadMultiFiles
+@{
+    ViewBag.Title = "LoadMultiFiles";
+}
+
+@using (Html.BeginForm("LoadMultiFiles", "Done", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.files, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.files, "", new { @type = "file", @multiple = "multiple", @length = "1024", @id = "myFile" })
+                @Html.ValidationMessageFor(model => model.files, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Upload" id="send" class="btn btn-primary" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 text-success" id="result">
+
+            </div>
+        </div>
+
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        //$( document ).ready(function() {
+        //    $('#result').empty();
+        //});
+        $('#myFile').click(function(){
+            $('#result').empty();
+        });
+        $('#myFile').bind('change', function () {
+           
+            var fi = document.getElementById('myFile');
+            var fsize = 0;
+            if (fi.files.length > 0) {
+                for (var i = 0; i <= fi.files.length - 1; i++) {
+                    fsize = fsize + fi.files.item(i).size;
+                }
+                if (fsize > 20971520) {
+                    swal('¡Alert!', 'The size exceeds the maximum allowed', 'error');
+                    $('#myFile').val('');
+                    return;
+                }
+            }
+
+            //if (file_size > 20971520    ) {
+            //    alert(this.files[0].size);
+            //    return;
+            //} else {
+            //    $('send').prop('disabled', false);
+            //}
+
+
+        });
+    </script>
+    <script type="text/javascript">
+        var mensaje =[];
+        mensaje = @Html.Raw(ViewBag.ok);
+        mensaje.forEach(function (mensaje, index) {
+            $('#result').append('Name: ' + mensaje.nombre + ' result: ' + mensaje.status+ '</br>');
+        });
+    </script>
+    @Html.Raw(ViewBag.UploadStatus)
+}
+
+

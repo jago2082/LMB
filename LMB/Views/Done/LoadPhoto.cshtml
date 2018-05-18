@@ -30,6 +30,7 @@ Bridge: @inspectionTypeA.numinspection
                 @Html.DisplayNameFor(model => model.PhotoCameraNum)
             </th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -57,7 +58,11 @@ Bridge: @inspectionTypeA.numinspection
                     @Html.DisplayFor(modelItem => item.PhotoCameraNum)
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "EditP", new { id = item.IDAttach }, new { @class = "btn-warning btn-lg glyphicon glyphicon-camera", @title = "Report" })                </td>
+                    @Html.ActionLink(" ", "EditP", new { id = item.IDAttach }, new { @class = "btn-warning btn-lg glyphicon glyphicon-camera", @title = "Load Picture" })                
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "LoadMultiFiles", "Done", new { @class = "btn-info btn-lg glyphicon glyphicon-paperclip", @title = "Load Pictures" })
+                </td>
             </tr>
         }
     </tbody>
