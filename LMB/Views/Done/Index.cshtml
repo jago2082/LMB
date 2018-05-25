@@ -114,17 +114,29 @@
                     @Html.ActionLink(" ", "Edit", new { id = item.IdInspection }, new { @class = "btn btn-info btn-lg glyphicon glyphicon-edit", @title = "Load Pictures", @onclick="Progress()"})
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "PDFReport", new { id = item.IdInspection }, new { @class = "btn btn-success btn-lg glyphicon glyphicon glyphicon-file", @title = "Open Report", @target = "_blank" })
+                    <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("PDFReport", new { id = item.IdInspection })'">
+
+                        <img width="30" alt="Open Report" title="Open Report" src="~/img/ic_report.png">
+                    </button>
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "Reports", new { id = item.IdInspection }, new { @class = "btn btn-success btn-lg glyphicon glyphicon glyphicon-file", @title = "Other Report", @target = "_blank" })
-                </td>
-            </tr>
-        }
+                    <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("Reports", new { id = item.IdInspection })'">
+                       
+                        <img width="30" alt="Other Reports" title="Other Reports" src="~/img/ic_reportAll.png">
+                    </button>
+                 </td>
 
+            </tr>
+            
+             
+        }
+      
+       
 
     </tbody>
 </table>
+@Html.ActionLink("Invoce", "ReportBill", null, new { @class = "btn btn-primary" })
+
 
 
 @Html.Raw(TempData["msg"])

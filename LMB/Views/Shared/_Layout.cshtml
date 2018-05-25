@@ -18,24 +18,22 @@
             display: block;
         }
 
-        /* -- Cabeçalho e Rodapé --*/
         .header, .footer {
             height: 91px;
         }
 
-        /* -- *main, apenas para colocar um espaço entre o Menu superior e o conteúdo --*/
         .main {
             margin-top: 55px;
         }
 
-        /* -- Identidade --*/
+       
         .navbar-brand {
             width: 250px;
             padding-left: 50%;
             padding-right: 50%;
         }
 
-        /* -- Barra de navegação --*/
+   
         .navbar {
             z-index: 2;
             min-height: 50px;
@@ -56,7 +54,7 @@
             background: #005E8C;
         }
 
-        /**/
+        
         ul {
             list-style-type: none;
             margin: 0;
@@ -122,7 +120,6 @@
             <div class="container">
 
                 <div class="header-block clearfix">
-                    <!-- Marca a alternância se agrupando para melhor visualização, em dispositivo móvel -->
                     <div class="menu-superior">
                         <img src="~/img/logo.png" style="width:70px;margin-left:10px;" />
                         <ul class="nav nav-pills click_up">
@@ -132,7 +129,7 @@
                                     @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                                 </li>
                                 <li style="float:right;margin-top: 10px;">
-                                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, htmlAttributes: new { id = "logoutForm", @class = "navbar-right" }))
                                     {
                                         @Html.AntiForgeryToken()
                                         <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>

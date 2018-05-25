@@ -30,34 +30,51 @@ namespace LMB.Controllers
             return View(await inspectionDaily.Where(i => i.IdStatus == 2).ToListAsync());
         }
 
-        public ActionResult LoadRating()
+        public ActionResult LoadReportBridgeInspection(int? id)
         {
-            int id = 5;
             var insp = db.InspectionDaily.Find(id);
             var inspList = db.ValueCheckList.ToList().Where(ins => ins.IdInspection == id);
-
-            var item58 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 1 && ins.IdChecklistQuestion == 1).FirstOrDefault();
-
-            var item59 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion== 2).Min(value => value.Value);
-            var item60 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 3).Min(value => value.Value);
-            var item62 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion ==4).Min(value => value.Value);
             LoadRatingReport LoadRatingReport = new LoadRatingReport();
-            LoadRatingReport.ValuesCheclist = inspList.ToList();
             LoadRatingReport.InspectionDaily = insp;
-            LoadRatingReport.Item58 = Convert.ToString(item58.Value);
-            if (item59.Value==10)
-                LoadRatingReport.Item59 = "N";
-            else
-                LoadRatingReport.Item59 = Convert.ToString(item59.Value);
-            if (item60.Value==10)
-                LoadRatingReport.Item60 = "N";
-            else
-                LoadRatingReport.Item60 = Convert.ToString(item60.Value);
-            if (item62.Value == 10)
-                LoadRatingReport.Item62 = "N";
-            else
-                LoadRatingReport.Item62 = Convert.ToString(item60.Value);
-            return View("LoadRating",LoadRatingReport);
+            LoadRatingReport.ValuesCheclist = inspList.ToList();
+            return View("ReportBridgeInspectionRecord", LoadRatingReport);
+        }
+
+
+        public ActionResult LoadRating(int? id)
+        {
+           // int id = 5;
+            var insp = db.InspectionDaily.Find(id);
+            var inspList = db.ValueCheckList.ToList().Where(ins => ins.IdInspection == id);
+            LoadRatingReport LoadRatingReport = new LoadRatingReport();
+            LoadRatingReport.InspectionDaily = insp;
+            if (inspList.Count() > 0)
+            {
+                var item58 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 1 && ins.IdChecklistQuestion == 1).FirstOrDefault();
+
+                var item59 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 2).Min(value => value.Value);
+                var item60 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 3).Min(value => value.Value);
+                var item62 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 4).Min(value => value.Value);
+                
+                LoadRatingReport.ValuesCheclist = inspList.ToList();
+                
+                if (Convert.ToString(item58.Value) != "")
+                    LoadRatingReport.Item58 = Convert.ToString(item58.Value);
+                if (item59.Value == 10)
+                    LoadRatingReport.Item59 = "N";
+                else
+                    LoadRatingReport.Item59 = Convert.ToString(item59.Value);
+                if (item60.Value == 10)
+                    LoadRatingReport.Item60 = "N";
+                else
+                    LoadRatingReport.Item60 = Convert.ToString(item60.Value);
+                if (item62.Value == 10)
+                    LoadRatingReport.Item62 = "N";
+                else
+                    LoadRatingReport.Item62 = Convert.ToString(item60.Value);
+            }
+            return View("LoadRating", LoadRatingReport);
+           
         }
 
         public ActionResult ReportBill()
@@ -102,25 +119,175 @@ namespace LMB.Controllers
             return View("ReportStructuralCondition");
         }
 
-        public ActionResult ReportInventoryRecord()
+        public ActionResult ReportInventoryRecord(int? id)
         {
-            return View("ReportInventoryRecord");
+           // int id = 5;
+            var insp = db.InspectionDaily.Find(id);
+
+            var inspList = db.InspectionBasicRegistryValue.ToList().Where(ins => ins.IdInspection == id);
+            InventoryReport InventoryReport = new InventoryReport();
+            InventoryReport.IdInspection = insp.IdInspection;
+            InventoryReport.District = insp.DO;
+            InventoryReport.County = insp.Company;
+            InventoryReport.Control = insp.Control;
+            InventoryReport.Section = insp.Section;
+            InventoryReport.Location = insp.Address;
+            InventoryReport.Route = insp.City;
+            InventoryReport.Structure = insp.Structure;
+            InventoryReport.Year = insp.Hour;
+            InventoryReport.MaintanSection = insp.MaintanSection;
+            InventoryReport.FeatXed = insp.Scope;
+            InventoryReport.LatitudeEnd = insp.LatitudeEnd;
+            InventoryReport.LongitudeEnd = insp.LongitudeEnd;
+            InventoryReport.DateInspectionEnd = insp.DateInspectionEnd;
+            foreach (var data in inspList)
+            {
+                if (data.idInspBasic == 1)
+                    InventoryReport.Id1 = data.Value;
+                if (data.idInspBasic == 2)
+                    InventoryReport.Id2 = data.Value;
+                if (data.idInspBasic == 3)
+                    InventoryReport.Id3 = data.Value;
+                if (data.idInspBasic == 4)
+                    InventoryReport.Id4 = data.Value;
+                if (data.idInspBasic == 5)
+                    InventoryReport.Id5 = data.Value;
+                if (data.idInspBasic == 6)
+                    InventoryReport.Id6 = data.Value;
+                if (data.idInspBasic == 7)
+                    InventoryReport.Id7 = data.Value;
+                if (data.idInspBasic == 8)
+                    InventoryReport.Id8 = data.Value;
+                if (data.idInspBasic == 9)
+                    InventoryReport.Id9 = data.Value;
+                if (data.idInspBasic == 10)
+                    InventoryReport.Id10 = data.Value;
+                if (data.idInspBasic == 11)
+                    InventoryReport.Id11 = data.Value;
+                if (data.idInspBasic == 12)
+                    InventoryReport.Id12 = data.Value;
+                if (data.idInspBasic == 13)
+                    InventoryReport.Id13 = data.Value;
+                if (data.idInspBasic == 14)
+                    InventoryReport.Id14 = data.Value;
+                if (data.idInspBasic == 15)
+                    InventoryReport.Id15 = data.Value;
+                if (data.idInspBasic == 16)
+                    InventoryReport.Id16 = data.Value;
+                if (data.idInspBasic == 17)
+                    InventoryReport.Id17 = data.Value;
+                if (data.idInspBasic == 18)
+                    InventoryReport.Id18 = data.Value;
+                if (data.idInspBasic == 19)
+                    InventoryReport.Id19 = data.Value;
+                if (data.idInspBasic == 20)
+                    InventoryReport.Id20 = data.Value;
+                if (data.idInspBasic == 21)
+                    InventoryReport.Id21 = data.Value;
+                if (data.idInspBasic == 22)
+                    InventoryReport.Id22 = data.Value;
+                if (data.idInspBasic == 23)
+                    InventoryReport.Id23 = data.Value;
+                if (data.idInspBasic == 24)
+                    InventoryReport.Id24 = data.Value;
+                if (data.idInspBasic == 25)
+                    InventoryReport.Id25 = data.Value;
+                if (data.idInspBasic == 26)
+                    InventoryReport.Id26 = data.Value;
+                if (data.idInspBasic == 27)
+                    InventoryReport.Id27 = data.Value;
+                if (data.idInspBasic == 28)
+                    InventoryReport.Id28 = data.Value;
+                if (data.idInspBasic == 29)
+                    InventoryReport.Id29 = data.Value;
+                if (data.idInspBasic == 30)
+                    InventoryReport.Id30 = data.Value;
+                if (data.idInspBasic == 31)
+                    InventoryReport.Id31 = data.Value;
+                if (data.idInspBasic == 32)
+                    InventoryReport.Id32 = data.Value;
+                if (data.idInspBasic == 33)
+                    InventoryReport.Id23 = data.Value;
+                if (data.idInspBasic == 24)
+                    InventoryReport.Id24 = data.Value;
+                if (data.idInspBasic == 35)
+                    InventoryReport.Id35 = data.Value;
+                if (data.idInspBasic == 36)
+                    InventoryReport.Id36 = data.Value;
+                if (data.idInspBasic == 37)
+                    InventoryReport.Id37 = data.Value;
+                if (data.idInspBasic == 38)
+                    InventoryReport.Id38 = data.Value;
+                if (data.idInspBasic == 39)
+                    InventoryReport.Id39 = data.Value;
+                if (data.idInspBasic == 42)
+                    InventoryReport.Id42 = data.Value;
+                if (data.idInspBasic == 43)
+                    InventoryReport.Id43 = data.Value;
+                if (data.idInspBasic == 44)
+                    InventoryReport.Id44 = data.Value;
+                if (data.idInspBasic == 45)
+                    InventoryReport.Id45 = data.Value;
+                if (data.idInspBasic == 46)
+                    InventoryReport.Id46 = data.Value;
+                if (data.idInspBasic == 47)
+                    InventoryReport.Id47 = data.Value;
+                if (data.idInspBasic == 48)
+                    InventoryReport.Id48 = data.Value;
+                if (data.idInspBasic == 49)
+                    InventoryReport.Id49 = data.Value;
+                if (data.idInspBasic == 50)
+                    InventoryReport.Id50 = data.Value;
+                if (data.idInspBasic == 51)
+                    InventoryReport.Id51 = data.Value;
+                if (data.idInspBasic == 52)
+                    InventoryReport.Id52 = data.Value;
+                if (data.idInspBasic == 53)
+                    InventoryReport.Id53 = data.Value;
+                if (data.idInspBasic == 54)
+                    InventoryReport.Id54 = data.Value;
+            }
+
+            return View("ReportInventoryRecord", InventoryReport);
         }
 
-        public ActionResult ReportChannelCross()
+        public ActionResult ReportChannelCross(int? id)
         {
-            return View("ReportChannelCross");
+            var insp = db.InspectionDaily.Find(id);
+
+            var inspList = db.CrossSectionValues.ToList().Where(ins => ins.IdInspection == id);
+            ChannelCrossReport ChannelCrossReport = new ChannelCrossReport();
+            ChannelCrossReport.InspectionDaily = insp;
+            ChannelCrossReport.CrossSectionValues = inspList.ToList(); ;
+            return View("ReportChannelCross", ChannelCrossReport);
         }
 
-        public ActionResult ReportUnderClear()
+        public ActionResult ReportUnderClear(int? id)
         {
-            return View("ReportUnderClear");
+            // int id = 10;
+            var insp = db.InspectionDaily.Find(id);
+
+            var inspList = db.UnderClearanceRecord.ToList().Where(ins => ins.IdInspection == id);
+            var imageUnder = db.Insp_Attach.Where(insp1 => insp1.IDInspection == id).FirstOrDefault().ImageString; 
+            UnderClearReport UnderClearReport = new UnderClearReport();
+            UnderClearReport.InspectionDaily=insp;
+            UnderClearReport.UnderClearValues = inspList.ToList();
+            UnderClearReport.image = imageUnder;
+            return View("ReportUnderClear", UnderClearReport);
+
+
         }
 
 
-        public ActionResult Reports()
+        public ActionResult Reports(int? id)
         {
-            return View("Reports");
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var inspd = db.InspectionDaily.Find(id);
+            
+            return View("Reports", inspd);
         }
         //public ActionResult Reports( int id)
         //{
