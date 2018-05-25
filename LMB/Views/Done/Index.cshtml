@@ -30,12 +30,6 @@
                 @Html.DisplayNameFor(model => model.Company)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Control)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Section)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Address)
             </th>
             <th>
@@ -62,6 +56,7 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -79,12 +74,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Company)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Control)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Section)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Address)
@@ -111,7 +100,10 @@
                     @Html.DisplayFor(modelItem => item.DateInspection)
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "Edit", new { id = item.IdInspection }, new { @class = "btn btn-info btn-lg glyphicon glyphicon-edit", @title = "Load Pictures", @onclick="Progress()"})
+                    <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("EditP", new { id = item.IdInspection })'">
+
+                        <img width="30" alt="Load Pictures" title="Load Pictures" src="~/img/ic_loadphoto.png">
+                    </button>
                 </td>
                 <td>
                     <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("PDFReport", new { id = item.IdInspection })'">
@@ -125,6 +117,12 @@
                         <img width="30" alt="Other Reports" title="Other Reports" src="~/img/ic_reportAll.png">
                     </button>
                  </td>
+                <td>
+                    <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("LoadMultifiles")'">
+
+                        <img width="30" alt="Load MultiFiles" title="Load MultiFiles" src="~/img/ic_reportAll.png">
+                    </button>
+                </td>
 
             </tr>
             

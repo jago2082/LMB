@@ -504,8 +504,9 @@ namespace LMB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var InspTypeAttach = await db.Insp_Type_Attach.FindAsync(id);
-            var inspection = await db.InspectionDaily.FindAsync(InspTypeAttach.IDInspection);
+            var inspection = await db.InspectionDaily.FindAsync(id);
+            var InspTypeAttach =  await db.Insp_Type_Attach.Where(i => i.IDInspection == inspection.IdInspection).FirstOrDefaultAsync();
+            
             if (InspTypeAttach == null)
             {
                 return HttpNotFound();
