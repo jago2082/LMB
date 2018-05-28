@@ -245,6 +245,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ConfigurationAppsController.cs" />
     <Compile Include="Controllers\DoneController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InspectionDailiesController.cs" />
@@ -271,6 +272,7 @@
     <Compile Include="Models\CheckListSection.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Configuration.cs" />
+    <Compile Include="Models\ConfigurationApp.cs" />
     <Compile Include="Models\Counties.cs" />
     <Compile Include="Models\CrossSectionValues.cs" />
     <Compile Include="Models\CustomInspDaily.cs" />
@@ -830,6 +832,7 @@
     <Content Include="Views\Done\ReportSummarySheet.cshtml" />
     <Content Include="Views\Done\ReportUnderClear.cshtml" />
     <Content Include="Views\Done\LoadMultiFiles.cshtml" />
+    <Content Include="Views\ConfigurationApps\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
