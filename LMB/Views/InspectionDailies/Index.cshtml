@@ -41,12 +41,14 @@
     <img src="~/img/inspectionstatus.png" height="50" style="display: block;float: right;" />
 </div>
 <div id="buttons">
-    <a id="alumno" data-target="#modalUser" data-toggle="modal" data-id="" onclick="getSelected()" href="#" class="unlock" title="Assign user">
+   
+    <a id="alumno" data-target="#modalUser" data-toggle="modal" data-id=""  onclick="getSelected()" href="#" class="unlock" title="Assign user">   
+    <img width="30" alt="Other Reports" title="Other Reports" src="~/img/ic_asignar.png"></a>
+    <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("Create")'">
 
-    <span class='btn btn-warning btn-lg glyphicon glyphicon-edit'></span></a>
-
-    @Html.ActionLink(" ", "Create", new { }, new { @class = "btn btn-success btn-lg glyphicon glyphicon-plus", @title = "Create Inspection" })
-    <a id="deleteIns" data-target="#modalDelete" data-toggle="modal" data-id="" onclick="getSelectedDel()" href="#" class="unlock" title="Delete Inspection"><span class='btn btn-danger btn-lg glyphicon glyphicon-remove'></span></a>
+        <img width="30" alt="Create Inspection" title="Create Inspection" src="~/img/ic_reportAll.png">
+    </button>
+    <a id="deleteIns" data-target="#modalDelete" data-toggle="modal" data-id="" onclick="getSelectedDel()" href="#" class="unlock" title="Delete Inspection"><img width="30" alt="Other Reports" title="Other Reports" src="~/img/ic_delinsp.png"></a>
 </div>
 <table class="table" id="rawdata_table">
     <thead>
@@ -354,9 +356,10 @@
             function addMarker(marker) {
                 var image;
                 var category = marker.User;
+                var status = marker.User;
                 var title = marker.User;
                 var pos = new google.maps.LatLng(marker.latitude, - marker.longitude);
-                var content = marker.Status;
+                var content = marker.Text;
                 var pinImage ="http://www.googlemapsmarkers.com/v1/eefbf6/";
                 var pinImagelila ="http://www.googlemapsmarkers.com/v1/f7eeee/";
                 var pinImageyellow ="http://www.googlemapsmarkers.com/v1/fcfde1/";

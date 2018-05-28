@@ -129,7 +129,7 @@
                                     @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                                 </li>
                                 <li style="float:right;margin-top: 10px;">
-                                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, htmlAttributes: new { id = "logoutForm", @class = "navbar-right" }))
+                                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, htmlAttributes: new { id = "logoutForm",@style= "height: 10px;" }))
                                     {
                                         @Html.AntiForgeryToken()
                                         <a style="margin-top:-3px;" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
@@ -159,9 +159,31 @@
             </div>
         </nav>
     </div>
+    @*PROGRESS BAR MODAL*@
+    <div class="modal fade" id="mod-progress" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-Loading">
+                <div class="row">
+                    <div class="col-md-12 col-sm-6">
+                        <div class="progress blue">
+                            <span class="progress-left">
+                                <span class="progress-bar"></span>
+                            </span>
+                            <span class="progress-right">
+                                <span class="progress-bar"></span>
+                            </span>
+                            <div class="progress-value">Loading..</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
     <div class="container body-content">
         @RenderBody()
-        <hr />
         <footer></footer>
     </div>
 
@@ -169,5 +191,10 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $('a').click(function () {
+            $('#mod-progress').modal()
+        });
+    </script>
 </body>
 </html>
