@@ -38,7 +38,14 @@ Bridge: @inspectionTypeA.numinspection
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Caption)
+                    @if (!string.IsNullOrEmpty(item.Caption))
+                    {
+                     @Html.DisplayFor(modelItem => item.Caption)
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.TypePicture.Description)
+                    }
                 </td>
                 <td>
                    @if (!string.IsNullOrEmpty(item.DirectionPhotoType.Description))

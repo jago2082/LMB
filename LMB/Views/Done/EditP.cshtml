@@ -8,29 +8,6 @@
 @Styles.Render("~/Content/css")
 
 
-@*PROGRESS BAR MODAL*@
-<div class="modal fade" id="mod-progress" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-Loading">
-            <div class="row">
-                <div class="col-md-12 col-sm-6">
-                    <div class="progress blue">
-                        <span class="progress-left">
-                            <span class="progress-bar"></span>
-                        </span>
-                        <span class="progress-right">
-                            <span class="progress-bar"></span>
-                        </span>
-                        <div class="progress-value">Loading..</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
 
 @using (Html.BeginForm("EditP", "Done", FormMethod.Post, new { enctype = "multipart/form-data", id = "myform" }))
 {

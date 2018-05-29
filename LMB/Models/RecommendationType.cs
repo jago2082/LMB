@@ -13,5 +13,7 @@ namespace LMB.Models
         public string idvalue { get; set; }
 
         public string Description { get; set; }
+
+        public virtual ICollection<BridgeInspectionFollowUp> BridgeInspectionFollowUps { get; set; }
     }
 }

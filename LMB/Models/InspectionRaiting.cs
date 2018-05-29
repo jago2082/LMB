@@ -14,5 +14,7 @@ namespace LMB.Models
         public string Description { get; set; }
 
         public string Value { get; set; }
+
+        public virtual ICollection<BridgeInspectionFollowUp> BridgeInspectionFollowUps { get; set; }
     }
 }

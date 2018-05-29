@@ -1,4 +1,4 @@
-﻿@model LMB.Models.InspectionDaily
+﻿@model LMB.Models.Footer
 @{ 
     Layout = null;
 }
@@ -491,7 +491,7 @@
   text-align:center;line-height:normal'>
                         <b>
                             <span style='font-size:14.0pt;
-  mso-bidi-font-size:12.0pt;font-family:"Arial","sans-serif"'>@Model.Company</span>
+  mso-bidi-font-size:12.0pt;font-family:"Arial","sans-serif"'>@Model.inspectiondaily.Company</span>
                         </b><span style='font-size:14.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
                     </p>
                 </td>
@@ -503,7 +503,7 @@
                             <span style='font-size:14.0pt;
   mso-bidi-font-size:12.0pt;font-family:"Arial","sans-serif"'>
                                 Bridge No.:
-                                @Model.NumInspection
+                                @Model.inspectiondaily.NumInspection
                             </span>
                         </b><span style='font-size:14.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
                     </p>
@@ -516,7 +516,7 @@
                         <b>
                             <span style='font-size:14.0pt;
   mso-bidi-font-size:12.0pt;font-family:"Arial","sans-serif"'>
-                                Date: @Model.DateInspectionEnd
+                                Date: @Model.inspectiondaily.DateInspectionEnd
                             </span>
                         </b><span style='font-size:14.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
                     </p>
@@ -558,8 +558,7 @@
                             <i>
                                 <span style='font-size:14.0pt;
   font-family:"ArialNarrow-BoldItalic","sans-serif";mso-bidi-font-family:ArialNarrow-BoldItalic'>
-                                    2017
-                                    Off System Cycle / San Antonio District
+                                    @Model.configuration.FootPageText
                                 </span>
                             </i>
                         </b><b>
@@ -575,9 +574,7 @@
   text-align:center;line-height:normal'>
                         <span style='font-size:9.0pt;
   font-family:"ArialNarrow","sans-serif";mso-bidi-font-family:ArialNarrow'>
-                            DO
-                            NOT DISCLOSE - INFORMATION CONFIDENTIAL UNDER THE TEXAS HOMELAND SECURITY ACT
-                            AND 23 USC SECTION 409, SAFETY SENSITIVE INFORMATION.
+                            @Model.configuration.footPage
                         </span><b>
                             <i>
                                 <span style='font-size:14.0pt;font-family:"ArialNarrow-BoldItalic","sans-serif";

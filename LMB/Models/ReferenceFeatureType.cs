@@ -12,5 +12,7 @@ namespace LMB.Models
         public int IdReferenceFeatureType { get; set; }
 
         public string Description { get; set; }
+
+        public virtual ICollection<BridgeInspectionFollowUp> BridgeInspectionFollowUps { get; set; }
     }
 }

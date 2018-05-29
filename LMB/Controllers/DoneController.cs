@@ -302,7 +302,8 @@ namespace LMB.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var ins = db.InspectionDaily.Find(id);
-            var Insp_Type_Attach1 = db.Insp_Type_Attach.Include(i => i.DirectionPhotoType);
+            var Insp_Type_Attach1 = db.Insp_Type_Attach.Include(i => i.DirectionPhotoType)
+                .Include(t => t.TypePicture);
             var Insp_Type_Attach = Insp_Type_Attach1
                 .Where(i => i.IDInspection == id).ToList();
             if (Insp_Type_Attach == null)
@@ -333,7 +334,7 @@ namespace LMB.Controllers
                 foreach (HttpPostedFileBase file in files)
                 {
                     //Checking file is available to save.  
-                    if (file != null)
+                    if (file != null && file.ContentLength > 0)
                     {
                         try
                         {
@@ -491,10 +492,13 @@ namespace LMB.Controllers
         [AllowAnonymous]
         public ActionResult Footer(int? id)
         {
+            Footer footer = new Footer();
             var numinsp = db.InspectionDaily.Find(id);
             var district = db.Districts.Where(d => d.NAME == numinsp.Company).FirstOrDefault();
             numinsp.Company = district.ABBR;
-            return View(numinsp);
+            footer.inspectiondaily = numinsp;
+            footer.configuration = db.Configurations.FirstOrDefault();
+            return View(footer);
         }
 
 

@@ -109,5 +109,7 @@ namespace LMB.Models
         public System.Data.Entity.DbSet<Reports> Reports { get; set; }
 
         public System.Data.Entity.DbSet<LMB.Models.LoadRatingReport> LoadRatingReports { get; set; }
+
+        public System.Data.Entity.DbSet<LMB.Models.BridgeInspectionFollowUp> BridgeInspectionFollowUps { get; set; }
     }
 }

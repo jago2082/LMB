@@ -245,6 +245,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BridgeInspectionFollowUpsController.cs" />
     <Compile Include="Controllers\ConfigurationAppsController.cs" />
     <Compile Include="Controllers\DoneController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -265,6 +266,7 @@
     <Compile Include="Helpers\UtilsHelper.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BridgeInspectionFollowUp.cs" />
     <Compile Include="Models\CamposClient.cs" />
     <Compile Include="Models\ChannelCrossReport.cs" />
     <Compile Include="Models\CheckListProject.cs" />
@@ -279,6 +281,7 @@
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\DirectionPhotoType.cs" />
     <Compile Include="Models\District.cs" />
+    <Compile Include="Models\Footer.cs" />
     <Compile Include="Models\FuncionalidadClient.cs" />
     <Compile Include="Models\HSEQuestion.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -833,6 +836,11 @@
     <Content Include="Views\Done\ReportUnderClear.cshtml" />
     <Content Include="Views\Done\LoadMultiFiles.cshtml" />
     <Content Include="Views\ConfigurationApps\Index.cshtml" />
+    <Content Include="Views\BridgeInspectionFollowUps\Create.cshtml" />
+    <Content Include="Views\BridgeInspectionFollowUps\Delete.cshtml" />
+    <Content Include="Views\BridgeInspectionFollowUps\Details.cshtml" />
+    <Content Include="Views\BridgeInspectionFollowUps\Edit.cshtml" />
+    <Content Include="Views\BridgeInspectionFollowUps\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
