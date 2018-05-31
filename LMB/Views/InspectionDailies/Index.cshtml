@@ -44,11 +44,11 @@
    
     <a id="alumno" data-target="#modalUser" data-toggle="modal" data-id=""  onclick="getSelected()" href="#" class="unlock" title="Assign user">   
     <img width="30" alt="Assign user" title="Assign user" src="~/img/ic_asignar.png"></a>
-    <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("Create")'">
-
+    <a id="addinsp" data-target="#modalAdd" data-toggle="modal" data-id="" onclick="location.href='@Url.Action("Create")'" href="#" class="unlock" title="Add Inspection">
         <img width="30" alt="Add Inspection" title="Add Inspection" src="~/img/ic_addinsp.png">
-    </button>
-    <a id="deleteIns" data-target="#modalDelete" data-toggle="modal" data-id="" onclick="getSelectedDel()" href="#" class="unlock" title="Delete Inspection"><img width="30" alt="Delete Inspection" title="Delete Inspection" src="~/img/ic_delinsp.png"></a>
+    </a>
+    <a id="deleteIns" data-target="#modalDelete" data-toggle="modal" data-id="" onclick="getSelectedDel()" href="#" class="unlock" title="Delete Inspection">
+    <img width="30" alt="Delete Inspection" title="Delete Inspection" src="~/img/ic_delinsp.png"></a>
 </div>
 <table class="table" id="rawdata_table">
     <thead>

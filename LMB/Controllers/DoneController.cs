@@ -363,7 +363,7 @@ namespace LMB.Controllers
                             }
                             else
                             {
-                                mensaje.status = "Faild";
+                                mensaje.status = "Failed";
                                 mensajes.Add(mensaje);
                                 continue;
                             }

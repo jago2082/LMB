@@ -927,7 +927,8 @@
                                 {
 
                                     string image = string.Format("data:image/png;base64,{0}", item.ImageString);
-                                    <img src=@image height="388" />
+                                   // <img src=@image style="height:auto;max-width:830px;align-content:center;" />
+                                    <img src=@image style="height:550px;max-width:830px;align-content:center;" />
                                 }
                             </span>
                         </p>
@@ -946,7 +947,7 @@
                         <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
   text-align:center;line-height:normal'>
                             <span lang=EN-US style='font-size:12.0pt;
-  font-family:"Arial",sans-serif'>@Html.DisplayFor(modelItem => item.PTDescription)</span>
+  font-family:"Arial",sans-serif'>Looking @Html.DisplayFor(modelItem => item.PTDescription)</span>
 </p>
 <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>

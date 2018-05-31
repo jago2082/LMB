@@ -81,7 +81,7 @@ namespace LMB.Helpers
             var listItems = new List<SelectListItem>();
             listItems.Add(new SelectListItem
             {
-                Text = "[Select a File]",
+                Text = "[Select type of File]",
                 Value = "0",
             });
             listItems.Add(new SelectListItem {
@@ -89,21 +89,23 @@ namespace LMB.Helpers
                 Value = "1",
             });
 
-            listItems.Add(new SelectListItem
+     /*       listItems.Add(new SelectListItem
             {
                 Text = "Brigde Inspection Follow-up",
                 Value = "2",
-            });
+            });*/
             listItems.Add(new SelectListItem
             {
                 Text = "Configuration Checklist",
-                Value = "3",
+                Value = "2",
             });
+            /*
             listItems.Add(new SelectListItem
             {
                 Text = "PonTex Detail Bridge",
                 Value = "4",
             });
+            */
 
             return listItems.OrderBy(c => c.Value).ToList();
         }
