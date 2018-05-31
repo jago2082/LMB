@@ -841,6 +841,7 @@
     <Content Include="Views\BridgeInspectionFollowUps\Details.cshtml" />
     <Content Include="Views\BridgeInspectionFollowUps\Edit.cshtml" />
     <Content Include="Views\BridgeInspectionFollowUps\Index.cshtml" />
+    <Content Include="Views\Done\ReportBridgeInspectionRecord.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -101,22 +101,33 @@
                     @Html.DisplayFor(modelItem => item.DateInspection)
                 </td>
                 <td>
-                    <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("Edit", new { id = item.IdInspection })'">
+                    <a id="Photos" data-target="#Photos" data-toggle="modal" data-id="" onclick="location.href='@Url.Action("Edit", new { id = item.IdInspection })'" href="#" class="unlock" title="Photos Report">
+                        <img width="30" alt="Photos Report" title="Photos Report" src="~/img/loadphoto.png">
+                    </a>
 
-                        <img width="30" alt="Load Pictures" title="Load Pictures" src="~/img/loadphoto.png">
-                    </button>
+
+     <!--             <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("Edit", new { id = item.IdInspection })'">
+
+                        <img width="30" alt="Photos Report" title="Load Pictures" src="~/img/loadphoto.png">
+                    </button>-->
                 </td>
                 <td>
-                    <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("PDFReport", new { id = item.IdInspection })'">
+                    <a id="Open Repor" data-target="#Photos" data-toggle="modal" data-id="" onclick="location.href='@Url.Action("PDFReport", new { id = item.IdInspection })'" href="#" class="unlock" title="Open Report">
+                        <img width="30" alt="Open Report" title="Open Report" src="~/img/ic_report.png">
+                    </a>
+           <!--         <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("PDFReport", new { id = item.IdInspection })'">
 
                         <img width="30" alt="Open Report" title="Open Report" src="~/img/ic_report.png">
-                    </button>
+                    </button>--> 
                 </td>
                 <td>
-                    <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("Reports", new { id = item.IdInspection })'">
+                    <a id="Open Repor" data-target="#Photos" data-toggle="modal" data-id="" onclick="location.href='@Url.Action("Reports", new { id = item.IdInspection })'" href="#" class="unlock" title="Other Report">
+                        <img width="30" alt="Other Report" title="Other Report" src="~/img/ic_reportAll.png">
+                    </a>
+                  <!--   <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("Reports", new { id = item.IdInspection })'">
                        
                         <img width="30" alt="Other Reports" title="Other Reports" src="~/img/ic_reportAll.png">
-                    </button>
+                    </button>--> 
                  </td>
             </tr>
             
