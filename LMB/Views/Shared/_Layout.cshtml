@@ -90,7 +90,9 @@
             background: #d41b1b;
             color: white;
         }
-
+        .active {
+          background: red;
+        }
         /* -- Conteudo -- */
         .in_line_menu {
             font-size: 30px;
@@ -147,7 +149,7 @@
 
                     <div class="menu-inferior">
                         <ul class="nav nav-pills click_down">
-                            <li style="float:left">@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li class="nav nav-pills click_down" style="float:left">@Html.ActionLink("Home", "Index", "Home")</li>
                             <li style="float:left">@Html.ActionLink("Load Data", "LoadData", "RawDatas")</li>
                             <li style="float:left">@Html.ActionLink("Pending Inspections", "Index", "InspectionDailies")</li>
                             <li style="float:left">@Html.ActionLink("Done Inspections", "Index", "Done")</li>
@@ -192,6 +194,21 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script type="text/javascript">
+        $(function () {
+
+            // elementos de la lista
+            var menues = $(".nav nav-pills click_down");
+
+            // manejador de click sobre todos los elementos
+            menues.click(function () {
+                // eliminamos active de todos los elementos
+                menues.removeClass("active");
+                // activamos el elemento clicado.
+                $(this).addClass("active");
+            });
+
+        });
+        
         $('a').click(function () {
             $('#mod-progress').modal()
         });

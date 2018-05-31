@@ -14,7 +14,7 @@
 
 </style>
 <div id="Botonera_Done">
-    @Html.ActionLink("Load Photos Camera", "LoadMultifiles", null, new { @class = "btn btn-primary", @style = "float: right;" })
+    @Html.ActionLink("Load Photos Camera", "LoadMultifiles", null, new { @class = "btn btn-primary", @style = "float: right;", @onclick = "Progress();" })
 </div>
 <table class="table" id="rawdata_table">
     <thead>
@@ -138,7 +138,7 @@
 
     </tbody>
 </table>
-@Html.ActionLink("Invoce", "ReportBill", null, new { @class = "btn btn-primary",@style= "float: right;" })
+@Html.ActionLink("Invoce", "ReportBill", null, new { @class = "btn btn-primary",@style= "float: right;", @onclick= "Progress();" })
 
 
 
@@ -165,6 +165,11 @@
     function Progress() {
         $('#mod-progress').modal()
     };
+</script>
+<script type="text/javascript">
+        $('a').click(function () {
+            $('#mod-progress').modal()
+        });
 </script>
 
 }
