@@ -3,7 +3,7 @@
     ViewBag.Title = "LoadMultiFiles";
 }
 
-@using (Html.BeginForm("LoadMultiFiles", "Done", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("LoadMultiFiles", "Done", FormMethod.Post, new { enctype = "multipart/form-data", id="myform" }))
 {
     @Html.AntiForgeryToken()
 
@@ -19,7 +19,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Upload" id="send" class="btn btn-primary" />
+                <input type="submit" value="Upload" id="send" class="btn btn-primary" onclick="Progress();"/>
             </div>
         </div>
         <div class="form-group">
@@ -70,6 +70,11 @@
         mensaje.forEach(function (mensaje, index) {
             $('#result').append('Name: ' + mensaje.nombre + ' result: ' + mensaje.status+ '</br>');
         });
+    </script>
+    <script type="text/javascript">
+        function Progress () {
+            $('#mod-progress').modal()
+        };
     </script>
     @Html.Raw(ViewBag.UploadStatus)
 }

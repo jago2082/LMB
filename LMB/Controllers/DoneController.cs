@@ -340,10 +340,10 @@ namespace LMB.Controllers
                         {
                             MessageLF mensaje = new MessageLF();
                             mensaje.nombre = file.FileName.ToString();
-                            //string [] name = file.FileName.Split('.');
-                            string name = file.FileName;
-                            //var nameaux= name[0].ToString();
-                            var nameaux = name.ToString();
+                            string [] name = file.FileName.Split('.');
+                            //string name = file.FileName;
+                            var nameaux= name[0].ToString();
+                            //var nameaux = name.ToString();
                             var inptyata = db.Insp_Type_Attach.Where(i => i.PhotoCameraNum == nameaux).FirstOrDefault();
                             if (inptyata != null)
                             {
