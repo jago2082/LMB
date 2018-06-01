@@ -37,7 +37,29 @@ namespace LMB.Controllers
             LoadRatingReport LoadRatingReport = new LoadRatingReport();
             LoadRatingReport.InspectionDaily = insp;
             LoadRatingReport.ValuesCheclist = inspList.ToList();
-            return View("ReportBridgeInspectionRecord", LoadRatingReport);
+            if (LoadRatingReport == null)
+            {
+                return HttpNotFound();
+            }
+
+            string header = Server.MapPath("~/PDF/Header.html");//Path of PrintFooter.html File
+            string customSwitches = string.Format("--header-html  \"{0}\" " +
+                                   "--header-spacing \"0\" " +
+                                   "--footer-html \"{1}\" " +
+                                   "--header-font-size \"10\" ", header, Url.Action("Footer", "Done", "http"));
+
+            string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
+
+           
+           // return View("ReportBridgeInspectionRecord", LoadRatingReport);
+
+            return new ViewAsPdf("ReportBridgeInspectionRecord", LoadRatingReport)
+            {
+
+                //  FileName = "firstPdf.pdf",
+                // CustomSwitches = footer
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Size.Letter }
+            };
         }
 
 
@@ -73,7 +95,30 @@ namespace LMB.Controllers
                 else
                     LoadRatingReport.Item62 = Convert.ToString(item60.Value);
             }
-            return View("LoadRating", LoadRatingReport);
+            if (LoadRatingReport == null)
+            {
+                return HttpNotFound();
+            }
+
+            string header = Server.MapPath("~/PDF/Header.html");//Path of PrintFooter.html File
+            string customSwitches = string.Format("--header-html  \"{0}\" " +
+                                   "--header-spacing \"0\" " +
+                                   "--footer-html \"{1}\" " +
+                                   "--header-font-size \"10\" ", header, Url.Action("Footer", "Done", "http"));
+
+            string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
+
+
+            //return View("LoadRating", LoadRatingReport);
+
+            return new ViewAsPdf("LoadRating", LoadRatingReport)
+            {
+
+                //  FileName = "firstPdf.pdf",
+                // CustomSwitches = footer
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Size.Letter }
+            };
+            
            
         }
 
@@ -102,7 +147,30 @@ namespace LMB.Controllers
             var TotalBH = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "H").Count();
             var TotalBX = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "X").Count();
 
-            return View("ReportBill", insp);
+
+            if (insp == null)
+            {
+                return HttpNotFound();
+            }
+
+            string header = Server.MapPath("~/PDF/Header.html");//Path of PrintFooter.html File
+            string customSwitches = string.Format("--header-html  \"{0}\" " +
+                                   "--header-spacing \"0\" " +
+                                   "--footer-html \"{1}\" " +
+                                   "--header-font-size \"10\" ", header, Url.Action("Footer", "Done", "http"));
+
+            string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
+
+            // return View("ReportInventoryRecord", InventoryReport);
+
+            return new ViewAsPdf("ReportBill", insp)
+            {
+         
+                //  FileName = "firstPdf.pdf",
+                // CustomSwitches = footer
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Size.Letter }
+            };
+            
         }
 
         public ActionResult ReportInspFollowUp()
@@ -248,7 +316,30 @@ namespace LMB.Controllers
                     InventoryReport.Id54 = data.Value;
             }
 
-            return View("ReportInventoryRecord", InventoryReport);
+            if (InventoryReport == null)
+            {
+                return HttpNotFound();
+            }
+
+            string header = Server.MapPath("~/PDF/Header.html");//Path of PrintFooter.html File
+            string customSwitches = string.Format("--header-html  \"{0}\" " +
+                                   "--header-spacing \"0\" " +
+                                   "--footer-html \"{1}\" " +
+                                   "--header-font-size \"10\" ", header, Url.Action("Footer", "Done", "http"));
+
+            string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
+
+            // return View("ReportInventoryRecord", InventoryReport);
+            return new ViewAsPdf("ReportInventoryRecord", InventoryReport)
+            {
+                //  FileName = "firstPdf.pdf",
+                // CustomSwitches = footer
+                //PageWidth = 180, PageHeight = 297, 
+
+                RotativaOptions = { CustomSwitches = footer, MinimumFontSize=12, PageMargins = new Margins(10, 10, 10, 10), PageSize = Size.Letter }
+            };
+
+           
         }
 
         public ActionResult ReportChannelCross(int? id)
@@ -258,8 +349,29 @@ namespace LMB.Controllers
             var inspList = db.CrossSectionValues.ToList().Where(ins => ins.IdInspection == id);
             ChannelCrossReport ChannelCrossReport = new ChannelCrossReport();
             ChannelCrossReport.InspectionDaily = insp;
-            ChannelCrossReport.CrossSectionValues = inspList.ToList(); ;
-            return View("ReportChannelCross", ChannelCrossReport);
+            ChannelCrossReport.CrossSectionValues = inspList.ToList(); 
+           
+            if (ChannelCrossReport == null)
+            {
+                return HttpNotFound();
+            }
+
+            string header = Server.MapPath("~/PDF/Header.html");//Path of PrintFooter.html File
+            string customSwitches = string.Format("--header-html  \"{0}\" " +
+                                   "--header-spacing \"0\" " +
+                                   "--footer-html \"{1}\" " +
+                                   "--header-font-size \"10\" ", header, Url.Action("Footer", "Done", "http"));
+
+            string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
+
+            
+            
+            return new ViewAsPdf("ReportChannelCross", ChannelCrossReport)
+            {
+                //  FileName = "firstPdf.pdf",
+                // CustomSwitches = footer
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Size.Letter }
+            };
         }
 
         public ActionResult ReportUnderClear(int? id)
@@ -273,10 +385,31 @@ namespace LMB.Controllers
             UnderClearReport.InspectionDaily=insp;
             UnderClearReport.UnderClearValues = inspList.ToList();
             UnderClearReport.image = imageUnder;
-            return View("ReportUnderClear", UnderClearReport);
+            if (UnderClearReport == null)
+            {
+                return HttpNotFound();
+            }
+
+            string header = Server.MapPath("~/PDF/Header.html");//Path of PrintFooter.html File
+            string customSwitches = string.Format("--header-html  \"{0}\" " +
+                                   "--header-spacing \"0\" " +
+                                   "--footer-html \"{1}\" " +
+                                   "--header-font-size \"10\" ", header, Url.Action("Footer", "Done", "http"));
+
+            string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
 
 
-        }
+            //return View("ReportUnderClear", UnderClearReport);
+
+            return new ViewAsPdf("ReportUnderClear", UnderClearReport)
+            {
+
+                //  FileName = "firstPdf.pdf",
+                // CustomSwitches = footer
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Size.Letter }
+            };
+
+               }
 
 
         public ActionResult Reports(int? id)
@@ -478,6 +611,7 @@ namespace LMB.Controllers
 
             string header = Server.MapPath("~/PDF/Header.html");//Path of PrintFooter.html File
             string customSwitches = string.Format("--header-html  \"{0}\" " +
+                                   "--footer-center \"0\" " +
                                    "--header-spacing \"0\" " +
                                    "--footer-html \"{1}\" " +
                                    "--header-font-size \"10\" ", header, Url.Action("Footer", "Done", new { id = numinsp, area = "" }, "http"));
@@ -485,7 +619,8 @@ namespace LMB.Controllers
 
             return new ViewAsPdf("ReportPDF", lismpdf)
             {
-                RotativaOptions = { CustomSwitches = customSwitches,PageSize = Size.Legal }
+               
+                RotativaOptions = { CustomSwitches = customSwitches, PageMargins = new Margins(0, 0, 28, 0), PageSize = Size.Letter }
             };
         }
 
