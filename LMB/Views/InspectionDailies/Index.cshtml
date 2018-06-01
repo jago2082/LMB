@@ -297,17 +297,34 @@
                 swal('¡Alert!', 'Select User!.', 'error');
                 return;
             }
+            
+            if (list != "") {
+                swal({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
+                        $.post(Urld, { "listaIds": list, "user": user })
+                        .done(function (data) {
+                            swal('Info', 'Success', 'success');
+                            $("#modalDelete").trigger('click');
+                            location.reload();
+                        })
+                        .fail(function (xhr, status, error) {
+                            swal('Error', xhr.responseText, 'error');
+                        });
+                    }else {
+                        location.reload();
+                    }
+                })
+            }
 
-
-            $.post(Urld, { "listaIds": list, "user": user })
-            .done(function (data) {
-                swal('Info', 'Success', 'success');
-                $("#modalDelete").trigger('click');
-                location.reload();
-            })
-            .fail(function (xhr, status, error) {
-                swal('Error', xhr.responseText, 'error');
-            });
+           
 
         });
 
@@ -329,9 +346,12 @@
                 sel[j] = $(this).val();
             })
             list = sel.join();
-            swal('¡Alert!', 'Select Inspection !.', 'error');
-            location.reload();
-            return false;
+            if (list=="") {
+                swal('¡Alert!', 'Select Inspection !.', 'error');
+                location.reload();
+                return false;
+            }
+            
             $("#inspId").val(sel);
         }
 

@@ -85,7 +85,7 @@ namespace LMB.Helpers
                 Value = "0",
             });
             listItems.Add(new SelectListItem {
-                Text = "Row Data from District",
+                Text = "Raw Data from District",
                 Value = "1",
             });
 

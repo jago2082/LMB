@@ -65,7 +65,9 @@
                     user = sel.value;
                 }
                 $('input[type=file]').change(function () {
-                    var select = $('#Files');
+                    var select = $('#Files option:selected').text();
+                    //var optselected 
+                    var tempName="";
                     var name = "";
                     getval(select);
                     if ($('input[type=file]').val() == '' || $('#Files').val() == 0) {
@@ -73,6 +75,12 @@
                     }
                     else {
                         var filename = $('input[type=file]').val().replace(/.*(\/|\\)/, '');
+                        tempName = filename.split(".");
+                        var name = tempName[0];
+                        if (name != select) {
+                            alert("The files not macht");
+                            return;
+                        }
                         $('#Fname').val(filename);
                         $('button').attr('disabled', false);
                     }
