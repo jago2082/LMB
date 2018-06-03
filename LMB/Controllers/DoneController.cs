@@ -30,6 +30,40 @@ namespace LMB.Controllers
             return View(await inspectionDaily.Where(i => i.IdStatus == 2).ToListAsync());
         }
 
+        public ActionResult LoadBridgeInspectionRecord(int? id)
+        {
+            var insp = db.InspectionDaily.Find(id);
+            var inspList = db.ValueCheckList.ToList().Where(ins => ins.IdInspection == id);
+            var config = db.Configurations.FirstOrDefault();
+            ConfigurationApp configurationapp = new ConfigurationApp();
+            configurationapp.configuration = config;
+            LRReport lrreport = new LRReport();
+            lrreport.InspectionDaily = insp;
+            if (lrreport == null)
+            {
+                return HttpNotFound();
+            }
+
+            string header = Server.MapPath("~/PDF/Header.html");//Path of PrintFooter.html File
+            string customSwitches = string.Format("--header-html  \"{0}\" " +
+                                   "--header-spacing \"0\" " +
+                                   "--footer-html \"{1}\" " +
+                                   "--header-font-size \"10\" ", header, Url.Action("Footer", "Done", "http"));
+
+            string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
+
+
+            // return View("ReportBridgeInspectionRecord", LoadRatingReport);
+
+            return new ViewAsPdf("ReportBridgeInspectionRecord", lrreport)
+            {
+
+                //  FileName = "firstPdf.pdf",
+                // CustomSwitches = footer
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Size.Letter }
+            };
+        }
+
         public ActionResult LoadReportBridgeInspection(int? id)
         {
             var insp = db.InspectionDaily.Find(id);

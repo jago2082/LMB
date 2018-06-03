@@ -64,6 +64,8 @@ namespace LMB.Models
 
         public string MaintanSection { get; set; }
 
+        public string Milepnt { get; set; }
+
         public InspectionStates InspectionState { get; set; }
 
         public UserDB UserDBs { get; set; }

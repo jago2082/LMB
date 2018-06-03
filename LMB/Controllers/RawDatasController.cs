@@ -111,7 +111,7 @@ namespace LMB.Controllers
                                 rdt.County = data[2].ToString();
                                 rdt.Control = data[3].ToString();
                                 rdt.Section = data[4].ToString();
-                                //rdt.Milepnt = data[5].ToString();
+                                rdt.Milepnt = data[5].ToString();
                                 rdt.StrNo = data[6].ToString();
                                 //rdt.DupRtOver = data[7].ToString();
                                 rdt.RtStrFunc = data[8].ToString();
@@ -141,7 +141,7 @@ namespace LMB.Controllers
                                 rdt.Toll = data[31].ToString();
                                 rdt.Custodian = data[32].ToString();
                                 rdt.Owner = data[33].ToString();
-                                //rdt.MaintSect = data[34].ToString();
+                                rdt.MaintSect = data[34].ToString();
                                 //rdt.ProjType = data[35].ToString();
                                 if (string.IsNullOrEmpty(data[36].ToString())) { rdt.CSJWhnBlt = 0; } else { rdt.CSJWhnBlt = double.Parse(data[36].ToString()); };
                                 //rdt.FuncClass = data[37].ToString();

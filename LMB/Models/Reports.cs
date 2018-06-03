@@ -16,5 +16,11 @@ namespace LMB.Models
         public string FormName { get; set; }
 
         public string Revision { get; set; }
+
+        public string TeamLeader { get; set; }
+
+        public string Engineerofrecord { get; set; }
+
+        public string FirmN { get; set; }
     }
 }

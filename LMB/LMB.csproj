@@ -302,6 +302,7 @@
     <Compile Include="Models\ItemUnderType.cs" />
     <Compile Include="Models\LoadMultiFiles.cs" />
     <Compile Include="Models\LoadRatingReport.cs" />
+    <Compile Include="Models\LRReport.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ModelPDF.cs" />
     <Compile Include="Models\NombreCampos.cs" />
