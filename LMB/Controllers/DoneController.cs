@@ -24,10 +24,12 @@ namespace LMB.Controllers
         // GET: InspectionDailies
         public async Task<ActionResult> Index()
         {
-            var inspectionDaily = db.InspectionDaily.Include(i => i.InspectionState)
+            var inspectionDaily = db.InspectionDaily.Include(u => u.UserDBs);
+            return View(await inspectionDaily.Where(i => i.IdStatus == 2).ToListAsync());
+        /*    var inspectionDaily = db.InspectionDaily.Include(i => i.InspectionState)
                 .Include(t => t.Insp_Type_Attach)
                 .Include(u => u.UserDBs);
-            return View(await inspectionDaily.Where(i => i.IdStatus == 2).ToListAsync());
+            return View(await inspectionDaily.Where(i => i.IdStatus == 2).ToListAsync());*/
         }
 
         public ActionResult LoadReportBridgeInspection(int? id)
@@ -68,8 +70,10 @@ namespace LMB.Controllers
            // int id = 5;
             var insp = db.InspectionDaily.Find(id);
             var inspList = db.ValueCheckList.ToList().Where(ins => ins.IdInspection == id);
+            var section = db.CheckListSection;
             LoadRatingReport LoadRatingReport = new LoadRatingReport();
             LoadRatingReport.InspectionDaily = insp;
+            
             if (inspList.Count() > 0)
             {
                 var item58 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 1 && ins.IdChecklistQuestion == 1).FirstOrDefault();

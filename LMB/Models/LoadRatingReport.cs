@@ -13,6 +13,8 @@ namespace LMB.Models
         public int IdLoadRating { get; set; }
         public InspectionDaily InspectionDaily { get; set; }
 
+        public CheckListSection CheckListSection { get; set; }
+
         public string Item58 { get; set; }
         public string Item59 { get; set; }
         public string Item60 { get; set; }

@@ -57,11 +57,21 @@ Bridge: @inspectionTypeA.numinspection
                 </td>
                 <td>
                     @if (!string.IsNullOrEmpty(item.ImageString))
+
                     {
-                        <label>OK</label>
+                        string image = string.Format("data:image/png;base64,{0}", item.ImageString);
+                        <a href="https://linkpeek.com"
+                           onmouseover="document.getElementById('place-holder-1').src='@image';"
+                           onmouseout="document.getElementById('place-holder-1').src='/theme/img/linkpeek-transparent-pixel-placeholder.png';">
+                            OK
+                            <img src="/theme/img/linkpeek-transparent-pixel-placeholder.png" id="place-holder-1" style="zindex: 100; position: absolute;" />
+                        </a>
+                    
+                       <!-- <label></label>-->
                     }
                 </td>
                 <td>
+
                     @Html.DisplayFor(modelItem => item.PhotoCameraNum)
                 </td>
                 <td>
