@@ -13,6 +13,7 @@ using System.Web;
 using System.IO;
 using Rotativa.Core.Options;
 using Newtonsoft.Json;
+using Microsoft.AspNet.Identity;
 
 namespace LMB.Controllers
 {
@@ -24,8 +25,17 @@ namespace LMB.Controllers
         // GET: InspectionDailies
         public async Task<ActionResult> Index()
         {
-            var inspectionDaily = db.InspectionDaily.Include(u => u.UserDBs);
-            return View(await inspectionDaily.Where(i => i.IdStatus == 2).ToListAsync());
+            try
+            {
+                var inspectionDaily = db.InspectionDaily.Include(u => u.UserDBs);
+                return View(await inspectionDaily.Where(i => i.IdStatus == 2).ToListAsync());
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+            
         /*    var inspectionDaily = db.InspectionDaily.Include(i => i.InspectionState)
                 .Include(t => t.Insp_Type_Attach)
                 .Include(u => u.UserDBs);
@@ -34,13 +44,16 @@ namespace LMB.Controllers
 
         public ActionResult LoadBridgeInspectionRecord(int? id)
         {
-            var insp = db.InspectionDaily.Find(id);
+            var insp = db.InspectionDaily.Include(d => d.District)
+                .Include(c => c.Counties);
+            //var insp = db.InspectionDaily.Find(id);
             var inspList = db.ValueCheckList.ToList().Where(ins => ins.IdInspection == id);
             var config = db.Configurations.FirstOrDefault();
             ConfigurationApp configurationapp = new ConfigurationApp();
             configurationapp.configuration = config;
             LRReport lrreport = new LRReport();
-            lrreport.InspectionDaily = insp;
+            lrreport.LoadRatingReport.Reports = db.Reports.Find(4);
+            lrreport.InspectionDaily = insp.Where(i => i.IdInspection == id).FirstOrDefault();
             if (lrreport == null)
             {
                 return HttpNotFound();
@@ -68,11 +81,23 @@ namespace LMB.Controllers
 
         public ActionResult LoadReportBridgeInspection(int? id)
         {
-            var insp = db.InspectionDaily.Find(id);
+            var insp = db.InspectionDaily.Include(d => d.District)
+                .Include(c => c.Counties).ToList();
             var inspList = db.ValueCheckList.ToList().Where(ins => ins.IdInspection == id);
             LoadRatingReport LoadRatingReport = new LoadRatingReport();
-            LoadRatingReport.InspectionDaily = insp;
+            LoadRatingReport.InspectionDaily = insp.Where(i => i.IdInspection== id ).FirstOrDefault();
+            var distrcode = string.Format("0{0}",LoadRatingReport.InspectionDaily.DO);
+            var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
+            LoadRatingReport.InspectionDaily.DO = distric.ABBR;
+            var countrycode = LoadRatingReport.InspectionDaily.Company.TrimStart('0');
+            int code = int.Parse(countrycode);
+            var country = db.Counties.Find(code);
+            //var country = db.Counties.Where(d => d.IdCountries==  int.Parse(countrycode)).FirstOrDefault();
+            LoadRatingReport.InspectionDaily.Company = country.Description;
             LoadRatingReport.ValuesCheclist = inspList.ToList();
+            LoadRatingReport.Reports = db.Reports.Find(4);
+            LoadRatingReport.Configuration = db.Configurations.FirstOrDefault();
+            LoadRatingReport.User = UsersHelper.finduser(User.Identity.GetUserName());
             if (LoadRatingReport == null)
             {
                 return HttpNotFound();
@@ -104,10 +129,13 @@ namespace LMB.Controllers
            // int id = 5;
             var insp = db.InspectionDaily.Find(id);
             var inspList = db.ValueCheckList.ToList().Where(ins => ins.IdInspection == id);
-            var section = db.CheckListSection;
+            var section = db.CheckListSection.ToList();
+            var config = db.Configurations.FirstOrDefault();
             LoadRatingReport LoadRatingReport = new LoadRatingReport();
             LoadRatingReport.InspectionDaily = insp;
-            
+            LoadRatingReport.CheckListSections = section;
+            LoadRatingReport.Configuration = config;
+            LoadRatingReport.Reports = db.Reports.Find(2);
             if (inspList.Count() > 0)
             {
                 var item58 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 1 && ins.IdChecklistQuestion == 1).FirstOrDefault();

@@ -13,7 +13,11 @@ namespace LMB.Models
         public int IdLoadRating { get; set; }
         public InspectionDaily InspectionDaily { get; set; }
 
-        public CheckListSection CheckListSection { get; set; }
+        public ICollection<CheckListSection> CheckListSections { get; set; }
+
+        public Configuration Configuration { get; set; }
+
+        public Reports Reports { get; set; }
 
         public string Item58 { get; set; }
         public string Item59 { get; set; }
@@ -22,6 +26,8 @@ namespace LMB.Models
        // public string Item66 { get; set; }
         //public string Item64 { get; set; }
         public ICollection<ValueCheckList> ValuesCheclist { get; set; }
+
+        public UserDB User { get; set; }
 
 
     }

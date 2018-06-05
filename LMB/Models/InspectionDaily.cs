@@ -70,5 +70,9 @@ namespace LMB.Models
 
         public UserDB UserDBs { get; set; }
 
+        public Counties Counties { get; set; }
+
+        public District District { get; set; }
+
     }
 }

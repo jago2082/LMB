@@ -91,6 +91,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.reports.FirstOrDefault().Revision)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reports.FirstOrDefault().TeamLeader)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reports.FirstOrDefault().Engineerofrecord)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reports.FirstOrDefault().FirmN)
+            </th>
         </tr>      
     </thead>
     <tbody>
@@ -105,6 +114,15 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Revision)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeamLeader)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Engineerofrecord)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirmN)
                 </td>
             </tr>
         }
