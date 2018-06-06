@@ -494,6 +494,74 @@ namespace LMB.Controllers
         //    return View("Reports",inspec);
         //}
 
+        public async Task<ActionResult> EditF(int id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var bridgeInspectionFollowUp = new BridgeInspectionFollowUp() ;
+            bridgeInspectionFollowUp.IdInspection = id;
+            if (bridgeInspectionFollowUp == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.InspectionRaitingType = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description", bridgeInspectionFollowUp.InspectionRaitingType);
+            ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "idvalue", bridgeInspectionFollowUp.IdRecommendationType);
+            ViewBag.IdReferenceFeatureType = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description", bridgeInspectionFollowUp.IdReferenceFeatureType);
+            return View("EditF",bridgeInspectionFollowUp);
+        }
+
+        // POST: BridgeInspectionFollowUps/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditF(BridgeInspectionFollowUp bridgeInspectionFollowUp)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(bridgeInspectionFollowUp).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                var inspd = db.InspectionDaily.Find(bridgeInspectionFollowUp.IdInspection);
+                return View("Reports", inspd);
+            }
+            ViewBag.InspectionRaitingType = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description", bridgeInspectionFollowUp.InspectionRaitingType);
+            ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "idvalue", bridgeInspectionFollowUp.IdRecommendationType);
+            ViewBag.IdReferenceFeatureType = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description", bridgeInspectionFollowUp.IdReferenceFeatureType);
+            return View(bridgeInspectionFollowUp);
+        }
+
+        public ActionResult CreateF( int id)
+        {
+            ViewBag.InspectionRaitingType = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description");
+            ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "idvalue");
+            ViewBag.IdReferenceFeatureType = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description");
+            return View();
+        }
+
+        // POST: BridgeInspectionFollowUps/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateF(BridgeInspectionFollowUp bridgeInspectionFollowUp)
+        {
+            if (ModelState.IsValid)
+            {
+                db.BridgeInspectionFollowUps.Add(bridgeInspectionFollowUp);
+                await db.SaveChangesAsync();
+                var inspd = db.InspectionDaily.Find(bridgeInspectionFollowUp.IdInspection);
+                return View("Reports", inspd);
+            }
+
+            ViewBag.InspectionRaitingType = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description", bridgeInspectionFollowUp.InspectionRaitingType);
+            ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "idvalue", bridgeInspectionFollowUp.IdRecommendationType);
+            ViewBag.IdReferenceFeatureType = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description", bridgeInspectionFollowUp.IdReferenceFeatureType);
+            return View(bridgeInspectionFollowUp);
+        }
+
+
         public ActionResult Edit(int? id)
         {
             if (id == null)

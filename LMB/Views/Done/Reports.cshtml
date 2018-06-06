@@ -17,6 +17,7 @@
         <tr>
             <th scope="col">Report #</th>
             <th scope="col">Name Report</th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
@@ -25,7 +26,10 @@
             <td>
                @Html.ActionLink("Bridge Inspection Follow-Up Action Worksheet", "ReportInspFollowUp", new { id = Model.IdInspection })
                @*@Html.ActionLink("Edit", "BridgeInspectionFollowUps", new { id = Model.IdInspection })*@
-        </td>
+            </td>
+            <td>
+                @Html.ActionLink("Create", "CreateF",  new { id = Model.IdInspection })
+            </td>
     </tr>
     <tr>
         <th scope="row">2</th>

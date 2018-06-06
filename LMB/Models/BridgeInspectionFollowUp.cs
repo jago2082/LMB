@@ -25,5 +25,7 @@ namespace LMB.Models
 
         public InspectionRaiting InspectionRaiting { get; set; }
 
+        public int IdInspection { get; set; }
+
     }
 }
