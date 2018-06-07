@@ -18,6 +18,7 @@
             <th scope="col">Report #</th>
             <th scope="col">Name Report</th>
             <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
@@ -30,6 +31,10 @@
             <td>
                 @Html.ActionLink("Create", "CreateF",  new { id = Model.IdInspection })
             </td>
+            <td>
+                @Html.ActionLink("Details", "IndexF", new { id = Model.IdInspection })
+            </td>
+
     </tr>
     <tr>
         <th scope="row">2</th>
@@ -37,7 +42,8 @@
                 @*@Html.ActionLink("Bridge Summary Sheet", "ReportSummarySheet")*@
                 @Html.ActionLink("Bridge Summary Sheet", "ReportSummarySheet", new { id = Model.IdInspection })
         </td>
-
+        <td></td>
+        <td></td>
     </tr>
     <tr>
         <th scope="row">3</th>
@@ -45,7 +51,8 @@
             @*@Html.ActionLink("Bridge Structural Condition History", "ReportStructuralCondition")*@
             @Html.ActionLink("Bridge Load Rating Statement", "LoadRating", new { id = Model.IdInspection })
             </td>
-
+        <td></td>
+        <td></td>
         </tr>
         <tr>
             <th scope="row">4</th>
@@ -53,7 +60,8 @@
                @*@Html.ActionLink("Bridge Inspecton Record", "ReportStructuralCondition")*@
             @Html.ActionLink("Bridge Inspecton Record", "LoadReportBridgeInspection", new { id = Model.IdInspection })
             </td>
-
+            <td></td>
+            <td></td>
         </tr>
         <tr>
             <th scope="row">5</th>
@@ -61,6 +69,8 @@
                @* @Html.ActionLink("Bridge Inventory Record", "ReportInventoryRecord")*@
                @Html.ActionLink("Bridge Inventory Record", "ReportInventoryRecord", new { id = Model.IdInspection })
             </td>
+            <td></td>
+            <td></td>
 </tr>
         <tr>
             <th scope="row">6</th>
@@ -68,7 +78,8 @@
                 @Html.ActionLink("Underclearance Record", "ReportUnderClear", new { id = Model.IdInspection })
                 @*@Html.ActionLink("Underclearance Record", "ReportUnderClear")*@
             </td>
-            
+            <td></td>
+            <td></td>
         </tr>
         <tr>
             <th scope="row">7</th>
@@ -76,7 +87,8 @@
                 @Html.ActionLink("Channel Cross-Section Measurements Record", "ReportChannelCross", new { id = Model.IdInspection })
                 @*@Html.ActionLink("Channel Cross-Section Measurements Record", "ReportChannelCross")*@
             </td>
-        
+            <td></td>
+            <td></td>
         </tr>
     </tbody>
 </table>

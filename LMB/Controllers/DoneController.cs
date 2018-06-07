@@ -36,10 +36,12 @@ namespace LMB.Controllers
                 throw;
             }
             
-        /*    var inspectionDaily = db.InspectionDaily.Include(i => i.InspectionState)
-                .Include(t => t.Insp_Type_Attach)
-                .Include(u => u.UserDBs);
-            return View(await inspectionDaily.Where(i => i.IdStatus == 2).ToListAsync());*/
+        }
+
+        public async Task<ActionResult> IndexF(int id)
+        {
+            var bridgeInspectionFollowUps = db.BridgeInspectionFollowUps.Include(b => b.InspectionRaiting).Include(b => b.RecommendationType).Include(b => b.ReferenceFeatureType).Where(i => i.IdInspection== id);
+            return View(await bridgeInspectionFollowUps.ToListAsync());
         }
 
         public ActionResult LoadBridgeInspectionRecord(int? id)
@@ -239,9 +241,25 @@ namespace LMB.Controllers
             
         }
 
-        public ActionResult ReportInspFollowUp()
+        public async Task<ActionResult> ReportInspFollowUp(int id)
         {
-            return View("ReportInspFollowUp");
+            ReportInspFollowUp reportf = new ReportInspFollowUp();
+            reportf.InspectionDaily = await db.InspectionDaily.FindAsync(id);
+            var distrcode = string.Format("0{0}", reportf.InspectionDaily.DO);
+            var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
+            reportf.InspectionDaily.DO = distric.ABBR;
+            var countrycode = reportf.InspectionDaily.Company.TrimStart('0');
+            int code = int.Parse(countrycode);
+            var country = db.Counties.Find(code);
+            reportf.InspectionDaily.Company = country.Description;
+            reportf.Reports = db.Reports.Find(3);
+            reportf.Configuration = db.Configurations.FirstOrDefault();
+            reportf.Usuario = UsersHelper.finduser(User.Identity.GetUserName());
+            reportf.BridgeInspectionFollowUps = await db.BridgeInspectionFollowUps.Include(b => b.InspectionRaiting)
+                .Include(b => b.RecommendationType)
+                .Include(b => b.ReferenceFeatureType)
+                .Where(i => i.IdInspection == id).ToListAsync();
+            return View("ReportInspFollowUp", reportf);
         }
 
         public ActionResult ReportSummarySheet()
@@ -494,20 +512,19 @@ namespace LMB.Controllers
         //    return View("Reports",inspec);
         //}
 
-        public async Task<ActionResult> EditF(int id)
+        public async Task<ActionResult> EditF(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var bridgeInspectionFollowUp = new BridgeInspectionFollowUp() ;
-            bridgeInspectionFollowUp.IdInspection = id;
+            var bridgeInspectionFollowUp =await db.BridgeInspectionFollowUps.FindAsync(id) ;
             if (bridgeInspectionFollowUp == null)
             {
                 return HttpNotFound();
             }
             ViewBag.InspectionRaitingType = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description", bridgeInspectionFollowUp.InspectionRaitingType);
-            ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "idvalue", bridgeInspectionFollowUp.IdRecommendationType);
+            ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "Description", bridgeInspectionFollowUp.IdRecommendationType);
             ViewBag.IdReferenceFeatureType = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description", bridgeInspectionFollowUp.IdReferenceFeatureType);
             return View("EditF",bridgeInspectionFollowUp);
         }
@@ -527,15 +544,16 @@ namespace LMB.Controllers
                 return View("Reports", inspd);
             }
             ViewBag.InspectionRaitingType = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description", bridgeInspectionFollowUp.InspectionRaitingType);
-            ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "idvalue", bridgeInspectionFollowUp.IdRecommendationType);
+            ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "Description", bridgeInspectionFollowUp.IdRecommendationType);
             ViewBag.IdReferenceFeatureType = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description", bridgeInspectionFollowUp.IdReferenceFeatureType);
             return View(bridgeInspectionFollowUp);
         }
 
         public ActionResult CreateF( int id)
         {
+            ViewBag.Idinspection = id;
             ViewBag.InspectionRaitingType = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description");
-            ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "idvalue");
+            ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "Description");
             ViewBag.IdReferenceFeatureType = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description");
             return View();
         }
@@ -556,7 +574,7 @@ namespace LMB.Controllers
             }
 
             ViewBag.InspectionRaitingType = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description", bridgeInspectionFollowUp.InspectionRaitingType);
-            ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "idvalue", bridgeInspectionFollowUp.IdRecommendationType);
+            ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "Description", bridgeInspectionFollowUp.IdRecommendationType);
             ViewBag.IdReferenceFeatureType = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description", bridgeInspectionFollowUp.IdReferenceFeatureType);
             return View(bridgeInspectionFollowUp);
         }

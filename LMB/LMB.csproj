@@ -315,6 +315,7 @@
     <Compile Include="Models\ReferenceFeatureUnderType.cs" />
     <Compile Include="Models\RegistrySerial.cs" />
     <Compile Include="Models\RegistrySerialAttach.cs" />
+    <Compile Include="Models\ReportInspFollowUp.cs" />
     <Compile Include="Models\Reports.cs" />
     <Compile Include="Models\ServerConfiguration.cs" />
     <Compile Include="Models\StatusReferenceSerial.cs" />
@@ -849,6 +850,7 @@
     <Content Include="Views\Done\ReportBridgeInspectionRecord.cshtml" />
     <Content Include="Views\Done\EditF.cshtml" />
     <Content Include="Views\Done\CreateF.cshtml" />
+    <Content Include="Views\Done\IndexF.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

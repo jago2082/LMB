@@ -1,4 +1,4 @@
-﻿@@model LMB.Models.ReportUnderClearReport
+﻿@model LMB.Models.ReportInspFollowUp
 
 @{
     Layout = null;
@@ -1054,8 +1054,13 @@
                              style='width:69.75pt;height:47.25pt;visibility:visible;mso-wrap-style:square'>
                              <v:imagedata src="Inspection%20Follow-Up_files/image001.emz" o:title=""/>
                             </v:shape><![endif]-->
-                            <![if !vml]><img width=93 height=63
-                                             src="~/img/LogoContractor.gif" v:shapes="Picture_x0020_1"><![endif]>
+                            <![if !vml]>@if (!string.IsNullOrEmpty(Model.Configuration.ImageContract))
+                            {
+
+                                string image = string.Format("data:image/png;base64,{0}", Model.Configuration.ImageContract);
+                                // <img src=@image style="height:auto;max-width:830px;align-content:center;" />
+                                <img src=@image width=93 height=63 />
+                            }<![endif]>
                         </span><span style='font-size:9.0pt;color:#231F20'><o:p></o:p></span>
                     </p>
                 </td>
@@ -1064,8 +1069,7 @@
   none;text-autospace:none'>
                         <b>
                             <span style='font-size:12.0pt;color:#231F20'>
-                                Bridge
-                                Inspection Follow-Up Action Worksheet
+                                @Model.Reports.Title
                             </span>
                         </b><span style='font-size:7.0pt;
   color:#231F20'><o:p></o:p></span>
@@ -1075,15 +1079,13 @@
                     <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
   none;text-autospace:none'>
                         <span style='font-size:7.0pt;color:#231F20'>
-                            Form
-                            1386<o:p></o:p>
+                            @Model.Reports.FormName<o:p></o:p>
                         </span>
                     </p>
                     <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
   none;text-autospace:none'>
                         <span style='font-size:7.0pt;color:#231F20'>
-                            (Rev.
-                            03/16)<o:p></o:p>
+                            @Model.Reports.Revision<o:p></o:p>
                         </span>
                     </p>
                     <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
@@ -1123,7 +1125,7 @@
   solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt'>
                     <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
-                        <span style='font-size:7.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
+                        <span style='font-size:7.0pt;color:#231F20'><o:p>&nbsp;</o:p>@Html.DisplayFor(modelItem => Model.InspectionDaily.DO)</span>
                     </p>
                 </td>
                 <td width=64 colspan=2 valign=top style='width:47.75pt;padding:0in 5.4pt 0in 5.4pt'>
@@ -1135,7 +1137,7 @@
                 <td width=54 valign=top style='width:40.4pt;border:none;border-bottom:solid windowtext 1.0pt;
   mso-border-bottom-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
                     <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
-                        <span style='font-size:7.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
+                        <span style='font-size:7.0pt;color:#231F20'><o:p>@Html.DisplayFor(modelItem => Model.InspectionDaily.Company)</o:p></span>
                     </p>
                 </td>
                 <td width=113 colspan=2 valign=top style='width:84.75pt;padding:0in 5.4pt 0in 5.4pt'>
@@ -1223,7 +1225,7 @@
   border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt'>
                     <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
-                        <span style='font-size:9.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
+                        <span style='font-size:9.0pt;color:#231F20'><o:p>@Html.DisplayFor(modelItem => Model.Usuario.FullName)</o:p></span>
                     </p>
                 </td>
                 <td width=47 colspan=2 valign=top style='width:35.15pt;padding:0in 5.4pt 0in 5.4pt'>
@@ -1458,7 +1460,6 @@
             <span style='font-size:
 8.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
         </p>
-
         <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
                style='margin-left:6.05pt;border-collapse:collapse;mso-table-layout-alt:fixed;
  border:none;mso-border-alt:solid #231F20 .5pt;mso-yfti-tbllook:480;mso-padding-alt:
@@ -1515,977 +1516,1100 @@
                     </p>
                 </td>
             </tr>
-            <tr style='mso-yfti-irow:1;height:20.05pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .75pt;mso-border-top-alt:
-  .75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;mso-border-right-alt:
-  .5pt;mso-border-color-alt:#231F20;mso-border-style-alt:solid;padding:0in 0in 0in 0in;
-  height:20.05pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
-  mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
-  solid;padding:0in 0in 0in 0in;height:20.05pt'>
-                    <p class=TableParagraph align=right style='margin-top:5.3pt;margin-right:
-  162.35pt;margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:
-  right'>
-                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'>
-                            No action
-                            required.<o:p></o:p>
-                        </span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
-  mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
-  solid;padding:0in 0in 0in 0in;height:20.05pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
-  mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
-  solid;padding:0in 0in 0in 0in;height:20.05pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:2;height:20.15pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .75pt;mso-border-alt:solid #231F20 .5pt;
-  mso-border-top-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:3;height:20.25pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
-  padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:4;height:20.25pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
-  padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:5;height:20.25pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
-  padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:6;height:20.15pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
-  mso-border-bottom-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:
-  20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:7;height:20.15pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .75pt;mso-border-alt:solid #231F20 .5pt;
-  mso-border-top-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:8;height:20.25pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
-  padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:9;height:20.25pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
-  padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:10;height:20.25pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
-  padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:11;height:20.15pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
-  mso-border-bottom-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:
-  20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:12;height:20.0pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .75pt;mso-border-top-alt:
-  .75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;mso-border-right-alt:
-  .5pt;mso-border-color-alt:#231F20;mso-border-style-alt:solid;padding:0in 0in 0in 0in;
-  height:20.0pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
-  mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
-  solid;padding:0in 0in 0in 0in;height:20.0pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
-  mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
-  solid;padding:0in 0in 0in 0in;height:20.0pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
-  mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
-  solid;padding:0in 0in 0in 0in;height:20.0pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:13;height:20.15pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .75pt;mso-border-alt:solid #231F20 .5pt;
-  mso-border-top-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <!--[if gte vml 1]><v:shape id="Picture_x0020_333"
-                         o:spid="_x0000_s1029" type="#_x0000_t75" style='position:absolute;
-                         margin-left:255.05pt;margin-top:.1pt;width:126.45pt;height:130.25pt;
-                         z-index:-149904;visibility:visible;mso-wrap-style:square;
-                         mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;
-                         mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;
-                         mso-position-horizontal:absolute;mso-position-horizontal-relative:text;
-                         mso-position-vertical:absolute;mso-position-vertical-relative:text'>
-                         <v:imagedata src="Inspection%20Follow-Up_files/image003.jpg" o:title=""/>
-                        </v:shape><![endif]-->
-                        <![if !vml]><span style='mso-ignore:vglayout;
-  position:absolute;z-index:503166572;margin-left:340px;margin-top:0px;
-  width:169px;height:174px'>
-                            <img width=169 height=174
-                                 src="~/img/SelloLMB.jpg" v:shapes="Picture_x0020_333">
-                        </span><![endif]><span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman","serif";
-  mso-hansi-font-family:Arial;mso-bidi-font-family:Arial'><o:p></o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:14;height:20.15pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:15;height:20.0pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
-  mso-border-bottom-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:
-  20.0pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.0pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.0pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
-  mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
-  solid;padding:0in 0in 0in 0in;height:20.0pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:16;height:20.15pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .75pt;mso-border-alt:solid #231F20 .5pt;
-  mso-border-top-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:17;height:20.25pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
-  padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:18;height:20.15pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:19;height:20.15pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:20;height:20.15pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
-  mso-border-bottom-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:
-  20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:21;height:20.15pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .75pt;mso-border-alt:solid #231F20 .5pt;
-  mso-border-top-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
-  padding:0in 0in 0in 0in;height:20.15pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:22;mso-yfti-lastrow:yes;height:20.25pt'>
-                <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
-  border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
-  padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-                <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
-  none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
-  mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
-  mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
-                    <p class=TableParagraph>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
-  Arial'><o:p>&nbsp;</o:p></span>
-                    </p>
-                </td>
-            </tr>
+            @foreach (var item in Model.BridgeInspectionFollowUps)
+            {
+                <tr style='mso-yfti-irow:1;height:20.05pt'>
+                    <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .75pt;mso-border-top-alt:
+             .75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;mso-border-right-alt:
+             .5pt;mso-border-color-alt:#231F20;mso-border-style-alt:solid;padding:0in 0in 0in 0in;
+             height:20.05pt'>
+                        <p class=TableParagraph>
+                            <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>@Html.DisplayFor(modelItem => item.ReferenceFeatureType.IdReferenceFeatureType)</o:p></span>
+        </p>
+    </td>
+    <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
+             mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
+             solid;padding:0in 0in 0in 0in;height:20.05pt'>
+        <p class=TableParagraph align=right style='margin-top:5.3pt;margin-right:
+             162.35pt;margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:
+             right'>
+
+            @if (!string.IsNullOrEmpty(item.Description))
+            {
+                <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </span>
+            }
+            else
+            {
+                <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'>
+                    No action
+                    required.
+                </span>
+            }
+        </p>
+    </td>
+    <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
+             mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
+             solid;padding:0in 0in 0in 0in;height:20.05pt'>
+        <p class=TableParagraph>
+            <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>@Html.DisplayFor(modelItem => item.InspectionRaiting.Value)</o:p></span>
+        </p>
+    </td>
+    <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
+             mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
+             solid;padding:0in 0in 0in 0in;height:20.05pt'>
+        <p class=TableParagraph>
+            <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>@Html.DisplayFor(modelItem => item.RecommendationType.idvalue)</o:p></span>
+        </p>
+    </td>
+</tr>
+            }
         </table>
+
+        @*<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+                          style='margin-left:6.05pt;border-collapse:collapse;mso-table-layout-alt:fixed;
+            border:none;mso-border-alt:solid #231F20 .5pt;mso-yfti-tbllook:480;mso-padding-alt:
+            0in 0in 0in 0in;mso-border-insideh:.5pt solid #231F20;mso-border-insidev:.5pt solid #231F20'>
+                       <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:24.65pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:24.65pt'>
+                               <p class=TableParagraph style='margin-top:1.7pt;margin-right:3.0pt;
+             margin-bottom:0in;margin-left:11.0pt;margin-bottom:.0001pt;text-indent:-3.05pt;
+             line-height:96%'>
+                                   <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;
+             line-height:96%;color:#231F20'>Reference Features</span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;line-height:96%'><o:p></o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border:solid #231F20 1.0pt;
+             border-left:none;mso-border-left-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             mso-border-bottom-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:
+             24.65pt'>
+                               <p class=TableParagraph align=right style='margin-top:6.45pt;margin-right:
+             163.05pt;margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:
+             right'>
+                                   <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;
+             mso-font-width:95%'>Action/Comments</span><span style='font-size:9.0pt;
+             mso-bidi-font-size:11.0pt'><o:p></o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border:solid #231F20 1.0pt;
+             border-left:none;mso-border-left-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             mso-border-bottom-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:
+             24.65pt'>
+                               <p class=TableParagraph align=center style='margin-top:1.45pt;margin-right:
+             2.35pt;margin-bottom:0in;margin-left:6.3pt;margin-bottom:.0001pt;text-align:
+             center;line-height:10.15pt;mso-line-height-rule:exactly'>
+                                   <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>1085</span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
+                               </p>
+                               <p class=TableParagraph align=center style='margin-top:0in;margin-right:2.35pt;
+             margin-bottom:0in;margin-left:6.3pt;margin-bottom:.0001pt;text-align:center;
+             line-height:10.15pt;mso-line-height-rule:exactly'>
+                                   <span style='font-size:
+             9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Ratings</span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border:solid #231F20 1.0pt;
+             border-left:none;mso-border-left-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             mso-border-bottom-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:
+             24.65pt'>
+                               <p class=TableParagraph style='margin-top:1.7pt;margin-right:7.65pt;
+             margin-bottom:0in;margin-left:12.55pt;margin-bottom:.0001pt;text-indent:.75pt;
+             line-height:96%'>
+                                   <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;
+             line-height:96%;color:#231F20'>Rec. Type</span><span style='font-size:9.0pt;
+             mso-bidi-font-size:11.0pt;line-height:96%'><o:p></o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:1;height:20.05pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .75pt;mso-border-top-alt:
+             .75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;mso-border-right-alt:
+             .5pt;mso-border-color-alt:#231F20;mso-border-style-alt:solid;padding:0in 0in 0in 0in;
+             height:20.05pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
+             mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
+             solid;padding:0in 0in 0in 0in;height:20.05pt'>
+                               <p class=TableParagraph align=right style='margin-top:5.3pt;margin-right:
+             162.35pt;margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:
+             right'>
+                                   <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'>
+                                       No action
+                                       required.<o:p></o:p>
+                                   </span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
+             mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
+             solid;padding:0in 0in 0in 0in;height:20.05pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
+             mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
+             solid;padding:0in 0in 0in 0in;height:20.05pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:2;height:20.15pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .75pt;mso-border-alt:solid #231F20 .5pt;
+             mso-border-top-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:3;height:20.25pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:4;height:20.25pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:5;height:20.25pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:6;height:20.15pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             mso-border-bottom-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:
+             20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:7;height:20.15pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .75pt;mso-border-alt:solid #231F20 .5pt;
+             mso-border-top-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:8;height:20.25pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:9;height:20.25pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:10;height:20.25pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:11;height:20.15pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             mso-border-bottom-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:
+             20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:12;height:20.0pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .75pt;mso-border-top-alt:
+             .75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;mso-border-right-alt:
+             .5pt;mso-border-color-alt:#231F20;mso-border-style-alt:solid;padding:0in 0in 0in 0in;
+             height:20.0pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
+             mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
+             solid;padding:0in 0in 0in 0in;height:20.0pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
+             mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
+             solid;padding:0in 0in 0in 0in;height:20.0pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
+             mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
+             solid;padding:0in 0in 0in 0in;height:20.0pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:13;height:20.15pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .75pt;mso-border-alt:solid #231F20 .5pt;
+             mso-border-top-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   [if gte vml 1]><v:shape id="Picture_x0020_333"
+                                    o:spid="_x0000_s1029" type="#_x0000_t75" style='position:absolute;
+                                    margin-left:255.05pt;margin-top:.1pt;width:126.45pt;height:130.25pt;
+                                    z-index:-149904;visibility:visible;mso-wrap-style:square;
+                                    mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;
+                                    mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;
+                                    mso-position-horizontal:absolute;mso-position-horizontal-relative:text;
+                                    mso-position-vertical:absolute;mso-position-vertical-relative:text'>
+                                    <v:imagedata src="Inspection%20Follow-Up_files/image003.jpg" o:title=""/>
+                                   </v:shape><![endif]
+                                   <![if !vml]><span style='mso-ignore:vglayout;
+             position:absolute;z-index:503166572;margin-left:340px;margin-top:0px;
+             width:169px;height:174px'>
+                                       <img width=169 height=174
+                                            src="~/img/SelloLMB.jpg" v:shapes="Picture_x0020_333">
+                                   </span><![endif]><span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman","serif";
+             mso-hansi-font-family:Arial;mso-bidi-font-family:Arial'><o:p></o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:14;height:20.15pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:15;height:20.0pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             mso-border-bottom-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:
+             20.0pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.0pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.0pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
+             mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
+             solid;padding:0in 0in 0in 0in;height:20.0pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:16;height:20.15pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .75pt;mso-border-alt:solid #231F20 .5pt;
+             mso-border-top-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:17;height:20.25pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:18;height:20.15pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:19;height:20.15pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:20;height:20.15pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             mso-border-bottom-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:
+             20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-bottom-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:21;height:20.15pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .75pt;mso-border-alt:solid #231F20 .5pt;
+             mso-border-top-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
+             padding:0in 0in 0in 0in;height:20.15pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                       <tr style='mso-yfti-irow:22;mso-yfti-lastrow:yes;height:20.25pt'>
+                           <td width=72 valign=top style='width:.75in;border:solid #231F20 1.0pt;
+             border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
+             padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=536 valign=top style='width:402.0pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                           <td width=56 valign=top style='width:41.75pt;border-top:none;border-left:
+             none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
+             mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
+             mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:20.25pt'>
+                               <p class=TableParagraph>
+                                   <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
+             font-family:"Times New Roman","serif";mso-hansi-font-family:Arial;mso-bidi-font-family:
+             Arial'><o:p>&nbsp;</o:p></span>
+                               </p>
+                           </td>
+                       </tr>
+                   </table>*@
 
         <p class=MsoNormal style='margin-left:6.7pt'>
             <!--[if mso & !supportInlineShapes & supportFields]><span
@@ -2566,15 +2690,19 @@
             </v:shape><span style='mso-element:field-end'></span><![endif]-->
             <span style='font-size:10.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
         </p>
-
     </div>
-
     <span style='font-size:10.0pt;mso-bidi-font-size:11.0pt;font-family:"Arial","sans-serif";
 mso-fareast-font-family:Arial;mso-ansi-language:EN-US;mso-fareast-language:
 EN-US;mso-bidi-language:AR-SA'>
         <br clear=all style='page-break-before:always;
 mso-break-type:section-break'>
     </span>
+    @if (!string.IsNullOrEmpty(Model.Configuration.ImageSing))
+    {
+        string image = string.Format("data:image/png;base64,{0}", Model.Configuration.ImageSing);
+        <img width=169 height=174
+             src=@image v:shapes="Picture_x0020_333" style="display: block;margin-left: 440px;margin-top: -120px;">
+    }
 
     <div class=WordSection2>
 
@@ -2620,7 +2748,7 @@ color:#231F20'>Page 2 of 2<o:p></o:p></span>
                 <td width=50 valign=top style='width:37.5pt;border:none;border-bottom:solid windowtext 1.0pt;
   mso-border-bottom-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
                     <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
-                        <span style='font-size:7.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
+                        <span style='font-size:7.0pt;color:#231F20'><o:p>@Html.DisplayFor(modelItem => Model.InspectionDaily.DO)</o:p></span>
                     </p>
                 </td>
                 <td width=64 valign=top style='width:47.75pt;padding:0in 5.4pt 0in 5.4pt'>
@@ -2632,7 +2760,7 @@ color:#231F20'>Page 2 of 2<o:p></o:p></span>
                 <td width=54 valign=top style='width:40.4pt;border:none;border-bottom:solid windowtext 1.0pt;
   mso-border-bottom-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
                     <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
-                        <span style='font-size:7.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
+                        <span style='font-size:7.0pt;color:#231F20'><o:p>@Html.DisplayFor(modelItem => Model.InspectionDaily.Company)</o:p></span>
                     </p>
                 </td>
                 <td width=125 valign=top style='width:93.75pt;padding:0in 5.4pt 0in 5.4pt'>

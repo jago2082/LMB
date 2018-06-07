@@ -1,0 +1,54 @@
+﻿@model IEnumerable<LMB.Models.BridgeInspectionFollowUp>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InspectionRaiting.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecommendationType.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReferenceFeatureType.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.HiddenFor(modelItem => item.IdInspection)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InspectionRaiting.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecommendationType.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReferenceFeatureType.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditF", new { id=item.IdBridgeInspectionFollowUp }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.IdBridgeInspectionFollowUp }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdBridgeInspectionFollowUp })*@
+        </td>
+    </tr>
+}
+
+</table>
