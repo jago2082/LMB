@@ -44,9 +44,8 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "EditF", new { id=item.IdBridgeInspectionFollowUp }) |
-            @*@Html.ActionLink("Details", "Details", new { id=item.IdBridgeInspectionFollowUp }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdBridgeInspectionFollowUp })*@
+            @Html.ActionLink("Edit", "EditF", new { id=item.IdBridgeInspectionFollowUp }) 
+            @Html.ActionLink("Delete", "DeleteF", new { id=item.IdBridgeInspectionFollowUp })
         </td>
     </tr>
 }
