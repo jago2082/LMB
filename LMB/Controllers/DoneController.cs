@@ -86,7 +86,11 @@ namespace LMB.Controllers
             var insp = db.InspectionDaily.Include(d => d.District)
                 .Include(c => c.Counties).ToList();
             var inspList = db.ValueCheckList.ToList().Where(ins => ins.IdInspection == id);
-            LoadRatingReport LoadRatingReport = new LoadRatingReport();
+            var ImageList = db.Insp_Question_Attach.ToList().Where(ins => ins.IDValueChecklist == id);
+
+            
+            LoadRatingCheckList LoadRatingReport = new LoadRatingCheckList();
+            LoadRatingReport.Insp_Question_Attach = ImageList.ToList();
             LoadRatingReport.InspectionDaily = insp.Where(i => i.IdInspection== id ).FirstOrDefault();
             var distrcode = string.Format("0{0}",LoadRatingReport.InspectionDaily.DO);
             var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
@@ -96,11 +100,203 @@ namespace LMB.Controllers
             var country = db.Counties.Find(code);
             //var country = db.Counties.Where(d => d.IdCountries==  int.Parse(countrycode)).FirstOrDefault();
             LoadRatingReport.InspectionDaily.Company = country.Description;
-            LoadRatingReport.ValuesCheclist = inspList.ToList();
+           
             LoadRatingReport.Reports = db.Reports.Find(4);
             LoadRatingReport.Configuration = db.Configurations.FirstOrDefault();
             LoadRatingReport.User = UsersHelper.finduser(User.Identity.GetUserName());
-            if (LoadRatingReport == null)
+            if (inspList.Count() > 0)
+            {
+                int item59 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 2).Min(value => value.Value));
+                int item60 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 3).Min(value => value.Value));
+                int item61 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 5).Min(value => value.Value));
+                int item62 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 4).Min(value => value.Value));
+                int item65 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 9).Min(value => value.Value));
+
+                int item36 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 10).Min(value => value.Value));
+                int Appraisal = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 11).Min(value => value.Value));
+                int Misce = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 12).Min(value => value.Value));
+
+                foreach (var dato in inspList)
+                {
+                    if (dato.IdChecklistQuestion == 1)
+                        LoadRatingReport.val1 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 2)
+                        LoadRatingReport.val2 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 3)
+                        LoadRatingReport.val3 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 4)
+                        LoadRatingReport.val4 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 5)
+                        LoadRatingReport.val5 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 6)
+                        LoadRatingReport.val6 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 7)
+                        LoadRatingReport.val7 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 8)
+                        LoadRatingReport.val8 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 9)
+                        LoadRatingReport.val9 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 10)
+                        LoadRatingReport.val10 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 11)
+                        LoadRatingReport.val11 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 12)
+                        LoadRatingReport.val12 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 13)
+                        LoadRatingReport.val13 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 14)
+                        LoadRatingReport.val14 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 15)
+                        LoadRatingReport.val15 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 16)
+                        LoadRatingReport.val16 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 17)
+                        LoadRatingReport.val17 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 18)
+                        LoadRatingReport.val18 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 19)
+                        LoadRatingReport.val19 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 20)
+                        LoadRatingReport.val21 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 22)
+                        LoadRatingReport.val22 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 23)
+                        LoadRatingReport.val23 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 24)
+                        LoadRatingReport.val24 = Convert.ToString(dato.Value);
+                    if (item59 == 10)
+                        LoadRatingReport.val25 = "N";
+                    else
+                        LoadRatingReport.val25 = Convert.ToString(item59);
+
+                    if (dato.IdChecklistQuestion == 25)
+                        LoadRatingReport.val26 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 26)
+                        LoadRatingReport.val27 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 27)
+                        LoadRatingReport.val28 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 28)
+                        LoadRatingReport.val29 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 29)
+                        LoadRatingReport.val30 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 30)
+                        LoadRatingReport.va31 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 31)
+                        LoadRatingReport.va32 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 32)
+                        LoadRatingReport.va33 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 33)
+                        LoadRatingReport.va34 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 34)
+                        LoadRatingReport.va35 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 35)
+                        LoadRatingReport.va36 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 36)
+                        LoadRatingReport.va37 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 37)
+                        LoadRatingReport.va38 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 38)
+                        LoadRatingReport.va39 = Convert.ToString(dato.Value);
+                    if (item60 == 10)
+                        LoadRatingReport.val40 = "N";
+                    else
+                        LoadRatingReport.val40 = Convert.ToString(item60);
+
+                    if (dato.IdChecklistQuestion == 44)
+                        LoadRatingReport.val41 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 45)
+                        LoadRatingReport.val42 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 46)
+                        LoadRatingReport.val43 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 47)
+                        LoadRatingReport.val44= Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 48)
+                        LoadRatingReport.val45 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 49)
+                        LoadRatingReport.val46 = Convert.ToString(dato.Value);
+                    if (item61 == 10)
+                        LoadRatingReport.val47 = "N";
+                    else
+                        LoadRatingReport.val47 = Convert.ToString(item61);
+
+                    if (dato.IdChecklistQuestion == 39)
+                            LoadRatingReport.val48 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 40)
+                        LoadRatingReport.val49 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 41)
+                        LoadRatingReport.val50 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 42)
+                        LoadRatingReport.val51 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 43)
+                        LoadRatingReport.val52 = Convert.ToString(dato.Value);
+
+                    if (item62 == 10)
+                        LoadRatingReport.val53 = "N";
+                    else
+                        LoadRatingReport.val53 = Convert.ToString(item62);
+
+                    if (dato.IdChecklistQuestion == 50)
+                        LoadRatingReport.val54 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 51)
+                        LoadRatingReport.val55 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 52)
+                        LoadRatingReport.val56 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 53)
+                        LoadRatingReport.val57 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 54)
+                        LoadRatingReport.val58 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 55)
+                        LoadRatingReport.val59 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 56)
+                        LoadRatingReport.val60 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 57)
+                        LoadRatingReport.val61 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 58)
+                        LoadRatingReport.val62 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 59)
+                        LoadRatingReport.val59a = Convert.ToString(dato.Value);
+                    if (item65 == 10)
+                        LoadRatingReport.val63 = "N";
+                    else
+                        LoadRatingReport.val63 = Convert.ToString(item65);
+
+                    if (dato.IdChecklistQuestion == 64)
+                        LoadRatingReport.val64 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 65)
+                        LoadRatingReport.val65 = Convert.ToString(dato.Value);
+                    if (Appraisal == 10)
+                        LoadRatingReport.val66 = "N";
+                    else
+                        LoadRatingReport.val66= Convert.ToString(Appraisal);
+                    if (dato.IdChecklistQuestion == 66)
+                        LoadRatingReport.val67 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 67)
+                        LoadRatingReport.val68 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 68)
+                        LoadRatingReport.val69 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 69)
+                        LoadRatingReport.val70 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 70)
+                        LoadRatingReport.val71 = Convert.ToString(dato.Value);
+                    if (Misce == 10)
+                        LoadRatingReport.val72 = "N";
+                    else
+                        LoadRatingReport.val72 = Convert.ToString(Misce);
+                    if (dato.IdChecklistQuestion == 60)
+                        LoadRatingReport.val73 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 61)
+                        LoadRatingReport.val74 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 62)
+                        LoadRatingReport.val75 = Convert.ToString(dato.Value);
+                    if (dato.IdChecklistQuestion == 63)
+                        LoadRatingReport.val76 = Convert.ToString(dato.Value);
+                    if (item36 == 10)
+                        LoadRatingReport.val77 = "N";
+                    else
+                        LoadRatingReport.val77 = Convert.ToString(item36);
+                }
+            }
+                if (LoadRatingReport == null)
             {
                 return HttpNotFound();
             }
@@ -121,7 +317,7 @@ namespace LMB.Controllers
 
                 //  FileName = "firstPdf.pdf",
                 // CustomSwitches = footer
-                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Size.Letter }
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(15,10, 15, 10), PageSize = Size.Letter }
             };
         }
 
@@ -140,28 +336,28 @@ namespace LMB.Controllers
             LoadRatingReport.Reports = db.Reports.Find(2);
             if (inspList.Count() > 0)
             {
-                var item58 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 1 && ins.IdChecklistQuestion == 1).FirstOrDefault();
+                int item58 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 1 && ins.IdChecklistQuestion == 1).FirstOrDefault().Value);
 
-                var item59 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 2).Min(value => value.Value);
-                var item60 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 3).Min(value => value.Value);
-                var item62 = db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 4).Min(value => value.Value);
+                int item59 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 2).Min(value => value.Value));
+                int item60 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 3).Min(value => value.Value));
+                int item62 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 4).Min(value => value.Value));
                 
                 LoadRatingReport.ValuesCheclist = inspList.ToList();
                 
-                if (Convert.ToString(item58.Value) != "")
-                    LoadRatingReport.Item58 = Convert.ToString(item58.Value);
-                if (item59.Value == 10)
+                if (Convert.ToString(item58) != "")
+                    LoadRatingReport.Item58 = Convert.ToString(item58);
+                if (item59 == 10)
                     LoadRatingReport.Item59 = "N";
                 else
-                    LoadRatingReport.Item59 = Convert.ToString(item59.Value);
-                if (item60.Value == 10)
+                    LoadRatingReport.Item59 = Convert.ToString(item59);
+                if (item60 == 10)
                     LoadRatingReport.Item60 = "N";
                 else
-                    LoadRatingReport.Item60 = Convert.ToString(item60.Value);
-                if (item62.Value == 10)
+                    LoadRatingReport.Item60 = Convert.ToString(item60);
+                if (item62 == 10)
                     LoadRatingReport.Item62 = "N";
                 else
-                    LoadRatingReport.Item62 = Convert.ToString(item60.Value);
+                    LoadRatingReport.Item62 = Convert.ToString(item60);
             }
             if (LoadRatingReport == null)
             {
