@@ -790,7 +790,36 @@ namespace LMB.Controllers
             return View(bridgeInspectionFollowUp);
         }
 
+        // GET: BridgeInspectionFollowUps/Delete/5
+        public async Task<ActionResult> DeleteF(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BridgeInspectionFollowUp bridgeInspectionFollowUp = await db.BridgeInspectionFollowUps
+                .Include(b => b.InspectionRaiting)
+                .Include(b => b.RecommendationType)
+                .Include(b => b.ReferenceFeatureType)
+                .Where(i => i.IdBridgeInspectionFollowUp == id).FirstOrDefaultAsync();
+            if (bridgeInspectionFollowUp == null)
+            {
+                return HttpNotFound();
+            }
+            return View(bridgeInspectionFollowUp);
+        }
 
+        // POST: BridgeInspectionFollowUps/Delete/5
+        [HttpPost, ActionName("DeleteF")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int id)
+        {
+            BridgeInspectionFollowUp bridgeInspectionFollowUp = await db.BridgeInspectionFollowUps.FindAsync(id);
+            db.BridgeInspectionFollowUps.Remove(bridgeInspectionFollowUp);
+            await db.SaveChangesAsync();
+            var inspd = db.InspectionDaily.Find(bridgeInspectionFollowUp.IdInspection);
+            return View("Reports", inspd);
+        }
         public ActionResult Edit(int? id)
         {
             if (id == null)

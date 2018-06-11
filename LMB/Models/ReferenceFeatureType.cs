@@ -10,7 +10,7 @@ namespace LMB.Models
     {
         [Key]
         public int IdReferenceFeatureType { get; set; }
-
+        [Display(Name = "Reference Feature Type")]
         public string Description { get; set; }
 
         public virtual ICollection<BridgeInspectionFollowUp> BridgeInspectionFollowUps { get; set; }

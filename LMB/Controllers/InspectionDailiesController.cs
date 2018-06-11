@@ -19,7 +19,7 @@ namespace LMB.Controllers
         // GET: InspectionDailies
         public async Task<ActionResult> Index()
         {
-            var markers  = UtilsHelper.GetMarcadores();
+            var markers  = await UtilsHelper.GetMarcadores();
             var inspectionDaily = db.InspectionDaily.Include(i  => i.InspectionState)
                 .Include(u => u.UserDBs);
             ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "UserName");

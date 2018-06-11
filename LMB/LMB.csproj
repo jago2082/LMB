@@ -844,7 +844,7 @@
     <Content Include="Views\Done\LoadMultiFiles.cshtml" />
     <Content Include="Views\ConfigurationApps\Index.cshtml" />
     <Content Include="Views\BridgeInspectionFollowUps\Create.cshtml" />
-    <Content Include="Views\BridgeInspectionFollowUps\Delete.cshtml" />
+    <Content Include="Views\BridgeInspectionFollowUps\DeleteF.cshtml" />
     <Content Include="Views\BridgeInspectionFollowUps\Details.cshtml" />
     <Content Include="Views\BridgeInspectionFollowUps\Edit.cshtml" />
     <Content Include="Views\BridgeInspectionFollowUps\Index.cshtml" />
@@ -852,6 +852,7 @@
     <Content Include="Views\Done\EditF.cshtml" />
     <Content Include="Views\Done\CreateF.cshtml" />
     <Content Include="Views\Done\IndexF.cshtml" />
+    <Content Include="Views\Done\DeleteF.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

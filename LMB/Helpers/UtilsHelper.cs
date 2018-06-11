@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace LMB.Helpers
@@ -10,13 +11,14 @@ namespace LMB.Helpers
     public class UtilsHelper
     {
         private static DataContext db = new DataContext();
-        public static List<marker> GetMarcadores()
+        public static async Task<List<marker>> GetMarcadores()
         {
             
             List<marker> markers = new List<marker>(); 
             var inspectionDaily = db.InspectionDaily.Include(i => i.InspectionState)
                 .Include(u => u.UserDBs);
-            foreach (var item in inspectionDaily.Where(i => i.IdStatus != 2).ToList())
+            foreach (var item in await inspectionDaily.Where(i => i.IdStatus != 2).OrderBy(u => u.UserDBs.UserName)
+                .ToListAsync())
             {
                 marker marker = new marker();
                 marker.User = item.UserDBs.UserName;
