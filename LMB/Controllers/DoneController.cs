@@ -309,16 +309,15 @@ namespace LMB.Controllers
 
             string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
 
-           
-           // return View("ReportBridgeInspectionRecord", LoadRatingReport);
 
-            return new ViewAsPdf("ReportBridgeInspectionRecord", LoadRatingReport)
+          //   return View("ReportBridgeInspectionRecord", LoadRatingReport);
+            
+
+                return new ViewAsPdf("ReportBridgeInspectionRecord", LoadRatingReport)
             {
 
-                //  FileName = "firstPdf.pdf",
-                // CustomSwitches = footer
-                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(15,10, 15, 10), PageSize = Size.Letter }
-            };
+               RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(15,10, 15, 10), PageSize = Size.Letter }
+            }; 
         }
 
 
@@ -380,7 +379,7 @@ namespace LMB.Controllers
 
                 //  FileName = "firstPdf.pdf",
                 // CustomSwitches = footer
-                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Size.Letter }
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 20, 5, 20), PageSize = Size.Letter }
             };
             
            
@@ -455,7 +454,20 @@ namespace LMB.Controllers
                 .Include(b => b.RecommendationType)
                 .Include(b => b.ReferenceFeatureType)
                 .Where(i => i.IdInspection == id).ToListAsync();
-            return View("ReportInspFollowUp", reportf);
+
+
+            // return View("ReportInspFollowUp", reportf);
+
+            string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
+
+
+            return new ViewAsPdf("ReportInspFollowUp", reportf)
+            {
+
+                //  FileName = "firstPdf.pdf",
+                // CustomSwitches = footer
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Size.Letter }
+            };
         }
 
         public ActionResult ReportSummarySheet()
@@ -608,6 +620,9 @@ namespace LMB.Controllers
                                    "--header-font-size \"10\" ", header, Url.Action("Footer", "Done", "http"));
 
             string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
+
+
+
 
             // return View("ReportInventoryRecord", InventoryReport);
             return new ViewAsPdf("ReportInventoryRecord", InventoryReport)
