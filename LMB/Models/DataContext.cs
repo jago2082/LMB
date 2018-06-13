@@ -111,5 +111,7 @@ namespace LMB.Models
         public System.Data.Entity.DbSet<LMB.Models.LoadRatingReport> LoadRatingReports { get; set; }
 
         public System.Data.Entity.DbSet<LMB.Models.BridgeInspectionFollowUp> BridgeInspectionFollowUps { get; set; }
+
+        public DbSet<Image_orig_attach> Image_orig_attachs { get; set; }
     }
 }

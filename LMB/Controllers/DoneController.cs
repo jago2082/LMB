@@ -20,7 +20,7 @@ namespace LMB.Controllers
     [Authorize]
     public class DoneController : Controller
     {
-        private DataContext db = new DataContext();
+         private DataContext db = new DataContext();
 
         // GET: InspectionDailies
         public async Task<ActionResult> Index()
@@ -1035,16 +1035,20 @@ namespace LMB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var inspection = await db.InspectionDaily.FindAsync(id);
-            var InspTypeAttach =  await db.Insp_Type_Attach.FindAsync(inspection.IdAttach);
+
+            var auxInspTypeAttach = db.Insp_Type_Attach.Include(t => t.TypePicture)
+                .Include(d => d.DirectionPhotoType);
+            var InspTypeAttach = auxInspTypeAttach.Where(i => i.IDAttach == id).FirstOrDefault();
+            var inspection = await db.InspectionDaily.Where(i => i.IdInspection== InspTypeAttach.IDInspection).FirstOrDefaultAsync();
+           
             
             if (InspTypeAttach == null)
             {
                 return HttpNotFound();
             }
             InspTypeAttach.numinspection = inspection.NumInspection;
-            ViewBag.IDTypePicture = new SelectList(CombosHelper.TypePicture(), "IdTypePicture", "Description");
-            ViewBag.IdDirectionPhotoType = new SelectList(CombosHelper.PothoType(), "IdDirectionPhotoType", "Description");
+            ViewBag.IDTypePicture = new SelectList(CombosHelper.TypePicture(), "IdTypePicture", "Description",InspTypeAttach.TypePicture);
+            ViewBag.IdDirectionPhotoType = new SelectList(CombosHelper.PothoType(), "IdDirectionPhotoType", "Description",InspTypeAttach.DirectionPhotoType);
             return View(InspTypeAttach);
         }
 
@@ -1066,8 +1070,17 @@ namespace LMB.Controllers
                 }
                 string thePictureDataAsString = Convert.ToBase64String(thePictureAsBytes);
                 insptypeattach.ImageString = thePictureDataAsString;
-                db.Entry(insptypeattach).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                try
+                {
+                    db.Entry(insptypeattach).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+
+                    ViewBag.Info = "<script type='text/javascript'>swal('¡Alert!', '" + ex.Message.ToString() + "', 'error');</script>";
+                }
+               
                 return RedirectToAction("Index");
             }
             return View(insptypeattach);
