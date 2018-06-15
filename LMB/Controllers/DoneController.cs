@@ -14,6 +14,7 @@ using System.IO;
 using Rotativa.Core.Options;
 using Newtonsoft.Json;
 using Microsoft.AspNet.Identity;
+using System.Drawing;
 
 namespace LMB.Controllers
 {
@@ -77,7 +78,7 @@ namespace LMB.Controllers
 
                 //  FileName = "firstPdf.pdf",
                 // CustomSwitches = footer
-                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Size.Letter }
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
             };
         }
 
@@ -316,7 +317,7 @@ namespace LMB.Controllers
                 return new ViewAsPdf("ReportBridgeInspectionRecord", LoadRatingReport)
             {
 
-               RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(15,10, 15, 10), PageSize = Size.Letter }
+               RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(15,10, 15, 10), PageSize = Rotativa.Core.Options.Size.Letter }
             }; 
         }
 
@@ -379,7 +380,7 @@ namespace LMB.Controllers
 
                 //  FileName = "firstPdf.pdf",
                 // CustomSwitches = footer
-                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 20, 5, 20), PageSize = Size.Letter }
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 20, 5, 20), PageSize = Rotativa.Core.Options.Size.Letter }
             };
             
            
@@ -431,7 +432,7 @@ namespace LMB.Controllers
          
                 //  FileName = "firstPdf.pdf",
                 // CustomSwitches = footer
-                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Size.Letter }
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
             };
             
         }
@@ -466,7 +467,7 @@ namespace LMB.Controllers
 
                 //  FileName = "firstPdf.pdf",
                 // CustomSwitches = footer
-                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Size.Letter }
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
             };
         }
 
@@ -631,7 +632,7 @@ namespace LMB.Controllers
                 // CustomSwitches = footer
                 //PageWidth = 180, PageHeight = 297, 
 
-                RotativaOptions = { CustomSwitches = footer, MinimumFontSize=12, PageMargins = new Margins(10, 10, 10, 10), PageSize = Size.Letter }
+                RotativaOptions = { CustomSwitches = footer, MinimumFontSize=12, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
             };
 
            
@@ -665,7 +666,7 @@ namespace LMB.Controllers
             {
                 //  FileName = "firstPdf.pdf",
                 // CustomSwitches = footer
-                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Size.Letter }
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
             };
         }
 
@@ -701,7 +702,7 @@ namespace LMB.Controllers
 
                 //  FileName = "firstPdf.pdf",
                 // CustomSwitches = footer
-                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Size.Letter }
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
             };
 
                }
@@ -1012,7 +1013,7 @@ namespace LMB.Controllers
             return new ViewAsPdf("ReportPDF", lismpdf)
             {
                
-                RotativaOptions = { CustomSwitches = customSwitches, PageMargins = new Margins(0, 0, 28, 0), PageSize = Size.Letter }
+                RotativaOptions = { CustomSwitches = customSwitches, PageMargins = new Margins(0, 0, 28, 0), PageSize = Rotativa.Core.Options.Size.Letter }
             };
         }
 
@@ -1055,6 +1056,7 @@ namespace LMB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EditP(Insp_Type_Attach insptypeattach)
         {
+
             if (ModelState.IsValid)
             {
                 HttpPostedFileBase file = Request.Files["LogoFile"];
@@ -1064,6 +1066,35 @@ namespace LMB.Controllers
                 {
                     thePictureAsBytes = theReader.ReadBytes(file.ContentLength);
                 }
+
+
+                ////
+                
+                using (MemoryStream ms = new MemoryStream(thePictureAsBytes, 0, thePictureAsBytes.Length))
+                {
+                    using (Image img = Image.FromStream(ms))
+                    {
+                        float aspect = img.Width / (float)img.Height;
+                        int newWidth, newHeight;
+                        int BOXWIDTH = 100;
+                        newWidth = (int)(BOXWIDTH * aspect);
+                        newHeight = (int)(newWidth / aspect);
+
+                        int w = newWidth;
+                        int h = newHeight;
+
+                        using (Bitmap b = new Bitmap(img, new System.Drawing.Size(w, h)))
+                        {
+                            using (MemoryStream ms2 = new MemoryStream())
+                            {
+                                b.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
+                                thePictureAsBytes = ms2.ToArray();
+                            }
+                        }
+                    }
+                }
+
+                ////
                 string thePictureDataAsString = Convert.ToBase64String(thePictureAsBytes);
                 insptypeattach.ImageString = thePictureDataAsString;
                 db.Entry(insptypeattach).State = EntityState.Modified;
