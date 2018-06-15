@@ -286,6 +286,7 @@
     <Compile Include="Models\FuncionalidadClient.cs" />
     <Compile Include="Models\HSEQuestion.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Image_orig_attach.cs" />
     <Compile Include="Models\Inspection.cs" />
     <Compile Include="Models\InspectionBasicRegistry.cs" />
     <Compile Include="Models\InspectionBasicRegistryValue.cs" />
