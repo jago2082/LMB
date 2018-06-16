@@ -473,7 +473,17 @@ namespace LMB.Controllers
 
         public ActionResult ReportSummarySheet()
         {
-            return View("ReportSummarySheet");
+            string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
+
+
+            return new ViewAsPdf("ReportSummarySheet")
+            {
+
+                //  FileName = "firstPdf.pdf",
+                // CustomSwitches = footer
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
+            };
+         //   return View("ReportSummarySheet");
         }
         public ActionResult ReportStructuralCondition()
         {
