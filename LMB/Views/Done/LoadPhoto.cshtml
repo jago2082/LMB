@@ -1,0 +1,113 @@
+﻿@model IEnumerable<LMB.Models.Insp_Type_Attach>
+
+@{
+    LMB.Models.Insp_Type_Attach inspectionTypeA = Model.FirstOrDefault();  
+}
+
+<style>
+    table.dataTable thead tr {
+        background-color: #dfe5e6;
+    }
+
+    .grey {
+        background-color: #e4e1e1;
+    }
+</style>
+Bridge: @inspectionTypeA.numinspection
+<table class="table" id="rawdata_table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Caption)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DirectionPhotoType.Description)
+            </th>
+            <th>
+                Photo App
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoCameraNum)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.Caption))
+                    {
+                     @Html.DisplayFor(modelItem => item.Caption)
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.TypePicture.Description)
+                    }
+                </td>
+                <td>
+                   @if (!string.IsNullOrEmpty(item.DirectionPhotoType.Description))
+                   {
+                       var description = string.Format("Looking {0}",item.DirectionPhotoType.Description);
+                       @description;
+                   }
+                   
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImageString))
+
+                    {
+                        string image = string.Format("data:image/png;base64,{0}", item.ImageString);
+                        <a href=""
+                           onmouseover="document.getElementById('place-holder-1').src='@image';"
+                           onmouseout="document.getElementById('place-holder-1').src='/theme/img/linkpeek-transparent-pixel-placeholder.png';">
+                            OK
+                            <img src="/theme/img/linkpeek-transparent-pixel-placeholder.png" id="place-holder-1" style="zindex: 100; position:absolute;" />
+                        </a>
+                    
+                       <!-- <label></label>-->
+                    }
+                </td>
+                <td>
+
+                    @Html.DisplayFor(modelItem => item.PhotoCameraNum)
+                </td>
+                <td>
+                    <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("EditP", new { id = item.IDAttach })'">
+
+                        <img width="30" alt="Load Photo" title="Load Photo" src="~/img/ic_loadphoto.png">
+                    </button>
+                    </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@Html.Raw(TempData["msg"])
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            inicializar(e);
+        }
+    );
+        function tabla() {
+            var table = $("#rawdata_table").DataTable({
+                "bFilter": false,
+                "bLengthChange": false
+            });
+
+        }
+
+        function inicializar(e) {
+            tabla();
+        }
+    </script>
+
+
+}

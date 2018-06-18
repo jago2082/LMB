@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,5 +21,12 @@ namespace LMB.Models
         public Nullable<int> IDTypeFuncionality { get; set; }
         public Nullable<int> Sequence { get; set; }
         public Nullable<int> Active { get; set; }
+
+        [JsonIgnore]
+        public virtual CheckListSection CheckListSection { get; set; }
+        [JsonIgnore]
+        public virtual TypeFuncionalidad TypeFuncionalidad { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<ValueCheckList> ValueCheckLists { get; set; }
     }
 }

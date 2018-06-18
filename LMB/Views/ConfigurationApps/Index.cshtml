@@ -1,0 +1,143 @@
+﻿@model LMB.Models.ConfigurationApp
+
+@{
+    LMB.Models.Reports report = Model.reports.FirstOrDefault();
+}
+
+@{
+    ViewBag.Title = "Configuration";
+}
+<style>
+    #configuration_FootPageText {
+        width:100%;
+    }
+    #configuration_footPage {
+        width:100%;
+    }
+</style>
+<h2>Configuration</h2>
+@using (Html.BeginForm("Config", "ConfigurationApps", FormMethod.Post, new { enctype = "multipart/form-data", id = "myform" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.configuration.IdConfiguration)
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.configuration.NameCompany, "Company Name:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.configuration.NameCompany, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.configuration.NameCompany, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.configuration.Contract, "Contract No: ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.configuration.Contract, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.configuration.Contract, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.configuration.FootPageText, "Foot Page 1:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.configuration.FootPageText, new { htmlAttributes = new { @class = "form-control", @rows=2, @style= "width: 100%;" } })
+                @Html.ValidationMessageFor(model => model.configuration.FootPageText, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.configuration.footPage, "Foot Page 2:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.configuration.footPage, new { htmlAttributes = new { @class = "form-control txtArea", @rows=2 } })
+                @Html.ValidationMessageFor(model => model.configuration.footPage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.configuration.SingFile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <span class="btn btn-default btn-file">
+                    @Html.TextBoxFor(modelo => modelo.configuration.ContractFile, new { type = "file", id = "ContractFile", name = "ContractFile", accept = "image/*" })
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.configuration.PathLogo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <span class="btn btn-default btn-file">
+                    @Html.TextBoxFor(modelo => modelo.configuration.LogoFile, new { type = "file", id = "LogoFile", name = "LogoFile", accept = "image/*" })
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.reports.FirstOrDefault().Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reports.FirstOrDefault().FormName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reports.FirstOrDefault().Revision)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reports.FirstOrDefault().TeamLeader)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reports.FirstOrDefault().Engineerofrecord)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reports.FirstOrDefault().FirmN)
+            </th>
+        </tr>      
+    </thead>
+    <tbody>
+        @foreach (var item in Model.reports)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FormName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Revision)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeamLeader)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Engineerofrecord)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirmN)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script type="text/javascript">
+    $('#myform').submit(function () {
+        $('#mod-progress').modal()
+    });
+</script>

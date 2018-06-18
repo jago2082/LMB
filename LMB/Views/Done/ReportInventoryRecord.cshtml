@@ -1,0 +1,2689 @@
+﻿@model LMB.Models.InventoryReport
+@{
+    Layout = null;
+    ViewBag.Title = "Done";
+}
+
+<!DOCTYPE html>
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+      xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:w="urn:schemas-microsoft-com:office:word"
+      xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+      xmlns="http://www.w3.org/TR/REC-html40">
+
+
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+    <meta name=ProgId content=Word.Document>
+    <meta name=Generator content="Microsoft Word 14">
+    <meta name=Originator content="Microsoft Word 14">
+    <link rel=File-List href="BridgeInventoryRecord2_files/filelist.xml">
+    <link rel=Edit-Time-Data href="BridgeInventoryRecord2_files/editdata.mso">
+    <!--[if !mso]>
+    <style>
+    v\:* {behavior:url(#default#VML);}
+    o\:* {behavior:url(#default#VML);}
+    w\:* {behavior:url(#default#VML);}
+    .shape {behavior:url(#default#VML);}
+    </style>
+    <![endif]-->
+    <!--[if gte mso 9]><xml>
+     <o:DocumentProperties>
+      <o:Author>Karen Blizzard</o:Author>
+      <o:LastAuthor>Adriana Gonzalez</o:LastAuthor>
+      <o:Revision>2</o:Revision>
+      <o:TotalTime>13</o:TotalTime>
+      <o:Created>2018-06-01T13:53:00Z</o:Created>
+      <o:LastSaved>2018-06-01T13:53:00Z</o:LastSaved>
+      <o:Pages>1</o:Pages>
+      <o:Words>221</o:Words>
+      <o:Characters>1261</o:Characters>
+      <o:Lines>10</o:Lines>
+      <o:Paragraphs>2</o:Paragraphs>
+      <o:CharactersWithSpaces>1480</o:CharactersWithSpaces>
+      <o:Version>14.00</o:Version>
+     </o:DocumentProperties>
+     <o:CustomDocumentProperties>
+      <o:Created dt:dt="date">2017-12-07</o:Created>
+      <o:Creator dt:dt="string">Adobe Acrobat Standard DC 15.6.30394</o:Creator>
+      <o:LastSaved dt:dt="date">2018-04-13</o:LastSaved>
+     </o:CustomDocumentProperties>
+    </xml><![endif]-->
+    <link rel=dataStoreItem href="BridgeInventoryRecord2_files/item0001.xml"
+          target="BridgeInventoryRecord2_files/props002.xml">
+    <link rel=themeData href="BridgeInventoryRecord2_files/themedata.thmx">
+    <link rel=colorSchemeMapping
+          href="BridgeInventoryRecord2_files/colorschememapping.xml">
+    <!--[if gte mso 9]><xml>
+     <w:WordDocument>
+      <w:SpellingState>Clean</w:SpellingState>
+      <w:GrammarState>Clean</w:GrammarState>
+      <w:TrackMoves>false</w:TrackMoves>
+      <w:TrackFormatting/>
+      <w:PunctuationKerning/>
+      <w:DrawingGridHorizontalSpacing>5.5 pt</w:DrawingGridHorizontalSpacing>
+      <w:DisplayHorizontalDrawingGridEvery>2</w:DisplayHorizontalDrawingGridEvery>
+      <w:ValidateAgainstSchemas/>
+      <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+      <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+      <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+      <w:DoNotPromoteQF/>
+      <w:LidThemeOther>EN-US</w:LidThemeOther>
+      <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+      <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+      <w:Compatibility>
+       <w:ULTrailSpace/>
+       <w:BreakWrappedTables/>
+       <w:SnapToGridInCell/>
+       <w:WrapTextWithPunct/>
+       <w:UseAsianBreakRules/>
+       <w:DontGrowAutofit/>
+       <w:SplitPgBreakAndParaMark/>
+       <w:EnableOpenTypeKerning/>
+       <w:DontFlipMirrorIndents/>
+       <w:OverrideTableStyleHps/>
+      </w:Compatibility>
+      <w:DoNotOptimizeForBrowser/>
+      <m:mathPr>
+       <m:mathFont m:val="Cambria Math"/>
+       <m:brkBin m:val="before"/>
+       <m:brkBinSub m:val="&#45;-"/>
+       <m:smallFrac m:val="off"/>
+       <m:dispDef/>
+       <m:lMargin m:val="0"/>
+       <m:rMargin m:val="0"/>
+       <m:defJc m:val="centerGroup"/>
+       <m:wrapIndent m:val="1440"/>
+       <m:intLim m:val="subSup"/>
+       <m:naryLim m:val="undOvr"/>
+      </m:mathPr></w:WordDocument>
+    </xml><![endif]-->
+    <!--[if gte mso 9]><xml>
+     <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+      DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+      LatentStyleCount="267">
+      <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+       UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+      <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+       UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+      <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+      <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+      <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+      <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+      <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+      <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+      <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+      <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+      <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+      <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+      <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+      <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+      <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+      <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+      <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+      <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+      <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+      <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+      <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+       UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+      <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+      <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+       UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+      <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+       UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+      <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+       UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+      <w:LsdException Locked="false" Priority="39" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Table Grid"/>
+      <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+      <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+       UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+      <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light Shading"/>
+      <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light List"/>
+      <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light Grid"/>
+      <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Shading 1"/>
+      <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Shading 2"/>
+      <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium List 1"/>
+      <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium List 2"/>
+      <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 1"/>
+      <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 2"/>
+      <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 3"/>
+      <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Dark List"/>
+      <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful Shading"/>
+      <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful List"/>
+      <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful Grid"/>
+      <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+      <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light List Accent 1"/>
+      <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+      <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+      <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+      <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+      <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+      <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+       UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+      <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+       UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+      <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+       UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+      <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+      <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+      <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+      <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+      <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+      <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+      <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+      <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+      <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+      <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light List Accent 2"/>
+      <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+      <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+      <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+      <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+      <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+      <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+      <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+      <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+      <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+      <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+      <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+      <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+      <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+      <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light List Accent 3"/>
+      <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+      <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+      <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+      <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+      <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+      <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+      <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+      <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+      <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+      <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+      <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+      <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+      <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+      <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light List Accent 4"/>
+      <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+      <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+      <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+      <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+      <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+      <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+      <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+      <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+      <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+      <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+      <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+      <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+      <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+      <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light List Accent 5"/>
+      <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+      <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+      <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+      <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+      <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+      <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+      <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+      <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+      <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+      <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+      <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+      <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+      <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+      <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light List Accent 6"/>
+      <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+      <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+      <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+      <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+      <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+      <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+      <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+      <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+      <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+      <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+      <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+      <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+       UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+      <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+       UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+      <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+       UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+      <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+       UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+      <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+       UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+      <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+       UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+      <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+      <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+     </w:LatentStyles>
+    </xml><![endif]-->
+    <style>
+        <!--
+        /* Font Definitions */
+        @@font-face {
+            font-family: "MS Gothic";
+            panose-1: 2 11 6 9 7 2 5 8 2 4;
+            mso-font-alt: "\FF2D\FF33 \30B4\30B7\30C3\30AF";
+            mso-font-charset: 128;
+            mso-generic-font-family: modern;
+            mso-font-pitch: fixed;
+            mso-font-signature: -536870145 1791491579 134217746 0 131231 0;
+        }
+
+        @@font-face {
+            font-family: "MS Gothic";
+            panose-1: 2 11 6 9 7 2 5 8 2 4;
+            mso-font-alt: "\FF2D\FF33 \30B4\30B7\30C3\30AF";
+            mso-font-charset: 128;
+            mso-generic-font-family: modern;
+            mso-font-pitch: fixed;
+            mso-font-signature: -536870145 1791491579 134217746 0 131231 0;
+        }
+
+        @@font-face {
+            font-family: Calibri;
+            panose-1: 2 15 5 2 2 2 4 3 2 4;
+            mso-font-charset: 0;
+            mso-generic-font-family: swiss;
+            mso-font-pitch: variable;
+            mso-font-signature: -536859905 -1073732485 9 0 511 0;
+        }
+
+        @@font-face {
+            font-family: Tahoma;
+            panose-1: 2 11 6 4 3 5 4 4 2 4;
+            mso-font-charset: 0;
+            mso-generic-font-family: swiss;
+            mso-font-pitch: variable;
+            mso-font-signature: -520081665 -1073717157 41 0 66047 0;
+        }
+
+        @@font-face {
+            font-family: "Arial Narrow";
+            panose-1: 2 11 6 6 2 2 2 3 2 4;
+            mso-font-alt: "Arial Narrow";
+            mso-font-charset: 0;
+            mso-generic-font-family: swiss;
+            mso-font-pitch: variable;
+            mso-font-signature: 647 2048 0 0 159 0;
+        }
+
+        @@font-face {
+            font-family: "\@@MS Gothic";
+            panose-1: 2 11 6 9 7 2 5 8 2 4;
+            mso-font-charset: 128;
+            mso-generic-font-family: modern;
+            mso-font-pitch: fixed;
+            mso-font-signature: -536870145 1791491579 134217746 0 131231 0;
+        }
+        /* Style Definitions */
+        p.MsoNormal, li.MsoNormal, div.MsoNormal {
+            mso-style-priority: 1;
+            mso-style-unhide: no;
+            mso-style-qformat: yes;
+            mso-style-parent: "";
+            margin: 0in;
+            margin-bottom: .0001pt;
+            mso-pagination: none;
+            text-autospace: none;
+            font-size: 11.0pt;
+            font-family: "Arial","sans-serif";
+            mso-fareast-font-family: Arial;
+        }
+
+        h1 {
+            mso-style-priority: 1;
+            mso-style-unhide: no;
+            mso-style-qformat: yes;
+            margin-top: .05pt;
+            margin-right: 0in;
+            margin-bottom: 0in;
+            margin-left: 8.15pt;
+            margin-bottom: .0001pt;
+            mso-pagination: none;
+            mso-outline-level: 1;
+            text-autospace: none;
+            font-size: 12.0pt;
+            font-family: "Arial","sans-serif";
+            mso-fareast-font-family: Arial;
+            mso-font-kerning: 0pt;
+        }
+
+        p.MsoBodyText, li.MsoBodyText, div.MsoBodyText {
+            mso-style-priority: 1;
+            mso-style-unhide: no;
+            mso-style-qformat: yes;
+            margin: 0in;
+            margin-bottom: .0001pt;
+            mso-pagination: none;
+            text-autospace: none;
+            font-size: 10.0pt;
+            font-family: "Calibri","sans-serif";
+            mso-fareast-font-family: Calibri;
+        }
+
+        p.MsoAcetate, li.MsoAcetate, div.MsoAcetate {
+            mso-style-noshow: yes;
+            mso-style-priority: 99;
+            mso-style-link: "Balloon Text Char";
+            margin: 0in;
+            margin-bottom: .0001pt;
+            mso-pagination: none;
+            text-autospace: none;
+            font-size: 8.0pt;
+            font-family: "Tahoma","sans-serif";
+            mso-fareast-font-family: Arial;
+        }
+
+        p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph {
+            mso-style-priority: 1;
+            mso-style-unhide: no;
+            mso-style-qformat: yes;
+            margin: 0in;
+            margin-bottom: .0001pt;
+            mso-pagination: none;
+            text-autospace: none;
+            font-size: 11.0pt;
+            font-family: "Arial","sans-serif";
+            mso-fareast-font-family: Arial;
+        }
+
+        p.TableParagraph, li.TableParagraph, div.TableParagraph {
+            mso-style-name: "Table Paragraph";
+            mso-style-priority: 1;
+            mso-style-unhide: no;
+            mso-style-qformat: yes;
+            margin: 0in;
+            margin-bottom: .0001pt;
+            mso-pagination: none;
+            text-autospace: none;
+            font-size: 11.0pt;
+            font-family: "Arial","sans-serif";
+            mso-fareast-font-family: Arial;
+        }
+
+        span.BalloonTextChar {
+            mso-style-name: "Balloon Text Char";
+            mso-style-noshow: yes;
+            mso-style-priority: 99;
+            mso-style-unhide: no;
+            mso-style-locked: yes;
+            mso-style-link: "Balloon Text";
+            mso-ansi-font-size: 8.0pt;
+            mso-bidi-font-size: 8.0pt;
+            font-family: "Tahoma","sans-serif";
+            mso-ascii-font-family: Tahoma;
+            mso-fareast-font-family: Arial;
+            mso-hansi-font-family: Tahoma;
+            mso-bidi-font-family: Tahoma;
+        }
+
+        span.SpellE {
+            mso-style-name: "";
+            mso-spl-e: yes;
+        }
+
+        .MsoChpDefault {
+            mso-style-type: export-only;
+            mso-default-props: yes;
+            font-family: "Calibri","sans-serif";
+            mso-ascii-font-family: Calibri;
+            mso-ascii-theme-font: minor-latin;
+            mso-fareast-font-family: Calibri;
+            mso-fareast-theme-font: minor-latin;
+            mso-hansi-font-family: Calibri;
+            mso-hansi-theme-font: minor-latin;
+            mso-bidi-font-family: "Times New Roman";
+            mso-bidi-theme-font: minor-bidi;
+        }
+
+        .MsoPapDefault {
+            mso-style-type: export-only;
+            mso-pagination: none;
+            text-autospace: none;
+        }
+
+        @@page WordSection1 {
+            size: 8.5in 11.0in;
+            margin: 33.0pt 28.0pt 14.0pt 30.0pt;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-columns: 2 not-even 495.85pt 13.55pt 44.6pt;
+            mso-paper-source: 0;
+        }
+
+        div.WordSection1 {
+            page: WordSection1;
+        }
+
+        @@page WordSection2 {
+            size: 8.5in 11.0in;
+            margin: 33.0pt 81.0pt 4.5pt 30.0pt;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        div.WordSection2 {
+            page: WordSection2;
+        }
+
+        @@page WordSection3 {
+            size: 8.5in 11.0in;
+            margin: 27.0pt 28.0pt 14.0pt 30.0pt;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-columns: 3 not-even 61.0pt 30.1pt 378.95pt 33.7pt 50.25pt;
+            mso-paper-source: 0;
+        }
+
+        div.WordSection3 {
+            page: WordSection3;
+        }
+        /* List Definitions */
+        @@list l0 {
+            mso-list-id: 256980970;
+            mso-list-type: hybrid;
+            mso-list-template-ids: -1257724590 -1528934736 1277313816 1601618426 147647034 2026908362 -494489786 -1994090070 -1873748818 -1873667188;
+        }
+
+        @@list l0:level1 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: -;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 68.05pt;
+            text-indent: -8.05pt;
+            mso-ansi-font-size: 9.0pt;
+            mso-bidi-font-size: 9.0pt;
+            font-family: "Arial","sans-serif";
+            mso-fareast-font-family: Arial;
+            color: #231F20;
+            mso-font-width: 99%;
+        }
+
+        @@list l0:level2 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 82.65pt;
+            text-indent: -8.05pt;
+        }
+
+        @@list l0:level3 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 97.35pt;
+            text-indent: -8.05pt;
+        }
+
+        @@list l0:level4 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 112.05pt;
+            text-indent: -8.05pt;
+        }
+
+        @@list l0:level5 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 126.7pt;
+            text-indent: -8.05pt;
+        }
+
+        @@list l0:level6 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 141.4pt;
+            text-indent: -8.05pt;
+        }
+
+        @@list l0:level7 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 156.1pt;
+            text-indent: -8.05pt;
+        }
+
+        @@list l0:level8 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 170.75pt;
+            text-indent: -8.05pt;
+        }
+
+        @@list l0:level9 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 185.45pt;
+            text-indent: -8.05pt;
+        }
+
+        @@list l1 {
+            mso-list-id: 397169003;
+            mso-list-type: hybrid;
+            mso-list-template-ids: 1469087976 -567869858 -396338292 -1634450392 1001262552 -1888553386 145024668 -1925698744 -425550828 1455219764;
+        }
+
+        @@list l1:level1 {
+            mso-level-number-format: alpha-upper;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 12.75pt;
+            text-indent: -9.85pt;
+            mso-ansi-font-size: 8.0pt;
+            mso-bidi-font-size: 8.0pt;
+            font-family: "Arial Narrow","sans-serif";
+            mso-fareast-font-family: "Arial Narrow";
+            mso-bidi-font-family: "Arial Narrow";
+            color: #231F20;
+            letter-spacing: -.05pt;
+            mso-font-width: 99%;
+        }
+
+        @@list l1:level2 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 65.55pt;
+            text-indent: -9.85pt;
+        }
+
+        @@list l1:level3 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 118.15pt;
+            text-indent: -9.85pt;
+        }
+
+        @@list l1:level4 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 170.75pt;
+            text-indent: -9.85pt;
+        }
+
+        @@list l1:level5 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 223.35pt;
+            text-indent: -9.85pt;
+        }
+
+        @@list l1:level6 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 275.95pt;
+            text-indent: -9.85pt;
+        }
+
+        @@list l1:level7 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 328.5pt;
+            text-indent: -9.85pt;
+        }
+
+        @@list l1:level8 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 381.1pt;
+            text-indent: -9.85pt;
+        }
+
+        @@list l1:level9 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 433.7pt;
+            text-indent: -9.85pt;
+        }
+
+        @@list l2 {
+            mso-list-id: 509150647;
+            mso-list-type: hybrid;
+            mso-list-template-ids: -338912478 -562921960 -2336558 -285716150 -727681558 659742426 -430423768 84441146 -694279308 -2046950214;
+        }
+
+        @@list l2:level1 {
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 11.1pt;
+            text-indent: -11.15pt;
+            mso-ansi-font-size: 8.0pt;
+            mso-bidi-font-size: 8.0pt;
+            font-family: "Arial","sans-serif";
+            mso-fareast-font-family: Arial;
+            color: #231F20;
+            mso-font-width: 99%;
+        }
+
+        @@list l2:level2 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 34.45pt;
+            text-indent: -11.15pt;
+        }
+
+        @@list l2:level3 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 57.95pt;
+            text-indent: -11.15pt;
+        }
+
+        @@list l2:level4 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 81.45pt;
+            text-indent: -11.15pt;
+        }
+
+        @@list l2:level5 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 104.95pt;
+            text-indent: -11.15pt;
+        }
+
+        @@list l2:level6 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 128.45pt;
+            text-indent: -11.15pt;
+        }
+
+        @@list l2:level7 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 151.95pt;
+            text-indent: -11.15pt;
+        }
+
+        @@list l2:level8 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 175.45pt;
+            text-indent: -11.15pt;
+        }
+
+        @@list l2:level9 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 198.95pt;
+            text-indent: -11.15pt;
+        }
+
+        @@list l3 {
+            mso-list-id: 1237087008;
+            mso-list-type: hybrid;
+            mso-list-template-ids: -1513823688 424560856 23229648 -387254688 1669915162 -1752108356 -553516142 1908183490 1470560724 -239558550;
+        }
+
+        @@list l3:level1 {
+            mso-level-start-at: 9;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 15.55pt;
+            text-align: right;
+            text-indent: -11.15pt;
+            mso-ansi-font-size: 8.0pt;
+            mso-bidi-font-size: 8.0pt;
+            font-family: "Arial","sans-serif";
+            mso-fareast-font-family: Arial;
+            color: #231F20;
+            mso-font-width: 99%;
+        }
+
+        @@list l3:level2 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 38.3pt;
+            text-indent: -11.15pt;
+        }
+
+        @@list l3:level3 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 60.6pt;
+            text-indent: -11.15pt;
+        }
+
+        @@list l3:level4 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 82.9pt;
+            text-indent: -11.15pt;
+        }
+
+        @@list l3:level5 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 105.2pt;
+            text-indent: -11.15pt;
+        }
+
+        @@list l3:level6 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 127.5pt;
+            text-indent: -11.15pt;
+        }
+
+        @@list l3:level7 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 149.8pt;
+            text-indent: -11.15pt;
+        }
+
+        @@list l3:level8 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 172.15pt;
+            text-indent: -11.15pt;
+        }
+
+        @@list l3:level9 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: •;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            margin-left: 194.45pt;
+            text-indent: -11.15pt;
+        }
+
+        ol {
+            margin-bottom: 0in;
+        }
+
+        ul {
+            margin-bottom: 0in;
+        }
+        -->
+    </style>
+    <!--[if gte mso 10]>
+    <style>
+     /* Style Definitions */
+     table.MsoNormalTable
+        {mso-style-name:"Table Normal";
+        mso-tstyle-rowband-size:0;
+        mso-tstyle-colband-size:0;
+        mso-style-noshow:yes;
+        mso-style-priority:99;
+        mso-style-parent:"";
+        mso-padding-alt:0in 5.4pt 0in 5.4pt;
+        mso-para-margin:0in;
+        mso-para-margin-bottom:.0001pt;
+        mso-pagination:none;
+        text-autospace:none;
+        font-size:11.0pt;
+        font-family:"Calibri","sans-serif";
+        mso-ascii-font-family:Calibri;
+        mso-ascii-theme-font:minor-latin;
+        mso-hansi-font-family:Calibri;
+        mso-hansi-theme-font:minor-latin;
+        mso-bidi-font-family:"Times New Roman";
+        mso-bidi-theme-font:minor-bidi;}
+    table.MsoTableGrid
+        {mso-style-name:"Table Grid";
+        mso-tstyle-rowband-size:0;
+        mso-tstyle-colband-size:0;
+        mso-style-priority:39;
+        mso-style-unhide:no;
+        border:solid windowtext 1.0pt;
+        mso-border-alt:solid windowtext .5pt;
+        mso-padding-alt:0in 5.4pt 0in 5.4pt;
+        mso-border-insideh:.5pt solid windowtext;
+        mso-border-insidev:.5pt solid windowtext;
+        mso-para-margin:0in;
+        mso-para-margin-bottom:.0001pt;
+        mso-pagination:widow-orphan;
+        font-size:11.0pt;
+        font-family:"Calibri","sans-serif";
+        mso-ascii-font-family:Calibri;
+        mso-ascii-theme-font:minor-latin;
+        mso-hansi-font-family:Calibri;
+        mso-hansi-theme-font:minor-latin;
+        mso-bidi-font-family:"Times New Roman";
+        mso-bidi-theme-font:minor-bidi;}
+    </style>
+    <![endif]-->
+    <!--[if gte mso 9]><xml>
+     <o:shapedefaults v:ext="edit" spidmax="1026"/>
+    </xml><![endif]-->
+    <!--[if gte mso 9]><xml>
+    <o:shapelayout v:ext="edit">
+     <o:idmap v:ext="edit" data="1"/>
+    </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+    <div class=WordSection1>
+
+        <table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width=706
+               style='border-collapse:collapse;mso-table-layout-alt:fixed;border:none;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ none;mso-border-insidev:none'>
+            <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-row-margin-right:11.15pt'>
+                <td width=111 colspan=3 valign=top style='width:83.3pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-left:2.3pt;text-align:justify;mso-layout-grid-align:
+  none;text-autospace:none'>
+                        <span style='font-size:9.0pt;color:#231F20;
+  mso-no-proof:yes'>
+                            <!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+                             coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@@4@@5l@@4@@11@@9@@11@@9@@5xe"
+                             filled="f" stroked="f">
+                             <v:stroke joinstyle="miter"/>
+                             <v:formulas>
+                              <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+                              <v:f eqn="sum @@0 1 0"/>
+                              <v:f eqn="sum 0 0 @@1"/>
+                              <v:f eqn="prod @@2 1 2"/>
+                              <v:f eqn="prod @@3 21600 pixelWidth"/>
+                              <v:f eqn="prod @@3 21600 pixelHeight"/>
+                              <v:f eqn="sum @@0 0 1"/>
+                              <v:f eqn="prod @@6 1 2"/>
+                              <v:f eqn="prod @@7 21600 pixelWidth"/>
+                              <v:f eqn="sum @@8 21600 0"/>
+                              <v:f eqn="prod @@7 21600 pixelHeight"/>
+                              <v:f eqn="sum @@10 21600 0"/>
+                             </v:formulas>
+                             <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+                             <o:lock v:ext="edit" aspectratio="t"/>
+                            </v:shapetype><v:shape id="Picture_x0020_1" o:spid="_x0000_i1026" type="#_x0000_t75"
+                             style='width:69.75pt;height:47.25pt;visibility:visible;mso-wrap-style:square'>
+                             <v:imagedata src="BridgeInventoryRecord2_files/image001.emz" o:title=""/>
+                            </v:shape><![endif]-->
+                            <![if !vml]><img width=93 height=63
+      src="~/img/LogoContractor.gif" v:shapes="Picture_x0020_1"><![endif]>
+                        </span><span style='font-size:9.0pt;color:#231F20'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=490 colspan=14 style='width:367.6pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <h1 style='margin-left:106.55pt;mso-outline-level:1;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='color:#231F20'>BRIDGE INVENTORY RECORD</span>
+                    </h1>
+                    <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='font-size:7.0pt;color:#231F20'><o:p>&nbsp;</o:p></span></p>
+                </td>
+                <td width=90 colspan=4 style='width:67.5pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'>
+                        <span style='font-size:7.0pt;color:#231F20'>Form </span><span style='font-size:7.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                            <span style='mso-spacerun:yes'></span>536
+                        </span><span style='font-size:7.0pt;
+  color:#231F20'><o:p></o:p></span>
+                    </p>
+                    <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'>
+                        <span style='font-size:7.0pt;color:#231F20'>
+                            (Rev.
+                            03/16)<o:p></o:p>
+                        </span>
+                    </p>
+                    <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'>
+                        <span style='font-size:7.0pt;color:#231F20'>
+                            Page 1
+                            of 1<o:p></o:p>
+                        </span>
+                    </p>
+                    <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='font-size:7.0pt;color:#231F20'><o:p>&nbsp;</o:p></span></p>
+                </td>
+                <td style='mso-cell-special:placeholder;border:none;padding:0in 0in 0in 0in'
+                    width=15 colspan=2>
+                    <p class='MsoNormal'>&nbsp;
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:1'>
+                <td width=111 colspan=3 valign=top style='width:83.3pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-left:2.3pt;text-align:justify;mso-layout-grid-align:
+  none;text-autospace:none'><span style='font-size:9.0pt;color:#231F20'><o:p>&nbsp;</o:p></span></p>
+                </td>
+                <td width=579 colspan=17 style='width:434.45pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><b><span style='font-size:12.0pt;color:#231F20'><o:p>&nbsp;</o:p></span></b></p>
+                </td>
+                <td width=16 colspan=3 valign=top style='width:11.8pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='font-size:7.0pt;color:#231F20'><o:p>&nbsp;</o:p></span></p>
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:2;mso-row-margin-right:8.35pt'>
+                <td width=61 valign=top style='width:46.0pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:9.0pt;color:#231F20'>District:</span><span style='font-size:
+  7.0pt;color:#231F20'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=50 colspan=2 valign=top style='width:37.3pt;border:none;border-bottom:
+  solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:7.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.District)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=64 colspan=2 valign=top style='width:47.65pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:9.0pt;color:#231F20'>County:</span><span style='font-size:
+  7.0pt;color:#231F20'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=54 valign=top style='width:40.35pt;border:none;border-bottom:solid windowtext 1.0pt;
+  mso-border-bottom-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:7.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.County)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=119 colspan=2 valign=top style='width:89.4pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:9.0pt;color:#231F20'>Control - Section:</span><span style='font-size:7.0pt;color:#231F20'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=49 colspan=3 valign=top style='width:36.45pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:7.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.Control)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=19 valign=top style='width:14.15pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:9.0pt;color:#231F20'>-</span><span style='font-size:7.0pt;
+  color:#231F20'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=48 valign=top style='width:.5in;border:none;border-bottom:solid windowtext 1.0pt;
+  mso-border-bottom-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:7.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.Section)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=78 colspan=2 valign=top style='width:58.6pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:9.0pt;color:#231F20'>Structure #:</span><span style='font-size:7.0pt;color:#231F20'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=85 colspan=3 valign=top style='width:63.55pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:7.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.Structure)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=53 valign=top style='width:39.95pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:9.0pt;color:#231F20'>Route:</span><span style='font-size:
+  7.0pt;color:#231F20'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=16 colspan=3 valign=top style='width:11.8pt;border:none;border-bottom:
+  solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:7.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.Route)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td style='mso-cell-special:placeholder;border:none;padding:0in 0in 0in 0in'
+                    width=11>
+                    <p class='MsoNormal'>&nbsp;
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:3;mso-row-margin-right:11.15pt'>
+                <td width=61 valign=top style='width:46.0pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:9.0pt;color:#231F20'>Owner:<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=288 colspan=8 valign=top style='width:215.8pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:9.0pt;color:#231F20'>7<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=114 colspan=4 valign=top style='width:85.5pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:9.0pt;color:#231F20'>Feature Crossed<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=228 colspan=8 valign=top style='width:171.1pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:9.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.FeatXed)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td style='mso-cell-special:placeholder;border:none;padding:0in 0in 0in 0in'
+                    width=15 colspan=2>
+                    <p class='MsoNormal'>&nbsp;
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:4;mso-yfti-lastrow:yes;mso-row-margin-right:11.15pt'>
+                <td width=73 colspan=2 valign=top style='width:54.9pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:9.0pt;color:#231F20'>Location:<u>@Html.DisplayFor(modelItem => Model.Location)</u><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=84 colspan=2 valign=top style='width:63.0pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;color:#231F20'>Latitude: N<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=135 colspan=3 valign=top style='width:101.55pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.LatitudeEnd)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=93 colspan=3 valign=top style='width:69.45pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                            Longitude:<span style='letter-spacing:-.05pt'></span>W
+                        </span><span style='font-size:9.0pt;
+  color:#231F20'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=109 colspan=4 valign=top style='width:81.65pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:9.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.LongitudeEnd)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=72 colspan=2 valign=top style='width:53.7pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span class=SpellE>
+                            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;
+  color:#231F20'>Milepoint</span>
+                        </span><span style='font-size:9.0pt;
+  color:#231F20'>:<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=126 colspan=5 valign=top style='width:94.15pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'>
+                        <span style='font-size:9.0pt;color:#231F20'>12<o:p></o:p></span>
+                    </p>
+                </td>
+                <td style='mso-cell-special:placeholder;border:none;padding:0in 0in 0in 0in'
+                    width=15 colspan=2>
+                    <p class='MsoNormal'>&nbsp;
+                </td>
+            </tr>
+            <![if !supportMisalignedColumns]>
+            <tr height=0>
+                <td width=61 style='border:none'></td>
+                <td width=12 style='border:none'></td>
+                <td width=38 style='border:none'></td>
+                <td width=46 style='border:none'></td>
+                <td width=17 style='border:none'></td>
+                <td width=54 style='border:none'></td>
+                <td width=63 style='border:none'></td>
+                <td width=55 style='border:none'></td>
+                <td width=1 style='border:none'></td>
+                <td width=36 style='border:none'></td>
+                <td width=11 style='border:none'></td>
+                <td width=19 style='border:none'></td>
+                <td width=48 style='border:none'></td>
+                <td width=31 style='border:none'></td>
+                <td width=47 style='border:none'></td>
+                <td width=24 style='border:none'></td>
+                <td width=35 style='border:none'></td>
+                <td width=24 style='border:none'></td>
+                <td width=53 style='border:none'></td>
+                <td width=11 style='border:none'></td>
+                <td width=2 style='border:none'></td>
+                <td width=7 style='border:none'></td>
+                <td width=11 style='border:none'></td>
+            </tr>
+            <![endif]>
+        </table>
+
+        <p class=MsoNormal style='margin-top:4.7pt;margin-right:0in;margin-bottom:0in;
+margin-left:12.4pt;margin-bottom:.0001pt'>
+            <span style='font-size:9.0pt;
+mso-bidi-font-size:11.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
+        </p>
+
+        <p class=MsoNormal style='margin-top:4.7pt;margin-right:0in;margin-bottom:0in;
+margin-left:12.4pt;margin-bottom:.0001pt'>
+            <span style='font-size:9.0pt;
+mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
+        </p>
+
+        <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=659
+               style='width:494.25pt;margin-left:12.4pt;border-collapse:collapse;border:none;
+ mso-border-alt:solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:
+ 0in 5.4pt 0in 5.4pt'>
+            <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+                <td width=659 colspan=18 valign=top style='width:494.25pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'>@Html.DisplayFor(modelItem => Model.Id13)<o:p></o:p></span>
+                    </p>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span>
+                    </p>
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:1'>
+                <td width=111 colspan=2 valign=top style='width:83.2pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                            Bridge<span style='letter-spacing:-.05pt'></span>Length<span style='letter-spacing:-.05pt'>
+                            </span>(ft.):
+                        </span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=73 colspan=3 valign=top style='width:54.6pt;border:none;border-bottom:
+  solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'>@Html.DisplayFor(modelItem => Model.Id42)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=85 colspan=2 valign=top style='width:64.05pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                            Deck Width
+                            (ft.):
+                        </span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=71 colspan=2 valign=top style='width:53.55pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'>@Html.DisplayFor(modelItem => Model.Id43)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=77 colspan=2 valign=top style='width:58.05pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                            Lanes<span style='letter-spacing:-.05pt'></span>On:
+                        </span><span style='font-size:9.0pt;
+  mso-bidi-font-size:11.0pt'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=80 colspan=3 valign=top style='width:59.7pt;border:none;border-bottom:
+  solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'>@Html.DisplayFor(modelItem => Model.Id47)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=75 colspan=2 valign=top style='width:56.45pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                            Lanes<span style='letter-spacing:-.05pt'></span>Under:
+                        </span><span style='font-size:
+  9.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=86 colspan=2 valign=top style='width:64.65pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'>@Html.DisplayFor(modelItem => Model.Id48)<o:p></o:p></span>
+                    </p>
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:2'>
+                <td width=129 colspan=3 valign=top style='width:96.7pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:-.5pt;mso-text-raise:.5pt'>
+                            Skew<span style='letter-spacing:-.05pt'> </span>Angle<span style='letter-spacing:-.05pt'></span>(degrees):
+                        </span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=55 colspan=2 valign=top style='width:41.1pt;border:none;border-bottom:
+  solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'>@Html.DisplayFor(modelItem => Model.Id44)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=79 valign=top style='width:59.05pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+@if ((Model.Id1) == "1")
+{
+                            <w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
+                                   CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                                   CheckBoxFontUnchecked="MS Gothic" ID="1653180220">
+                                <span style='font-family:
+   "MS Gothic"'>&#9746;</span>
+                            </w:Sdt>}
+else
+{
+    <w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
+           CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+           CheckBoxFontUnchecked="MS Gothic" ID="1653180220">
+        <span style='font-family:
+   "MS Gothic"'>&#9746;</span>
+    </w:Sdt>} 
+                            
+                            Left Forward<span style='mso-spacerun:yes'></span><o:p></o:p>
+
+</span>
+
+                    </p>
+                </td>
+                <td width=86 colspan=4 valign=top style='width:64.3pt;border:none;padding:
+  0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                        @if ((Model.Id2) == "1")
+                        {
+                            <w:Sdt CheckBox="t" 
+                                   CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
+                                   CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                                   CheckBoxFontUnchecked="MS Gothic" ID="1914275004">
+                                <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+                            </w:Sdt>
+                        }
+                        else
+                        {
+                            <w:Sdt CheckBox="t"
+                                   CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
+                                   CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                                   CheckBoxFontUnchecked="MS Gothic" ID="1914275004">
+                                <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+                            </w:Sdt>
+                        }
+                            Right Forward <span style='letter-spacing:
+  2.15pt'><span style='mso-spacerun:yes'> </span></span>
+                        </span>
+
+
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=70 valign=top style='width:52.3pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:-.5pt;mso-text-raise:.5pt'>Bridge<span style='letter-spacing:-.05pt'> </span>Rail:</span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=68 colspan=2 valign=top style='width:51.15pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'>@Html.DisplayFor(modelItem => Model.Id3)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=100 colspan=4 valign=top style='width:75.25pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:-.5pt;mso-text-raise:.5pt'>
+                            Bridge<span style='letter-spacing:-.05pt'> </span>Rail<span style='letter-spacing:-.05pt'></span>Height:
+                        </span><span style='font-size:
+  9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=73 valign=top style='width:54.4pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'>@Html.DisplayFor(modelItem => Model.Id4)<o:p></o:p></span>
+                    </p>
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:3'>
+                <td width=138 colspan=4 valign=top style='width:103.3pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:-1.0pt;mso-text-raise:1.0pt'>
+                            Clear Width<span style='letter-spacing:-.05pt'>
+                            </span>Between<span style='letter-spacing:-.05pt'> </span>(ft.):
+                        </span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:-.5pt;mso-text-raise:.5pt'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=46 valign=top style='width:34.5pt;border:none;border-bottom:solid windowtext 1.0pt;
+  mso-border-bottom-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'>@Html.DisplayFor(modelItem => Model.Id5)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=79 valign=top style='width:59.05pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                           @if ((Model.Id5) == "1")
+                           { 
+                             <w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
+                                   CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                                   CheckBoxFontUnchecked="MS Gothic" ID="2038774794">
+                                <span style='font-family:
+   "MS Gothic"'>&#9746;</span>
+                            </w:Sdt>
+                            }
+                           else
+                            { 
+                            <w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
+                                   CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                                   CheckBoxFontUnchecked="MS Gothic" ID="2038774794">
+                                <span style='font-family:
+   "MS Gothic"'>&#9746;</span>
+                            </w:Sdt>
+                            }
+                            Curbs<o:p></o:p>
+                        </span>
+                    </p>
+                </td>
+                <td width=63 colspan=2 valign=top style='width:47.45pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                           @if ((Model.Id6) == "1")
+                           {
+                             <w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
+                                   CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                                   CheckBoxFontUnchecked="MS Gothic" ID="-1639486021">
+                                <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+                            </w:Sdt>
+                           }
+                           else
+                           {
+                            <w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
+                                   CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                                   CheckBoxFontUnchecked="MS Gothic" ID="-1639486021">
+                                <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+                            </w:Sdt>
+                           }       
+                            Rails <o:p></o:p>
+
+
+                                                       </span>
+
+
+                                                   </p>
+
+
+                                               </td>
+
+
+                                               <td width=99 colspan=4 valign=top style='width:73.9pt;border:none;padding:
+  0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                           @if ((Model.Id7) == "1")
+                           {
+                             <w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
+                                   CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                                   CheckBoxFontUnchecked="MS Gothic" ID="125903972">
+                                <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+                            </w:Sdt>
+                           }
+
+                           else
+                           {
+                            <w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
+                                   CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                                   CheckBoxFontUnchecked="MS Gothic" ID="125903972">
+                                <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+                            </w:Sdt>
+                           }
+                               Pavement Edges<span style='position:relative;
+  top:-.5pt;mso-text-raise:.5pt'><o:p></o:p></span>
+                        </span>
+                    </p>
+                </td>
+                <td width=149 colspan=4 valign=top style='width:111.4pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:-1.0pt;mso-text-raise:1.0pt'>
+                            Approach Roadway Width<span style='letter-spacing:-.05pt'></span>(ft.):<span style='letter-spacing:.8pt'>
+                            </span><u style='text-underline:#231F20'> </u>
+                        </span><span style='font-size:
+  9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;top:-.5pt;
+  mso-text-raise:.5pt'><o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=86 colspan=2 valign=top style='width:64.65pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'>@Html.DisplayFor(modelItem => Model.Id46)<o:p></o:p></span>
+                    </p>
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:4'>
+                <td width=102 valign=top style='width:76.6pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                            Deck Type:<span style='position:relative;top:-1.0pt;mso-text-raise:1.0pt'><o:p></o:p></span>
+                        </span>
+                    </p>
+                </td>
+                <td width=557 colspan=17 valign=top style='width:417.65pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'>@Html.DisplayFor(modelItem => Model.Id8)<o:p></o:p></span>
+                    </p>
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:5'>
+                <td width=102 valign=top style='width:76.6pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Surfacing:<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=160 colspan=5 valign=top style='width:120.25pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.Id9)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=155 colspan=5 valign=top style='width:116.6pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                            Vertical<span style='letter-spacing:-.05pt'></span>Over-Clearance:<o:p></o:p>
+                        </span>
+                    </p>
+                </td>
+                <td width=155 colspan=5 valign=top style='width:116.15pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+                    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:-1.0pt;mso-text-raise:1.0pt'>@Html.DisplayFor(modelItem => Model.Id10)<o:p></o:p></span>
+</p>
+</td>
+<td width=86 colspan=2 valign=top style='width:64.65pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:.5pt;mso-text-raise:-.5pt'>
+@if ((Model.Id11) == "1")
+{
+            <w:Sdt CheckBox="t" CheckBoxIsChecked="t"
+                   CheckBoxValueChecked="&#9746;" CheckBoxValueUnchecked="&#9744;"
+                   CheckBoxFontChecked="MS Gothic" CheckBoxFontUnchecked="MS Gothic"
+                   ID="1321457695"><span style='font-family:"MS Gothic"'>&#9746;</span></w:Sdt>
+}
+else
+{
+    <w:Sdt CheckBox="t" CheckBoxIsChecked="f"
+           CheckBoxValueChecked="&#9746;" CheckBoxValueUnchecked="&#9744;"
+           CheckBoxFontChecked="MS Gothic" CheckBoxFontUnchecked="MS Gothic"
+           ID="1321457695"><span style='font-family:"MS Gothic"'>&#9746;</span></w:Sdt>
+}
+ Unimpaired
+            </span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
+
+
+        </p>
+    </td>
+    </tr>
+    <tr style='mso-yfti-irow:6'>
+
+
+        <td width=102 valign=top style='width:76.6pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+
+
+            <p class=TableParagraph style='margin-left:2.5pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Superstructure:</span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
+        </p>
+    </td>
+    <td width=82 colspan=4 valign=top style='width:.85in;border:none;padding:
+  0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.85pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Spans:</span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
+        </p>
+    </td>
+    <td width=475 colspan=13 valign=top style='width:356.45pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:.5pt;mso-text-raise:-.5pt'>@Html.DisplayFor(modelItem => Model.Id12)<o:p></o:p></span>
+</p>
+</td>
+</tr>
+<tr style='mso-yfti-irow:7'>
+    <td width=102 valign=top style='width:76.6pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.5pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Main:<o:p></o:p></span>
+        </p>
+    </td>
+    <td width=82 colspan=4 valign=top style='width:.85in;border:none;padding:
+  0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.85pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Type:<o:p></o:p></span>
+        </p>
+    </td>
+    <td width=79 valign=top style='width:59.05pt;border:none;border-bottom:solid windowtext 1.0pt;
+  mso-border-bottom-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.Id13)<o:p></o:p></span>
+        </p>
+    </td>
+    <td width=78 colspan=3 valign=top style='width:58.55pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;mso-font-width:
+  95%'>Size:</span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;
+  color:#231F20'><o:p></o:p></span>
+        </p>
+    </td>
+    <td width=77 colspan=2 valign=top style='width:58.05pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.Id14)<o:p></o:p></span>
+        </p>
+    </td>
+    <td width=80 colspan=3 valign=top style='width:59.7pt;border:none;padding:
+  0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                Number:<span style='position:relative;top:-1.0pt;mso-text-raise:1.0pt'><o:p></o:p></span>
+            </span>
+        </p>
+    </td>
+    <td width=161 colspan=4 valign=top style='width:121.1pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:.5pt;mso-text-raise:-.5pt'>@Html.DisplayFor(modelItem => Model.Id15)<o:p></o:p></span>
+</p>
+</td>
+</tr>
+<tr style='mso-yfti-irow:8'>
+    <td width=102 valign=top style='width:76.6pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.5pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
+        </p>
+    </td>
+    <td width=82 colspan=4 valign=top style='width:.85in;border:none;padding:
+  0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.85pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Spacing:<o:p></o:p></span>
+        </p>
+    </td>
+    <td width=157 colspan=4 valign=top style='width:117.6pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;mso-font-width:
+  95%'><o:p>&nbsp;</o:p></span>
+        </p>
+    </td>
+    <td width=200 colspan=6 valign=top style='width:149.85pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                Controlling
+                Span Length (C-C<span style='letter-spacing:-.05pt'> </span>bearings):<o:p></o:p>
+            </span>
+        </p>
+    </td>
+    <td width=119 colspan=3 valign=top style='width:89.0pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:.5pt;mso-text-raise:-.5pt'>@Html.DisplayFor(modelItem => Model.Id17)<o:p>&nbsp;</o:p></span>
+</p>
+</td>
+</tr>
+<tr style='mso-yfti-irow:9'>
+    <td width=102 valign=top style='width:76.6pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.5pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Superstructure:</span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
+        </p>
+    </td>
+    <td width=82 colspan=4 valign=top style='width:.85in;border:none;padding:
+  0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.85pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Spans:</span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
+        </p>
+    </td>
+    <td width=475 colspan=13 valign=top style='width:356.45pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:.5pt;mso-text-raise:-.5pt'>@Html.DisplayFor(modelItem => Model.Id18)<o:p></o:p></span>
+</p>
+</td>
+</tr>
+<tr style='mso-yfti-irow:10'>
+    <td width=102 valign=top style='width:76.6pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.5pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                Major
+                Approach<o:p></o:p>
+            </span>
+        </p>
+    </td>
+    <td width=82 colspan=4 valign=top style='width:.85in;border:none;padding:
+  0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.85pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Type:<o:p></o:p></span>
+        </p>
+    </td>
+    <td width=79 valign=top style='width:59.05pt;border:none;mso-border-top-alt:
+  solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.Id19)<o:p></o:p></span>
+        </p>
+    </td>
+    <td width=78 colspan=3 valign=top style='width:58.55pt;border:none;
+  border-top:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;mso-font-width:
+  95%'>Size:</span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;
+  color:#231F20'><o:p></o:p></span>
+        </p>
+    </td>
+    <td width=77 colspan=2 valign=top style='width:58.05pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.Id20)<o:p></o:p></span>
+        </p>
+    </td>
+    <td width=80 colspan=3 valign=top style='width:59.7pt;border:none;border-top:
+  solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                Number:<span style='position:relative;top:-1.0pt;mso-text-raise:1.0pt'><o:p></o:p></span>
+            </span>
+        </p>
+    </td>
+    <td width=161 colspan=4 valign=top style='width:121.1pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:.5pt;mso-text-raise:-.5pt'>@Html.DisplayFor(modelItem => Model.Id21)<o:p></o:p></span>
+</p>
+</td>
+</tr>
+<tr style='mso-yfti-irow:11'>
+    <td width=102 valign=top style='width:76.6pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.5pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
+        </p>
+    </td>
+    <td width=82 colspan=4 valign=top style='width:.85in;border:none;padding:
+  0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.85pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Spacing:<o:p></o:p></span>
+        </p>
+    </td>
+    <td width=157 colspan=4 valign=top style='width:117.6pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;mso-font-width:
+  95%'>@Html.DisplayFor(modelItem => Model.Id22)<o:p></o:p></span>
+</p>
+</td>
+<td width=200 colspan=6 valign=top style='width:149.85pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+            Controlling
+            Span Length (C-C<span style='letter-spacing:-.05pt'> </span>bearings):<o:p></o:p>
+        </span>
+    </p>
+</td>
+<td width=119 colspan=3 valign=top style='width:89.0pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:.5pt;mso-text-raise:-.5pt'>@Html.DisplayFor(modelItem => Model.Id23)<o:p>&nbsp;</o:p></span>
+</p>
+</td>
+</tr>
+<tr style='mso-yfti-irow:12'>
+    <td width=102 valign=top style='width:76.6pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.5pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Superstructure:</span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
+        </p>
+    </td>
+    <td width=82 colspan=4 valign=top style='width:.85in;border:none;padding:
+  0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.85pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Spans:</span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
+        </p>
+    </td>
+    <td width=475 colspan=13 valign=top style='width:356.45pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:.5pt;mso-text-raise:-.5pt'>@Html.DisplayFor(modelItem => Model.Id24)<o:p></o:p></span>
+</p>
+</td>
+</tr>
+<tr style='mso-yfti-irow:13'>
+    <td width=102 valign=top style='width:76.6pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.5pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                Minor
+                Approach:<o:p></o:p>
+            </span>
+        </p>
+    </td>
+    <td width=82 colspan=4 valign=top style='width:.85in;border:none;padding:
+  0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.85pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Type:<o:p></o:p></span>
+        </p>
+    </td>
+    <td width=79 valign=top style='width:59.05pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.Id25)<o:p></o:p></span>
+        </p>
+    </td>
+    <td width=78 colspan=3 valign=top style='width:58.55pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;mso-font-width:
+  95%'>Size:</span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;
+  color:#231F20'><o:p></o:p></span>
+        </p>
+    </td>
+    <td width=77 colspan=2 valign=top style='width:58.05pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.Id26)<o:p></o:p></span>
+        </p>
+    </td>
+    <td width=80 colspan=3 valign=top style='width:59.7pt;border:none;padding:
+  0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                Number:<span style='position:relative;top:-1.0pt;mso-text-raise:1.0pt'><o:p></o:p></span>
+            </span>
+        </p>
+    </td>
+    <td width=161 colspan=4 valign=top style='width:121.1pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:.5pt;mso-text-raise:-.5pt'>@Html.DisplayFor(modelItem => Model.Id27)<o:p></o:p></span>
+</p>
+</td>
+</tr>
+<tr style='mso-yfti-irow:14'>
+    <td width=102 valign=top style='width:76.6pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.5pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
+        </p>
+    </td>
+    <td width=82 colspan=4 valign=top style='width:.85in;border:none;padding:
+  0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.85pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Spacing:<o:p></o:p></span>
+        </p>
+    </td>
+    <td width=157 colspan=4 valign=top style='width:117.6pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;mso-font-width:
+  95%'>@Html.DisplayFor(modelItem => Model.Id28)<o:p></o:p></span>
+</p>
+</td>
+<td width=200 colspan=6 valign=top style='width:149.85pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+            Controlling
+            Span Length (C-C<span style='letter-spacing:-.05pt'> </span>bearings):<o:p></o:p>
+        </span>
+    </p>
+</td>
+<td width=119 colspan=3 valign=top style='width:89.0pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+    <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:.5pt;mso-text-raise:-.5pt'>@Html.DisplayFor(modelItem => Model.Id29)<o:p></o:p></span>
+</p>
+</td>
+</tr>
+<tr style='mso-yfti-irow:15'>
+    <td width=262 colspan=6 valign=top style='width:196.85pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                Estimated
+                Deck Overtopping Frequency:<o:p></o:p>
+            </span>
+        </p>
+    </td>
+    <td width=78 colspan=3 valign=top style='width:58.55pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+@if ((Model.Id31) == "1")
+{
+                <w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
+                       CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                       CheckBoxFontUnchecked="MS Gothic" ID="-1728456276">
+                    <span style='font-family:
+   "MS Gothic"'>&#9746;</span>
+                </w:Sdt>
+}
+else
+{
+    <w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
+           CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+           CheckBoxFontUnchecked="MS Gothic" ID="-1728456276">
+        <span style='font-family:
+   "MS Gothic"'>&#9746;</span>
+    </w:Sdt>
+}
+ &lt;<span style='letter-spacing:-.05pt'> </span>3<span style='mso-font-width:95%'><o:p></o:p></span>
+            </span>
+        </p>
+    </td>
+    <td width=77 colspan=2 valign=top style='width:58.05pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+@if ((Model.Id49) == "1")
+{
+                <w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
+                       CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                       CheckBoxFontUnchecked="MS Gothic" ID="38560532">
+                    <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+                </w:Sdt>
+    }
+else
+                {
+                <w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
+                       CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                       CheckBoxFontUnchecked="MS Gothic" ID="38560532">
+                    <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+                </w:Sdt>
+                }
+ 3 -<span style='letter-spacing:-.05pt'> </span>10<o:p></o:p>
+
+
+                </span>
+
+
+            </p>
+
+
+        </td>
+
+
+        <td width=80 colspan=3 valign=top style='width:59.7pt;border:none;padding:
+  0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+              @if ((Model.Id51) == "1")
+              {
+                  <w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
+                       CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                       CheckBoxFontUnchecked="MS Gothic" ID="1466858486">
+                    <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+                </w:Sdt>
+              }
+              else
+              {
+                <w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
+                       CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                       CheckBoxFontUnchecked="MS Gothic" ID="1466858486">
+                    <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+                </w:Sdt>
+              }
+                11 - 100<o:p></o:p>
+                  
+
+
+                                                </span>
+                  
+
+
+                                            </p>
+                  
+
+
+                                        </td>
+                  
+
+
+                                        <td width=75 colspan=2 valign=top style='width:56.45pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+              @if ((Model.Id53) == "1")
+              {
+                  <w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
+                       CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                       CheckBoxFontUnchecked="MS Gothic" ID="-335234847">
+                    <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+                </w:Sdt>
+              }
+              else
+              {
+                <w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
+                       CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                       CheckBoxFontUnchecked="MS Gothic" ID="-335234847">
+                    <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+                </w:Sdt>
+              }
+               &gt; 100<o:p></o:p>
+
+
+                              </span>
+
+
+                          </p>
+
+
+                      </td>
+
+
+                      <td width=86 colspan=2 valign=top style='width:64.65pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:.5pt;mso-text-raise:-.5pt'><o:p>&nbsp;</o:p></span>
+        </p>
+    </td>
+</tr>
+<tr style='mso-yfti-irow:16'>
+    <td width=262 colspan=6 valign=top style='width:196.85pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-top:1.95pt;margin-right:0in;margin-bottom:
+  0in;margin-left:2.65pt;margin-bottom:.0001pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                Estimated
+                Approach Overtopping Frequency:<o:p></o:p>
+            </span>
+        </p>
+    </td>
+    <td width=78 colspan=3 valign=top style='width:58.55pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+@if ((Model.Id31) == "1")
+{
+                <w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
+                       CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                       CheckBoxFontUnchecked="MS Gothic" ID="-90547578">
+                    <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+                </w:Sdt>
+}
+else
+{
+    <w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
+           CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+           CheckBoxFontUnchecked="MS Gothic" ID="-90547578">
+        <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+    </w:Sdt>
+}
+ &lt;<span style='letter-spacing:-.05pt'> </span>3<span style='mso-font-width:95%'><o:p></o:p></span>
+            </span>
+        </p>
+    </td>
+    <td width=77 colspan=2 valign=top style='width:58.05pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+@if ((Model.Id50) == "1")
+{
+                <w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
+                       CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                       CheckBoxFontUnchecked="MS Gothic" ID="522678852">
+                    <span style='font-family:
+   "MS Gothic"'>&#9746;</span>
+                </w:Sdt>
+}
+else
+{
+    <w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
+           CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+           CheckBoxFontUnchecked="MS Gothic" ID="522678852">
+        <span style='font-family:
+   "MS Gothic"'>&#9746;</span>
+    </w:Sdt>
+}
+ 3 -<span style='letter-spacing:-.05pt'> </span>10<o:p></o:p>
+
+
+                </span>
+
+
+            </p>
+
+
+        </td>
+
+
+        <td width=80 colspan=3 valign=top style='width:59.7pt;border:none;padding:
+  0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+@if ((Model.Id52) == "1")
+{
+                <w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
+                       CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                       CheckBoxFontUnchecked="MS Gothic" ID="-2110349399">
+                    <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+                </w:Sdt>
+}
+else
+{
+    <w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
+           CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+           CheckBoxFontUnchecked="MS Gothic" ID="-2110349399">
+        <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+    </w:Sdt>
+}
+ 11 - 100<o:p></o:p>
+
+
+                </span>
+
+
+            </p>
+
+
+        </td>
+
+
+        <td width=75 colspan=2 valign=top style='width:56.45pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+@if ((Model.Id54) == "1")
+{
+                <w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
+                       CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                       CheckBoxFontUnchecked="MS Gothic" ID="2054891505">
+                    <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+                </w:Sdt>
+}
+else
+{
+    <w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
+           CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+           CheckBoxFontUnchecked="MS Gothic" ID="2054891505">
+        <span style='font-family:
+   "MS Gothic"'>&#9744;</span>
+    </w:Sdt>
+}
+    &gt; 100<o:p></o:p>
+
+
+                </span>
+
+
+            </p>
+
+
+        </td>
+
+
+        <td width=86 colspan=2 valign=top style='width:64.65pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:.5pt;mso-text-raise:-.5pt'><o:p>&nbsp;</o:p></span>
+        </p>
+    </td>
+</tr>
+<tr style='mso-yfti-irow:17'>
+    <td width=184 colspan=5 valign=top style='width:137.8pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.85pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                Horizontal /
+                Vertical Alignment:<o:p></o:p>
+            </span>
+        </p>
+    </td>
+    <td width=475 colspan=13 valign=top style='width:356.45pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:.5pt;mso-text-raise:-.5pt'>@Html.DisplayFor(modelItem => Model.Id32)<o:p></o:p></span>
+</p>
+</td>
+</tr>
+<tr style='mso-yfti-irow:18'>
+    <td width=102 valign=top style='width:76.6pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-top:1.95pt;margin-right:0in;margin-bottom:
+  0in;margin-left:2.65pt;margin-bottom:.0001pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                Year<span style='letter-spacing:-.05pt'></span>Built:<o:p></o:p>
+            </span>
+        </p>
+    </td>
+    <td width=82 colspan=4 valign=top style='width:.85in;border:none;border-bottom:
+  solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.85pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.Year)<o:p></o:p></span>
+        </p>
+    </td>
+    <td width=79 valign=top style='width:59.05pt;border:none;padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                Design<span style='letter-spacing:-.05pt'></span>Load:<o:p></o:p>
+            </span>
+        </p>
+    </td>
+    <td width=397 colspan=12 valign=top style='width:297.4pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:.5pt;mso-text-raise:-.5pt'>43<o:p></o:p></span>
+        </p>
+    </td>
+</tr>
+<tr style='mso-yfti-irow:19'>
+    <td width=184 colspan=5 valign=top style='width:137.8pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.85pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
+        </p>
+    </td>
+    <td width=475 colspan=13 valign=top style='width:356.45pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:relative;
+  top:.5pt;mso-text-raise:-.5pt'>44<o:p></o:p></span>
+        </p>
+    </td>
+</tr>
+<tr style='mso-yfti-irow:20;mso-yfti-lastrow:yes'>
+    <td width=184 colspan=5 valign=top style='width:137.8pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=TableParagraph style='margin-left:2.85pt;line-height:9.8pt;
+  mso-line-height-rule:exactly;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
+        </p>
+    </td>
+    <td width=389 colspan=11 valign=top style='width:291.8pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>45<o:p></o:p></span>
+        </p>
+    </td>
+    <td width=86 colspan=2 valign=top style='width:64.65pt;border:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+        <p class=MsoNormal style='margin-left:11.4pt;text-autospace:ideograph-numeric ideograph-other'>
+            <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+@if ((Model.Id37) == "1")
+{
+                <w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
+                       CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+                       CheckBoxFontUnchecked="MS Gothic" ID="-452332671">
+                    <span style='font-family:
+   "MS Gothic"'>&#9746;</span>
+                </w:Sdt>
+}
+else
+{
+    <w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
+           CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
+           CheckBoxFontUnchecked="MS Gothic" ID="-452332671">
+        <span style='font-family:
+   "MS Gothic"'>&#9746;</span>
+    </w:Sdt>
+}
+                None <span style='position:relative;
+  top:.5pt;mso-text-raise:-.5pt'><o:p></o:p></span>
+            </span>
+        </p>
+    </td>
+</tr>
+ <![if !supportMisalignedColumns]>
+<tr height=0>
+    <td width=102 style='border:none'></td>
+    <td width=9 style='border:none'></td>
+    <td width=18 style='border:none'></td>
+    <td width=9 style='border:none'></td>
+    <td width=46 style='border:none'></td>
+    <td width=79 style='border:none'></td>
+    <td width=7 style='border:none'></td>
+    <td width=57 style='border:none'></td>
+    <td width=15 style='border:none'></td>
+    <td width=8 style='border:none'></td>
+    <td width=70 style='border:none'></td>
+    <td width=6 style='border:none'></td>
+    <td width=62 style='border:none'></td>
+    <td width=11 style='border:none'></td>
+    <td width=43 style='border:none'></td>
+    <td width=32 style='border:none'></td>
+    <td width=14 style='border:none'></td>
+    <td width=73 style='border:none'></td>
+</tr>
+ <![endif]>
+</table>
+
+<p class=MsoNormal style='margin-top:4.7pt;margin-right:0in;margin-bottom:0in;
+margin-left:12.4pt;margin-bottom:.0001pt'>
+    <b style='mso-bidi-font-weight:normal'>
+        <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span>
+    </b>
+</p>
+
+</div>
+
+<b style='mso-bidi-font-weight:normal'>
+    <span style='font-size:9.0pt;mso-bidi-font-size:
+11.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:Arial;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'>
+        <br clear=all style='page-break-before:auto;mso-break-type:section-break'>
+    </span>
+</b>
+
+<div class=WordSection2>
+
+    <p class=MsoNormal style='margin-top:.05pt'>
+        <span style='font-size:4.5pt;
+mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span>
+    </p>
+
+    <p class=MsoNormal style='margin-top:4.7pt;margin-right:0in;margin-bottom:0in;
+margin-left:12.55pt;margin-bottom:.0001pt'>
+        <span style='font-size:9.0pt;
+mso-bidi-font-size:11.0pt;color:#231F20'>Comments:<o:p></o:p></span>
+    </p>
+
+    <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+           style='margin-left:12.55pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+        <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+            <td width=367 valign=top style='width:275.35pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+                <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                    <span style='font-size:10.0pt;mso-bidi-font-size:11.0pt'>@Html.DisplayFor(modelItem => Model.Id38)</span><span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
+                </p>
+            </td>
+            <td width=294 valign=top style='width:220.2pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+                <p class=MsoNormal align=center style='margin-top:4.7pt;text-align:center;
+  text-autospace:ideograph-numeric ideograph-other'>
+                    <span style='font-size:
+  9.0pt;mso-bidi-font-size:11.0pt'>
+                        <!--[if gte vml 1]><v:shape id="_x0000_i1025"
+                         type="#_x0000_t75" style='width:66.75pt;height:69pt'>
+                         <v:imagedata src="BridgeInventoryRecord2_files/image003.jpg" o:title="image004"/>
+                        </v:shape><![endif]-->
+                        <![if !vml]><img width=89 height=92
+                                         src="~/img/SelloLMB.jpg" v:shapes="_x0000_i1025"><![endif]><o:p></o:p>
+                    </span>
+                </p>
+            </td>
+        </tr>
+    </table>
+
+    <p class=MsoNormal style='margin-top:4.7pt;margin-right:0in;margin-bottom:0in;
+margin-left:12.55pt;margin-bottom:.0001pt'>
+        <span style='font-size:9.0pt;
+mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span>
+    </p>
+
+    <table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0
+           style='margin-left:8.0pt;border-collapse:collapse;border:none;mso-yfti-tbllook:
+ 1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:none;mso-border-insidev:
+ none'>
+        <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:22.65pt'>
+            <td width=219 valign=top style='width:164.55pt;padding:0in 5.4pt 0in 5.4pt;
+  height:22.65pt'>
+                <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                    <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                        Inspector's
+                        Signature:<o:p></o:p>
+                    </span>
+                </p>
+            </td>
+            <td width=264 valign=top style='width:198.15pt;border:none;border-bottom:
+  solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:22.65pt'>
+                <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                    <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>user)<o:p></o:p></span>
+                </p>
+            </td>
+            <td width=53 valign=top style='width:39.5pt;padding:0in 5.4pt 0in 5.4pt;
+  height:22.65pt'>
+                <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                    <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Date:<o:p></o:p></span>
+                </p>
+            </td>
+            <td width=119 valign=top style='width:89.6pt;border:none;border-bottom:solid windowtext 1.0pt;
+  mso-border-bottom-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
+  height:22.65pt'>
+                <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                    <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.DateInspectionEnd)<o:p></o:p></span>
+                </p>
+            </td>
+        </tr>
+        <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes;height:22.65pt'>
+            <td width=219 valign=top style='width:164.55pt;padding:0in 5.4pt 0in 5.4pt;
+  height:22.65pt'>
+                <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                    <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                        Firm Name and
+                        Firm Number:<o:p></o:p>
+                    </span>
+                </p>
+            </td>
+            <td width=436 colspan=3 valign=top style='width:327.25pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:22.65pt'>
+                <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
+                    <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
+                        LMB
+                        Engineering, Inc. (F-003456)<o:p></o:p>
+                    </span>
+                </p>
+            </td>
+        </tr>
+    </table>
+
+    <p class=MsoNormal align=center style='margin-top:4.8pt;margin-right:106.65pt;
+margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:center;
+text-indent:-1.15pt;line-height:103%'>
+        <b style='mso-bidi-font-weight:normal'>
+            <span style='font-size:7.0pt;mso-bidi-font-size:11.0pt;line-height:103%;color:#231F20'><o:p>&nbsp;</o:p></span>
+        </b>
+    </p>
+
+    <p class=MsoNormal style='margin-top:4.8pt;margin-right:.5pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-indent:-1.15pt;line-height:103%'>
+        <b style='mso-bidi-font-weight:normal'>
+            <span style='font-size:7.0pt;mso-bidi-font-size:
+11.0pt;line-height:103%;color:#231F20'>
+                DO NOT DISCLOSE - INFORMATION
+                CONFIDENTIAL UNDER THE TEXAS HOMELAND SECURITY ACT AND 23 USC SECTION 409, <o:p></o:p>
+            </span>
+        </b>
+    </p>
+
+    <p class=MsoNormal style='margin-top:4.8pt;margin-right:.5pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-indent:-1.15pt;line-height:103%'>
+        <b style='mso-bidi-font-weight:normal'>
+            <span style='font-size:7.0pt;mso-bidi-font-size:
+11.0pt;line-height:103%;color:#231F20'>SAFETY SENSITIVE INFORMATION</span>
+        </b><span style='font-size:7.0pt;mso-bidi-font-size:11.0pt;line-height:103%'><o:p></o:p></span>
+    </p>
+
+</div>
+
+<span style='font-size:7.0pt;mso-bidi-font-size:11.0pt;line-height:103%;
+font-family:"Arial","sans-serif";mso-fareast-font-family:Arial;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'>
+    <br clear=all
+        style='page-break-before:always;mso-break-type:section-break'>
+</span>
+
+<div class=WordSection3>
+
+    <p class=MsoNormal style='margin-top:.05pt'><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body>
+
+</html>

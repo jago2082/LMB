@@ -1,0 +1,121 @@
+﻿@model LMB.Models.InspectionDaily
+@{
+    ViewBag.Title = "Done";
+}
+<style>
+    table.dataTable thead tr {
+        background: rgba(0, 63, 79, 0.1);
+    }
+
+    .grey {
+        background-color: #e4e1e1;
+    }
+</style>
+@Html.HiddenFor(model => model.IdInspection)
+Other Reports Bridge No.: @Model.NumInspection
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Report #</th>
+            <th scope="col">Name Report</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>
+               @Html.ActionLink("Bridge Inspection Follow-Up Action Worksheet", "ReportInspFollowUp", new { id = Model.IdInspection })
+               @*@Html.ActionLink("Edit", "BridgeInspectionFollowUps", new { id = Model.IdInspection })*@
+            </td>
+            <td>
+                @Html.ActionLink("Create", "CreateF",  new { id = Model.IdInspection })
+            </td>
+            <td>
+                @Html.ActionLink("Details", "IndexF", new { id = Model.IdInspection })
+            </td>
+
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>
+                @*@Html.ActionLink("Bridge Summary Sheet", "ReportSummarySheet")*@
+                @Html.ActionLink("Bridge Summary Sheet", "ReportSummarySheet", new { id = Model.IdInspection })
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>
+            @*@Html.ActionLink("Bridge Structural Condition History", "ReportStructuralCondition")*@
+            @Html.ActionLink("Bridge Load Rating Statement", "LoadRating", new { id = Model.IdInspection })
+            </td>
+        <td></td>
+        <td></td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>
+               @*@Html.ActionLink("Bridge Inspecton Record", "ReportStructuralCondition")*@
+            @Html.ActionLink("Bridge Inspecton Record", "LoadReportBridgeInspection", new { id = Model.IdInspection })
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td>
+               @* @Html.ActionLink("Bridge Inventory Record", "ReportInventoryRecord")*@
+               @Html.ActionLink("Bridge Inventory Record", "ReportInventoryRecord", new { id = Model.IdInspection })
+            </td>
+            <td></td>
+            <td></td>
+</tr>
+        <tr>
+            <th scope="row">6</th>
+            <td>
+                @Html.ActionLink("Underclearance Record", "ReportUnderClear", new { id = Model.IdInspection })
+                @*@Html.ActionLink("Underclearance Record", "ReportUnderClear")*@
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">7</th>
+            <td>
+                @Html.ActionLink("Channel Cross-Section Measurements Record", "ReportChannelCross", new { id = Model.IdInspection })
+                @*@Html.ActionLink("Channel Cross-Section Measurements Record", "ReportChannelCross")*@
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+@Html.Raw(TempData["msg"])
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            inicializar(e);
+        }
+    );
+        function tabla() {
+            var table = $("#rawdata_table").DataTable();
+
+        }
+
+        function inicializar(e) {
+            tabla();
+        }
+    </script>
+    <script type="text/javascript">
+    function Progress() {
+        $('#mod-progress').modal()
+    };
+    </script>
+}

@@ -12,6 +12,9 @@ namespace LMB.Models
         public int IdRecommendationType  { get; set; }
         public string idvalue { get; set; }
 
+        [Display(Name = "Recommendation Type")]
         public string Description { get; set; }
+
+        public virtual ICollection<BridgeInspectionFollowUp> BridgeInspectionFollowUps { get; set; }
     }
 }

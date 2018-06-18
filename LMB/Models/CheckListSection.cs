@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -16,5 +17,10 @@ namespace LMB.Models
         public int Sequence { get; set; }
         public Nullable<int> IdProject { get; set; }
         public Nullable<int> IdClient { get; set; }
+
+        [JsonIgnore]
+        public virtual CheckListProject CheckListProject { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<CheckListQuestion> CheckListQuestions { get; set; }
     }
 }

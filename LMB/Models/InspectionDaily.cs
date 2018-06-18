@@ -17,7 +17,7 @@ namespace LMB.Models
         public Nullable<int> IdProject { get; set; }
         [StringLength(60)]
         [Index("InspectionDailyNumInspectionIndex",  IsUnique = true)]
-        [Display(Name ="Bridge No.")]
+        [Display(Name ="BridgeNo.           ")]
         public string NumInspection { get; set; }
 
         [Display(Name = "District")]
@@ -35,25 +35,44 @@ namespace LMB.Models
         [Display(Name = "7 Fac Carried")]
         public string City { get; set; }
         public Nullable<int> TypeInspection { get; set; }
+        [Display(Name = "Feat Xed")]
         public string Scope { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public string Hour { get; set; }
         public Nullable<int> IdValueCheckList { get; set; }
-        public Nullable<int> Status { get; set; }
-
+        public Nullable<int> IdStatus { get; set; }
         public Nullable<double> Longitude { get; set; }
         public Nullable<double> Latitude { get; set; }
+        [Display(Name = "Longitude")]
         public Nullable<double> LongitudeIni { get; set; }
+        [Display(Name = "Latitude")]
         public Nullable<double> LatitudeIni { get; set; }
         public string DateInspection { get; set; }
         public string CommentGeneral { get; set; }
-        public Nullable<int> IdAttach { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int IdAttach { get; set; }
+
+        public Insp_Type_Attach Insp_Type_Attach { get; set; }
         public string Sync { get; set; }
         public Nullable<double> LongitudeEnd { get; set; }
         public Nullable<double> LatitudeEnd { get; set; }
         public string DateInspectionEnd { get; set; }
 
+        public int? Flag { get; set; }
 
+        public string Structure { get; set; }
+
+        public string MaintanSection { get; set; }
+
+        public string Milepnt { get; set; }
+
+        public InspectionStates InspectionState { get; set; }
+
+        public UserDB UserDBs { get; set; }
+
+        public Counties Counties { get; set; }
+
+        public District District { get; set; }
 
     }
 }

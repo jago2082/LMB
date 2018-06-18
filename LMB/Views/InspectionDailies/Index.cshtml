@@ -5,25 +5,60 @@
 }
 
 <style>
+    #map_canvas {
+        height: 400px;
+        width: 100%;
+    }
+
+    #buttons {
+        display: block;
+        float: right;
+    }
+
     table.dataTable thead tr {
-  background-color: #73ADF5;
-}
+        background: rgba(0, 63, 79, 0.1);
+    }
 
-.grey {
-  background-color: #b6ff00;
-}
+    .dataTables_filter {
+        float: left !important;
+        margin-left: -189px;
+        margin-top: -42px;
+    }
+
+    .grey {
+        background-color: #eefbf6;
+    }
+
+    .lila {
+        background-color: #f7eeee;
+    }
+
+    .green {
+        background-color: #fcfde1;
+    }
 </style>
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div id="inspection_status">
+    <img src="~/img/inspectionstatus.png" height="50" style="display: block;float: right;" />
+</div>
+<div id="buttons">
+   
+    <a id="alumno" data-target="#modalUser" data-toggle="modal" data-id=""  onclick="getSelected()" href="#" class="unlock" title="Assign user">   
+    <img width="30" alt="Assign user" title="Assign user" src="~/img/ic_asignar.png"></a>
+    <a id="addinsp" data-target="#modalAdd" data-toggle="modal" data-id="" onclick="location.href='@Url.Action("Create")'" href="#" class="unlock" title="Add Inspection">
+        <img width="30" alt="Add Inspection" title="Add Inspection" src="~/img/ic_addinsp.png">
+    </a>
+    <a id="deleteIns" data-target="#modalDelete" data-toggle="modal" data-id="" onclick="getSelectedDel()" href="#" class="unlock" title="Delete Inspection">
+    <img width="30" alt="Delete Inspection" title="Delete Inspection" src="~/img/ic_delinsp.png"></a>
+</div>
 <table class="table" id="rawdata_table">
     <thead>
         <tr>
+            <th></th>
             <th>
                 @Html.DisplayNameFor(model => model.NumInspection)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserDBs.FullName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DO)
@@ -44,28 +79,13 @@
                 @Html.DisplayNameFor(model => model.City)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TypeInspection)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Scope)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Hour)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdValueCheckList)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Longitude)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Latitude)
+                @Html.DisplayNameFor(model => model.InspectionState.Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LongitudeIni)
@@ -73,32 +93,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.LatitudeIni)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateInspection)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CommentGeneral)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdAttach)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sync)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LongitudeEnd)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LatitudeEnd)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateInspectionEnd)
-            </th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -106,7 +100,13 @@
         {
             <tr>
                 <td>
+                    <input type="checkbox" name="id" value="@item.IdInspection" />
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.NumInspection)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserDBs.FullName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DO)
@@ -127,28 +127,13 @@
                     @Html.DisplayFor(modelItem => item.City)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TypeInspection)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Scope)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Hour)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdValueCheckList)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Longitude)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Latitude)
+                    @Html.DisplayFor(modelItem => item.InspectionState.Description)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.LongitudeIni)
@@ -156,63 +141,21 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.LatitudeIni)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateInspection)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CommentGeneral)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdAttach)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Sync)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LongitudeEnd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LatitudeEnd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateInspectionEnd)
-                </td>
-                <td>
-                    @if (item.Status == 5)
-                    {
-                        @Html.ActionLink(" ", "SendMovile", new { id = item.IdInspection }, new { @class = "linkdisabled title='Send Movile'  btn btn-primary btn-lg glyphicon glyphicon-download", @title = "Send Movile" })
-                    }
-                    else
-                    {
-                        @Html.ActionLink(" ", "SendMovile", new { id = item.IdInspection }, new { @class = "btn btn-primary btn-lg glyphicon glyphicon-download",@title= "Send Movile" })
-                    }
-
-                </td>
-                <td>
-                    <a id="alumno" data-target="#modalUser" data-toggle="modal" data-id=@item.IdInspection href="#" class="unlock" title="Assign user"><span class='btn btn-warning btn-lg glyphicon glyphicon-edit'></span></a>
-                </td>
-                <td>
-                    @Html.ActionLink(" ", "Create", new { }, new { @class = "btn btn-success btn-lg glyphicon glyphicon-plus", @title = "Create" })
-                </td>
-                <td>
-                    @Html.ActionLink(" ", "Alert", new { id = item.IdInspection }, new { @class = "btn btn-info btn-lg glyphicon glyphicon-bell",@title = "Alert" })
-                </td>
-                <td>
-                    @Html.ActionLink(" ", "Delete", new { id = item.IdInspection }, new { @class = "btn btn-danger btn-lg glyphicon glyphicon-remove", @title = "Delete" })
-                </td>
             </tr>
         }
     </tbody>
 </table>
-
+@Html.DropDownList("type", null, "[Select a User]", htmlAttributes: new { @onchange = "filterMarkers(this);" })
+<div id="map_canvas"></div>
 
 <!-- Modal -->
-<div id="modalUser" class="modal fade" role="dialog">
+<div id="modalUser" data-backdrop="false" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
+
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Assign User</h4>
             </div>
@@ -234,36 +177,72 @@
 
     </div>
 </div>
+
+<!-- Modal -->
+<div id="modalDelete" data-backdrop="false" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Assign User</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="inspId" id="inspId" value="" />
+                <input type="hidden" name="userId" id="userId" value="" />
+
+
+                <div class="form-group">
+                    <label for="sel1">User</label>
+                    @Html.DropDownList("Userdb", null, "[Select a User]", htmlAttributes: new { @class = "form-control", @onchange = "getval(this);" })
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" name="btnDelete" id="btnDelete">Delete</button>
+                <button id="closemodal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 @Html.Raw(TempData["msg"])
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        var message='';
+        var message = '';
+        var table = "";
+        var sel = [];
+        var list;
         $(document).ready(function (e) {
             inicializar(e);
         }
     );
         function tabla() {
-            var table = $("#rawdata_table").DataTable({
+            table = $("#rawdata_table").DataTable({
+                scrollY: '50vh',
+                scrollCollapse: true,
                 "createdRow": function (row, data, dataIndex) {
-                    if (data[12] == "5") {
+                    if (data[11] == "Almost time expires") {
+                        $(row).addClass('lila');
+                    } else if (data[11] == "In Mobile") {
+                        $(row).addClass('green');
+                    } else if (data[11] == "Assigned") {
                         $(row).addClass('grey');
-
                     }
-
 
                 }
 
             });
-
         }
         function modal(e) {
-            $('#modalUser').on('show.bs.modal', function (e) {
-                var id = $(e.relatedTarget).data().id;
-                $(e.currentTarget).find('#bookId').val(id);
-            });
+            //$('#modalUser').on('show.bs.modal', function (e) {
+            //    var id = $(e.relatedTarget).data().id;
+            //    $(e.currentTarget).find('#bookId').val(id);
+            //});
         }
 
         function lock() {
@@ -277,29 +256,204 @@
             tabla();
             modal(e);
             lock();
+
+
         }
         @Html.Raw(ViewBag.Select);
     </script>
     <script>
         var Url = '@Url.Action("Save", "InspectionDailies")';
+        var Urld = '@Url.Action("Delete", "InspectionDailies")';
         var user = 0;
         function getval(sel) {
             user = sel.value;
         }
 
         $("#save").on("click", function () {
+
             var idinsp = $('#bookId').val();
             if (user == 0) {
-                swal('¡Alert!', 'Select a User!.', 'error');
+                swal('¡Alert!', 'Select User!.', 'error');
                 return;
             }
-            $.post(Url, { id: idinsp, param: user }, function (data) {
+
+
+            $.post(Url, { "listaIds": list, "user": user })
+            .done(function (data) {
                 swal('Info', 'Success', 'success');
                 $("#modalUser").trigger('click');
                 location.reload();
+            })
+            .fail(function (xhr, status, error) {
+                swal('Error', xhr.responseText, 'error');
             });
+
         });
 
-    </script>
+        $("#btnDelete").on("click", function () {
 
+            var idinsp = $('#inspId').val();
+            if (user == 0) {
+                swal('¡Alert!', 'Select User!.', 'error');
+                return;
+            }
+            
+            if (list != "") {
+                swal({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
+                        $.post(Urld, { "listaIds": list, "user": user })
+                        .done(function (data) {
+                            swal('Info', 'Success', 'success');
+                            $("#modalDelete").trigger('click');
+                            location.reload();
+                        })
+                        .fail(function (xhr, status, error) {
+                            swal('Error', xhr.responseText, 'error');
+                        });
+                    }else {
+                        location.reload();
+                    }
+                })
+            }
+
+           
+
+        });
+
+        function getSelected() {
+            $('input[type=checkbox]:checked').each(function (i) {
+                sel[i] = $(this).val();
+            })
+            list = sel.join();
+            if (list == "") {
+                swal('¡Alert!', 'Select Inspection !.', 'error');
+                location.reload();
+                return false;
+            }
+            $("#bookId").val(sel);
+        }
+
+        function getSelectedDel() {
+            $('input[type=checkbox]:checked').each(function (j) {
+                sel[j] = $(this).val();
+            })
+            list = sel.join();
+            if (list=="") {
+                swal('¡Alert!', 'Select Inspection !.', 'error');
+                location.reload();
+                return false;
+            }
+            
+            $("#inspId").val(sel);
+        }
+
+    </script>
+    <script>
+        var gmarkers1 = [];
+        var User;
+        markers1 = @Html.Raw(ViewBag.Markers);
+        var map;
+        var centerll = {lat: 30.161615, lng: -98.255301};
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map_canvas'), {
+                center: centerll,
+                zoom: 8
+            });
+            var infowindow = new google.maps.InfoWindow({
+                content: ''
+            });
+            for (i = 0; i < markers1.length; i++) {
+                addMarker(markers1[i]);
+            }
+            function addMarker(marker) {
+                var image;
+                var category = marker.User;
+                var status = marker.User;
+                var title = marker.User;
+                var pos = new google.maps.LatLng(marker.latitude, - marker.longitude);
+                var content = marker.Text;
+                var pinImage ="http://www.googlemapsmarkers.com/v1/eefbf6/";
+                var pinImagelila ="http://www.googlemapsmarkers.com/v1/f7eeee/";
+                var pinImageyellow ="http://www.googlemapsmarkers.com/v1/fcfde1/";
+                var standar = "http://www.googlemapsmarkers.com/v1/ff0000/";
+                switch(content) {
+                    case "Almost time expires":
+                        image=pinImagelila;
+                        break;
+
+                    case "In Mobile":
+                        image=pinImageyellow;
+                        break;
+                    case "Assigned":
+                        image=pinImage;
+                        break;
+                    default:
+                        image=standar;
+                        break;
+                }
+                marker1 = new google.maps.Marker({
+                    title: title,
+                    position: pos,
+                    icon: image,
+                    category: category,
+                    map: map
+                });
+
+                gmarkers1.push(marker1);
+
+                // Marker click listener
+                google.maps.event.addListener(marker1, 'click', (function (marker1, content) {
+                    return function () {
+                        console.log('Gmarker 1 gets pushed');
+                        infowindow.setContent(content);
+                        infowindow.open(map, marker1);
+                        map.panTo(this.getPosition());
+                        map.setZoom(15);
+                    }
+                })(marker1, content));
+            }
+
+            /**
+             * Function to filter markers by category
+             */
+
+            filterMarkers = function (category) {
+                category = $("#type option:selected").text();
+                if(category=="[Select a User]")
+                {
+                    visibleall();
+                    return;
+                }
+                for (i = 0; i < markers1.length; i++) {
+                    marker = gmarkers1[i];
+                    // If is same category or category not picked
+                    if (marker.category == category || category.length === 0) {
+                        marker.setVisible(true);
+                    }
+                        // Categories don't match
+                    else {
+                        marker.setVisible(false);
+                    }
+                }
+            }
+            function visibleall(){
+
+                for (i = 0; i < markers1.length; i++) {
+                    marker = gmarkers1[i];
+                    marker.setVisible(true);
+                }
+            }
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwT17mYT6U4lLdhLb7sFQjq2smSkUQuEQ&callback=initMap">
+    </script>
 }

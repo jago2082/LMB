@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,5 +18,10 @@ namespace LMB.Models
         public string Name { get; set; }
         public int Type { get; set; }
         public Nullable<int> Active { get; set; }
+
+        [JsonIgnore]
+        public virtual TypeInspection TypeInspection { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<CheckListSection> CheckListSections { get; set; }
     }
 }

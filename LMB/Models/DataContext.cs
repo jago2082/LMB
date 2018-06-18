@@ -88,8 +88,30 @@ namespace LMB.Models
 
         public DbSet<InspectionRaiting> InspectionRaiting { get; set; }
 
-        public DbSet<UnderClearanceRecord> UnderClearanceRecord { get; set; }
+        public DbSet<UnderClearValues> UnderClearanceRecord { get; set; }
 
-        public System.Data.Entity.DbSet<LMB.Models.Pdf> Pdfs { get; set; }
+        public DbSet<CrossSectionValues> CrossSectionValues { get; set; }
+
+        public DbSet<TypeName> TypeName { get; set; }
+
+        public System.Data.Entity.DbSet<Pdf> Pdfs { get; set; }
+
+        public System.Data.Entity.DbSet<InspectionStates> InspectionStates { get; set; }
+
+        public System.Data.Entity.DbSet<District> Districts { get; set; }
+
+        public System.Data.Entity.DbSet<Counties> Counties { get; set; }
+
+        public System.Data.Entity.DbSet<ItemName> ItemNames { get; set; }
+
+        public System.Data.Entity.DbSet<Configuration> Configurations { get; set; }
+
+        public System.Data.Entity.DbSet<Reports> Reports { get; set; }
+
+        public System.Data.Entity.DbSet<LMB.Models.LoadRatingReport> LoadRatingReports { get; set; }
+
+        public System.Data.Entity.DbSet<LMB.Models.BridgeInspectionFollowUp> BridgeInspectionFollowUps { get; set; }
+
+        public DbSet<Image_orig_attach> Image_orig_attachs { get; set; }
     }
 }

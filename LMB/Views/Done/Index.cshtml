@@ -6,20 +6,24 @@
 
 <style>
     table.dataTable thead tr {
-  background-color: #73ADF5;
+ background: rgba(0, 63, 79, 0.1);
 }
     .grey {
   background-color: #e4e1e1;
 }
+
 </style>
-
-<h2>Done</h2>
-
+<div id="Botonera_Done">
+    @Html.ActionLink("Load Photos Camera", "LoadMultifiles", null, new { @class = "btn btn-primary", @style = "float: right;", @onclick = "Progress();" })
+</div>
 <table class="table" id="rawdata_table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.NumInspection)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserDBs.FullName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DO)
@@ -28,19 +32,10 @@
                 @Html.DisplayNameFor(model => model.Company)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Control)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Section)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Address)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TypeInspection)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Scope)
@@ -49,19 +44,7 @@
                 @Html.DisplayNameFor(model => model.Date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Hour)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdValueCheckList)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Longitude)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Latitude)
+                @Html.DisplayNameFor(model => model.InspectionState.Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LongitudeIni)
@@ -72,24 +55,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.DateInspection)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CommentGeneral)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdAttach)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sync)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LongitudeEnd)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LatitudeEnd)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateInspectionEnd)
-            </th>
+            <th></th>
             <th></th>
             <th></th>
         </tr>
@@ -102,16 +68,13 @@
                     @Html.DisplayFor(modelItem => item.NumInspection)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.UserDBs.FullName)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.DO)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Company)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Control)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Section)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Address)
@@ -120,28 +83,13 @@
                     @Html.DisplayFor(modelItem => item.City)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TypeInspection)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Scope)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Hour)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdValueCheckList)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Longitude)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Latitude)
+                    @Html.DisplayFor(modelItem => item.InspectionState.Description)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.LongitudeIni)
@@ -153,33 +101,45 @@
                     @Html.DisplayFor(modelItem => item.DateInspection)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CommentGeneral)
+                    <a id="Photos" data-target="#Photos" data-toggle="modal" data-id="" onclick="location.href='@Url.Action("Edit", new { id = item.IdInspection })'" href="#" class="unlock" title="Photos Report">
+                        <img width="30" alt="Photos Report" title="Photos Report" src="~/img/loadphoto.png">
+                    </a>
+
+
+     <!--             <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("Edit", new { id = item.IdInspection })'">
+
+                        <img width="30" alt="Photos Report" title="Load Pictures" src="~/img/loadphoto.png">
+                    </button>-->
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IdAttach)
+                    <a id="Open Repor" data-target="#Photos" data-toggle="modal" data-id="" onclick="location.href='@Url.Action("PDFReport", new { id = item.IdInspection })'" href="#" class="unlock" title="Open Report">
+                        <img width="30" alt="Open Report" title="Open Report" src="~/img/ic_report.png">
+                    </a>
+           <!--         <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("PDFReport", new { id = item.IdInspection })'">
+
+                        <img width="30" alt="Open Report" title="Open Report" src="~/img/ic_report.png">
+                    </button>--> 
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Sync)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LongitudeEnd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LatitudeEnd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateInspectionEnd)
-                </td>
-                <td>
-                    @Html.ActionLink(" ", "Edit", new { id = item.IdInspection }, new { @class = "btn btn-info btn-lg glyphicon glyphicon-edit disabled", @title = "Edit" })
-                </td>
-                <td>
-                    @Html.ActionLink(" ", "PDFReport", new { id = item.IdInspection }, new { @class = "btn-lg glyphicon glyphicon-list-alt", @title = "Report" })
-                </td>
+                    <a id="Open Repor" data-target="#Photos" data-toggle="modal" data-id="" onclick="location.href='@Url.Action("Reports", new { id = item.IdInspection })'" href="#" class="unlock" title="Other Report">
+                        <img width="30" alt="Other Report" title="Other Report" src="~/img/ic_reportAll.png">
+                    </a>
+                  <!--   <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("Reports", new { id = item.IdInspection })'">
+                       
+                        <img width="30" alt="Other Reports" title="Other Reports" src="~/img/ic_reportAll.png">
+                    </button>--> 
+                 </td>
             </tr>
+            
+             
         }
+      
+       
+
     </tbody>
 </table>
+@Html.ActionLink("Invoce", "ReportBill", null, new { @class = "btn btn-primary",@style= "float: right;", @onclick= "Progress();" })
+
 
 
 @Html.Raw(TempData["msg"])
@@ -201,6 +161,15 @@
             tabla();
         }
     </script>
-
-
+<script type="text/javascript">
+    function Progress() {
+        $('#mod-progress').modal()
+    };
+</script>
+<script type="text/javascript">
+        $('a').click(function () {
+            $('#mod-progress').modal()
+        });
+</script>
+@Html.Raw(ViewBag.Info)
 }

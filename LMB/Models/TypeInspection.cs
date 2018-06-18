@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LMB.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,5 +16,11 @@ namespace LMB.Models
         public string Description { get; set; }
         public string Image { get; set; }
         public bool Active { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<CheckListProject> CheckListProjects { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<InspectionDaily> InspectionDailies { get; set; }
     }
 }

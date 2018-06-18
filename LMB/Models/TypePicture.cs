@@ -12,5 +12,9 @@ namespace LMB.Models
         [Key]
         public int IdTypePicture { get; set; }
         public string Description { get; set; }
+
+        public int IdProject { get; set; }
+
+        public virtual ICollection<Insp_Type_Attach> Insp_Type_Attach { get; set; }
     }
 }
