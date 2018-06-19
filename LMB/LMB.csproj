@@ -317,6 +317,7 @@
     <Compile Include="Models\ReferenceFeatureUnderType.cs" />
     <Compile Include="Models\RegistrySerial.cs" />
     <Compile Include="Models\RegistrySerialAttach.cs" />
+    <Compile Include="Models\ReportSummarySheet.cs" />
     <Compile Include="Models\ReportInspFollowUp.cs" />
     <Compile Include="Models\Reports.cs" />
     <Compile Include="Models\ServerConfiguration.cs" />
@@ -587,6 +588,8 @@
     <Content Include="img\ic_reportAll.png" />
     <Content Include="img\ic_user.png" />
     <Content Include="img\image005.gif" />
+    <Content Include="img\image006.jpg" />
+    <Content Include="img\image007.gif" />
     <Content Include="img\imageChannel.jpg" />
     <Content Include="img\inspectionstatus.png" />
     <Content Include="img\loadphoto.png" />

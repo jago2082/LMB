@@ -1,4 +1,4 @@
-﻿@@model LMB.Models.ReportUnderClearReport
+﻿@model LMB.Models.ReportSummarySheet
 
 @{
     Layout = null;
@@ -1100,8 +1100,13 @@ mso-bidi-font-size:11.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                              style='width:69.75pt;height:47.25pt;visibility:visible;mso-wrap-style:square'>
                              <v:imagedata src="Summary%20Sheet1_files/image001.emz" o:title=""/>
                             </v:shape><![endif]-->
-                            <![if !vml]><img width=93 height=63
-                                             src="../img/LogoContractor.gif" v:shapes="Picture_x0020_1"><![endif]>
+                            <![if !vml]>
+@if (!string.IsNullOrEmpty(Model.Configuration.ImageContract))
+{
+    string image = string.Format("data:image/png;base64,{0}", Model.Configuration.ImageContract);
+                        <img width=93 height=63
+                                             src=@image v:shapes="Picture_x0020_1">}
+<![endif]>
                         </span><span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;color:#231F20'><o:p></o:p></span>
                     </p>
                 </td>
@@ -1110,7 +1115,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                     <p class=MsoNormal align=center style='margin-top:.45pt;text-align:center;
   text-autospace:ideograph-numeric ideograph-other'>
                         <span class=SpellE>
-                            <b style='mso-bidi-font-weight:normal'><span style='color:#231F20'>db.Title</span></b>
+                            <b style='mso-bidi-font-weight:normal'><span style='color:#231F20'>@Model.Reports.Title</span></b>
                         </span><b style='mso-bidi-font-weight:normal'><span style='color:#231F20'><o:p></o:p></span></b>
                     </p>
                     <p class=MsoNormal align=center style='margin-top:.45pt;text-align:center;
@@ -1124,7 +1129,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                     <p class=MsoNormal style='margin-top:.45pt;text-autospace:ideograph-numeric ideograph-other'>
                         <span class=SpellE>
                             <span style='font-size:6.0pt;mso-bidi-font-size:11.0pt;
-  color:#231F20'>DB.FormName</span>
+  color:#231F20'>@Model.Reports.FormName</span>
                         </span><span style='font-size:6.0pt;
   mso-bidi-font-size:11.0pt;color:#231F20'><o:p></o:p></span>
                     </p>
@@ -1176,7 +1181,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                     <p class=MsoNormal style='margin-top:.45pt;text-autospace:ideograph-numeric ideograph-other'>
                         <span class=SpellE>
                             <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  color:#231F20'>DIstri</span>
+  color:#231F20'>@Html.DisplayFor(modelItem => Model.InspectionDaily.DO)</span>
                         </span><span style='font-size:8.0pt;mso-bidi-font-size:
   11.0pt;color:#231F20'><o:p></o:p></span>
                     </p>
@@ -1193,12 +1198,12 @@ mso-bidi-font-size:11.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                     <p class=MsoNormal style='margin-top:.45pt;text-autospace:ideograph-numeric ideograph-other'>
                         <span class=SpellE>
                             <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  color:#231F20'>Coun</span>
+  color:#231F20'>@Html.DisplayFor(modelItem => Model.InspectionDaily.Company)</span>
                         </span><span style='font-size:8.0pt;mso-bidi-font-size:
   11.0pt;color:#231F20'><o:p></o:p></span>
                     </p>
                 </td>
-                <td width=121 colspan=2 valign=top style='width:90.8pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=132 colspan=2 valign=top style='width:99.25pt;padding:0in 5.4pt 0in 5.4pt;
   height:14.95pt'>
                     <p class=MsoNormal style='margin-top:.45pt;text-autospace:ideograph-numeric ideograph-other'>
                         <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
@@ -1207,13 +1212,13 @@ mso-bidi-font-size:11.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                         </span>
                     </p>
                 </td>
-                <td width=74 colspan=2 valign=top style='width:55.5pt;border:none;border-bottom:
+                <td width=63 colspan=2 valign=top style='width:47.05pt;border:none;border-bottom:
   solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:14.95pt'>
                     <p class=MsoNormal style='margin-top:.45pt;text-autospace:ideograph-numeric ideograph-other'>
                         <span class=SpellE>
                             <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  color:#231F20'>Contr</span>
+  color:#231F20'>@Html.DisplayFor(modelItem => Model.InspectionDaily.Control)</span>
                         </span><span style='font-size:8.0pt;mso-bidi-font-size:
   11.0pt;color:#231F20'><o:p></o:p></span>
                     </p>
@@ -1230,7 +1235,8 @@ mso-bidi-font-size:11.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                     <p class=MsoNormal style='margin-top:.45pt;text-autospace:ideograph-numeric ideograph-other'>
                         <span class=SpellE>
                             <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  color:#231F20'>Secci</span>
+  color:#231F20'>@Html.DisplayFor(modelItem => Model.InspectionDaily.Section)</span>
+</span>
                         </span><span style='font-size:8.0pt;mso-bidi-font-size:
   11.0pt;color:#231F20'><o:p></o:p></span>
                     </p>
@@ -1247,7 +1253,8 @@ mso-bidi-font-size:11.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                     <p class=MsoNormal style='margin-top:.45pt;text-autospace:ideograph-numeric ideograph-other'>
                         <span class=SpellE>
                             <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;
-  color:#231F20'>Estru</span>
+  color:#231F20'>@Html.DisplayFor(modelItem => Model.InspectionDaily.Structure)</span>
+</span>
                         </span><span style='font-size:8.0pt;mso-bidi-font-size:
   11.0pt;color:#231F20'><o:p></o:p></span>
                     </p>
@@ -1262,7 +1269,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
   mso-border-bottom-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
   height:14.95pt'>
                     <p class=MsoNormal style='margin-top:.45pt;text-autospace:ideograph-numeric ideograph-other'>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Rou<o:p></o:p></span>
+                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.InspectionDaily.City)<o:p></o:p></span>
                     </p>
                 </td>
             </tr>
@@ -1280,7 +1287,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
   border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:14.95pt'>
                     <p class=MsoNormal style='margin-top:.45pt;text-autospace:ideograph-numeric ideograph-other'>
-                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>Feat<o:p></o:p></span>
+                        <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.InspectionDaily.Scope)<o:p></o:p></span>
                     </p>
                 </td>
                 <td width=119 colspan=2 valign=top style='width:89.4pt;padding:0in 5.4pt 0in 5.4pt;
@@ -1350,26 +1357,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
             </tr>
             <![if !supportMisalignedColumns]>
             <tr height=0>
-                <td width=81 style='border:none'></td>
-                <td width=28 style='border:none'></td>
-                <td width=35 style='border:none'></td>
-                <td width=26 style='border:none'></td>
-                <td width=55 style='border:none'></td>
-                <td width=68 style='border:none'></td>
-                <td width=46 style='border:none'></td>
-                <td width=75 style='border:none'></td>
-                <td width=45 style='border:none'></td>
-                <td width=29 style='border:none'></td>
-                <td width=40 style='border:none'></td>
-                <td width=88 style='border:none'></td>
-                <td width=40 style='border:none'></td>
-                <td width=53 style='border:none'></td>
-                <td width=30 style='border:none'></td>
-                <td width=8 style='border:none'></td>
-                <td width=36 style='border:none'></td>
-                <td width=40 style='border:none'></td>
-                <td width=21 style='border:none'></td>
-                <td width=33 style='border:none'></td>
+
                 <td width=76 style='border:none'></td>
             </tr>
             <![endif]>
@@ -1392,26 +1380,6 @@ mso-break-type:section-break'>
 
     <div class=WordSection2>
 
-        <p class=MsoNormal style='margin-left:174.65pt;line-height:1.0pt;mso-line-height-rule:
-exactly;tab-stops:376.65pt'>
-            <span style='font-size:1.0pt;mso-bidi-font-size:
-11.0pt'><span style='mso-tab-count:1'>                                                                                                                                                                                                                                                                             </span><o:p></o:p></span>
-        </p>
-
-        <p class=MsoNormal style='margin-top:.45pt'>
-            <span style='font-size:3.5pt;
-mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span>
-        </p>
-
-        <p class=MsoNormal style='margin-top:.45pt'>
-            <span style='font-size:3.5pt;
-mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span>
-        </p>
-
-        <p class=MsoNormal style='margin-top:.45pt'>
-            <span style='font-size:3.5pt;
-mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span>
-        </p>
 
         <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
                style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
@@ -2051,9 +2019,11 @@ mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span>
             <![if !vml]><span style='mso-ignore:vglayout;position:
 absolute;z-index:503165549;margin-left:779px;margin-top:3px;width:169px;
 height:174px'>
-
+@if (!string.IsNullOrEmpty(Model.Configuration.ImageSing))
+{
+    string image = string.Format("data:image/png;base64,{0}", Model.Configuration.ImageSing);
                 <img width=169 height=174
-                     src="..img/SelloLMB.jpg" v:shapes="Picture_x0020_333">
+                     src=@image v:shapes="Picture_x0020_333">}
             </span><![endif]><span style='font-size:2.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
         </p>
 
@@ -2198,7 +2168,7 @@ AR-SA'>
                              <v:imagedata src="Summary%20Sheet1_files/image005.png" o:title=""/>
                             </v:shape><![endif]-->
                             <![if !vml]><img width=366 height=111
-                                             src="Summary%20Sheet1_files/image006.jpg" v:shapes="Picture_x0020_445"><![endif]>
+                                             src="~/img/image006.jpg" v:shapes="Picture_x0020_445"><![endif]>
                         </span><u style='text-underline:#231F20'><span style='color:#231F20'><o:p></o:p></span></u>
                     </h1>
                 </td>
@@ -2445,10 +2415,7 @@ mso-break-type:section-break'>
 
     <div class=WordSection4>
 
-        <h1 style='margin-top:6.0pt'>
-            <span style='font-size:4.0pt;mso-bidi-font-size:
-12.0pt'><o:p>&nbsp;</o:p></span>
-        </h1>
+
 
         <table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0
                style='border-collapse:collapse;border:none;mso-yfti-tbllook:1184;mso-padding-alt:
@@ -2849,7 +2816,7 @@ mso-bidi-font-size:11.0pt'><o:p></o:p></span>
   position:absolute;z-index:503172816;margin-left:84px;margin-top:6px;
   width:484px;height:82px'>
                             <img width=484 height=82
-                                 src="Summary%20Sheet1_files/image007.gif" v:shapes="Picture_x0020_265">
+                                 src="~/img/image007.gif" v:shapes="Picture_x0020_265">
                         </span><![endif]>
                     </p>
                 </td>
@@ -3315,9 +3282,7 @@ mso-bidi-font-size:11.0pt'><o:p></o:p></span>
             <![endif]>
         </table>
 
-        <p class=MsoNormal><span style='font-size:8.0pt;mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span></p>
 
-        <p class=MsoNormal><o:p>&nbsp;</o:p></p>
 
     </div>
 
@@ -3327,24 +3292,7 @@ AR-SA'>
         <br clear=all style='page-break-before:auto;mso-break-type:section-break'>
     </span>
 
-    <div class=WordSection5>
 
-        <p class=MsoNormal align=center style='margin-top:.45pt;margin-right:16.75pt;
-margin-bottom:0in;margin-left:13.5pt;margin-bottom:.0001pt;text-align:center'>
-            <i style='mso-bidi-font-style:normal'>
-                <span style='font-size:8.0pt;mso-bidi-font-size:
-11.0pt'><o:p>&nbsp;</o:p></span>
-            </i>
-        </p>
-
-    </div>
-
-    <span style='font-size:8.0pt;mso-bidi-font-size:11.0pt;font-family:"Arial","sans-serif";
-mso-fareast-font-family:Arial;mso-ansi-language:EN-US;mso-fareast-language:
-EN-US;mso-bidi-language:AR-SA'>
-        <br clear=all style='page-break-before:auto;
-mso-break-type:section-break'>
-    </span>
 
     <div class=WordSection6>
 

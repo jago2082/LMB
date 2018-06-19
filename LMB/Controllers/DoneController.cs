@@ -471,19 +471,32 @@ namespace LMB.Controllers
             };
         }
 
-        public ActionResult ReportSummarySheet()
+        public async Task<ActionResult> ReportSummarySheet(int id)
         {
+            ReportSummarySheet reportf = new ReportSummarySheet();
+            reportf.InspectionDaily = await db.InspectionDaily.FindAsync(id);
+            var distrcode = string.Format("0{0}", reportf.InspectionDaily.DO);
+            var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
+            reportf.InspectionDaily.DO = distric.ABBR;
+            var countrycode = reportf.InspectionDaily.Company.TrimStart('0');
+            int code = int.Parse(countrycode);
+            var country = db.Counties.Find(code);
+            reportf.InspectionDaily.Company = country.Description;
+            reportf.Reports = db.Reports.Find(4);
+            reportf.Configuration = db.Configurations.FirstOrDefault();
+            reportf.Usuario = UsersHelper.finduser(User.Identity.GetUserName());
+
             string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
 
 
-            return new ViewAsPdf("ReportSummarySheet")
+            return new ViewAsPdf("ReportSummarySheet", reportf)
             {
 
                 //  FileName = "firstPdf.pdf",
                 // CustomSwitches = footer
-                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(5, 10, 5, 10), PageSize = Rotativa.Core.Options.Size.Letter }
             };
-         //   return View("ReportSummarySheet");
+            //   return View("ReportSummarySheet");
         }
         public ActionResult ReportStructuralCondition()
         {
@@ -496,10 +509,24 @@ namespace LMB.Controllers
             var insp = db.InspectionDaily.Find(id);
 
             var inspList = db.InspectionBasicRegistryValue.ToList().Where(ins => ins.IdInspection == id);
+
             InventoryReport InventoryReport = new InventoryReport();
+
+            
             InventoryReport.IdInspection = insp.IdInspection;
-            InventoryReport.District = insp.DO;
-            InventoryReport.County = insp.Company;
+            
+            var distrcode = string.Format("0{0}", insp.DO);
+            var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
+            InventoryReport.District = distric.ABBR;
+            
+            var countrycode = insp.Company.TrimStart('0');
+            int code = int.Parse(countrycode);
+            var country = db.Counties.Find(code);
+            InventoryReport.County = country.Description;
+            InventoryReport.Reports = db.Reports.Find(3);
+            InventoryReport.Configuration = db.Configurations.FirstOrDefault();
+            InventoryReport.Usuario = UsersHelper.finduser(User.Identity.GetUserName());
+                        
             InventoryReport.Control = insp.Control;
             InventoryReport.Section = insp.Section;
             InventoryReport.Location = insp.Address;
