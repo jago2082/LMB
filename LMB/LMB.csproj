@@ -575,7 +575,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\alpha_1px.png" />
     <Content Include="img\Chulo.png" />
+    <Content Include="img\Compass.png" />
     <Content Include="img\CompassReport.gif" />
     <Content Include="img\home.png" />
     <Content Include="img\ic_addinsp.png" />

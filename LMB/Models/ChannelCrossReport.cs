@@ -11,7 +11,10 @@ namespace LMB.Models
 
         public InspectionDaily InspectionDaily { get; set; }
 
-   
+        public Configuration Configuration { get; set; }
+        
+        public Reports Reports { get; set; }
+        public UserDB Usuario { get; set; }
         public ICollection<CrossSectionValues> CrossSectionValues { get; set; }
 
 
