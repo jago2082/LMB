@@ -9,6 +9,11 @@ namespace LMB.Models
 {
     public class InventoryReport
     {
+        public Configuration Configuration { get; set; }
+        public InspectionDaily InspectionDaily { get; set; }
+        public Reports Reports { get; set; }
+        public UserDB Usuario { get; set; }
+
         public int IdInspection { get; set; }
 
         public string District { get; set; }

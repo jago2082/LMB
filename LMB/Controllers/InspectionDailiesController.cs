@@ -60,7 +60,7 @@ namespace LMB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(InspectionDaily inspectionDaily)
+        public async Task<ActionResult> Create( InspectionDaily inspectionDaily)
         {
             if (ModelState.IsValid)
             {
@@ -149,7 +149,8 @@ namespace LMB.Controllers
 
         // POST: InspectionDailies/Delete/5
         [HttpPost, ActionName("Delete")]
-        public async Task<ActionResult> Delete(string listaIds, string user)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             string[] arregloIds = listaIds.Split(new char[] { ',' });
             InspectionDaily inspectionDaily = null;

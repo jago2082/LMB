@@ -471,9 +471,32 @@ namespace LMB.Controllers
             };
         }
 
-        public ActionResult ReportSummarySheet()
+        public async Task<ActionResult> ReportSummarySheet(int id)
         {
-            return View("ReportSummarySheet");
+            ReportSummarySheet reportf = new ReportSummarySheet();
+            reportf.InspectionDaily = await db.InspectionDaily.FindAsync(id);
+            var distrcode = string.Format("0{0}", reportf.InspectionDaily.DO);
+            var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
+            reportf.InspectionDaily.DO = distric.ABBR;
+            var countrycode = reportf.InspectionDaily.Company.TrimStart('0');
+            int code = int.Parse(countrycode);
+            var country = db.Counties.Find(code);
+            reportf.InspectionDaily.Company = country.Description;
+            reportf.Reports = db.Reports.Find(1);
+            reportf.Configuration = db.Configurations.FirstOrDefault();
+            reportf.Usuario = UsersHelper.finduser(User.Identity.GetUserName());
+
+            string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
+
+
+            return new ViewAsPdf("ReportSummarySheet", reportf)
+            {
+
+                //  FileName = "firstPdf.pdf",
+                // CustomSwitches = footer
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(5, 10, 5, 10), PageSize = Rotativa.Core.Options.Size.Letter }
+            };
+            //   return View("ReportSummarySheet");
         }
         public ActionResult ReportStructuralCondition()
         {
@@ -486,10 +509,24 @@ namespace LMB.Controllers
             var insp = db.InspectionDaily.Find(id);
 
             var inspList = db.InspectionBasicRegistryValue.ToList().Where(ins => ins.IdInspection == id);
+
             InventoryReport InventoryReport = new InventoryReport();
+
+            
             InventoryReport.IdInspection = insp.IdInspection;
-            InventoryReport.District = insp.DO;
-            InventoryReport.County = insp.Company;
+            
+            var distrcode = string.Format("0{0}", insp.DO);
+            var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
+            InventoryReport.District = distric.ABBR;
+            
+            var countrycode = insp.Company.TrimStart('0');
+            int code = int.Parse(countrycode);
+            var country = db.Counties.Find(code);
+            InventoryReport.County = country.Description;
+            InventoryReport.Reports = db.Reports.Find(5);
+            InventoryReport.Configuration = db.Configurations.FirstOrDefault();
+            InventoryReport.Usuario = UsersHelper.finduser(User.Identity.GetUserName());
+                        
             InventoryReport.Control = insp.Control;
             InventoryReport.Section = insp.Section;
             InventoryReport.Location = insp.Address;
@@ -645,6 +682,22 @@ namespace LMB.Controllers
             var inspList = db.CrossSectionValues.ToList().Where(ins => ins.IdInspection == id);
             ChannelCrossReport ChannelCrossReport = new ChannelCrossReport();
             ChannelCrossReport.InspectionDaily = insp;
+
+           var distrcode = string.Format("0{0}", insp.DO);
+            var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
+            insp.DO = distric.ABBR;
+
+            var countrycode = insp.Company.TrimStart('0');
+            int code = int.Parse(countrycode);
+            var country = db.Counties.Find(code);
+            insp.Company = country.Description;
+            ChannelCrossReport.Reports = db.Reports.Find(7);
+            ChannelCrossReport.Configuration = db.Configurations.FirstOrDefault();
+            ChannelCrossReport.Usuario = UsersHelper.finduser(User.Identity.GetUserName());
+
+
+
+
             ChannelCrossReport.CrossSectionValues = inspList.ToList(); 
            
             if (ChannelCrossReport == null)
@@ -674,12 +727,32 @@ namespace LMB.Controllers
         {
             // int id = 10;
             var insp = db.InspectionDaily.Find(id);
+           // var inspListFeat = db.UnderClearanceRecord.ToList().Where(ins => ins.IdInspection == id).Select(ins => ins.FeatureXed).Distinct();
+            var inspListFeat = db.UnderClearanceRecord.Where(ins => ins.IdInspection == id).GroupBy(ins => ins.FeatureXed).Select(group => group.FirstOrDefault());
+            var inspListPSN = db.UnderClearanceRecord.Where(ins => ins.IdInspection == id).GroupBy(ins => ins.PSN).Select(group => group.FirstOrDefault());
 
-            var inspList = db.UnderClearanceRecord.ToList().Where(ins => ins.IdInspection == id);
+            var inspList = db.UnderClearanceRecord.ToList().Where(ins => ins.IdInspection == id).OrderBy(ins => ins.PSN);
             var imageUnder = db.Insp_Attach.Where(insp1 => insp1.IDInspection == id).FirstOrDefault().ImageString; 
             UnderClearReport UnderClearReport = new UnderClearReport();
-            UnderClearReport.InspectionDaily=insp;
+
+           
+            var distrcode = string.Format("0{0}", insp.DO);
+            var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
+            insp.DO = distric.ABBR;
+
+
+            var countrycode = insp.Company.TrimStart('0');
+            int code = int.Parse(countrycode);
+            var country = db.Counties.Find(code);
+            insp.Company = country.Description;
+            UnderClearReport.Reports = db.Reports.Find(6);
+            UnderClearReport.Configuration = db.Configurations.FirstOrDefault();
+            UnderClearReport.Usuario = UsersHelper.finduser(User.Identity.GetUserName());
             UnderClearReport.UnderClearValues = inspList.ToList();
+
+            UnderClearReport.InspectionDaily=insp;
+            UnderClearReport.UnderClearValuesPSN = inspListPSN.ToList();
+            UnderClearReport.UnderClearValuesFeat = inspListFeat.ToList();
             UnderClearReport.image = imageUnder;
             if (UnderClearReport == null)
             {

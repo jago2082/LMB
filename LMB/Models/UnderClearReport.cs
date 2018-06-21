@@ -13,6 +13,13 @@ namespace LMB.Models
 
         public string image { get; set; }
 
+        public Configuration Configuration { get; set; }
+        public Reports Reports { get; set; }
+        public UserDB Usuario { get; set; }
+
+        public List<UnderClearValues> UnderClearValuesFeat { get; set; }
+        public List<UnderClearValues> UnderClearValuesPSN { get; set; }
+        
         public ICollection<UnderClearValues> UnderClearValues { get; set; }
 
 

@@ -13,11 +13,12 @@ namespace LMB.Models
         [Key]
         public int IdInspection { get; set; }
         public int IDUser { get; set; }
+        [Display(Name = "User")]
         public Nullable<int> IdClient { get; set; }
         public Nullable<int> IdProject { get; set; }
         [StringLength(60)]
         [Index("InspectionDailyNumInspectionIndex",  IsUnique = true)]
-        [Display(Name ="BridgeNo.           ")]
+        [Display(Name ="Bridge No.          ")]
         public string NumInspection { get; set; }
 
         [Display(Name = "District")]
