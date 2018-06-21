@@ -23,6 +23,29 @@ namespace LMB.Helpers
             return userdbs.OrderBy(c => c.UserName).ToList();
         }
 
+        public static List<District> GetDistricts()
+        {
+            var districts = db.Districts;
+            districts.Add(new District
+            {
+                NAME = "0",
+                ABBR = "[Select District]",
+            });
+            return districts.OrderBy(d => d.ABBR).ToList();
+        }
+
+        public static List<Counties> GetCounties()
+        {
+            var counties = db.Counties;
+            counties.Add(new Counties
+            {
+                IdCountries = 0,
+                Description = "[Select District]",
+            });
+            return counties.OrderBy(d => d.Description).ToList();
+        }
+
+
         /// <summary>
         /// Funcion que retorno los usuarios ordenados por full name 
         /// </summary>

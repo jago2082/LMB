@@ -38,6 +38,7 @@ namespace LMB.Models
         [Display(Name = "Feat Xed")]
         public string Scope { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
+        [Display(Name = "Date Build")]
         public string Hour { get; set; }
         public Nullable<int> IdValueCheckList { get; set; }
         public Nullable<int> IdStatus { get; set; }
