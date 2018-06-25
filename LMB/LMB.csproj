@@ -273,6 +273,7 @@
     <Compile Include="Models\CheckListQuestion.cs" />
     <Compile Include="Models\CheckListSection.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\ComponentSummary.cs" />
     <Compile Include="Models\Configuration.cs" />
     <Compile Include="Models\ConfigurationApp.cs" />
     <Compile Include="Models\Counties.cs" />
@@ -859,6 +860,7 @@
     <Content Include="Views\InspectionDailies\Details.cshtml" />
     <Content Include="Views\InspectionDailies\Edit.cshtml" />
     <Content Include="Views\InspectionDailies\Index.cshtml" />
+    <Content Include="Views\ConfigurationApps\EditR.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

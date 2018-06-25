@@ -17,10 +17,6 @@ namespace LMB.Models
 
         public string Revision { get; set; }
 
-        public string TeamLeader { get; set; }
-
-        public string Engineerofrecord { get; set; }
-
-        public string FirmN { get; set; }
+       
     }
 }

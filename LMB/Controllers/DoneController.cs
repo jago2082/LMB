@@ -1101,7 +1101,7 @@ namespace LMB.Controllers
             footer.configuration = db.Configurations.FirstOrDefault();
             return View(footer);
         }
-
+        
 
         public async Task<ActionResult> EditP(int? id)
         {
