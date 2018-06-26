@@ -1187,6 +1187,8 @@ namespace LMB.Controllers
                
                 return RedirectToAction("Index");
             }
+            ViewBag.IDTypePicture = new SelectList(CombosHelper.TypePicture(), "IdTypePicture", "Description");
+            ViewBag.IdDirectionPhotoType = new SelectList(CombosHelper.PothoType(), "IdDirectionPhotoType", "Description");
             return View(insptypeattach);
         }
         protected override void Dispose(bool disposing)

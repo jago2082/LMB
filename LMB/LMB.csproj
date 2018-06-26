@@ -283,6 +283,7 @@
     <Compile Include="Models\DirectionPhotoType.cs" />
     <Compile Include="Models\District.cs" />
     <Compile Include="Models\FileLoad.cs" />
+    <Compile Include="Models\FollowUpOther.cs" />
     <Compile Include="Models\Footer.cs" />
     <Compile Include="Models\FuncionalidadClient.cs" />
     <Compile Include="Models\HSEQuestion.cs" />
@@ -875,6 +876,9 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

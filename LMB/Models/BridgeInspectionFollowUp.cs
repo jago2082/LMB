@@ -19,6 +19,7 @@ namespace LMB.Models
 
         public int InspectionRaitingType { get; set; }
 
+        
         public ReferenceFeatureType ReferenceFeatureType { get; set; }
 
         public RecommendationType RecommendationType { get; set; }

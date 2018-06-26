@@ -45,6 +45,41 @@ namespace LMB.Controllers
             return View(inspectionDaily);
         }
 
+
+        [HttpPost, ActionName("Save")]
+        public async Task<ActionResult> Save(string listaIds, string user)
+        {
+            string[] arregloIds = listaIds.Split(new char[] { ',' });
+            InspectionDaily inspectionDaily = null;
+            int id = 0;
+            foreach (var item in arregloIds)
+            {
+                id = int.Parse(item);
+                inspectionDaily = await db.InspectionDaily.FindAsync(id);
+                try
+                {
+                    inspectionDaily.IDUser = int.Parse(user);
+                    inspectionDaily.Date = DateTime.Now;
+                    inspectionDaily.IdStatus = 4;
+                    db.Entry(inspectionDaily).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+
+                }
+                catch (Exception ex)
+                {
+
+                    TempData["msg"] = "<script>swal('Error', '" + ex.Message + "', 'error');</script>";
+                    return RedirectToAction("Index");
+                }
+            }
+
+
+            TempData["msg"] = "<script>alert('Change succesfully');</script>";
+            ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "FirstName");
+            ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdStatus", "Description", inspectionDaily.IdStatus);
+            return RedirectToAction("Index");
+
+        }
         // GET: InspectionDailies/Create
         public ActionResult Create()
         {
@@ -150,7 +185,7 @@ namespace LMB.Controllers
         // POST: InspectionDailies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string listaIds, string user)
+        public async Task<ActionResult> DeleteConfirmed(string listaIds)
         {
             string[] arregloIds = listaIds.Split(new char[] { ',' });
             InspectionDaily inspectionDaily = null;

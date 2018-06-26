@@ -12,8 +12,10 @@ namespace LMB.Models
     {
         [Key]
         public int IdInspection { get; set; }
-        public int IDUser { get; set; }
+
         [Display(Name = "User")]
+        public int IDUser { get; set; }
+       
         public Nullable<int> IdClient { get; set; }
         public Nullable<int> IdProject { get; set; }
         [StringLength(60)]
