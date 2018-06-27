@@ -150,8 +150,9 @@ namespace LMB.Controllers
         // POST: InspectionDailies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(string listaIds, string user)
         {
+                       
             string[] arregloIds = listaIds.Split(new char[] { ',' });
             InspectionDaily inspectionDaily = null;
             int id = 0;
