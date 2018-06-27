@@ -20,6 +20,7 @@ Other Reports Bridge No.: @Model.NumInspection
             <th scope="col">Name Report</th>
             <th scope="col"></th>
             <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
@@ -31,6 +32,9 @@ Other Reports Bridge No.: @Model.NumInspection
             </td>
             <td>
                 @Html.ActionLink("Create", "CreateF",  new { id = Model.IdInspection })
+            </td>
+            <td>
+                @Html.ActionLink("Create Details", "CreateFD", new { id = Model.IdInspection })
             </td>
             <td>
                 @Html.ActionLink("Details", "IndexF", new { id = Model.IdInspection })
