@@ -2,11 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
-using System.Web;
+using Rotativa.MVC;
 using System.Web.Mvc;
+using Z.EntityFramework.Plus;
+using LMB.Helpers;
+using System.Web;
+using System.IO;
+using Rotativa.Core.Options;
+using Newtonsoft.Json;
+using Microsoft.AspNet.Identity;
+using System.Drawing;
 
 namespace LMB.Controllers
 {
@@ -22,6 +30,30 @@ namespace LMB.Controllers
             configapp.configuration = db.Configurations.FirstOrDefault();
             configapp.reports = db.Reports.ToList(); 
             return View(configapp);
+        }
+
+        public async Task<ActionResult> EditR(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var reports = await db.Reports.FindAsync(id);
+            return View(reports);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditR(Reports reports)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(reports).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(reports);
         }
 
         [HttpPost]

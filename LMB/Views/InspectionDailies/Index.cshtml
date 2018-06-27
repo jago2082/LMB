@@ -295,12 +295,7 @@
         $("#btnDelete").on("click", function () {
 
             var idinsp = $('#inspId').val();
-            if (user == 0) {
-                swal('¡Alert!', 'Select User!.', 'error');
-                return;
-            }
-
-            if (list != "") {
+           if (list != "") {
                 swal({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -311,7 +306,7 @@
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.value) {
-                        $.post(Urld, { "listaIds": list, "user": user })
+                        $.post(Urld, { "listaIds": list })
                         .done(function (data) {
                             swal('Info', 'Success', 'success');
                             $("#modalDelete").trigger('click');
@@ -381,7 +376,7 @@
                 var status = marker.User;
                 var title = marker.User;
                 var pos = new google.maps.LatLng(marker.latitude, - marker.longitude);
-                var content = marker.Status;
+                var content = marker.Text;
                 var pinImage ="http://www.googlemapsmarkers.com/v1/eefbf6/";
                 var pinImagelila ="http://www.googlemapsmarkers.com/v1/f7eeee/";
                 var pinImageyellow ="http://www.googlemapsmarkers.com/v1/fcfde1/";

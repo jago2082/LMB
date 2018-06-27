@@ -273,6 +273,7 @@
     <Compile Include="Models\CheckListQuestion.cs" />
     <Compile Include="Models\CheckListSection.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\ComponentSummary.cs" />
     <Compile Include="Models\Configuration.cs" />
     <Compile Include="Models\ConfigurationApp.cs" />
     <Compile Include="Models\Counties.cs" />
@@ -282,6 +283,7 @@
     <Compile Include="Models\DirectionPhotoType.cs" />
     <Compile Include="Models\District.cs" />
     <Compile Include="Models\FileLoad.cs" />
+    <Compile Include="Models\FollowUpOther.cs" />
     <Compile Include="Models\Footer.cs" />
     <Compile Include="Models\FuncionalidadClient.cs" />
     <Compile Include="Models\HSEQuestion.cs" />
@@ -859,6 +861,7 @@
     <Content Include="Views\InspectionDailies\Details.cshtml" />
     <Content Include="Views\InspectionDailies\Edit.cshtml" />
     <Content Include="Views\InspectionDailies\Index.cshtml" />
+    <Content Include="Views\ConfigurationApps\EditR.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -873,6 +876,9 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

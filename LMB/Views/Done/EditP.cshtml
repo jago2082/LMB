@@ -24,7 +24,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TypePicture.Description, "Caption", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("IDTypePicture", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("IDTypePicture", null,"[Select Caption]", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IDTypePicture, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -40,7 +40,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DirectionPhotoType.Description, "Direction", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("IdDirectionPhotoType", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("IdDirectionPhotoType", null, "[Select Direction]", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdDirectionPhotoType, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -86,6 +86,23 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 <script type="text/javascript">
+    $(document).ready(function () {
+        var option = $("#IDTypePicture option:selected").text();
+        if (option != "[Select Caption]") {
+            $('#Caption').attr('readonly', true);
+        }
+    }
+    );
+
+    $('#IDTypePicture').on('change', function () {
+        var option = $("#IDTypePicture option:selected").text();
+        if (option != "[Select Caption]") {
+            $('#Caption').attr('readonly', true);
+        } else {
+            $('#Caption').attr('readonly', false);
+        }
+    })
+
     $('#myform').submit(function () {
         $('#mod-progress').modal()
     });

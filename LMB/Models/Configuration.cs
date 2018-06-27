@@ -34,5 +34,11 @@ namespace LMB.Models
 
         [NotMapped]
         public HttpPostedFileBase ContractFile { get; set; }
+
+        public string TeamLeader { get; set; }
+
+        public string Engineerofrecord { get; set; }
+
+        public string FirmN { get; set; }
     }
 }
