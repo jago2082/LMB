@@ -437,9 +437,11 @@ namespace LMB.Controllers
             
         }
 
+  
         public async Task<ActionResult> ReportInspFollowUp(int id)
         {
             ReportInspFollowUp reportf = new ReportInspFollowUp();
+           
             reportf.InspectionDaily = await db.InspectionDaily.FindAsync(id);
             var distrcode = string.Format("0{0}", reportf.InspectionDaily.DO);
             var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
@@ -451,11 +453,20 @@ namespace LMB.Controllers
             reportf.Reports = db.Reports.Find(3);
             reportf.Configuration = db.Configurations.FirstOrDefault();
             reportf.Usuario = UsersHelper.finduser(User.Identity.GetUserName());
+
             reportf.BridgeInspectionFollowUps = await db.BridgeInspectionFollowUps.Include(b => b.InspectionRaiting)
                 .Include(b => b.RecommendationType)
                 .Include(b => b.ReferenceFeatureType)
                 .Where(i => i.IdInspection == id).ToListAsync();
 
+
+            var inspList = db.followUpOther.Where(ins => ins.inspectionId == id).FirstOrDefault();
+
+            reportf.FollowUpOther = inspList;
+
+            var inspListNo = db.NoveltyInspection.ToList().Where(ins => ins.IdInspection == id);
+
+            reportf.NoveltyInspection = inspListNo.ToList();
 
             // return View("ReportInspFollowUp", reportf);
 
@@ -694,9 +705,6 @@ namespace LMB.Controllers
             ChannelCrossReport.Reports = db.Reports.Find(7);
             ChannelCrossReport.Configuration = db.Configurations.FirstOrDefault();
             ChannelCrossReport.Usuario = UsersHelper.finduser(User.Identity.GetUserName());
-
-
-
 
             ChannelCrossReport.CrossSectionValues = inspList.ToList(); 
            

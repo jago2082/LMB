@@ -246,6 +246,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BridgeInspectionFollowUpsController.cs" />
+    <Compile Include="Controllers\ComponentSummariesController.cs" />
     <Compile Include="Controllers\ConfigurationAppsController.cs" />
     <Compile Include="Controllers\DoneController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -863,6 +864,11 @@
     <Content Include="Views\InspectionDailies\Index.cshtml" />
     <Content Include="Views\ConfigurationApps\EditR.cshtml" />
     <Content Include="Views\Done\CreateFD.cshtml" />
+    <Content Include="Views\Done\CreateCS.cshtml" />
+    <Content Include="Views\Done\DeleteCS.cshtml" />
+    <Content Include="Views\Done\DetailsCS.cshtml" />
+    <Content Include="Views\Done\EditCS.cshtml" />
+    <Content Include="Views\Done\IndexCS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

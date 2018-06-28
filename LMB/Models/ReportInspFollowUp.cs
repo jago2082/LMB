@@ -12,5 +12,8 @@ namespace LMB.Models
         public Reports Reports { get; set; }
         public UserDB Usuario { get; set; }
         public ICollection<BridgeInspectionFollowUp> BridgeInspectionFollowUps { get; set; }
+        public FollowUpOther FollowUpOther { get; set; }
+        public ICollection<NoveltyInspection> NoveltyInspection { get; set; }
+        
     }
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using LMB.Models;
+using System.IO;
 
 namespace LMB.Controllers
 {
@@ -332,8 +333,22 @@ namespace LMB.Controllers
 
             base.Dispose(disposing);
         }
+        public ActionResult ShowPdf()
+        {
+            if (System.IO.File.Exists(Server.MapPath("~/Manual/UserManualWeb_EN.pdf")))
+            {
+                string pathSource = Server.MapPath("~/Manual/UserManualWeb_EN.pdf");
+                FileStream fsSource = new FileStream(pathSource, FileMode.Open, FileAccess.Read);
 
-#region Helpers
+                return new FileStreamResult(fsSource, "application/pdf");
+            }
+            else
+            {
+                return RedirectToAction("Index", "User");
+            }
+        }
+
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 

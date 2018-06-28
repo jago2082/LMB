@@ -10,6 +10,8 @@ namespace LMB.Models
     {
         [Key]
         public int IdComponentSummary { get; set; }
+
+        public int IdInspection { get; set; }
         public string Description { get; set; }
 
         public int InspeRating { get; set; }

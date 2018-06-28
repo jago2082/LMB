@@ -56,6 +56,12 @@ Other Reports Bridge No.: @Model.NumInspection
             @*@Html.ActionLink("Bridge Structural Condition History", "ReportStructuralCondition")*@
             @Html.ActionLink("Bridge Load Rating Statement", "LoadRating", new { id = Model.IdInspection })
             </td>
+        <td>
+            @Html.ActionLink("Create", "CreateCS", new { id = Model.IdInspection })
+        </td>
+        <td>
+            @Html.ActionLink("Details", "IndexCS", new { id = Model.IdInspection })
+        </td>
         <td></td>
         <td></td>
         </tr>

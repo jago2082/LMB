@@ -115,5 +115,7 @@ namespace LMB.Models
         public DbSet<Image_orig_attach> Image_orig_attachs { get; set; }
 
         public DbSet<FollowUpOther> followUpOther { get; set; }
+
+        public System.Data.Entity.DbSet<LMB.Models.ComponentSummary> ComponentSummaries { get; set; }
     }
 }

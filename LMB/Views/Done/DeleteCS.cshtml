@@ -1,0 +1,72 @@
+﻿@model LMB.Models.ComponentSummary
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ComponentSummary</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InspeRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InspeRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvRatingH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvRatingH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvRatingHS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvRatingHS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpRatingH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpRatingH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpRatingHS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpRatingHS)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Reports", new { id = Model.IdInspection })
+        </div>
+    }
+</div>
