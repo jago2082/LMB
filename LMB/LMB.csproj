@@ -869,6 +869,7 @@
     <Content Include="Views\Done\DetailsCS.cshtml" />
     <Content Include="Views\Done\EditCS.cshtml" />
     <Content Include="Views\Done\IndexCS.cshtml" />
+    <Content Include="Views\Manage\OpenManual.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

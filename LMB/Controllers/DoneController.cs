@@ -45,6 +45,15 @@ namespace LMB.Controllers
             return View(await bridgeInspectionFollowUps.ToListAsync());
         }
 
+        public async Task<ActionResult> IndexCS(int id)
+        {
+            var ComponentSummaries = db.ComponentSummaries.Where(i => i.IdInspection == id);
+
+            return View(await ComponentSummaries.ToListAsync());
+
+        }
+
+
         public ActionResult LoadBridgeInspectionRecord(int? id)
         {
             var insp = db.InspectionDaily.Include(d => d.District)
@@ -805,6 +814,41 @@ namespace LMB.Controllers
         //    return View("Reports",inspec);
         //}
 
+
+        public async Task<ActionResult> EditCS(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var ComponentSummary = await db.ComponentSummaries.FindAsync(id);
+            if (ComponentSummary == null)
+            {
+                           
+                return HttpNotFound();
+            }
+            return View("EditCS");
+        }
+
+
+
+        public async Task<ActionResult> DeleteCS(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ComponentSummary componentSummary = await db.ComponentSummaries.FindAsync(id);
+            if (componentSummary == null)
+            {
+                return HttpNotFound();
+            }
+            return View("DeleteCS");
+        }
+
+
+
+
         public async Task<ActionResult> EditF(int? id)
         {
             if (id == null)
@@ -880,6 +924,14 @@ namespace LMB.Controllers
             return View(followUpOther);
         }
 
+        public ActionResult CreateCS(int id)
+        {
+            ViewBag.Idinspection = id;
+            ComponentSummary ComponentSummary = new ComponentSummary();
+            ComponentSummary.IdInspection = id;
+            return View(ComponentSummary);
+            
+        }
         // POST: BridgeInspectionFollowUps/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.

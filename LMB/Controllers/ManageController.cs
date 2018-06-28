@@ -333,19 +333,11 @@ namespace LMB.Controllers
 
             base.Dispose(disposing);
         }
-        public ActionResult ShowPdf()
+        public ActionResult OpenManual()
         {
-            if (System.IO.File.Exists(Server.MapPath("~/Manual/UserManualWeb_EN.pdf")))
-            {
-                string pathSource = Server.MapPath("~/Manual/UserManualWeb_EN.pdf");
-                FileStream fsSource = new FileStream(pathSource, FileMode.Open, FileAccess.Read);
-
-                return new FileStreamResult(fsSource, "application/pdf");
-            }
-            else
-            {
-                return RedirectToAction("Index", "User");
-            }
+            return View("OpenManual");
+          // return File("http:///jmp0420-001-site1.dtempurl.com/LMB/Manual/UserManualWeb_EN.pdf", "application/pdf"); 
+           // return File(Server.MapPath("~/Manual/UserManualWeb_EN.pdf"), "application/pdf");
         }
 
         #region Helpers

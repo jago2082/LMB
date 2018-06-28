@@ -138,38 +138,120 @@
 
     </tbody>
 </table>
+
+<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Invoice Date</button>
+
 @Html.ActionLink("Invoice", "ReportBill", null, new { @class = "btn btn-primary",@style= "float: right;", @onclick= "Progress();" })
 
+<!-- Modal -->
+    <div class="modal fade" id="myModal"  data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Invoice Report</h4>
+
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <label for="idTourDateDetails">Invoice Range Date</label>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <p>Enter Start Date: <input type="text" id="datepicker-8"></p>
+                                    <p>Enter End Date: <input type="text" id="datepicker-9"></p>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="hidden" name="bookId" id="bookId" value="" />
+                                    <input type="hidden" name="userId" id="userId" value="" />
 
 
-@Html.Raw(TempData["msg"])
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function (e) {
-            inicializar(e);
-        }
-    );
-        function tabla() {
-            var table = $("#rawdata_table").DataTable();
+                                    <div class="form-group">
+                                        <label for="sel1">User</label>
+                                        <input name="user" id="user" value="" />
+                                    </div>
+                                </div>
 
-        }
-        
-        function inicializar(e) {
-            tabla();
-        }
-    </script>
-<script type="text/javascript">
-    function Progress() {
-        $('#mod-progress').modal()
-    };
-</script>
-<script type="text/javascript">
-        $('a').click(function () {
-            $('#mod-progress').modal()
-        });
-</script>
-@Html.Raw(ViewBag.Info)
-}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" id="save">Open Report</button>
+                        <button id="closemodal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </div>
+
+    @Html.Raw(TempData["msg"])
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+
+
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function (e) {
+                inicializar(e);
+            }
+
+        );
+            $(function () {
+                $("#idTourDateDetails").datepicker();
+                $("#idTourDateDetails").datepicker("show");
+                $("#datepicker-8").datepicker({
+                    prevText: "click for previous months",
+                    nextText: "click for next months",
+                    showOtherMonths: true,
+                    selectOtherMonths: false
+                });
+                $("#datepicker-9").datepicker({
+                    prevText: "click for previous months",
+                    nextText: "click for next months",
+                    showOtherMonths: true,
+                    selectOtherMonths: true
+                });
+
+            });
+
+
+         
+
+
+            function tabla() {
+                var table = $("#rawdata_table").DataTable();
+
+            }
+
+            function inicializar(e) {
+                tabla();
+            }
+        </script>
+
+        <script type="text/javascript">
+            var Url = '@Url.Action("Save", "InspectionDailies")';
+            var Urld = '@Url.Action("Delete", "InspectionDailies")';
+            var user = 0;
+            function getval(sel) {
+                user = sel.value;
+            }
+
+            function Progress() {
+                $('#mod-progress').modal()
+            };
+        </script>
+        <script type="text/javascript">
+            $('a').click(function () {
+                $('#mod-progress').modal()
+            });
+        </script>
+        @Html.Raw(ViewBag.Info)
+    }
