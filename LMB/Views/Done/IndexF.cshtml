@@ -2,9 +2,10 @@
 
 @{
     ViewBag.Title = "Index";
+    LMB.Models.BridgeInspectionFollowUp bridgeInspectionFollowUp = Model.FirstOrDefault();
 }
 
-<h2>Index</h2>
+@Html.ActionLink("Create", "CreateF", new { id = bridgeInspectionFollowUp.IdInspection })
 
 <table class="table">
     <tr>

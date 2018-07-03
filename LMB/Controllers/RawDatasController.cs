@@ -337,6 +337,7 @@ namespace LMB.Controllers
                                 inspectiondaily.LongitudeIni = rdt.Longitude;
                                 inspectiondaily.Structure = rdt.StrNo;
                                 inspectiondaily.MaintanSection = rdt.MaintSect;
+                                inspectiondaily.Owner = rdt.Owner;
                                 db.RawData.Add(rdt);
                                 db.InspectionDaily.Add(inspectiondaily);
                                 db.SaveChanges();
