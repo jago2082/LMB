@@ -70,6 +70,8 @@ namespace LMB.Models
 
         public string Milepnt { get; set; }
 
+        public string Owner { get; set; }
+
         public InspectionStates InspectionState { get; set; }
 
         public UserDB UserDBs { get; set; }

@@ -22,6 +22,7 @@ namespace LMB.Controllers
     public class DoneController : Controller
     {
          private DataContext db = new DataContext();
+         private DataContext db2 = new DataContext();
 
         // GET: InspectionDailies
         public async Task<ActionResult> Index()
@@ -41,7 +42,14 @@ namespace LMB.Controllers
 
         public async Task<ActionResult> IndexF(int id)
         {
-            var bridgeInspectionFollowUps = db.BridgeInspectionFollowUps.Include(b => b.InspectionRaiting).Include(b => b.RecommendationType).Include(b => b.ReferenceFeatureType).Where(i => i.IdInspection== id);
+            var bridgeInspectionFollowUps = db.BridgeInspectionFollowUps.Include(b => b.InspectionRaiting)
+                .Include(b => b.RecommendationType).Include(b => b.ReferenceFeatureType)
+                .Where(i => i.IdInspection== id);
+            var inspection = db.InspectionDaily.Find(id);
+            foreach (var item in bridgeInspectionFollowUps)
+            {
+                item.InspectionOwner = inspection.Owner;
+            }
             return View(await bridgeInspectionFollowUps.ToListAsync());
         }
 
@@ -468,11 +476,7 @@ namespace LMB.Controllers
                 .Include(b => b.ReferenceFeatureType)
                 .Where(i => i.IdInspection == id).ToListAsync();
 
-
-            var inspList = db.followUpOther.Where(ins => ins.inspectionId == id).FirstOrDefault();
-
-            reportf.FollowUpOther = inspList;
-
+            
             var inspListNo = db.NoveltyInspection.ToList().Where(ins => ins.IdInspection == id);
 
             reportf.NoveltyInspection = inspListNo.ToList();
@@ -886,13 +890,39 @@ namespace LMB.Controllers
             return View(bridgeInspectionFollowUp);
         }
 
+        [HttpPost]
+        public async Task<ActionResult> Save(string id,string InspectionDescription,string InspectionOwner)
+        {
+            int idis = int.Parse(id);
+            var inspectionDaily = db2.InspectionDaily.Find(idis);
+            var inspectionBasicRegistryValue = db.InspectionBasicRegistryValue
+                .Where(b => b.IdInspection == idis && b.idInspBasic == 38).FirstOrDefault();
+            inspectionDaily.Owner = InspectionOwner;
+            inspectionBasicRegistryValue.Value = InspectionDescription;
+            db.Entry(inspectionBasicRegistryValue).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+            db2.Entry(inspectionDaily).State = EntityState.Modified;
+            await db2.SaveChangesAsync();
+            var bridgeInspectionFollowUps = db.BridgeInspectionFollowUps.Include(b => b.InspectionRaiting)
+                .Include(b => b.RecommendationType).Include(b => b.ReferenceFeatureType)
+                .Where(i => i.IdInspection == idis);
+            return View("IndexF", await bridgeInspectionFollowUps.ToListAsync());
+        }
+
         public ActionResult CreateF( int id)
         {
+            BridgeInspectionFollowUp bfollowup = new BridgeInspectionFollowUp();
+            var inspectionBasicRegistryValue = db.InspectionBasicRegistryValue
+                .Where(b => b.IdInspection == id && b.idInspBasic == 38).FirstOrDefault();
+            bfollowup.IdInspection = id;
+            bfollowup.InspectionDescription = inspectionBasicRegistryValue.Value;
+            var inpd = db.InspectionDaily.Find(id);
+            bfollowup.InspectionOwner = inpd.Owner;
             ViewBag.Idinspection = id;
             ViewBag.InspectionRaitingType = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description");
             ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "Description");
             ViewBag.IdReferenceFeatureType = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description");
-            return View();
+            return View(bfollowup);
         }
 
         // POST: BridgeInspectionFollowUps/Create
@@ -937,18 +967,18 @@ namespace LMB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateFD(FollowUpOther followUpOther)
-        {
-            if (ModelState.IsValid)
-            {
-                db.followUpOther.Add(followUpOther);
-                await db.SaveChangesAsync();
-                var inspd = db.InspectionDaily.Find(followUpOther.inspectionId);
-                return View("Reports", inspd);
-            }
+        //public async Task<ActionResult> CreateFD(FollowUpOther followUpOther)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.followUpOther.Add(followUpOther);
+        //        await db.SaveChangesAsync();
+        //        var inspd = db.InspectionDaily.Find(followUpOther.inspectionId);
+        //        return View("Reports", inspd);
+        //    }
 
-            return View(followUpOther);
-        }
+        //    return View(followUpOther);
+        //}
 
         // GET: BridgeInspectionFollowUps/Delete/5
         public async Task<ActionResult> DeleteF(int? id)

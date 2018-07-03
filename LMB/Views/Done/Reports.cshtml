@@ -31,14 +31,10 @@ Other Reports Bridge No.: @Model.NumInspection
                @*@Html.ActionLink("Edit", "BridgeInspectionFollowUps", new { id = Model.IdInspection })*@
             </td>
             <td>
-                @Html.ActionLink("Create", "CreateF",  new { id = Model.IdInspection })
-            </td>
-            <td>
-                @Html.ActionLink("Create Details", "CreateFD", new { id = Model.IdInspection })
-            </td>
-            <td>
                 @Html.ActionLink("Details", "IndexF", new { id = Model.IdInspection })
             </td>
+            <td></td>
+            <td></td>
 
     </tr>
     <tr>
@@ -57,11 +53,9 @@ Other Reports Bridge No.: @Model.NumInspection
             @Html.ActionLink("Bridge Load Rating Statement", "LoadRating", new { id = Model.IdInspection })
             </td>
         <td>
-            @Html.ActionLink("Create", "CreateCS", new { id = Model.IdInspection })
+            @Html.ActionLink("Create", "IndexCS", new { id = Model.IdInspection })
         </td>
-        <td>
-            @Html.ActionLink("Details", "IndexCS", new { id = Model.IdInspection })
-        </td>
+        <td></td>
         <td></td>
         <td></td>
         </tr>
