@@ -14,6 +14,7 @@ namespace LMB.Models
         public ICollection<BridgeInspectionFollowUp> BridgeInspectionFollowUps { get; set; }
         public FollowUpOther FollowUpOther { get; set; }
         public ICollection<NoveltyInspection> NoveltyInspection { get; set; }
-        
+        public string ComentGeneral { get; set; }
+
     }
 }

@@ -476,13 +476,15 @@ namespace LMB.Controllers
                 .Include(b => b.ReferenceFeatureType)
                 .Where(i => i.IdInspection == id).ToListAsync();
 
-            
+            var insbr = db.InspectionBasicRegistryValue.Where(i => i.IdInspection == id && i.idInspBasic == 38)
+                .FirstOrDefault();
+            reportf.ComentGeneral = insbr.Value;
             var inspListNo = db.NoveltyInspection.ToList().Where(ins => ins.IdInspection == id);
 
             reportf.NoveltyInspection = inspListNo.ToList();
 
             // return View("ReportInspFollowUp", reportf);
-
+                
             string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
 
 
