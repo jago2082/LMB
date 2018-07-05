@@ -1,21 +1,34 @@
 ﻿@model IEnumerable<LMB.Models.ComponentSummary>
 
 @{
-    ViewBag.Title = "Index";
-}
+    ViewBag.Title = "IndexCS";
+    LMB.Models.ComponentSummary componentSummary = new LMB.Models.ComponentSummary();
+    if (Model.Count() > 0)
+    {
+        componentSummary = Model.FirstOrDefault();
+    }
+    else
+    {
+        componentSummary.IdInspection = (int)ViewBag.idinspect;
+    }
 
-<h2>Index</h2>
+    }
+
+<h2>IndexCS</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateCS")
+        @Html.ActionLink("Create New", "CreateCS", new { id = componentSummary.IdInspection })
 </p>
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.IdInspection)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.InspeRating)
+            @Html.DisplayNameFor(model => model.InspectionRaiting.Description)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.InvRatingH)
@@ -29,35 +42,87 @@
         <th>
             @Html.DisplayNameFor(model => model.OpRatingHS)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CSJ)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Loadof)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ALRS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ASLRS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LRCS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Item66)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Item64)
+        </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InspeRating)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InvRatingH)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InvRatingHS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OpRatingH)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OpRatingHS)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditCS", new { id=item.IdComponentSummary }) |
-            @Html.ActionLink("Details", "DetailsCS", new { id=item.IdComponentSummary }) |
-            @Html.ActionLink("Delete", "DeleteCS", new { id=item.IdComponentSummary })
-        </td>
-    </tr>
-}
+    @if (Model.Count() > 0)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdInspection)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InspectionRaiting.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InvRatingH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InvRatingHS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OpRatingH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OpRatingHS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CSJ)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Loadof)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ALRS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ASLRS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LRCS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Item66)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Item64)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdComponentSummary }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdComponentSummary }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdComponentSummary })
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr><td>Not Register Yet</td></tr>
+    }
 
 </table>

@@ -37,6 +37,7 @@
         background-color: #fcfde1;
     }
 </style>
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
 <div id="inspection_status">
     <img src="~/img/inspectionstatus.png" height="50" style="display: block;float: right;" />
 </div>
@@ -147,6 +148,49 @@
             </tr>
         }
     </tbody>
+    <tfoot>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NumInspection)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserDBs.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Company)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Control)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Section)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Scope)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InspectionState.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LongitudeIni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LatitudeIni)
+            </th>
+        </tr>
+    </tfoot>
 </table>
 @Html.DropDownList("type", null, "[Select a User]", htmlAttributes: new { @onchange = "filterMarkers(this);" })
 <div id="map_canvas"></div>
@@ -213,7 +257,7 @@
 @Html.Raw(TempData["msg"])
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         var message = '';
@@ -226,6 +270,26 @@
     );
         function tabla() {
             table = $("#rawdata_table").DataTable({
+                initComplete: function () {
+                    this.api().columns().every( function () {
+                        var column = this;
+                        var select = $('<select><option value=""></option></select>')
+                            .appendTo( $(column.footer()).empty() )
+                            .on( 'change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+ 
+                                column
+                                    .search( val ? '^'+val+'$' : '', true, false )
+                                    .draw();
+                            } );
+ 
+                        column.data().unique().sort().each( function ( d, j ) {
+                            select.append( '<option value="'+d+'">'+d+'</option>' )
+                        } );
+                    } );
+                },
                 scrollY: '50vh',
                 scrollCollapse: true,
                 "createdRow": function (row, data, dataIndex) {
@@ -374,7 +438,7 @@
             function addMarker(marker) {
                 var image;
                 var category = marker.User;
-                var status = marker.User;
+                var status = marker.Status;
                 var title = marker.User;
                 var pos = new google.maps.LatLng(marker.latitude, - marker.longitude);
                 var content = marker.Text;
@@ -382,7 +446,7 @@
                 var pinImagelila ="http://www.googlemapsmarkers.com/v1/f7eeee/";
                 var pinImageyellow ="http://www.googlemapsmarkers.com/v1/fcfde1/";
                 var standar = "http://www.googlemapsmarkers.com/v1/ff0000/";
-                switch(content) {
+                switch(status) {
                     case "Almost time expires":
                         image=pinImagelila;
                         break;

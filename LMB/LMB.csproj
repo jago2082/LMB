@@ -861,12 +861,11 @@
     <Content Include="Views\InspectionDailies\Index.cshtml" />
     <Content Include="Views\ConfigurationApps\EditR.cshtml" />
     <Content Include="Views\Done\CreateFD.cshtml" />
-    <Content Include="Views\Done\CreateCS.cshtml" />
-    <Content Include="Views\Done\DeleteCS.cshtml" />
-    <Content Include="Views\Done\DetailsCS.cshtml" />
-    <Content Include="Views\Done\EditCS.cshtml" />
-    <Content Include="Views\Done\IndexCS.cshtml" />
     <Content Include="Views\Manage\OpenManual.cshtml" />
+    <Content Include="Views\Done\CreateCS.cshtml" />
+    <Content Include="Views\Done\IndexCS.cshtml" />
+    <Content Include="Views\Done\EditCS.cshtml" />
+    <Content Include="Views\Done\DeleteCS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

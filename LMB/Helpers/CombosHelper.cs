@@ -99,6 +99,16 @@ namespace LMB.Helpers
             return directionpothotype.OrderBy(t => t.Description).ToList();
         }
 
+        public static List<InspectionRaiting> InspectionRaiting()
+        {
+            var inspectionRaiting = db.InspectionRaiting;
+            inspectionRaiting.Add(new InspectionRaiting
+            {
+                InspectionRaitingType =0,
+                Description = "[Select Option]",
+            });
+            return inspectionRaiting.OrderBy(i => i.Description).ToList();
+        }
         public static List<SelectListItem> GetFiles()
         {
             var listItems = new List<SelectListItem>();

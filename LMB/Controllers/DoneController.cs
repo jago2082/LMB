@@ -21,8 +21,8 @@ namespace LMB.Controllers
     [Authorize]
     public class DoneController : Controller
     {
-         private DataContext db = new DataContext();
-         private DataContext db2 = new DataContext();
+        private DataContext db = new DataContext();
+        private DataContext db2 = new DataContext();
 
         // GET: InspectionDailies
         public async Task<ActionResult> Index()
@@ -37,14 +37,14 @@ namespace LMB.Controllers
 
                 throw;
             }
-            
+
         }
 
         public async Task<ActionResult> IndexF(int id)
         {
             var bridgeInspectionFollowUps = db.BridgeInspectionFollowUps.Include(b => b.InspectionRaiting)
                 .Include(b => b.RecommendationType).Include(b => b.ReferenceFeatureType)
-                .Where(i => i.IdInspection== id);
+                .Where(i => i.IdInspection == id);
             var inspection = db.InspectionDaily.Find(id);
             foreach (var item in bridgeInspectionFollowUps)
             {
@@ -55,8 +55,14 @@ namespace LMB.Controllers
 
         public async Task<ActionResult> IndexCS(int id)
         {
-            var ComponentSummaries = db.ComponentSummaries.Where(i => i.IdInspection == id);
-
+            var ComponentSummaries = db.ComponentSummaries
+                .Include(r => r.InspectionRaiting)
+                .Where(i => i.IdInspection == id);
+            foreach (var item in ComponentSummaries)
+            {
+                item.IdInspection = id;
+            }
+            ViewBag.idinspect = id;
             return View(await ComponentSummaries.ToListAsync());
 
         }
@@ -106,11 +112,11 @@ namespace LMB.Controllers
             var inspList = db.ValueCheckList.ToList().Where(ins => ins.IdInspection == id);
             var ImageList = db.Insp_Question_Attach.ToList().Where(ins => ins.IDValueChecklist == id);
 
-            
+
             LoadRatingCheckList LoadRatingReport = new LoadRatingCheckList();
             LoadRatingReport.Insp_Question_Attach = ImageList.ToList();
-            LoadRatingReport.InspectionDaily = insp.Where(i => i.IdInspection== id ).FirstOrDefault();
-            var distrcode = string.Format("0{0}",LoadRatingReport.InspectionDaily.DO);
+            LoadRatingReport.InspectionDaily = insp.Where(i => i.IdInspection == id).FirstOrDefault();
+            var distrcode = string.Format("0{0}", LoadRatingReport.InspectionDaily.DO);
             var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
             LoadRatingReport.InspectionDaily.DO = distric.ABBR;
             var countrycode = LoadRatingReport.InspectionDaily.Company.TrimStart('0');
@@ -118,7 +124,7 @@ namespace LMB.Controllers
             var country = db.Counties.Find(code);
             //var country = db.Counties.Where(d => d.IdCountries==  int.Parse(countrycode)).FirstOrDefault();
             LoadRatingReport.InspectionDaily.Company = country.Description;
-           
+
             LoadRatingReport.Reports = db.Reports.Find(4);
             LoadRatingReport.Configuration = db.Configurations.FirstOrDefault();
             LoadRatingReport.User = UsersHelper.finduser(User.Identity.GetUserName());
@@ -227,7 +233,7 @@ namespace LMB.Controllers
                     if (dato.IdChecklistQuestion == 46)
                         LoadRatingReport.val43 = Convert.ToString(dato.Value);
                     if (dato.IdChecklistQuestion == 47)
-                        LoadRatingReport.val44= Convert.ToString(dato.Value);
+                        LoadRatingReport.val44 = Convert.ToString(dato.Value);
                     if (dato.IdChecklistQuestion == 48)
                         LoadRatingReport.val45 = Convert.ToString(dato.Value);
                     if (dato.IdChecklistQuestion == 49)
@@ -238,7 +244,7 @@ namespace LMB.Controllers
                         LoadRatingReport.val47 = Convert.ToString(item61);
 
                     if (dato.IdChecklistQuestion == 39)
-                            LoadRatingReport.val48 = Convert.ToString(dato.Value);
+                        LoadRatingReport.val48 = Convert.ToString(dato.Value);
                     if (dato.IdChecklistQuestion == 40)
                         LoadRatingReport.val49 = Convert.ToString(dato.Value);
                     if (dato.IdChecklistQuestion == 41)
@@ -285,7 +291,7 @@ namespace LMB.Controllers
                     if (Appraisal == 10)
                         LoadRatingReport.val66 = "N";
                     else
-                        LoadRatingReport.val66= Convert.ToString(Appraisal);
+                        LoadRatingReport.val66 = Convert.ToString(Appraisal);
                     if (dato.IdChecklistQuestion == 66)
                         LoadRatingReport.val67 = Convert.ToString(dato.Value);
                     if (dato.IdChecklistQuestion == 67)
@@ -314,7 +320,7 @@ namespace LMB.Controllers
                         LoadRatingReport.val77 = Convert.ToString(item36);
                 }
             }
-                if (LoadRatingReport == null)
+            if (LoadRatingReport == null)
             {
                 return HttpNotFound();
             }
@@ -328,20 +334,20 @@ namespace LMB.Controllers
             string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
 
 
-          //   return View("ReportBridgeInspectionRecord", LoadRatingReport);
-            
+            //   return View("ReportBridgeInspectionRecord", LoadRatingReport);
 
-                return new ViewAsPdf("ReportBridgeInspectionRecord", LoadRatingReport)
+
+            return new ViewAsPdf("ReportBridgeInspectionRecord", LoadRatingReport)
             {
 
-               RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(15,10, 15, 10), PageSize = Rotativa.Core.Options.Size.Letter }
-            }; 
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(15, 10, 15, 10), PageSize = Rotativa.Core.Options.Size.Letter }
+            };
         }
 
 
         public ActionResult LoadRating(int? id)
         {
-           // int id = 5;
+            // int id = 5;
             var insp = db.InspectionDaily.Find(id);
             var inspList = db.ValueCheckList.ToList().Where(ins => ins.IdInspection == id);
             var section = db.CheckListSection.ToList();
@@ -358,9 +364,9 @@ namespace LMB.Controllers
                 int item59 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 2).Min(value => value.Value));
                 int item60 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 3).Min(value => value.Value));
                 int item62 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 4).Min(value => value.Value));
-                
+
                 LoadRatingReport.ValuesCheclist = inspList.ToList();
-                
+
                 if (Convert.ToString(item58) != "")
                     LoadRatingReport.Item58 = Convert.ToString(item58);
                 if (item59 == 10)
@@ -399,15 +405,15 @@ namespace LMB.Controllers
                 // CustomSwitches = footer
                 RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 20, 5, 20), PageSize = Rotativa.Core.Options.Size.Letter }
             };
-            
-           
+
+
         }
 
         public ActionResult ReportBill()
         {
             var insp = db.InspectionDaily.ToList();
-            var TotalA= db.InspectionDaily.ToList().Where(ing=>ing.CommentGeneral=="A").Count();
-            var TotalAA = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync=="A").Count();
+            var TotalA = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A").Count();
+            var TotalAA = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "A").Count();
             var TotalAB = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "B").Count();
             var TotalAC = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "C").Count();
             var TotalAD = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "D").Count();
@@ -446,19 +452,19 @@ namespace LMB.Controllers
 
             return new ViewAsPdf("ReportBill", insp)
             {
-         
+
                 //  FileName = "firstPdf.pdf",
                 // CustomSwitches = footer
                 RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
             };
-            
+
         }
 
-  
+
         public async Task<ActionResult> ReportInspFollowUp(int id)
         {
             ReportInspFollowUp reportf = new ReportInspFollowUp();
-           
+
             reportf.InspectionDaily = await db.InspectionDaily.FindAsync(id);
             var distrcode = string.Format("0{0}", reportf.InspectionDaily.DO);
             var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
@@ -476,7 +482,7 @@ namespace LMB.Controllers
                 .Include(b => b.ReferenceFeatureType)
                 .Where(i => i.IdInspection == id).ToListAsync();
 
-            
+
             var inspListNo = db.NoveltyInspection.ToList().Where(ins => ins.IdInspection == id);
 
             reportf.NoveltyInspection = inspListNo.ToList();
@@ -529,20 +535,20 @@ namespace LMB.Controllers
 
         public ActionResult ReportInventoryRecord(int? id)
         {
-           // int id = 5;
+            // int id = 5;
             var insp = db.InspectionDaily.Find(id);
 
             var inspList = db.InspectionBasicRegistryValue.ToList().Where(ins => ins.IdInspection == id);
 
             InventoryReport InventoryReport = new InventoryReport();
 
-            
+
             InventoryReport.IdInspection = insp.IdInspection;
-            
+
             var distrcode = string.Format("0{0}", insp.DO);
             var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
             InventoryReport.District = distric.ABBR;
-            
+
             var countrycode = insp.Company.TrimStart('0');
             int code = int.Parse(countrycode);
             var country = db.Counties.Find(code);
@@ -550,7 +556,7 @@ namespace LMB.Controllers
             InventoryReport.Reports = db.Reports.Find(5);
             InventoryReport.Configuration = db.Configurations.FirstOrDefault();
             InventoryReport.Usuario = UsersHelper.finduser(User.Identity.GetUserName());
-                        
+
             InventoryReport.Control = insp.Control;
             InventoryReport.Section = insp.Section;
             InventoryReport.Location = insp.Address;
@@ -693,10 +699,10 @@ namespace LMB.Controllers
                 // CustomSwitches = footer
                 //PageWidth = 180, PageHeight = 297, 
 
-                RotativaOptions = { MinimumFontSize=12, PageMargins = new Margins(5,10, 4, 5), PageSize = Rotativa.Core.Options.Size.Letter }
+                RotativaOptions = { MinimumFontSize = 12, PageMargins = new Margins(5, 10, 4, 5), PageSize = Rotativa.Core.Options.Size.Letter }
             };
 
-           
+
         }
 
         public ActionResult ReportChannelCross(int? id)
@@ -707,7 +713,7 @@ namespace LMB.Controllers
             ChannelCrossReport ChannelCrossReport = new ChannelCrossReport();
             ChannelCrossReport.InspectionDaily = insp;
 
-           var distrcode = string.Format("0{0}", insp.DO);
+            var distrcode = string.Format("0{0}", insp.DO);
             var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
             insp.DO = distric.ABBR;
 
@@ -719,8 +725,8 @@ namespace LMB.Controllers
             ChannelCrossReport.Configuration = db.Configurations.FirstOrDefault();
             ChannelCrossReport.Usuario = UsersHelper.finduser(User.Identity.GetUserName());
 
-            ChannelCrossReport.CrossSectionValues = inspList.ToList(); 
-           
+            ChannelCrossReport.CrossSectionValues = inspList.ToList();
+
             if (ChannelCrossReport == null)
             {
                 return HttpNotFound();
@@ -734,8 +740,8 @@ namespace LMB.Controllers
 
             string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
 
-            
-            
+
+
             return new ViewAsPdf("ReportChannelCross", ChannelCrossReport)
             {
                 //  FileName = "firstPdf.pdf",
@@ -748,15 +754,15 @@ namespace LMB.Controllers
         {
             // int id = 10;
             var insp = db.InspectionDaily.Find(id);
-           // var inspListFeat = db.UnderClearanceRecord.ToList().Where(ins => ins.IdInspection == id).Select(ins => ins.FeatureXed).Distinct();
+            // var inspListFeat = db.UnderClearanceRecord.ToList().Where(ins => ins.IdInspection == id).Select(ins => ins.FeatureXed).Distinct();
             var inspListFeat = db.UnderClearanceRecord.Where(ins => ins.IdInspection == id).GroupBy(ins => ins.FeatureXed).Select(group => group.FirstOrDefault());
             var inspListPSN = db.UnderClearanceRecord.Where(ins => ins.IdInspection == id).GroupBy(ins => ins.PSN).Select(group => group.FirstOrDefault());
 
             var inspList = db.UnderClearanceRecord.ToList().Where(ins => ins.IdInspection == id).OrderBy(ins => ins.PSN);
-            var imageUnder = db.Insp_Attach.Where(insp1 => insp1.IDInspection == id).FirstOrDefault().ImageString; 
+            var imageUnder = db.Insp_Attach.Where(insp1 => insp1.IDInspection == id).FirstOrDefault().ImageString;
             UnderClearReport UnderClearReport = new UnderClearReport();
 
-           
+
             var distrcode = string.Format("0{0}", insp.DO);
             var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
             insp.DO = distric.ABBR;
@@ -771,7 +777,7 @@ namespace LMB.Controllers
             UnderClearReport.Usuario = UsersHelper.finduser(User.Identity.GetUserName());
             UnderClearReport.UnderClearValues = inspList.ToList();
 
-            UnderClearReport.InspectionDaily=insp;
+            UnderClearReport.InspectionDaily = insp;
             UnderClearReport.UnderClearValuesPSN = inspListPSN.ToList();
             UnderClearReport.UnderClearValuesFeat = inspListFeat.ToList();
             UnderClearReport.image = imageUnder;
@@ -799,7 +805,7 @@ namespace LMB.Controllers
                 RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
             };
 
-               }
+        }
 
 
         public ActionResult Reports(int? id)
@@ -809,7 +815,7 @@ namespace LMB.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var inspd = db.InspectionDaily.Find(id);
-            
+
             return View("Reports", inspd);
         }
         //public ActionResult Reports( int id)
@@ -825,16 +831,30 @@ namespace LMB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var ComponentSummary = await db.ComponentSummaries.FindAsync(id);
+            var ComponentSummary = await db.ComponentSummaries.Where(i =>  i.IdInspection==id).FirstOrDefaultAsync();
             if (ComponentSummary == null)
             {
-                           
+
                 return HttpNotFound();
             }
-            return View("EditCS");
+            ViewBag.InspectionRaiting = new SelectList(CombosHelper.InspectionRaiting(), "InspectionRaitingType", "Description",ComponentSummary.InspectionRaiting.InspectionRaitingType);
+            return View("EditCS", ComponentSummary);
         }
 
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditCS(ComponentSummary componentSummary)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(componentSummary).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                var inspd = db.InspectionDaily.Find(componentSummary.IdInspection);
+                return View("Reports", inspd);
+            }
+            ViewBag.InspectionRaiting = new SelectList(CombosHelper.InspectionRaiting(), "InspectionRaitingType", "Description", componentSummary.InspectionRaiting.InspectionRaitingType);
+            return View(componentSummary);
+        }
 
         public async Task<ActionResult> DeleteCS(int? id)
         {
@@ -842,12 +862,13 @@ namespace LMB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ComponentSummary componentSummary = await db.ComponentSummaries.FindAsync(id);
+            ComponentSummary componentSummary = await db.ComponentSummaries.Where(c =>c.IdInspection== id)
+                .FirstOrDefaultAsync();
             if (componentSummary == null)
             {
                 return HttpNotFound();
             }
-            return View("DeleteCS");
+            return View("DeleteCS", componentSummary);
         }
 
 
@@ -859,7 +880,7 @@ namespace LMB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var bridgeInspectionFollowUp =await db.BridgeInspectionFollowUps.FindAsync(id) ;
+            var bridgeInspectionFollowUp = await db.BridgeInspectionFollowUps.FindAsync(id);
             if (bridgeInspectionFollowUp == null)
             {
                 return HttpNotFound();
@@ -867,7 +888,7 @@ namespace LMB.Controllers
             ViewBag.InspectionRaitingType = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description", bridgeInspectionFollowUp.InspectionRaitingType);
             ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "Description", bridgeInspectionFollowUp.IdRecommendationType);
             ViewBag.IdReferenceFeatureType = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description", bridgeInspectionFollowUp.IdReferenceFeatureType);
-            return View("EditF",bridgeInspectionFollowUp);
+            return View("EditF", bridgeInspectionFollowUp);
         }
 
         // POST: BridgeInspectionFollowUps/Edit/5
@@ -891,7 +912,7 @@ namespace LMB.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Save(string id,string InspectionDescription,string InspectionOwner)
+        public async Task<ActionResult> Save(string id, string InspectionDescription, string InspectionOwner)
         {
             int idis = int.Parse(id);
             var inspectionDaily = db2.InspectionDaily.Find(idis);
@@ -909,7 +930,7 @@ namespace LMB.Controllers
             return View("IndexF", await bridgeInspectionFollowUps.ToListAsync());
         }
 
-        public ActionResult CreateF( int id)
+        public ActionResult CreateF(int id)
         {
             BridgeInspectionFollowUp bfollowup = new BridgeInspectionFollowUp();
             var inspectionBasicRegistryValue = db.InspectionBasicRegistryValue
@@ -959,8 +980,24 @@ namespace LMB.Controllers
             ViewBag.Idinspection = id;
             ComponentSummary ComponentSummary = new ComponentSummary();
             ComponentSummary.IdInspection = id;
+            ViewBag.InspectionRaiting = new SelectList(CombosHelper.InspectionRaiting(), "InspectionRaitingType", "Description");
             return View(ComponentSummary);
-            
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateCS(ComponentSummary componentSummary)
+        {
+            if (ModelState.IsValid)
+            {
+                db.ComponentSummaries.Add(componentSummary);
+                await db.SaveChangesAsync();
+                var inspd = db.InspectionDaily.Find(componentSummary.IdInspection);
+                return View("Reports", inspd);
+            }
+            return View(componentSummary);
+
         }
         // POST: BridgeInspectionFollowUps/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -1055,9 +1092,9 @@ namespace LMB.Controllers
                         {
                             MessageLF mensaje = new MessageLF();
                             mensaje.nombre = file.FileName.ToString();
-                            string [] name = file.FileName.Split('.');
+                            string[] name = file.FileName.Split('.');
                             //string name = file.FileName;
-                            var nameaux= name[0].ToString();
+                            var nameaux = name[0].ToString();
                             //var nameaux = name.ToString();
                             var inptyata = db.Insp_Type_Attach.Where(i => i.PhotoCameraNum == nameaux).FirstOrDefault();
                             if (inptyata != null)
@@ -1082,19 +1119,19 @@ namespace LMB.Controllers
                                 mensajes.Add(mensaje);
                                 continue;
                             }
-                            
+
                         }
                         catch (Exception ex)
                         {
 
-                            ViewBag.UploadStatus = "<script type='text/javascript'>swal('¡Alert!', '"+ ex.Message.ToString() +"', 'error');</script>";
+                            ViewBag.UploadStatus = "<script type='text/javascript'>swal('¡Alert!', '" + ex.Message.ToString() + "', 'error');</script>";
                             return View("LoadMultiFiles");
                         }
-                       
+
                     }
 
                 }
-                ViewBag.ok = JsonConvert.SerializeObject( mensajes);
+                ViewBag.ok = JsonConvert.SerializeObject(mensajes);
             }
             return View("LoadMultiFiles");
         }
@@ -1110,7 +1147,7 @@ namespace LMB.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            
+
             ViewBag.IdInspectionStates = new SelectList(db.InspectionStates, "IdStatus", "Description", inspectionDaily.IdStatus);
             return View(inspectionDaily);
         }
@@ -1144,7 +1181,7 @@ namespace LMB.Controllers
 
             //             }).Where(i => i.idInspection == id).ToList();
             List<ModelPDF> lismpdf = new List<ModelPDF>();
-           
+
             var result = db.Insp_Type_Attach.Where(i => i.IDInspection == id).ToList();
             var inspd = db.InspectionDaily.Find(id);
             int? numinsp = id;
@@ -1201,7 +1238,7 @@ namespace LMB.Controllers
 
             return new ViewAsPdf("ReportPDF", lismpdf)
             {
-               
+
                 RotativaOptions = { CustomSwitches = customSwitches, PageMargins = new Margins(0, 0, 28, 0), PageSize = Rotativa.Core.Options.Size.Letter }
             };
         }
@@ -1217,7 +1254,7 @@ namespace LMB.Controllers
             footer.configuration = db.Configurations.FirstOrDefault();
             return View(footer);
         }
-        
+
 
         public async Task<ActionResult> EditP(int? id)
         {
@@ -1229,16 +1266,16 @@ namespace LMB.Controllers
             var auxInspTypeAttach = db.Insp_Type_Attach.Include(t => t.TypePicture)
                 .Include(d => d.DirectionPhotoType);
             var InspTypeAttach = auxInspTypeAttach.Where(i => i.IDAttach == id).FirstOrDefault();
-            var inspection = await db.InspectionDaily.Where(i => i.IdInspection== InspTypeAttach.IDInspection).FirstOrDefaultAsync();
-           
-            
+            var inspection = await db.InspectionDaily.Where(i => i.IdInspection == InspTypeAttach.IDInspection).FirstOrDefaultAsync();
+
+
             if (InspTypeAttach == null)
             {
                 return HttpNotFound();
             }
             InspTypeAttach.numinspection = inspection.NumInspection;
-            ViewBag.IDTypePicture = new SelectList(CombosHelper.TypePicture(), "IdTypePicture", "Description",InspTypeAttach.TypePicture);
-            ViewBag.IdDirectionPhotoType = new SelectList(CombosHelper.PothoType(), "IdDirectionPhotoType", "Description",InspTypeAttach.DirectionPhotoType);
+            ViewBag.IDTypePicture = new SelectList(CombosHelper.TypePicture(), "IdTypePicture", "Description", InspTypeAttach.TypePicture.IdTypePicture);
+            ViewBag.IdDirectionPhotoType = new SelectList(CombosHelper.PothoType(), "IdDirectionPhotoType", "Description", InspTypeAttach.DirectionPhotoType.IdDirectionPhotoType);
             return View(InspTypeAttach);
         }
 
@@ -1253,43 +1290,47 @@ namespace LMB.Controllers
             if (ModelState.IsValid)
             {
                 HttpPostedFileBase file = Request.Files["LogoFile"];
-                string theFileName = Path.GetFileName(file.FileName);
-                byte[] thePictureAsBytes = new byte[file.ContentLength];
-                using (BinaryReader theReader = new BinaryReader(file.InputStream))
+                if (file != null && file.ContentLength > 0)
                 {
-                    thePictureAsBytes = theReader.ReadBytes(file.ContentLength);
-                }
-
-
-                ////
-                
-                using (MemoryStream ms = new MemoryStream(thePictureAsBytes, 0, thePictureAsBytes.Length))
-                {
-                    using (Image img = Image.FromStream(ms))
+                    string theFileName = Path.GetFileName(file.FileName);
+                    byte[] thePictureAsBytes = new byte[file.ContentLength];
+                    using (BinaryReader theReader = new BinaryReader(file.InputStream))
                     {
-                        float aspect = img.Width / (float)img.Height;
-                        int newWidth, newHeight;
-                        int BOXWIDTH = 100;
-                        newWidth = (int)(BOXWIDTH * aspect);
-                        newHeight = (int)(newWidth / aspect);
+                        thePictureAsBytes = theReader.ReadBytes(file.ContentLength);
+                    }
 
-                        int w = newWidth;
-                        int h = newHeight;
 
-                        using (Bitmap b = new Bitmap(img, new System.Drawing.Size(w, h)))
+                    ////
+
+                    using (MemoryStream ms = new MemoryStream(thePictureAsBytes, 0, thePictureAsBytes.Length))
+                    {
+                        using (Image img = Image.FromStream(ms))
                         {
-                            using (MemoryStream ms2 = new MemoryStream())
+                            float aspect = img.Width / (float)img.Height;
+                            int newWidth, newHeight;
+                            int BOXWIDTH = 100;
+                            newWidth = (int)(BOXWIDTH * aspect);
+                            newHeight = (int)(newWidth / aspect);
+
+                            int w = newWidth;
+                            int h = newHeight;
+
+                            using (Bitmap b = new Bitmap(img, new System.Drawing.Size(w, h)))
                             {
-                                b.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
-                                thePictureAsBytes = ms2.ToArray();
+                                using (MemoryStream ms2 = new MemoryStream())
+                                {
+                                    b.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
+                                    thePictureAsBytes = ms2.ToArray();
+                                }
                             }
                         }
                     }
-                }
 
-                ////
-                string thePictureDataAsString = Convert.ToBase64String(thePictureAsBytes);
-                insptypeattach.ImageString = thePictureDataAsString;
+                    ////
+                    string thePictureDataAsString = Convert.ToBase64String(thePictureAsBytes);
+                    insptypeattach.ImageString = thePictureDataAsString;
+
+                }
                 try
                 {
                     db.Entry(insptypeattach).State = EntityState.Modified;
@@ -1300,7 +1341,7 @@ namespace LMB.Controllers
 
                     ViewBag.Info = "<script type='text/javascript'>swal('¡Alert!', '" + ex.Message.ToString() + "', 'error');</script>";
                 }
-               
+
                 return RedirectToAction("Index");
             }
             ViewBag.IDTypePicture = new SelectList(CombosHelper.TypePicture(), "IdTypePicture", "Description");
