@@ -101,7 +101,7 @@ namespace LMB.Controllers
 
                 //  FileName = "firstPdf.pdf",
                 // CustomSwitches = footer
-                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
+                RotativaOptions = { CustomSwitches = footer, PageMargins = { Left = 20, Bottom = 20, Right = 20, Top = 20 }, PageSize = Rotativa.Core.Options.Size.Letter }
             };
         }
 
@@ -1239,7 +1239,7 @@ namespace LMB.Controllers
             return new ViewAsPdf("ReportPDF", lismpdf)
             {
 
-                RotativaOptions = { CustomSwitches = customSwitches, PageMargins = new Margins(0, 0, 28, 0), PageSize = Rotativa.Core.Options.Size.Letter }
+                RotativaOptions = { PageMargins = new Margins(0, 8,0, 8), PageSize = Rotativa.Core.Options.Size.Letter }
             };
         }
 
