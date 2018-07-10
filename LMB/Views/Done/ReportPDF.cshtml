@@ -4,6 +4,8 @@
 @{
     LMB.Models.ModelPDF inspection = Model.FirstOrDefault();
     int foto = 0;
+    int i = 0;
+    
 }
 
 @{
@@ -35,16 +37,16 @@
      <o:DocumentProperties>
       <o:Author>Adriana Gonzalez</o:Author>
       <o:LastAuthor>Adriana Gonzalez</o:LastAuthor>
-      <o:Revision>7</o:Revision>
-      <o:TotalTime>97</o:TotalTime>
+      <o:Revision>8</o:Revision>
+      <o:TotalTime>147</o:TotalTime>
       <o:Created>2018-07-05T17:01:00Z</o:Created>
-      <o:LastSaved>2018-07-05T21:16:00Z</o:LastSaved>
+      <o:LastSaved>2018-07-06T22:30:00Z</o:LastSaved>
       <o:Pages>1</o:Pages>
       <o:Words>49</o:Words>
-      <o:Characters>285</o:Characters>
+      <o:Characters>283</o:Characters>
       <o:Lines>2</o:Lines>
       <o:Paragraphs>1</o:Paragraphs>
-      <o:CharactersWithSpaces>333</o:CharactersWithSpaces>
+      <o:CharactersWithSpaces>331</o:CharactersWithSpaces>
       <o:Version>14.00</o:Version>
      </o:DocumentProperties>
      <o:OfficeDocumentSettings>
@@ -416,6 +418,7 @@
         }
 
         p.MsoHeader, li.MsoHeader, div.MsoHeader {
+            mso-style-noshow: yes;
             mso-style-priority: 99;
             mso-style-link: "Header Char";
             margin: 0in;
@@ -435,6 +438,7 @@
         }
 
         p.MsoFooter, li.MsoFooter, div.MsoFooter {
+            mso-style-noshow: yes;
             mso-style-priority: 99;
             mso-style-link: "Footer Char";
             margin: 0in;
@@ -468,6 +472,7 @@
 
         span.HeaderChar {
             mso-style-name: "Header Char";
+            mso-style-noshow: yes;
             mso-style-priority: 99;
             mso-style-unhide: no;
             mso-style-locked: yes;
@@ -476,6 +481,7 @@
 
         span.FooterChar {
             mso-style-name: "Footer Char";
+            mso-style-noshow: yes;
             mso-style-priority: 99;
             mso-style-unhide: no;
             mso-style-locked: yes;
@@ -593,39 +599,22 @@
 
     <div class=WordSection1>
 
-        <table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 
-               style='width:814.2pt;border-collapse:collapse;border:none;mso-yfti-tbllook:
- 1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:none;mso-border-insidev:
- none'>
+ <table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width=1086>
 @foreach (var item in Model)
-{
-    if (!string.IsNullOrEmpty(item.ImageString))
-    {
-
-
-        <tr style='mso-yfti-irow:1;height:30.15pt'>
-            <td width=872 colspan=3 valign=top style='width:653.7pt;padding:0in 5.4pt 0in 5.4pt;
-  height:30.15pt'>
-                <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-                <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-            </td>
-            <td width=214 valign=top style='width:160.5pt;padding:0in 5.4pt 0in 5.4pt;
-  height:30.15pt'>
-                <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-            </td>
-        </tr>
+            {
+                i = i + 1;
+                if (!string.IsNullOrEmpty(item.ImageString))
+                {
+                    string image = string.Format("data:image/png;base64,{0}", item.ImageString);
             <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:335.65pt'>
                 <td width=872 colspan=3 valign=top style='width:653.7pt;padding:0in 5.4pt 0in 5.4pt;
-  height:335.65pt'>
-                    <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'>
+              height:335.65pt'>
+                    <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
                         <span style='mso-no-proof:yes'>
-                            <!--[if gte vml 1]><v:shapetype id="_x0000_t75"
-                             coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@@4@@5l@@4@@11@@9@@11@@9@@5xe"
-                             filled="f" stroked="f">
+                            <!--[if gte vml 1]><v:shapetype
+                             id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+                             path="m@@4@@5l@@4@@11@@9@@11@@9@@5xe" filled="f" stroked="f">
                              <v:stroke joinstyle="miter"/>
                              <v:formulas>
                               <v:f eqn="if lineDrawn pixelLineWidth 0"/>
@@ -647,8 +636,10 @@
                              style='width:633pt;height:446.25pt;visibility:visible;mso-wrap-style:square'>
                              <v:imagedata src="RTPhotos3_files/image001.png" o:title=""/>
                             </v:shape><![endif]-->
-                            <![if !vml]><img width=844 height=595
-                                             src="RTPhotos3_files/image002.jpg" v:shapes="Picture_x0020_1"><![endif]>
+                            <![if !vml]>
+                          <!--  <img width=844 height=595 src=@image v:shapes="Picture_x0020_1"> -->
+                            <img  src=@image style="height:530px;max-width:830px;align-content:center;">
+                            <![endif]>
                         </span>
                     </p>
                 </td>
@@ -657,8 +648,7 @@
   text-align:center;line-height:normal;mso-layout-grid-align:none;text-autospace:
   none'>
                         <span style='font-size:12.0pt;font-family:"Arial","sans-serif"'>
-                            ROADWAY
-                            VIEW<o:p></o:p>
+                            @Html.DisplayFor(modelItem => item.Description)<o:p></o:p>
                         </span>
                     </p>
                     <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
@@ -667,7 +657,7 @@
                     <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:center;line-height:normal'>
                         <span style='font-size:12.0pt;
-  font-family:"Arial","sans-serif"'>Looking Southwest</span>
+  font-family:"Arial","sans-serif"'>Looking @Html.DisplayFor(modelItem => item.PTDescription)</span>
                     </p>
                     <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><o:p>&nbsp;</o:p></p>
@@ -685,28 +675,103 @@
   text-align:center;line-height:normal'><o:p>&nbsp;</o:p></p>
                 </td>
             </tr>
-
-            foto = foto + 1;
-
-}
-
-    if (foto == 2)
-    {
-
-            <tr style='mso-yfti-irow:3;height:30.15pt'>
-                <td width=872 colspan=3 valign=top style='width:653.7pt;padding:0in 5.4pt 0in 5.4pt;
+            <tr style='mso-yfti-irow:1;height:30.15pt'>
+                <td width=1086 colspan=4 valign=top style='width:814.2pt;padding:0in 5.4pt 0in 5.4pt;
   height:30.15pt'>
                     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><o:p>&nbsp;</o:p></p>
-                    <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><o:p>&nbsp;</o:p></p>
-                </td>
-                <td width=214 valign=top style='width:160.5pt;padding:0in 5.4pt 0in 5.4pt;
-  height:30.15pt'>
                     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><o:p>&nbsp;</o:p></p>
                 </td>
             </tr>
+        foto = foto + 1;
+
+    }
+    if ((foto == 1) && (Model.Count() == i))
+    {
+        <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:335.65pt'>
+            <td width=872 colspan=3 valign=top style='width:653.7pt;padding:0in 5.4pt 0in 5.4pt;
+              height:335.65pt'>
+                <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                    <span style='mso-no-proof:yes'>
+                        <!--[if gte vml 1]><v:shapetype
+                         id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+                         path="m@@4@@5l@@4@@11@@9@@11@@9@@5xe" filled="f" stroked="f">
+                         <v:stroke joinstyle="miter"/>
+                         <v:formulas>
+                          <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+                          <v:f eqn="sum @@0 1 0"/>
+                          <v:f eqn="sum 0 0 @@1"/>
+                          <v:f eqn="prod @@2 1 2"/>
+                          <v:f eqn="prod @@3 21600 pixelWidth"/>
+                          <v:f eqn="prod @@3 21600 pixelHeight"/>
+                          <v:f eqn="sum @@0 0 1"/>
+                          <v:f eqn="prod @@6 1 2"/>
+                          <v:f eqn="prod @@7 21600 pixelWidth"/>
+                          <v:f eqn="sum @@8 21600 0"/>
+                          <v:f eqn="prod @@7 21600 pixelHeight"/>
+                          <v:f eqn="sum @@10 21600 0"/>
+                         </v:formulas>
+                         <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+                         <o:lock v:ext="edit" aspectratio="t"/>
+                        </v:shapetype><v:shape id="Picture_x0020_1" o:spid="_x0000_i1026" type="#_x0000_t75"
+                         style='width:633pt;height:446.25pt;visibility:visible;mso-wrap-style:square'>
+                         <v:imagedata src="RTPhotos3_files/image001.png" o:title=""/>
+                        </v:shape><![endif]-->
+                        <![if !vml]>
+                       
+                        <img  style="height:530px;max-width:830px;align-content:center;">
+                        <![endif]>
+                    </span>
+                </p>
+            </td>
+            <td width=214 style='width:160.5pt;padding:0in 5.4pt 0in 5.4pt;height:335.65pt'>
+                <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;mso-layout-grid-align:none;text-autospace:
+  none'>
+                    <span style='font-size:12.0pt;font-family:"Arial","sans-serif"'>
+                        <o:p></o:p>
+                    </span>
+                </p>
+                <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal;mso-layout-grid-align:none;text-autospace:
+  none'><span style='font-size:12.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+                <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                    <span style='font-size:12.0pt;
+  font-family:"Arial","sans-serif"'></span>
+</p>
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><o:p>&nbsp;</o:p></p>
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><o:p>&nbsp;</o:p></p>
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><o:p>&nbsp;</o:p></p>
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><o:p>&nbsp;</o:p></p>
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><o:p>&nbsp;</o:p></p>
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><o:p>&nbsp;</o:p></p>
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><o:p>&nbsp;</o:p></p>
+</td>
+</tr>
+            <tr style='mso-yfti-irow:1;height:30.15pt'>
+                <td width=1086 colspan=4 valign=top style='width:814.2pt;padding:0in 5.4pt 0in 5.4pt;
+  height:30.15pt'>
+                    <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+                    <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><o:p>&nbsp;</o:p></p>
+                </td>
+            </tr>
+        foto = 2;
+    }
+    if (foto == 2)
+    {
+
 
             <tr style='mso-yfti-irow:4;height:27.0pt'>
                 <td width=277 style='width:207.5pt;background:#BFBFBF;mso-background-themecolor:
@@ -714,10 +779,9 @@
   height:27.0pt'>
                     <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:center;line-height:normal'>
-                        <span style='mso-tab-count:1'>                </span><b>
+                        <span style='mso-tab-count:1'> </span><b>
                             <span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;font-family:"Arial","sans-serif"'>
-                                Bandera
-                                County
+                                @item.Company
                             </span>
                         </b><span style='font-size:16.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
                     </p>
@@ -731,7 +795,7 @@
                             <span style='font-size:16.0pt;
   mso-bidi-font-size:12.0pt;font-family:"Arial","sans-serif"'>
                                 Bridge No.:
-                                AA00-32-001
+                                @item.Control-@item.Section-@item.Struc
                             </span>
                         </b><span style='font-size:16.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
                     </p>
@@ -744,8 +808,7 @@
                         <b>
                             <span style='font-size:16.0pt;
   mso-bidi-font-size:12.0pt;font-family:"Arial","sans-serif"'>
-                                Date: June 27,
-                                2017
+                                Date: @item.DateInspectionEnd
                             </span>
                         </b><span style='font-size:16.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
                     </p>
@@ -768,8 +831,8 @@
                             <i>
                                 <span style='font-size:14.0pt;
   font-family:"ArialNarrow-BoldItalic","sans-serif";mso-bidi-font-family:ArialNarrow-BoldItalic'>
-                                    LMB
-                                    Engineering, Inc. (F-3456) Contract No.: 88-7IDP5059
+                                    @item.configuration.NameCompany
+                                    @item.configuration.Contract
                                 </span>
                             </i>
                         </b><b>
@@ -779,15 +842,14 @@
                 </td>
             </tr>
             <tr style='mso-yfti-irow:6;mso-yfti-lastrow:yes;height:10.5pt'>
-                <td width=1086 colspan=4 valign=top style='width:814.2pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=1086 colspan=4 style='width:814.2pt;padding:0in 5.4pt 0in 5.4pt;
   height:10.5pt'>
                     <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:center;line-height:normal'>
                         <span style='font-size:10.0pt;
   mso-bidi-font-size:9.0pt;font-family:"ArialNarrow","sans-serif";mso-bidi-font-family:
   ArialNarrow'>
-                            DO NOT DISCLOSE - INFORMATION CONFIDENTIAL UNDER THE TEXAS
-                            HOMELAND SECURITY ACT AND 23 USC SECTION 409, SAFETY SENSITIVE INFORMATION.
+                            @item.configuration.footPage
                         </span><b>
                             <i>
                                 <span style='font-size:10.0pt;mso-bidi-font-size:14.0pt;font-family:"ArialNarrow-BoldItalic","sans-serif";
@@ -797,15 +859,23 @@
                     </p>
                 </td>
             </tr>
-            <span style='font-size:10.0pt;mso-bidi-font-size:11.0pt;font-family:"Arial","sans-serif";
+        foto = 0;
+        <span style='font-size:10.0pt;mso-bidi-font-size:11.0pt;font-family:"Arial","sans-serif";
 mso-fareast-font-family:Arial;mso-ansi-language:EN-US;mso-fareast-language:
 EN-US;mso-bidi-language:AR-SA'>
-                <br clear=all style='page-break-before:always;
+            <br clear=all style='page-break-before:always;
 mso-break-type:section-break'>
-            </span>
-        foto = 0;
+        </span>
     }
 }
+            <![if !supportMisalignedColumns]>
+            <tr height=0>
+                <td width=277 style='border:none'></td>
+                <td width=399 style='border:none'></td>
+                <td width=196 style='border:none'></td>
+                <td width=214 style='border:none'></td>
+            </tr>
+            <![endif]>
         </table>
 
         <p class=MsoNormal style='tab-stops:106.4pt'><o:p>&nbsp;</o:p></p>
@@ -815,3 +885,4 @@ mso-break-type:section-break'>
 </body>
 
 </html>
+

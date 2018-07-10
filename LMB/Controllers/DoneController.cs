@@ -403,7 +403,7 @@ namespace LMB.Controllers
 
                 //  FileName = "firstPdf.pdf",
                 // CustomSwitches = footer
-                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 20, 5, 20), PageSize = Rotativa.Core.Options.Size.Letter }
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 5, 8), PageSize = Rotativa.Core.Options.Size.Letter }
             };
 
 
@@ -482,10 +482,11 @@ namespace LMB.Controllers
                 .Include(b => b.ReferenceFeatureType)
                 .Where(i => i.IdInspection == id).ToListAsync();
 
+            var inspListNo = db.InspectionBasicRegistryValue.ToList().Where(ins => ins.IdInspection == id && ins.idInspBasic==38).FirstOrDefault();
+            reportf.ComentGeneral = inspListNo.Value;
+            // var inspListNo = db.NoveltyInspection.ToList().Where(ins => ins.IdInspection == id);
 
-            var inspListNo = db.NoveltyInspection.ToList().Where(ins => ins.IdInspection == id);
-
-            reportf.NoveltyInspection = inspListNo.ToList();
+            // reportf.NoveltyInspection = inspListNo.ToList();
 
             // return View("ReportInspFollowUp", reportf);
 
@@ -699,7 +700,7 @@ namespace LMB.Controllers
                 // CustomSwitches = footer
                 //PageWidth = 180, PageHeight = 297, 
 
-                RotativaOptions = { MinimumFontSize = 12, PageMargins = new Margins(5, 10, 4, 5), PageSize = Rotativa.Core.Options.Size.Letter }
+                RotativaOptions = { MinimumFontSize = 12, PageMargins = new Margins(5, 10, 3, 5), PageSize = Rotativa.Core.Options.Size.Letter }
             };
 
 
@@ -1200,7 +1201,10 @@ namespace LMB.Controllers
                     inspectionDaily.PTDescription = directionPhotoType.Description;
                     var inspectd = db.InspectionDaily.Find(item.IDInspection);
                     inspectionDaily.Company = district.ABBR;
-                    inspectionDaily.NumInspection = inspectd.NumInspection;
+                    inspectionDaily.Struc = inspectd.Structure;
+                    inspectionDaily.Section  = inspectd.Section;
+                    inspectionDaily.Control = inspectd.Control;
+                    inspectionDaily.configuration = db.Configurations.FirstOrDefault();
                     inspectionDaily.DateInspectionEnd = inspectd.DateInspectionEnd;
                     lismpdf.Add(inspectionDaily);
 
@@ -1239,7 +1243,7 @@ namespace LMB.Controllers
             return new ViewAsPdf("ReportPDF", lismpdf)
             {
 
-                RotativaOptions = { PageMargins = new Margins(0, 8,0, 8), PageSize = Rotativa.Core.Options.Size.Letter }
+                RotativaOptions = { PageMargins = new Margins(10, 8,0, 8), PageSize = Rotativa.Core.Options.Size.Letter }
             };
         }
 
@@ -1308,7 +1312,7 @@ namespace LMB.Controllers
                         {
                             float aspect = img.Width / (float)img.Height;
                             int newWidth, newHeight;
-                            int BOXWIDTH = 100;
+                            int BOXWIDTH = 300;
                             newWidth = (int)(BOXWIDTH * aspect);
                             newHeight = (int)(newWidth / aspect);
 

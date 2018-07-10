@@ -22,7 +22,7 @@
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode />
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -580,6 +580,7 @@
     <Content Include="img\Compass.png" />
     <Content Include="img\CompassReport.gif" />
     <Content Include="img\home.png" />
+    <Content Include="img\iconodown.png" />
     <Content Include="img\ic_addinsp.png" />
     <Content Include="img\ic_addphoto.png" />
     <Content Include="img\ic_asignar.png" />
