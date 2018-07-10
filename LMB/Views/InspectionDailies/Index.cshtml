@@ -24,6 +24,12 @@
         margin-left: -189px;
         margin-top: -42px;
     }
+    tfoot {
+    width: 100%;
+     padding: 3px;
+    box-sizing: border-box;
+    display: table-header-group;
+}
 
     .grey {
         background-color: #eefbf6;
@@ -91,12 +97,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.InspectionState.Description)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LongitudeIni)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LatitudeIni)
-            </th>
         </tr>
     </thead>
     <tbody>
@@ -139,25 +139,19 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.InspectionState.Description)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LongitudeIni)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LatitudeIni)
-                </td>
             </tr>
         }
     </tbody>
     <tfoot>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NumInspection)
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserDBs.FullName)
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DO)
+               
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Company)
@@ -169,25 +163,19 @@
                 @Html.DisplayNameFor(model => model.Section)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address)
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.City)
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Scope)
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.InspectionState.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LongitudeIni)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LatitudeIni)
+                
             </th>
         </tr>
     </tfoot>
@@ -264,6 +252,7 @@
         var table = "";
         var sel = [];
         var list;
+        var title;
         $(document).ready(function (e) {
             inicializar(e);
         }
@@ -271,9 +260,9 @@
         function tabla() {
             table = $("#rawdata_table").DataTable({
                 initComplete: function () {
-                    this.api().columns().every( function () {
+                    this.api().columns([3, 4, 5, 6]).every( function () {
                         var column = this;
-                        var select = $('<select><option value=""></option></select>')
+                        var select = $('<select><option value=" " placeholder="Search '+title+'"></option></select>')
                             .appendTo( $(column.footer()).empty() )
                             .on( 'change', function () {
                                 var val = $.fn.dataTable.util.escapeRegex(

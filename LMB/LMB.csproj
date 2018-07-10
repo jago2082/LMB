@@ -867,6 +867,10 @@
     <Content Include="Views\Done\IndexCS.cshtml" />
     <Content Include="Views\Done\EditCS.cshtml" />
     <Content Include="Views\Done\DeleteCS.cshtml" />
+    <Content Include="Views\Done\IndexRT.cshtml" />
+    <Content Include="Views\Done\CreateRT.cshtml" />
+    <Content Include="Views\Done\EditRT.cshtml" />
+    <Content Include="Views\Done\DeleteIR.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
