@@ -29,7 +29,7 @@ namespace LMB.Models
         [Display(Name = "County")]
         public string Company { get; set; }
 
-        public int Control { get; set; }
+        public string Control { get; set; }
 
         public string Section { get; set; }
         [Display(Name = "Location")]

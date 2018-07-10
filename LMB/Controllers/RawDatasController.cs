@@ -323,7 +323,7 @@ namespace LMB.Controllers
                                 inspectiondaily.NumInspection = numinsp;
                                 inspectiondaily.DO = rdt.District;
                                 inspectiondaily.Company = rdt.County;
-                                inspectiondaily.Control = int.Parse(rdt.Control);
+                                inspectiondaily.Control = rdt.Control;
                                 inspectiondaily.Section = rdt.Section;
                                 inspectiondaily.Scope = rdt.FeatXed;
                                 inspectiondaily.IdValueCheckList = 70;

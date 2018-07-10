@@ -20,7 +20,7 @@ namespace LMB.Models
 
         public string County { get; set; }
 
-        public int Control { get; set; }
+        public string Control { get; set; }
 
         public string Section { get; set; }
      
