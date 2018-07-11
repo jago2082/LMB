@@ -24,12 +24,6 @@
         margin-left: -189px;
         margin-top: -42px;
     }
-    tfoot {
-    width: 100%;
-     padding: 3px;
-    box-sizing: border-box;
-    display: table-header-group;
-}
 
     .grey {
         background-color: #eefbf6;
@@ -49,13 +43,13 @@
 </div>
 <div id="buttons">
 
-    <a id="alumno" data-target="#modalUser" data-toggle="modal" data-id="" onclick="getSelected()" href="#" class="unlock" title="Assign user">
+    <a id="alumno"  onclick="getSelected()" href="#" class="unlock" title="Assign user">
         <img width="30" alt="Assign user" title="Assign user" src="~/img/ic_asignar.png">
     </a>
-    <a id="addinsp" data-target="#modalAdd" data-toggle="modal" data-id="" onclick="location.href='@Url.Action("Create")'" href="#" class="unlock" title="Add Inspection">
+    <a id="addinsp"  onclick="location.href='@Url.Action("Create")'" href="#" class="unlock" title="Add Inspection">
         <img width="30" alt="Add Inspection" title="Add Inspection" src="~/img/ic_addinsp.png">
     </a>
-    <a id="deleteIns" data-target="#modalDelete" data-toggle="modal" data-id="" onclick="getSelectedDel()" href="#" class="unlock" title="Delete Inspection">
+    <a id="deleteIns"  onclick="getSelectedDel()" href="#" class="unlock" title="Delete Inspection">
         <img width="30" alt="Delete Inspection" title="Delete Inspection" src="~/img/ic_delinsp.png">
     </a>
 
@@ -83,9 +77,6 @@
                 @Html.DisplayNameFor(model => model.Section)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Structure)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Address)
             </th>
             <th>
@@ -99,6 +90,12 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.InspectionState.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LongitudeIni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LatitudeIni)
             </th>
         </tr>
     </thead>
@@ -127,9 +124,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Section)
                 </td>
-                <th>
-                    @Html.DisplayFor(modelItem => item.Structure)
-                </th>
                 <td>
                     @Html.DisplayFor(modelItem => item.Address)
                 </td>
@@ -145,23 +139,27 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.InspectionState.Description)
                 </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LongitudeIni)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LatitudeIni)
+                </td>
             </tr>
         }
     </tbody>
     <tfoot>
         <tr>
             <th>
-                
+                @Html.DisplayNameFor(model => model.NumInspection)
             </th>
             <th>
-                
+                @Html.DisplayNameFor(model => model.UserDBs.FullName)
             </th>
             <th>
-               
+                @Html.DisplayNameFor(model => model.DO)
             </th>
-
             <th>
-                Prueba
                 @Html.DisplayNameFor(model => model.Company)
             </th>
             <th>
@@ -171,34 +169,34 @@
                 @Html.DisplayNameFor(model => model.Section)
             </th>
             <th>
-
+                @Html.DisplayNameFor(model => model.Address)
             </th>
             <th>
-                
+                @Html.DisplayNameFor(model => model.City)
             </th>
             <th>
-                
+                @Html.DisplayNameFor(model => model.Scope)
             </th>
             <th>
-                
+                @Html.DisplayNameFor(model => model.Date)
             </th>
             <th>
-                
+                @Html.DisplayNameFor(model => model.InspectionState.Description)
             </th>
             <th>
-                
+                @Html.DisplayNameFor(model => model.LongitudeIni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LatitudeIni)
             </th>
         </tr>
-       
     </tfoot>
-    
 </table>
-  
 @Html.DropDownList("type", null, "[Select a User]", htmlAttributes: new { @onchange = "filterMarkers(this);" })
 <div id="map_canvas"></div>
 
 <!-- Modal -->
-<div id="modalUser" data-backdrop="false" class="modal fade" role="dialog">
+<div id="modalUser" data-backdrop="false"  class="modal fade" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -266,7 +264,6 @@
         var table = "";
         var sel = [];
         var list;
-        var title;
         $(document).ready(function (e) {
             inicializar(e);
         }
@@ -274,20 +271,20 @@
         function tabla() {
             table = $("#rawdata_table").DataTable({
                 initComplete: function () {
-                    this.api().columns([3, 4, 5, 6]).every( function () {
+                    this.api().columns().every( function () {
                         var column = this;
-                        var select = $('<select><option value=" " Placeholder="Search '+title+'"></option></select>')
+                        var select = $('<select><option value=""></option></select>')
                             .appendTo( $(column.footer()).empty() )
                             .on( 'change', function () {
                                 var val = $.fn.dataTable.util.escapeRegex(
                                     $(this).val()
                                 );
- 
+
                                 column
                                     .search( val ? '^'+val+'$' : '', true, false )
                                     .draw();
                             } );
- 
+
                         column.data().unique().sort().each( function ( d, j ) {
                             select.append( '<option value="'+d+'">'+d+'</option>' )
                         } );
@@ -360,7 +357,7 @@
 
         });
 
-        $("#btnDelete").on("click", function () {
+        $("#deleteIns").on("click", function () {
 
             var idinsp = $('#inspId').val();
            if (list != "") {
@@ -404,6 +401,7 @@
                 return false;
             }
             $("#bookId").val(sel);
+            $("#modalUser").modal("show"); 
         }
 
         function getSelectedDel() {
@@ -418,6 +416,7 @@
             }
 
             $("#inspId").val(sel);
+            //$("#modalDelete").modal("show"); 
         }
 
     </script>
