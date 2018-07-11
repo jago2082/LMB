@@ -314,17 +314,18 @@ namespace LMB.Controllers
                                 //rdt.AIRLRSInvRte = data[202].ToString();
                                 //rdt.AIRLRSSubRte = data[203].ToString();
                                 //rdt.Blanks9 = data[204].ToString();
+                                inspectiondaily.IdClient = 1;
                                 inspectiondaily.IDUser = 1;
                                 if (isLetter)
                                 {
-                                    inspectiondaily.IdClient = 2;
+                                    inspectiondaily.IdProject = 2;
                                 }
                                 else
                                 {
-                                    inspectiondaily.IdClient = 1;
+                                    inspectiondaily.IdProject = 1;
                                 }
-                                var idproject = validarcontrol(rdt.Control);
-                                inspectiondaily.IdProject = idproject;
+                               // var idproject = validarcontrol(rdt.Control);
+                                //inspectiondaily.IdProject = idproject;
                                 var numinsp = String.Format("{0}-{1}-{2}-{3}-{4}", rdt.District, rdt.County, rdt.Control, rdt.Section, rdt.StrNo);
                                 var exist = db.InspectionDaily.Where(i => i.NumInspection == numinsp).FirstOrDefault();
                                 //if (exist != null)
@@ -346,6 +347,7 @@ namespace LMB.Controllers
                                 inspectiondaily.LongitudeIni = rdt.Longitude;
                                 inspectiondaily.Structure = rdt.StrNo;
                                 inspectiondaily.MaintanSection = rdt.MaintSect;
+                                inspectiondaily.Milepnt = rdt.Milepnt;
                                 inspectiondaily.Owner = rdt.Owner;
                                 db.RawData.Add(rdt);
                                 db.InspectionDaily.Add(inspectiondaily);
