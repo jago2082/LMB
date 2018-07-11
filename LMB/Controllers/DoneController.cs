@@ -466,7 +466,7 @@ namespace LMB.Controllers
             ReportInspFollowUp reportf = new ReportInspFollowUp();
 
             reportf.InspectionDaily = await db.InspectionDaily.FindAsync(id);
-            var distrcode = string.Format("0{0}", reportf.InspectionDaily.DO);
+            var distrcode = string.Format("{0}", reportf.InspectionDaily.DO);
             var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
             reportf.InspectionDaily.DO = distric.ABBR;
             var countrycode = reportf.InspectionDaily.Company.TrimStart('0');
@@ -483,6 +483,12 @@ namespace LMB.Controllers
                 .Where(i => i.IdInspection == id).ToListAsync();
 
             var inspListNo = db.InspectionBasicRegistryValue.ToList().Where(ins => ins.IdInspection == id && ins.idInspBasic==38).FirstOrDefault();
+            if (inspListNo== null)
+            {
+                ViewBag.Info = "<script type='text/javascript'>swal('¡Alert!', 'No found inspection in Inspection Basic Registry Value', 'error');</script>"; 
+                var inspd = db.InspectionDaily.Find(id);
+                return View("Reports", inspd);
+            }
             reportf.ComentGeneral = inspListNo.Value;
             // var inspListNo = db.NoveltyInspection.ToList().Where(ins => ins.IdInspection == id);
 
