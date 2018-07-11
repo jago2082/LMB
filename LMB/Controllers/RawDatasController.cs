@@ -110,6 +110,8 @@ namespace LMB.Controllers
                                 rdt.District = data[3].ToString();
                                 rdt.County = data[4].ToString();
                                 rdt.Control = data[5].ToString();
+                                
+                                bool isLetter = !String.IsNullOrEmpty(rdt.Control) && Char.IsLetter(rdt.Control[0]);
                                 rdt.Section = data[6].ToString();
                                 rdt.Milepnt = data[7].ToString();
                                 rdt.StrNo = data[8].ToString();
@@ -313,7 +315,14 @@ namespace LMB.Controllers
                                 //rdt.AIRLRSSubRte = data[203].ToString();
                                 //rdt.Blanks9 = data[204].ToString();
                                 inspectiondaily.IDUser = 1;
-                                inspectiondaily.IdClient = 1;
+                                if (isLetter)
+                                {
+                                    inspectiondaily.IdClient = 2;
+                                }
+                                else
+                                {
+                                    inspectiondaily.IdClient = 1;
+                                }
                                 var idproject = validarcontrol(rdt.Control);
                                 inspectiondaily.IdProject = idproject;
                                 var numinsp = String.Format("{0}-{1}-{2}-{3}-{4}", rdt.District, rdt.County, rdt.Control, rdt.Section, rdt.StrNo);
