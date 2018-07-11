@@ -184,7 +184,6 @@ namespace LMB.Controllers
 
         // POST: InspectionDailies/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(string listaIds)
         {
             string[] arregloIds = listaIds.Split(new char[] { ',' });
