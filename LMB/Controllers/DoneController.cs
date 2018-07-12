@@ -483,13 +483,17 @@ namespace LMB.Controllers
                 .Where(i => i.IdInspection == id).ToListAsync();
 
             var inspListNo = db.InspectionBasicRegistryValue.ToList().Where(ins => ins.IdInspection == id && ins.idInspBasic==38).FirstOrDefault();
-            if (inspListNo== null)
+            if (inspListNo == null)
             {
-                ViewBag.Info = "<script type='text/javascript'>swal('¡Alert!', 'No found inspection in Inspection Basic Registry Value', 'error');</script>"; 
-                var inspd = db.InspectionDaily.Find(id);
-                return View("Reports", inspd);
+                reportf.ComentGeneral = "";
+                /*    ViewBag.Info = "<script type='text/javascript'>swal('¡Alert!', 'No found inspection in Inspection Basic Registry Value', 'error');</script>"; 
+                    var inspd = db.InspectionDaily.Find(id);
+                    return View("Reports", inspd);*/
             }
-            reportf.ComentGeneral = inspListNo.Value;
+            else
+            {
+                reportf.ComentGeneral = inspListNo.Value;
+            }
             // var inspListNo = db.NoveltyInspection.ToList().Where(ins => ins.IdInspection == id);
 
             // reportf.NoveltyInspection = inspListNo.ToList();
@@ -1192,7 +1196,7 @@ namespace LMB.Controllers
             var result = db.Insp_Type_Attach.Where(i => i.IDInspection == id).ToList();
             var inspd = db.InspectionDaily.Find(id);
             int? numinsp = id;
-            var district = db.Districts.Where(d => d.NAME == inspd.Company).FirstOrDefault();
+            var district = db.Districts.Where(d => d.NAME == inspd.DO).FirstOrDefault();
             string dist = district.ABBR;
             string dateprint = inspd.DateInspectionEnd;
             try
@@ -1258,7 +1262,7 @@ namespace LMB.Controllers
         {
             Footer footer = new Footer();
             var numinsp = db.InspectionDaily.Find(id);
-            var district = db.Districts.Where(d => d.NAME == numinsp.Company).FirstOrDefault();
+            var district = db.Districts.Where(d => d.NAME == numinsp.DO).FirstOrDefault();
             numinsp.Company = district.ABBR;
             footer.inspectiondaily = numinsp;
             footer.configuration = db.Configurations.FirstOrDefault();
