@@ -27,7 +27,8 @@ namespace LMB.Models
         public InspectionRaiting InspectionRaiting { get; set; }
 
         public int IdInspection { get; set; }
-        
+
+        [Display(Name ="Owner")]
         public string InspectionOwner  { get; set; }
 
         public string InspectionDescription { get; set; }
