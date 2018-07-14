@@ -2,15 +2,45 @@
 
 @{
     ViewBag.Title = "Index";
-    LMB.Models.BridgeInspectionFollowUp bridgeInspectionFollowUp = Model.FirstOrDefault();
+    LMB.Models.BridgeInspectionFollowUp bridgeInspectionFollowUp = new LMB.Models.BridgeInspectionFollowUp();
+    if (Model.Count() > 0)
+    {
+        bridgeInspectionFollowUp = Model.FirstOrDefault();
+    }
+    else
+    {
+        bridgeInspectionFollowUp.IdInspection = (int)ViewBag.idinspect;
+    }
+
 }
 
 @Html.ActionLink("Create", "CreateF", new { id = bridgeInspectionFollowUp.IdInspection })
+<div class="form-horizontal">
+    <hr />
+    @Html.Hidden("IdInspection", bridgeInspectionFollowUp.IdInspection.ToString())
+    <div class="form-group">
+        @Html.LabelFor(model => model.FirstOrDefault().InspectionDescription, "Description", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FirstOrDefault().InspectionDescription, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FirstOrDefault().InspectionDescription, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.FirstOrDefault().InspectionOwner, "Owner", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FirstOrDefault().InspectionOwner, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FirstOrDefault().InspectionOwner, "", new { @class = "text-danger" })
+        </div>
+        <input type="submit" value="Save" id="add" class="btn btn-success">
+    </div>
+    <div id="mens"></div>
+    <hr />
+</div>
 
 <table class="table">
     <tr>
         <th>
-            
+
         </th>
         <th>
             @Html.DisplayNameFor(model => model.InspectionRaiting.Description)
@@ -27,28 +57,53 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.HiddenFor(modelItem => item.IdInspection)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InspectionRaiting.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RecommendationType.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReferenceFeatureType.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditF", new { id=item.IdBridgeInspectionFollowUp }) 
-            @Html.ActionLink("Delete", "DeleteF", new { id=item.IdBridgeInspectionFollowUp })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.HiddenFor(modelItem => item.IdInspection)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InspectionRaiting.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecommendationType.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReferenceFeatureType.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditF", new { id = item.IdBridgeInspectionFollowUp })
+                @Html.ActionLink("Delete", "DeleteF", new { id = item.IdBridgeInspectionFollowUp })
+            </td>
+        </tr>
+    }
 
 </table>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#add").click(function () {
+            var description = $("#InspectionDescription").val();
+            var owner = $("#InspectionOwner").val();
+            var idinsp = $("#IdInspection").val();
+            if (description != "" || owner != "") {
+                var Url = '@Url.Action("Save", "Done")';
+                $.post(Url, { "id": idinsp, "InspectionDescription": description, "InspectionOwner": owner })
+               .done(function (data) {
+                   swal('Info', 'Success', 'success');
+               })
+               .fail(function (xhr, status, error) {
+                   swal('Error', xhr.responseText, 'error');
+               });
+            }
+        });
+    });
+
+    </script>
+}

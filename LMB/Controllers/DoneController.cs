@@ -926,15 +926,31 @@ namespace LMB.Controllers
         public async Task<ActionResult> Save(string id, string InspectionDescription, string InspectionOwner)
         {
             int idis = int.Parse(id);
-            var inspectionDaily = db2.InspectionDaily.Find(idis);
-            var inspectionBasicRegistryValue = db.InspectionBasicRegistryValue
+            var inspectionDaily = db.InspectionDaily.Find(idis);
+            var inspectionBasicRegistryValue = db2.InspectionBasicRegistryValue
                 .Where(b => b.IdInspection == idis && b.idInspBasic == 38).FirstOrDefault();
+            if (inspectionBasicRegistryValue == null)
+            {
+                inspectionBasicRegistryValue = new InspectionBasicRegistryValue();
+                inspectionBasicRegistryValue.IdInspection = idis;
+                inspectionBasicRegistryValue.idInspBasic = 38;
+                inspectionBasicRegistryValue.Value = InspectionDescription;
+                db2.InspectionBasicRegistryValue.Add(inspectionBasicRegistryValue);
+                db2.SaveChanges();
+                inspectionDaily.Owner = InspectionOwner;
+                db.Entry(inspectionDaily).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                TempData["msg"] = "";
+                ViewBag.Info = "<script type='text/javascript'>swal('¡Success!', 'Saved Data', 'success');</script>";
+                var inspd = db.InspectionDaily.Find(idis);
+                return View("Reports", inspd);
+            }
             inspectionDaily.Owner = InspectionOwner;
             inspectionBasicRegistryValue.Value = InspectionDescription;
-            db.Entry(inspectionBasicRegistryValue).State = EntityState.Modified;
-            await db.SaveChangesAsync();
-            db2.Entry(inspectionDaily).State = EntityState.Modified;
+            db2.Entry(inspectionBasicRegistryValue).State = EntityState.Modified;
             await db2.SaveChangesAsync();
+            db.Entry(inspectionDaily).State = EntityState.Modified;
+            await db.SaveChangesAsync();
             var bridgeInspectionFollowUps = db.BridgeInspectionFollowUps.Include(b => b.InspectionRaiting)
                 .Include(b => b.RecommendationType).Include(b => b.ReferenceFeatureType)
                 .Where(i => i.IdInspection == idis);
