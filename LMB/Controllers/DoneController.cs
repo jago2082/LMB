@@ -724,7 +724,7 @@ namespace LMB.Controllers
             ChannelCrossReport ChannelCrossReport = new ChannelCrossReport();
             ChannelCrossReport.InspectionDaily = insp;
 
-            var distrcode = string.Format("0{0}", insp.DO);
+            var distrcode = string.Format("{0}", insp.DO);
             var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
             insp.DO = distric.ABBR;
 
@@ -774,7 +774,7 @@ namespace LMB.Controllers
             UnderClearReport UnderClearReport = new UnderClearReport();
 
 
-            var distrcode = string.Format("0{0}", insp.DO);
+            var distrcode = string.Format("{0}", insp.DO);
             var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
             insp.DO = distric.ABBR;
 
@@ -1313,7 +1313,17 @@ namespace LMB.Controllers
                         thePictureAsBytes = theReader.ReadBytes(file.ContentLength);
                     }
 
-
+                    Image_orig_attach imgoriattach = new Image_orig_attach();
+                    imgoriattach.IDAttach = insptypeattach.IDAttach;
+                    imgoriattach.IdDirectionPhotoType = insptypeattach.IdDirectionPhotoType;
+                    imgoriattach.IDInspection = insptypeattach.IDInspection;
+                    imgoriattach.IDTypePicture = insptypeattach.IDTypePicture;
+                    imgoriattach.ImageString = insptypeattach.ImageString;
+                    imgoriattach.InspectionDailys = insptypeattach.InspectionDailys;
+                    imgoriattach.PhotoCameraNum = insptypeattach.PhotoCameraNum;
+                    imgoriattach.TypePicture = insptypeattach.TypePicture;
+                    db2.Image_orig_attachs.Add(imgoriattach);
+                    await db2.SaveChangesAsync();
                     ////
 
                     using (MemoryStream ms = new MemoryStream(thePictureAsBytes, 0, thePictureAsBytes.Length))
