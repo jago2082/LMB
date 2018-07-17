@@ -6,12 +6,12 @@
 
 <style>
     table.dataTable thead tr {
- background: rgba(0, 63, 79, 0.1);
-}
-    .grey {
-  background-color: #e4e1e1;
-}
+        background: rgba(0, 63, 79, 0.1);
+    }
 
+    .grey {
+        background-color: #e4e1e1;
+    }
 </style>
 <div id="Botonera_Done">
     @Html.ActionLink("Load Photos Camera", "LoadMultifiles", null, new { @class = "btn btn-primary", @style = "float: right;", @onclick = "Progress();" })
@@ -46,6 +46,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.DateInspection)
             </th>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -90,131 +91,108 @@
                     </a>
 
 
-     <!--             <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("Edit", new { id = item.IdInspection })'">
+                    <!--             <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("Edit", new { id = item.IdInspection })'">
 
-                        <img width="30" alt="Photos Report" title="Load Pictures" src="~/img/loadphoto.png">
-                    </button>-->
+                                       <img width="30" alt="Photos Report" title="Load Pictures" src="~/img/loadphoto.png">
+                                   </button>-->
                 </td>
                 <td>
                     <a id="Open Repor" data-target="#Photos" data-toggle="modal" data-id="" onclick="location.href='@Url.Action("PDFReport", new { id = item.IdInspection })'" href="#" class="unlock" title="Open Report">
                         <img width="30" alt="Open Report" title="Open Report" src="~/img/ic_report.png">
                     </a>
-           <!--         <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("PDFReport", new { id = item.IdInspection })'">
+                    <!--         <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("PDFReport", new { id = item.IdInspection })'">
 
-                        <img width="30" alt="Open Report" title="Open Report" src="~/img/ic_report.png">
-                    </button>--> 
+                                 <img width="30" alt="Open Report" title="Open Report" src="~/img/ic_report.png">
+                             </button>-->
                 </td>
                 <td>
                     <a id="Open Repor" data-target="#Photos" data-toggle="modal" data-id="" onclick="location.href='@Url.Action("Reports", new { id = item.IdInspection })'" href="#" class="unlock" title="Other Report">
                         <img width="30" alt="Other Report" title="Other Report" src="~/img/ic_reportAll.png">
                     </a>
-                  <!--   <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("Reports", new { id = item.IdInspection })'">
-                       
-                        <img width="30" alt="Other Reports" title="Other Reports" src="~/img/ic_reportAll.png">
-                    </button>--> 
-                 </td>
-                <td>
-                    <a id="Download" data-target="#Photos" data-toggle="modal" data-id="" onclick="location.href='@Url.Action("Reports", new { id = item.IdInspection })'" href="#" class="unlock" title="DownLoad Data">
-                        <img width="30" alt="Other Report" title="DownLoad Data" src="~/img/iconodown.png">
-                    </a>
- 
+                    <!--   <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("Reports", new { id = item.IdInspection })'">
+
+                          <img width="30" alt="Other Reports" title="Other Reports" src="~/img/ic_reportAll.png">
+                      </button>-->
                 </td>
-                
+                <td>
+                    <a id="DownloadData"  onclick="location.href='@Url.Action("Reports", new { id = item.IdInspection })'" href="#" class="unlock" title="Other Report">
+                        <img width="30" alt="Download Data" title="Download Data" src="~/img/iconodown.png">
+                    </a>
+                    <!--   <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("Reports", new { id = item.IdInspection })'">
+
+              <img width="30" alt="Other Reports" title="Other Reports" src="~/img/ic_reportAll.png">
+          </button>-->
+                </td>
             </tr>
-            
-             
+
+
         }
-      
-       
+
+
 
     </tbody>
 </table>
 
 <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Invoice Date</button>
 
-@Html.ActionLink("Invoice", "ReportBill", null, new { @class = "btn btn-primary",@style= "float: right;", @onclick= "Progress();" })
+@Html.ActionLink("Invoice", "ReportBill", null, new { @class = "btn btn-primary", @style = "float: right;", @onclick = "Progress();" })
 
 <!-- Modal -->
-    <div class="modal fade" id="myModal"  data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Invoice Report</h4>
+<div class="modal fade" id="myModal" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Invoice Report</h4>
 
-                </div>
-                <div class="modal-body">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <label for="idTourDateDetails">Invoice Range Date</label>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <p>Enter Start Date: <input type="text" id="datepicker-8"></p>
-                                    <p>Enter End Date: <input type="text" id="datepicker-9"></p>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="row">
+                        <label for="idTourDateDetails">Invoice Range Date</label>
+                        <div class="form-group">
+                            <label for="dateini">initial Date</label>
+                            <input type="date" data-date-format="DD MMMM YYYY" name="dateini" id="dateini"  />
+                            <label for="datefin">final Date</label>
+                            <input type="date" data-date-format="DD MMMM YYYY" name="datefin" id="datefin" />
+                           
+                            <div class="modal-body">
+                                <input type="hidden" name="bookId" id="bookId" value="" />
+                                <input type="hidden" name="userId" id="userId" value="" />
+
+
+                                <div class="form-group">
+                                    <label for="sel1">User</label>
+                                    <input name="user" id="user" value="" />
                                 </div>
-                                <div class="modal-body">
-                                    <input type="hidden" name="bookId" id="bookId" value="" />
-                                    <input type="hidden" name="userId" id="userId" value="" />
-
-
-                                    <div class="form-group">
-                                        <label for="sel1">User</label>
-                                        <input name="user" id="user" value="" />
-                                    </div>
-                                </div>
-
                             </div>
+
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" id="save">Open Report</button>
-                        <button id="closemodal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-                    </div>
                 </div>
-                <!-- /.modal-content -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="filter">Open Report</button>
+                    <button id="closemodal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
             </div>
-            <!-- /.modal-dialog -->
+            <!-- /.modal-content -->
         </div>
-        <!-- /.modal -->
+        <!-- /.modal-dialog -->
     </div>
+    <!-- /.modal -->
+</div>
 
-    @Html.Raw(TempData["msg"])
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-
-
-        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
+@Html.Raw(TempData["msg"])
+@section Scripts {
+@Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
             $(document).ready(function (e) {
                 inicializar(e);
-            }
-
-        );
-            $(function () {
-                $("#idTourDateDetails").datepicker();
-                $("#idTourDateDetails").datepicker("show");
-                $("#datepicker-8").datepicker({
-                    prevText: "click for previous months",
-                    nextText: "click for next months",
-                    showOtherMonths: true,
-                    selectOtherMonths: false
-                });
-                $("#datepicker-9").datepicker({
-                    prevText: "click for previous months",
-                    nextText: "click for next months",
-                    showOtherMonths: true,
-                    selectOtherMonths: true
-                });
-
             });
-
-
-         
-
-
-            function tabla() {
+               function tabla() {
                 var table = $("#rawdata_table").DataTable();
 
             }
@@ -222,24 +200,39 @@
             function inicializar(e) {
                 tabla();
             }
-        </script>
+    </script>
 
-        <script type="text/javascript">
-            var Url = '@Url.Action("Save", "InspectionDailies")';
-            var Urld = '@Url.Action("Delete", "InspectionDailies")';
+    <script type="text/javascript">
+            var Url = '@Url.Action("filterDate", "Done")';
             var user = 0;
-            function getval(sel) {
-                user = sel.value;
-            }
+            $("#filter").on("click", function () {
+                var date1 = $('#dateini').val();
+                var date2 = $('#datefin').val();
+                var user = $('#user').text();
+                if (date1 == "" || date2 == "") {
+
+                }
+
+                $.post(Url, { "dateI": date1, "dateF": date2, "user": user })
+                .done(function (data) {
+                    swal('Info', 'Success', 'success');
+                    $("#modalUser").trigger('click');
+                    location.reload();
+                })
+                .fail(function (xhr, status, error) {
+                    swal('Error', xhr.responseText, 'error');
+                });
+
+            });
 
             function Progress() {
                 $('#mod-progress').modal()
             };
-        </script>
-        <script type="text/javascript">
+    </script>
+    <script type="text/javascript">
             $('a').click(function () {
                 $('#mod-progress').modal()
             });
-        </script>
-        @Html.Raw(ViewBag.Info)
-    }
+    </script>
+    @Html.Raw(ViewBag.Info)
+}
