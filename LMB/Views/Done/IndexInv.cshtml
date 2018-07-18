@@ -1,0 +1,33 @@
+﻿@model IEnumerable<LMB.Models.InspectionBasicRegistryValue>
+
+@{
+    ViewBag.Title = "IndexInv";
+}
+
+<h2>Bridge Inventory Record</h2>
+<table class="table">
+    <tr>
+         <th>
+            @Html.DisplayNameFor(model => model.InspectionBasicRegistries.NameQuestion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Value)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.InspectionBasicRegistries.NameQuestion)
+        </td>
+        <td>
+            @Html.EditorFor(modelItem => item.Value, new { htmlAttributes = new { @class = "form-control" } })
+        </td>
+        <td>
+
+        </td>
+    </tr>
+}
+
+</table>

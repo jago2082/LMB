@@ -4,7 +4,7 @@
     ViewBag.Title = "CreateCS";
 }
 
-<h2>CreateCS</h2>
+<h2>Bridge Load Rating Statement</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,8 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>ComponentSummary</h4>
-        <hr />
+         <hr />
         @Html.HiddenFor(model => model.IdInspection)
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -23,45 +22,18 @@
             </div>
         </div>
 
+
+
         <div class="form-group">
-            @Html.LabelFor(model => model.InspectionRaiting, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ALRS, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("InspectionRaiting", null, "[Select Option]", htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.InspectionRaiting, "", new { @class = "text-danger" })
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.ALRS)
+                    @Html.ValidationMessageFor(model => model.ALRS, "", new { @class = "text-danger" })
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.InvRatingH, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.InvRatingH, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.InvRatingH, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.InvRatingHS, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.InvRatingHS, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.InvRatingHS, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.OpRatingH, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.OpRatingH, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.OpRatingH, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.OpRatingHS, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.OpRatingHS, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.OpRatingHS, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.CSJ, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -79,12 +51,16 @@
             </div>
         </div>
 
+
+
+
+
         <div class="form-group">
-            @Html.LabelFor(model => model.ALRS, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.LRCS, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.ALRS)
-                    @Html.ValidationMessageFor(model => model.ALRS, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.LRCS)
+                    @Html.ValidationMessageFor(model => model.LRCS, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
@@ -100,19 +76,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.LRCS, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.LRCS)
-                    @Html.ValidationMessageFor(model => model.LRCS, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.Item66, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Item66, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("InspectionRaiting", null, "[Select Option]", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Item66, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -120,14 +86,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Item64, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Item64, new { htmlAttributes = new { @class = "form-control" } })
+               @Html.DropDownList("InspectionRaiting", null, "[Select Option]", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Item64, "", new { @class = "text-danger" })
             </div>
         </div>
 
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-success" />
+                <input type="submit" value="Save" class="btn btn-success" />
             </div>
         </div>
     </div>
@@ -136,7 +103,33 @@
 <div>
     @Html.ActionLink("Back to List", "IndexCS", new { id = Model.IdInspection }) 
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#add").click(function () {
+            var description = $("#Description").val();
+            var alrs = $("#ALRS").val();
+            var csj = $("#CSJ").val();
+            var desing = $("#Loadof").val();
+            var lrcs = $("#LRCS").val();
+            var alrs = $("#ASLRS").val();
+            var item66 = $("#Item66").val();
+            var item64 = $("#Item64").val();
+            var idinsp = $("#IdInspection").val();
+            if (description != "" || owner != "") {
+            var Url = '@Url.Action("SaveCS", "Done")';
+                $.post(Url, { "id": idinsp, "Description": description, "ALRS": alrs, "CSJ": csj, "Loadof": desing, "LRCS": lrcs, "ASLRS": alrs, "Item66": Item66, "Item64": item64 })
+               .done(function (data) {
+                   swal('Info', 'Success', 'success');
+               })
+               .fail(function (xhr, status, error) {
+                   swal('Error', xhr.responseText, 'error');
+               });
+            }
+        });
+    });
+
+    </script>
 }

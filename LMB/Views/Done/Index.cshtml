@@ -41,10 +41,10 @@
                 @Html.DisplayNameFor(model => model.Scope)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+                @Html.DisplayNameFor(model => model.DateInspection)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateInspection)
+                @Html.DisplayNameFor(model => model.Date)
             </th>
             <th></th>
             <th></th>
@@ -77,12 +77,12 @@
                     @Html.DisplayFor(modelItem => item.Scope)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Date)
+                    @Html.DisplayFor(modelItem => item.DateInspection)
                 </td>
 
 
                 <td>
-                    @Html.DisplayFor(modelItem => item.DateInspection)
+                    @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
                     <a id="Photos" data-target="#Photos" data-toggle="modal" data-id="" onclick="location.href='@Url.Action("Edit", new { id = item.IdInspection })'" href="#" class="unlock" title="Photos Report">

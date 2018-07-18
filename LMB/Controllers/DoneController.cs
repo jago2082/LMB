@@ -46,11 +46,77 @@ namespace LMB.Controllers
                 .Include(b => b.RecommendationType).Include(b => b.ReferenceFeatureType)
                 .Where(i => i.IdInspection == id);
             var inspection = db.InspectionDaily.Find(id);
+            var descr = db.InspectionBasicRegistryValue.Where(ind => ind.IdInspection == id && ind.idInspBasic == 38).FirstOrDefault();
             foreach (var item in bridgeInspectionFollowUps)
             {
+                item.Description = descr.Value;
                 item.InspectionOwner = inspection.Owner;
             }
             return View(await bridgeInspectionFollowUps.ToListAsync());
+        }
+
+        public async Task<ActionResult> IndexIR(int? id, int IDIns)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var ValueCheckList = db.ValueCheckList.Where(i => i.IdInspection == IDIns && i.RowIDQuestion==id);
+            var inspection = db.InspectionDaily.Find(id);
+
+
+           // ValueCheckList valueCheckList = await db.ValueCheckList.FindAsync(id);
+            if (ValueCheckList == null)
+            {
+                return HttpNotFound();
+            }
+           
+
+            return View(await ValueCheckList.ToListAsync());
+        }
+
+               public async Task<ActionResult> IndexInv(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var inspectionBasicRegistryValue = await db.InspectionBasicRegistryValue
+                .Include(i => i.InspectionBasicRegistries).Where(v => v.IdInspection == id).ToListAsync();
+
+            return View(inspectionBasicRegistryValue);
+
+            //var result = db.InspectionBasicRegistryValue.Where(i =>i.IdInspection == id).ToList();
+            //rptInspeccionBRV rptInspeccionBRV = new rptInspeccionBRV();
+            //rptInspeccionBRV.InspectionBasicRegistryValues = result;
+            //var insbr = db.InspectionBasicRegistry;
+            //foreach (var item in rptInspeccionBRV.InspectionBasicRegistryValues)
+            //{
+            //    rptInspeccionBRV.InspectionBasicRegistries = insbr.Where(i => i.IdInspBasic == item.idInspBasic).FirstOrDefault();
+            //}
+            //return View (rptInspeccionBRV);
+            //var result = (from u in db.InspectionBasicRegistryValue
+            //              join c in db.InspectionBasicRegistry on u.idInspBasic equals c.IdInspBasic
+            //               select new
+            //              {
+            //                   id=u.IdInspectionBV,
+            //                  insp=u.IdInspection,
+            //                  value = u.Value,
+            //                  descri = c.NameQuestion,
+            //              }).Where(i => i.insp == id).ToList();
+            //if (result != null)
+            //{
+
+            //    foreach (var item in result)
+            //    {
+
+            //    }
+
+            //}
         }
 
         public async Task<ActionResult> IndexCS(int id)
@@ -66,7 +132,16 @@ namespace LMB.Controllers
             return View(await ComponentSummaries.ToListAsync());
 
         }
+        public async Task<ActionResult> Seccions(int id)
+        {
+            var secciones = db.CheckListSection;
+         
+              //  .Where(i => i.IdClient == id);
 
+            ViewBag.idinspect = id;
+            return View(await secciones.ToListAsync());
+
+        }
 
         public ActionResult LoadBridgeInspectionRecord(int? id)
         {
@@ -116,7 +191,7 @@ namespace LMB.Controllers
             LoadRatingCheckList LoadRatingReport = new LoadRatingCheckList();
             LoadRatingReport.Insp_Question_Attach = ImageList.ToList();
             LoadRatingReport.InspectionDaily = insp.Where(i => i.IdInspection == id).FirstOrDefault();
-            var distrcode = string.Format("0{0}", LoadRatingReport.InspectionDaily.DO);
+            var distrcode = string.Format("{0}", LoadRatingReport.InspectionDaily.DO);
             var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
             LoadRatingReport.InspectionDaily.DO = distric.ABBR;
             var countrycode = LoadRatingReport.InspectionDaily.Company.TrimStart('0');
@@ -349,12 +424,25 @@ namespace LMB.Controllers
         {
             // int id = 5;
             var insp = db.InspectionDaily.Find(id);
+            
+            var compone = db.ComponentSummaries.Where(ins => ins.IdInspection == id);
+
             var inspList = db.ValueCheckList.ToList().Where(ins => ins.IdInspection == id);
             var section = db.CheckListSection.ToList();
             var config = db.Configurations.FirstOrDefault();
             LoadRatingReport LoadRatingReport = new LoadRatingReport();
+            if (compone == null)
+            {
+                LoadRatingReport.ComponentSummary.LRCS = false;
+                LoadRatingReport.ComponentSummary.ALRS = false;
+                LoadRatingReport.ComponentSummary.ASLRS = false;
+            }
+            else
+            {
+                LoadRatingReport.ComponentSummary = compone.FirstOrDefault();
+            }
             LoadRatingReport.InspectionDaily = insp;
-            LoadRatingReport.CheckListSections = section;
+           // LoadRatingReport.CheckListSections = section;
             LoadRatingReport.Configuration = config;
             LoadRatingReport.Reports = db.Reports.Find(2);
             if (inspList.Count() > 0)
@@ -365,7 +453,7 @@ namespace LMB.Controllers
                 int item60 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 3).Min(value => value.Value));
                 int item62 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == id && ins.RowIDQuestion == 4).Min(value => value.Value));
 
-                LoadRatingReport.ValuesCheclist = inspList.ToList();
+               // LoadRatingReport.ValuesCheclist = inspList.ToList();
 
                 if (Convert.ToString(item58) != "")
                     LoadRatingReport.Item58 = Convert.ToString(item58);
@@ -403,7 +491,7 @@ namespace LMB.Controllers
 
                 //  FileName = "firstPdf.pdf",
                 // CustomSwitches = footer
-                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 5, 8), PageSize = Rotativa.Core.Options.Size.Letter }
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(5, 10,0,8), PageSize = Rotativa.Core.Options.Size.Letter }
             };
 
 
@@ -516,7 +604,7 @@ namespace LMB.Controllers
         {
             ReportSummarySheet reportf = new ReportSummarySheet();
             reportf.InspectionDaily = await db.InspectionDaily.FindAsync(id);
-            var distrcode = string.Format("0{0}", reportf.InspectionDaily.DO);
+            var distrcode = string.Format("{0}", reportf.InspectionDaily.DO);
             var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
             reportf.InspectionDaily.DO = distric.ABBR;
             var countrycode = reportf.InspectionDaily.Company.TrimStart('0');
@@ -556,7 +644,7 @@ namespace LMB.Controllers
 
             InventoryReport.IdInspection = insp.IdInspection;
 
-            var distrcode = string.Format("0{0}", insp.DO);
+            var distrcode = string.Format("{0}", insp.DO);
             var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
             InventoryReport.District = distric.ABBR;
 
@@ -957,6 +1045,74 @@ namespace LMB.Controllers
             return View("IndexF", await bridgeInspectionFollowUps.ToListAsync());
         }
 
+        public async Task<ActionResult> SaveCS(string id, string Description, bool ALRS, string CSJ, string desing, bool LRCS, bool ASLRS, string Item66, string Item64 )
+        {
+ 
+            int idis = int.Parse(id);
+            var inspectionDaily = db.InspectionDaily.Find(idis);
+            var inspectionBasicRegistryValue = db2.InspectionBasicRegistryValue
+                .Where(b => b.IdInspection == idis && b.idInspBasic == 38).FirstOrDefault();
+            if (inspectionBasicRegistryValue == null)
+            {
+                inspectionBasicRegistryValue = new InspectionBasicRegistryValue();
+                inspectionBasicRegistryValue.IdInspection = idis;
+                inspectionBasicRegistryValue.idInspBasic = 38;
+                inspectionBasicRegistryValue.Value = Description;
+                db2.InspectionBasicRegistryValue.Add(inspectionBasicRegistryValue);
+                db2.SaveChanges();
+                await db.SaveChangesAsync();
+                TempData["msg"] = "";
+                ViewBag.Info = "<script type='text/javascript'>swal('¡Success!', 'Saved Data', 'success');</script>";
+               // var inspd = db.InspectionDaily.Find(idis);
+               // return View("Reports", inspd);
+            }
+            var componentsummaries = db2.ComponentSummaries
+            .Where(b => b.IdInspection == idis).FirstOrDefault();
+            if (componentsummaries == null)
+            {
+                componentsummaries = new ComponentSummary();
+                componentsummaries.IdInspection = idis;
+                componentsummaries.Item64 = Item64;
+                componentsummaries.Description = Description;
+                componentsummaries.CSJ = CSJ;
+                componentsummaries.Item66 = Item64;
+                componentsummaries.Loadof = Description;
+                componentsummaries.ALRS = ALRS;
+                componentsummaries.ASLRS = ASLRS;
+                componentsummaries.LRCS = LRCS;
+                
+                db2.ComponentSummaries.Add(componentsummaries);
+                db2.SaveChanges();
+                await db.SaveChangesAsync();
+                TempData["msg"] = "";
+                ViewBag.Info = "<script type='text/javascript'>swal('¡Success!', 'Saved Data', 'success');</script>";
+              //  var inspd = db.InspectionDaily.Find(idis);
+              //  return View("Reports", inspd);
+            }
+
+            inspectionBasicRegistryValue.Value = Description;
+            db2.Entry(inspectionBasicRegistryValue).State = EntityState.Modified;
+            await db2.SaveChangesAsync();
+        
+            componentsummaries.IdInspection = idis;
+            componentsummaries.Item64 = Item64;
+            componentsummaries.Description = Description;
+            componentsummaries.CSJ = CSJ;
+            componentsummaries.Item66 = Item64;
+            componentsummaries.Loadof = Description;
+            componentsummaries.ALRS = ALRS;
+            componentsummaries.ASLRS = ASLRS;
+            componentsummaries.LRCS = LRCS;
+            db2.Entry(componentsummaries).State = EntityState.Modified;
+          
+            await db.SaveChangesAsync();
+            /*       var bridgeInspectionFollowUps = db.BridgeInspectionFollowUps.Include(b => b.InspectionRaiting)
+                       .Include(b => b.RecommendationType).Include(b => b.ReferenceFeatureType)
+                       .Where(i => i.IdInspection == idis);*/
+            var inspd = db.InspectionDaily.Find(idis);
+            return View("Reports", inspd);
+        }
+
         public ActionResult CreateF(int id)
         {
             BridgeInspectionFollowUp bfollowup = new BridgeInspectionFollowUp();
@@ -1005,10 +1161,23 @@ namespace LMB.Controllers
         public ActionResult CreateCS(int id)
         {
             ViewBag.Idinspection = id;
+
             ComponentSummary ComponentSummary = new ComponentSummary();
+            ComponentSummary.Description = db.InspectionBasicRegistryValue.ToList().Where(ins => ins.IdInspection == id && ins.idInspBasic == 38).FirstOrDefault().Value;
+
             ComponentSummary.IdInspection = id;
             ViewBag.InspectionRaiting = new SelectList(CombosHelper.InspectionRaiting(), "InspectionRaitingType", "Description");
             return View(ComponentSummary);
+
+        }
+
+        public ActionResult CreateCross(int id)
+        {
+            ViewBag.Idinspection = id;
+            CrossSectionValues CrossSectionValues = new CrossSectionValues();
+            CrossSectionValues.IdInspection = id;
+            ViewBag.ReferenceFeatureType = new SelectList(CombosHelper.ReferenceFeatureType(), "IdReferenceFeatureType", "Description");
+            return View(CrossSectionValues);
 
         }
 

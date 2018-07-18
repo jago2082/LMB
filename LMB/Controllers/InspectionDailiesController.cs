@@ -59,7 +59,7 @@ namespace LMB.Controllers
                 try
                 {
                     inspectionDaily.IDUser = int.Parse(user);
-                    inspectionDaily.Date = DateTime.Now;
+                    inspectionDaily.DateInspection = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
                     inspectionDaily.IdStatus = 4;
                     db.Entry(inspectionDaily).State = EntityState.Modified;
                     await db.SaveChangesAsync();

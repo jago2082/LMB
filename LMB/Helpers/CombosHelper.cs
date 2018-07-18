@@ -109,6 +109,18 @@ namespace LMB.Helpers
             });
             return inspectionRaiting.OrderBy(i => i.Description).ToList();
         }
+
+        public static List<ReferenceFeatureType> ReferenceFeatureType()
+        {
+            var referenceFeatureType = db.ReferenceFeatureType;
+            referenceFeatureType.Add(new ReferenceFeatureType
+            {
+                IdReferenceFeatureType = 0,
+                Description = "[Select Option]",
+            });
+            return referenceFeatureType.OrderBy(i => i.Description).ToList();
+        }
+
         public static List<SelectListItem> GetFiles()
         {
             var listItems = new List<SelectListItem>();

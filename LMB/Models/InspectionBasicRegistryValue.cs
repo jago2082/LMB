@@ -14,6 +14,8 @@ namespace LMB.Models
         public Nullable<int> IdInspection { get; set; }
         public Nullable<int> idInspBasic { get; set; }
         public string Value { get; set; }
-        
+
+        public virtual InspectionBasicRegistry InspectionBasicRegistries { get; set; }
+
     }
 }

@@ -247,11 +247,13 @@
     <Compile Include="Controllers\ConfigurationAppsController.cs" />
     <Compile Include="Controllers\DoneController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InspectionBasicRegistryValuesController.cs" />
     <Compile Include="Controllers\InspectionDailiesController.cs" />
     <Compile Include="Controllers\InspectionStatesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RawDatasController.cs" />
     <Compile Include="Controllers\UserDBsController.cs" />
+    <Compile Include="Controllers\ValueCheckListsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -264,6 +266,7 @@
     <Compile Include="Helpers\UtilsHelper.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AditionalValue.cs" />
     <Compile Include="Models\BridgeInspectionFollowUp.cs" />
     <Compile Include="Models\CamposClient.cs" />
     <Compile Include="Models\ChannelCrossReport.cs" />
@@ -302,6 +305,7 @@
     <Compile Include="Models\ItemName.cs" />
     <Compile Include="Models\ItemUnderType.cs" />
     <Compile Include="Models\LoadMultiFiles.cs" />
+    <Compile Include="Models\LoadRatingCheckListIndex.cs" />
     <Compile Include="Models\LoadRatingCheckList.cs" />
     <Compile Include="Models\LoadRatingReport.cs" />
     <Compile Include="Models\LRReport.cs" />
@@ -320,6 +324,7 @@
     <Compile Include="Models\ReportSummarySheet.cs" />
     <Compile Include="Models\ReportInspFollowUp.cs" />
     <Compile Include="Models\Reports.cs" />
+    <Compile Include="Models\rptInspeccionBRV.cs" />
     <Compile Include="Models\ServerConfiguration.cs" />
     <Compile Include="Models\StatusReferenceSerial.cs" />
     <Compile Include="Models\TypeFuncionalidad.cs" />
@@ -871,6 +876,18 @@
     <Content Include="Views\Done\CreateRT.cshtml" />
     <Content Include="Views\Done\EditRT.cshtml" />
     <Content Include="Views\Done\DeleteIR.cshtml" />
+    <Content Include="Views\Done\Seccions.cshtml" />
+    <Content Include="Views\ValueCheckLists\CreateIR.cshtml" />
+    <Content Include="Views\ValueCheckLists\DeleteIR.cshtml" />
+    <Content Include="Views\ValueCheckLists\DetailsIR.cshtml" />
+    <Content Include="Views\ValueCheckLists\EditIR.cshtml" />
+    <Content Include="Views\Done\IndexIR.cshtml" />
+    <Content Include="Views\InspectionBasicRegistryValues\Create.cshtml" />
+    <Content Include="Views\InspectionBasicRegistryValues\Delete.cshtml" />
+    <Content Include="Views\InspectionBasicRegistryValues\Details.cshtml" />
+    <Content Include="Views\InspectionBasicRegistryValues\Edit.cshtml" />
+    <Content Include="Views\Done\IndexInv.cshtml" />
+    <Content Include="Views\Done\CreateCross.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

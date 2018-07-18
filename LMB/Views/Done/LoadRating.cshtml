@@ -29,16 +29,16 @@
      <o:DocumentProperties>
       <o:Author>Karen Blizzard</o:Author>
       <o:LastAuthor>Adriana Gonzalez</o:LastAuthor>
-      <o:Revision>60</o:Revision>
-      <o:TotalTime>881</o:TotalTime>
+      <o:Revision>62</o:Revision>
+      <o:TotalTime>894</o:TotalTime>
       <o:Created>2018-06-11T13:40:00Z</o:Created>
-      <o:LastSaved>2018-07-10T13:51:00Z</o:LastSaved>
+      <o:LastSaved>2018-07-17T15:34:00Z</o:LastSaved>
       <o:Pages>1</o:Pages>
       <o:Words>389</o:Words>
-      <o:Characters>2221</o:Characters>
+      <o:Characters>2222</o:Characters>
       <o:Lines>18</o:Lines>
       <o:Paragraphs>5</o:Paragraphs>
-      <o:CharactersWithSpaces>2605</o:CharactersWithSpaces>
+      <o:CharactersWithSpaces>2606</o:CharactersWithSpaces>
       <o:Version>14.00</o:Version>
      </o:DocumentProperties>
      <o:CustomDocumentProperties>
@@ -665,7 +665,7 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
  mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
  none;mso-border-insidev:none'>
             <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:58.55pt'>
-                <td width=124 colspan=2 valign=top style='width:93.3pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=147 colspan=2 valign=top style='width:110.05pt;padding:0in 5.4pt 0in 5.4pt;
   height:58.55pt'>
                     <p class=MsoNormal style='margin-left:2.3pt;text-align:justify;mso-layout-grid-align:
   none'>
@@ -691,46 +691,47 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                              <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
                              <o:lock v:ext="edit" aspectratio="t"/>
                             </v:shapetype><v:shape id="Picture_x0020_1" o:spid="_x0000_i1026" type="#_x0000_t75"
-                             style='width:69.75pt;height:47.25pt;visibility:visible;mso-wrap-style:square'>
+                             style='width:95.25pt;height:64.5pt;visibility:visible;mso-wrap-style:square'>
                              <v:imagedata src="LoadRating1_files/image001.wmz" o:title=""/>
                             </v:shape><![endif]-->
-                            <![if !vml]><img width=93 height=63
-                                             src="LoadRating1_files/image002.gif" v:shapes="Picture_x0020_1"><![endif]>
+                            <![if !vml]>
+@if (!string.IsNullOrEmpty(Model.Configuration.ImageContract))
+{
+    string image = string.Format("data:image/png;base64,{0}", Model.Configuration.ImageContract);
+                        <img width=127 height=86
+                                             src=@image v:shapes="Picture_x0020_1">}<![endif]>
                         </span><span style='mso-bidi-font-size:9.0pt;color:#231F20'><o:p></o:p></span>
                     </p>
                 </td>
-                <td width=668 colspan=15 style='width:501.2pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=663 colspan=16 style='width:496.9pt;padding:0in 5.4pt 0in 5.4pt;
   height:58.55pt'>
                     <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
   none'>
                         <b style='mso-bidi-font-weight:normal'>
-                            <span style='font-size:16.0pt;
+                            <span style='font-size:18.0pt;
   mso-bidi-font-size:11.0pt;color:#231F20;mso-font-width:110%'>
-                                BRIDGE<span style='letter-spacing:-1.2pt'></span>LOAD<span style='letter-spacing:-1.2pt'>
-                                </span>RATING<span style='letter-spacing:-1.2pt'> </span>STATEMENT
+                                @Model.Reports.Title
                             </span>
                         </b><span style='font-size:9.0pt;mso-bidi-font-size:7.0pt;color:#231F20'><o:p></o:p></span>
                     </p>
                 </td>
-                <td width=365 colspan=3 style='width:274.0pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=349 colspan=3 style='width:261.55pt;padding:0in 5.4pt 0in 5.4pt;
   height:58.55pt'>
                     <p class=MsoNormal align=right style='text-align:right;mso-layout-grid-align:
   none'>
-                        <span style='font-size:9.0pt;mso-bidi-font-size:7.0pt;color:#231F20'>
-                            Form
-                            2495<o:p></o:p>
+                        <span style='font-size:10.0pt;mso-bidi-font-size:7.0pt;color:#231F20'>
+                            @Model.Reports.FormName<o:p></o:p>
                         </span>
                     </p>
                     <p class=MsoNormal align=right style='text-align:right;mso-layout-grid-align:
   none'>
-                        <span style='font-size:9.0pt;mso-bidi-font-size:7.0pt;color:#231F20'>
-                            (Rev.
-                            03/16)<o:p></o:p>
+                        <span style='font-size:10.0pt;mso-bidi-font-size:7.0pt;color:#231F20'>
+                            @Model.Reports.Revision<o:p></o:p>
                         </span>
                     </p>
                     <p class=MsoNormal align=right style='text-align:right;mso-layout-grid-align:
   none'>
-                        <span style='font-size:9.0pt;mso-bidi-font-size:7.0pt;color:#231F20'>
+                        <span style='font-size:10.0pt;mso-bidi-font-size:7.0pt;color:#231F20'>
                             Page
                             1 of 1<o:p></o:p>
                         </span>
@@ -741,45 +742,45 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                     </p>
                 </td>
             </tr>
-            <tr style='mso-yfti-irow:1;height:23.45pt'>
-                <td width=124 colspan=2 valign=top style='width:93.3pt;padding:0in 5.4pt 0in 5.4pt;
-  height:23.45pt'>
+            <tr style='mso-yfti-irow:1;height:14.85pt'>
+                <td width=147 colspan=2 valign=top style='width:110.05pt;padding:0in 5.4pt 0in 5.4pt;
+  height:14.85pt'>
                     <p class=MsoNormal style='margin-left:2.3pt;text-align:justify;mso-layout-grid-align:
-  none'><span style='mso-bidi-font-size:9.0pt;color:#231F20'><o:p>&nbsp;</o:p></span></p>
+  none'><span style='font-size:9.0pt;color:#231F20'><o:p>&nbsp;</o:p></span></p>
                 </td>
-                <td width=716 colspan=16 style='width:536.7pt;padding:0in 5.4pt 0in 5.4pt;
-  height:23.45pt'>
+                <td width=708 colspan=17 style='width:531.3pt;padding:0in 5.4pt 0in 5.4pt;
+  height:14.85pt'>
                     <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
-  none'><b><span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p>&nbsp;</o:p></span></b></p>
+  none'><b><span style='font-size:9.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p>&nbsp;</o:p></span></b></p>
                 </td>
-                <td width=318 colspan=2 valign=top style='width:238.5pt;padding:0in 5.4pt 0in 5.4pt;
-  height:23.45pt'>
+                <td width=303 colspan=2 valign=top style='width:227.15pt;padding:0in 5.4pt 0in 5.4pt;
+  height:14.85pt'>
                     <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
   none'><span style='font-size:9.0pt;mso-bidi-font-size:7.0pt;color:#231F20'><o:p>&nbsp;</o:p></span></p>
                 </td>
             </tr>
-            <tr style='mso-yfti-irow:2;height:8.25pt'>
-                <td width=155 colspan=3 valign=top style='width:115.95pt;padding:0in 5.4pt 0in 5.4pt;
-  height:8.25pt'>
+            <tr style='mso-yfti-irow:2;height:31.5pt'>
+                <td width=176 colspan=3 valign=top style='width:131.65pt;padding:0in 5.4pt 0in 5.4pt;
+  height:31.5pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=343 colspan=10 valign=top style='width:257.45pt;padding:0in 5.4pt 0in 5.4pt;
-  height:8.25pt'>
+                <td width=330 colspan=10 valign=top style='width:247.55pt;padding:0in 5.4pt 0in 5.4pt;
+  height:31.5pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:9.0pt;mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=222 colspan=3 valign=top style='width:166.6pt;padding:0in 5.4pt 0in 5.4pt;
-  height:8.25pt'>
+                <td width=234 colspan=4 valign=bottom style='width:175.25pt;padding:0in 5.4pt 0in 5.4pt;
+  height:31.5pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;color:#231F20'>Contract &amp; WA #:</span><span style='font-size:14.0pt'><o:p></o:p></span>
                     </p>
                 </td>
-                <td width=438 colspan=4 valign=top style='width:328.5pt;border:none;
+                <td width=419 colspan=4 valign=bottom style='width:314.05pt;border:none;
   border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .25pt;
-  padding:0in 5.4pt 0in 5.4pt;height:8.25pt'>
+  padding:0in 5.4pt 0in 5.4pt;height:31.5pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span class=SpellE>
                             <span lang=ES-MX style='font-size:14.0pt;mso-bidi-font-size:12.0pt;mso-ansi-language:
@@ -790,51 +791,54 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                 </td>
             </tr>
             <tr style='mso-yfti-irow:3;height:8.25pt'>
-                <td width=155 colspan=3 valign=top style='width:115.95pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=176 colspan=3 valign=top style='width:131.65pt;padding:0in 5.4pt 0in 5.4pt;
   height:8.25pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=343 colspan=10 valign=top style='width:257.45pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=330 colspan=10 valign=top style='width:247.55pt;padding:0in 5.4pt 0in 5.4pt;
   height:8.25pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=222 colspan=3 valign=top style='width:166.6pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=234 colspan=4 valign=top style='width:175.25pt;padding:0in 5.4pt 0in 5.4pt;
   height:8.25pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>STRUCTURE #:<o:p></o:p></span>
                     </p>
                 </td>
-                <td width=438 colspan=4 valign=top style='width:328.5pt;border:none;
+                <td width=419 colspan=4 valign=top style='width:314.05pt;border:none;
   border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .25pt;
   padding:0in 5.4pt 0in 5.4pt;height:8.25pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span class=SpellE>
                             <span lang=ES-MX style='font-size:14.0pt;mso-bidi-font-size:12.0pt;mso-ansi-language:
-  ES-MX'>Struct</span>
+  ES-MX'>@Html.DisplayFor(modelItem => Model.InspectionDaily.NumInspection)</span>
                         </span><span lang=ES-MX style='font-size:14.0pt;
   mso-bidi-font-size:12.0pt;mso-ansi-language:ES-MX'><o:p></o:p></span>
                     </p>
                 </td>
             </tr>
             <tr style='mso-yfti-irow:4;height:21.35pt'>
-                <td width=240 colspan=6 valign=bottom style='width:179.95pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=257 colspan=6 valign=bottom style='width:192.45pt;padding:0in 5.4pt 0in 5.4pt;
   height:21.35pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
-                        <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>FEATURE CROSSED:<o:p></o:p></span>
+                        <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>
+                            FEATURE
+                            CROSSED:<o:p></o:p>
+                        </span>
                     </p>
                 </td>
-                <td width=258 colspan=7 valign=bottom style='width:193.45pt;border:none;
+                <td width=249 colspan=7 valign=bottom style='width:186.75pt;border:none;
   border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:21.35pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
-                        <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>Feature<o:p></o:p></span>
+                        <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.InspectionDaily.Scope)<o:p></o:p></span>
                     </p>
                 </td>
-                <td width=222 colspan=3 valign=bottom style='width:166.6pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=234 colspan=4 valign=bottom style='width:175.25pt;padding:0in 5.4pt 0in 5.4pt;
   height:21.35pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>
@@ -843,7 +847,7 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                         </span>
                     </p>
                 </td>
-                <td width=438 colspan=4 valign=bottom style='width:328.5pt;border:none;
+                <td width=419 colspan=4 valign=bottom style='width:314.05pt;border:none;
   border-bottom:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .25pt;
   mso-border-top-alt:solid windowtext .25pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:21.35pt'>
@@ -853,26 +857,26 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                 </td>
             </tr>
             <tr style='mso-yfti-irow:5;height:9.45pt'>
-                <td width=240 colspan=6 valign=bottom style='width:179.95pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=257 colspan=6 valign=bottom style='width:192.45pt;padding:0in 5.4pt 0in 5.4pt;
   height:9.45pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:7.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=258 colspan=7 valign=bottom style='width:193.45pt;border:none;
+                <td width=249 colspan=7 valign=bottom style='width:186.75pt;border:none;
   mso-border-top-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
   height:9.45pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:7.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=222 colspan=3 valign=bottom style='width:166.6pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=234 colspan=4 valign=bottom style='width:175.25pt;padding:0in 5.4pt 0in 5.4pt;
   height:9.45pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:7.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=438 colspan=4 valign=bottom style='width:328.5pt;border:none;
+                <td width=419 colspan=4 valign=bottom style='width:314.05pt;border:none;
   mso-border-top-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
   height:9.45pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
@@ -881,7 +885,7 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                 </td>
             </tr>
             <tr style='mso-yfti-irow:6;height:8.25pt'>
-                <td width=252 colspan=8 valign=top style='width:188.95pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=268 colspan=8 valign=top style='width:201.3pt;padding:0in 5.4pt 0in 5.4pt;
   height:8.25pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>
@@ -890,7 +894,7 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                         </span>
                     </p>
                 </td>
-                <td width=906 colspan=12 valign=top style='width:679.55pt;border:none;
+                <td width=890 colspan=13 valign=top style='width:667.2pt;border:none;
   border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:8.25pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
@@ -901,13 +905,13 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                 </td>
             </tr>
             <tr style='mso-yfti-irow:7;height:9.85pt'>
-                <td width=210 colspan=4 valign=top style='width:157.65pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=228 colspan=4 valign=top style='width:171.25pt;padding:0in 5.4pt 0in 5.4pt;
   height:9.85pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:9.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=948 colspan=16 valign=top style='width:710.85pt;border:none;
+                <td width=930 colspan=17 valign=top style='width:697.25pt;border:none;
   border-top:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:9.85pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
@@ -982,20 +986,23 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                         <![if !vml]><span style='mso-ignore:vglayout;
   position:absolute;z-index:251659264;margin-left:554px;margin-top:1px;
   width:292px;height:287px'>
+@if (!string.IsNullOrEmpty(Model.Configuration.ImageSing))
+{
+    string image = string.Format("data:image/png;base64,{0}", Model.Configuration.ImageSing);
                             <img width=292 height=287
-                                 src="LoadRating1_files/image004.gif" alt="Text Box:  " v:shapes="Text_x0020_Box_x0020_3">
+                                 src=@image alt="Text Box:  " v:shapes="Text_x0020_Box_x0020_3">}
                         </span><![endif]><span style='font-size:9.0pt;mso-bidi-font-size:12.0pt'><o:p></o:p></span>
                     </p>
                 </td>
             </tr>
             <tr style='mso-yfti-irow:8;height:23.8pt'>
-                <td width=246 colspan=7 valign=top style='width:184.85pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=263 colspan=7 valign=bottom style='width:197.25pt;padding:0in 5.4pt 0in 5.4pt;
   height:23.8pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>TEAM LEADER:<o:p></o:p></span>
                     </p>
                 </td>
-                <td width=238 colspan=5 valign=bottom style='width:178.8pt;border:none;
+                <td width=230 colspan=5 valign=bottom style='width:172.6pt;border:none;
   border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:23.8pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
@@ -1006,7 +1013,7 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                         </span>
                     </p>
                 </td>
-                <td width=111 colspan=2 valign=top style='width:83.25pt;border:none;
+                <td width=123 colspan=3 valign=top style='width:92.55pt;border:none;
   border-right:solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:23.8pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
@@ -1014,9 +1021,11 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                               style='font-size:14.0pt;mso-bidi-font-size:12.0pt;mso-ansi-language:ES-MX'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=562 colspan=6 rowspan=8 valign=top style='width:421.6pt;border:
-  solid windowtext 1.0pt;border-left:none;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:23.8pt'>
+                <td width=541 colspan=6 rowspan=8 valign=top style='width:406.1pt;border-top:
+  solid windowtext 1.0pt;border-left:none;border-bottom:none;border-right:solid windowtext 1.0pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:23.8pt'>
                     <p class=MsoNormal align=center style='text-align:center;text-autospace:ideograph-other'>
                         <span lang=ES-MX style='font-size:14.0pt;mso-bidi-font-size:12.0pt;mso-ansi-language:
   ES-MX'><o:p>&nbsp;</o:p></span>
@@ -1024,7 +1033,7 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                 </td>
             </tr>
             <tr style='mso-yfti-irow:9;height:26.5pt'>
-                <td width=246 colspan=7 valign=top style='width:184.85pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=263 colspan=7 valign=bottom style='width:197.25pt;padding:0in 5.4pt 0in 5.4pt;
   height:26.5pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>
@@ -1033,7 +1042,7 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                         </span>
                     </p>
                 </td>
-                <td width=238 colspan=5 valign=bottom style='width:178.8pt;border:none;
+                <td width=230 colspan=5 valign=bottom style='width:172.6pt;border:none;
   border-bottom:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:26.5pt'>
@@ -1045,7 +1054,7 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                         </span>
                     </p>
                 </td>
-                <td width=111 colspan=2 valign=top style='width:83.25pt;border:none;
+                <td width=123 colspan=3 valign=top style='width:92.55pt;border:none;
   border-right:solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:26.5pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
@@ -1055,13 +1064,13 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                 </td>
             </tr>
             <tr style='mso-yfti-irow:10;height:26.05pt'>
-                <td width=246 colspan=7 valign=top style='width:184.85pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=263 colspan=7 valign=bottom style='width:197.25pt;padding:0in 5.4pt 0in 5.4pt;
   height:26.05pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>FIRM #:<o:p></o:p></span>
                     </p>
                 </td>
-                <td width=238 colspan=5 valign=bottom style='width:178.8pt;border:none;
+                <td width=230 colspan=5 valign=bottom style='width:172.6pt;border:none;
   border-bottom:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:26.05pt'>
@@ -1072,7 +1081,7 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
   color:#231F20'><o:p></o:p></span>
                     </p>
                 </td>
-                <td width=111 colspan=2 valign=top style='width:83.25pt;border:none;
+                <td width=123 colspan=3 valign=top style='width:92.55pt;border:none;
   border-right:solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:26.05pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
@@ -1081,20 +1090,20 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                 </td>
             </tr>
             <tr style='mso-yfti-irow:11;height:21.1pt'>
-                <td width=228 colspan=5 valign=top style='width:171.35pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=246 colspan=5 valign=top style='width:184.3pt;padding:0in 5.4pt 0in 5.4pt;
   height:21.1pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=256 colspan=7 valign=top style='width:192.3pt;border:none;
+                <td width=247 colspan=7 valign=top style='width:185.55pt;border:none;
   border-top:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:21.1pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=111 colspan=2 valign=top style='width:83.25pt;border:none;
+                <td width=123 colspan=3 valign=top style='width:92.55pt;border:none;
   border-right:solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:21.1pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
@@ -1103,13 +1112,16 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                 </td>
             </tr>
             <tr style='mso-yfti-irow:12;height:17.5pt'>
-                <td width=240 colspan=6 valign=top style='width:179.95pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=257 colspan=6 valign=top style='width:192.45pt;padding:0in 5.4pt 0in 5.4pt;
   height:17.5pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
-                        <span style='font-size:12.0pt;color:#231F20'>Current Condition Ratings:<o:p></o:p></span>
+                        <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>
+                            Current
+                            Condition Ratings:<o:p></o:p>
+                        </span>
                     </p>
                 </td>
-                <td width=24 colspan=3 valign=top style='width:.25in;padding:0in 5.4pt 0in 5.4pt;
+                <td width=41 colspan=5 valign=top style='width:30.55pt;padding:0in 5.4pt 0in 5.4pt;
   height:17.5pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span lang=ES-MX
@@ -1117,16 +1129,17 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
   ES-MX'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=234 colspan=4 valign=top style='width:175.45pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=236 colspan=3 valign=top style='width:177.25pt;padding:0in 5.4pt 0in 5.4pt;
   height:17.5pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
-                        <span style='font-size:12.0pt;color:#231F20'>
-                            Current Inspection<span style='letter-spacing:-.3pt'></span>Date:
-                        </span><span lang=ES-MX
-                                     style='font-size:12.0pt;color:#231F20;mso-ansi-language:ES-MX'><o:p></o:p></span>
+                        <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>
+                            Current
+                            Inspection<span style='letter-spacing:-.3pt'> </span>Date:
+                        </span><span lang=ES-MX style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20;
+  mso-ansi-language:ES-MX'><o:p></o:p></span>
                     </p>
                 </td>
-                <td width=98 valign=top style='width:73.5pt;border:none;border-right:solid windowtext 1.0pt;
+                <td width=83 valign=top style='width:62.15pt;border:none;border-right:solid windowtext 1.0pt;
   mso-border-right-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
   height:17.5pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
@@ -1135,37 +1148,37 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                 </td>
             </tr>
             <tr style='mso-yfti-irow:13;height:23.85pt'>
-                <td width=107 valign=bottom style='width:80.6pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=130 valign=bottom style='width:97.4pt;padding:0in 5.4pt 0in 5.4pt;
   height:23.85pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
-                        <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>
                             Item<span style='letter-spacing:.1pt'></span>58<o:p></o:p>
                         </span>
                     </p>
                 </td>
-                <td width=121 colspan=4 valign=bottom style='width:90.75pt;border:none;
+                <td width=116 colspan=4 valign=bottom style='width:86.9pt;border:none;
   border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:23.85pt'>
                     <p class=MsoNormal align=center style='text-align:center;text-autospace:ideograph-other'>
-                        <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;mso-fareast-font-family:
-  Calibri;mso-fareast-theme-font:minor-latin;color:black'>58</span><span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p></o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;mso-fareast-font-family:
+  Calibri;mso-fareast-theme-font:minor-latin;color:black'>@Html.DisplayFor(modelItem => Model.Item58)</span><span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p></o:p></span>
                     </p>
                 </td>
-                <td width=47 colspan=6 valign=top style='width:35.6pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=46 colspan=5 valign=top style='width:34.4pt;padding:0in 5.4pt 0in 5.4pt;
   height:23.85pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=209 valign=bottom style='width:156.7pt;border:none;border-bottom:
-  solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+                <td width=202 colspan=2 valign=bottom style='width:151.15pt;border:none;
+  border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:23.85pt'>
                     <p class=MsoNormal align=center style='text-align:center;text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;mso-fareast-font-family:
-  Calibri;mso-fareast-theme-font:minor-latin;color:black'>today<o:p></o:p></span>
+  Calibri;mso-fareast-theme-font:minor-latin;color:black'>@Model.InspectionDaily.Date.Value.ToString("MM/dd/yyyy")<o:p></o:p></span>
                     </p>
                 </td>
-                <td width=111 colspan=2 valign=top style='width:83.25pt;border:none;
+                <td width=123 colspan=3 valign=top style='width:92.55pt;border:none;
   border-right:solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:23.85pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
@@ -1174,39 +1187,39 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                 </td>
             </tr>
             <tr style='mso-yfti-irow:14;height:26.95pt'>
-                <td width=107 valign=bottom style='width:80.6pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=130 valign=bottom style='width:97.4pt;padding:0in 5.4pt 0in 5.4pt;
   height:26.95pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
-                        <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>
-                            Item<span style='letter-spacing:.1pt'></span>59 <span style='letter-spacing:.75pt'>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>
+                            Item<span style='letter-spacing:.1pt'></span> 59 <span style='letter-spacing:.75pt'>
                                 <span style='mso-spacerun:yes'></span>
                             </span><o:p></o:p>
                         </span>
                     </p>
                 </td>
-                <td width=121 colspan=4 valign=bottom style='width:90.75pt;border:none;
+                <td width=116 colspan=4 valign=bottom style='width:86.9pt;border:none;
   border-bottom:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:26.95pt'>
                     <p class=MsoNormal align=center style='text-align:center;text-autospace:ideograph-other'>
-                        <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;mso-fareast-font-family:
-  Calibri;mso-fareast-theme-font:minor-latin;color:black'>59</span><span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p></o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;mso-fareast-font-family:
+  Calibri;mso-fareast-theme-font:minor-latin;color:black'>@Html.DisplayFor(modelItem => Model.Item59)</span><span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p></o:p></span>
                     </p>
                 </td>
-                <td width=41 colspan=5 valign=top style='width:31.1pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=40 colspan=4 valign=top style='width:30.0pt;padding:0in 5.4pt 0in 5.4pt;
   height:26.95pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=215 colspan=2 valign=top style='width:161.2pt;border:none;
+                <td width=207 colspan=3 valign=top style='width:155.55pt;border:none;
   mso-border-top-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
   height:26.95pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=111 colspan=2 valign=top style='width:83.25pt;border:none;
+                <td width=123 colspan=3 valign=top style='width:92.55pt;border:none;
   border-right:solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:26.95pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
@@ -1215,27 +1228,27 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                 </td>
             </tr>
             <tr style='mso-yfti-irow:15;height:26.55pt'>
-                <td width=107 valign=bottom style='width:80.6pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=130 valign=bottom style='width:97.4pt;padding:0in 5.4pt 0in 5.4pt;
   height:26.55pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
-                        <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>Item 60<o:p></o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>Item 60<o:p></o:p></span>
                     </p>
                 </td>
-                <td width=121 colspan=4 valign=bottom style='width:90.75pt;border:none;
+                <td width=116 colspan=4 valign=bottom style='width:86.9pt;border:none;
   border-bottom:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:26.55pt'>
                     <p class=MsoNormal align=center style='text-align:center;text-autospace:ideograph-other'>
-                        <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>60<o:p></o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.Item60)<o:p></o:p></span>
                     </p>
                 </td>
-                <td width=256 colspan=7 valign=top style='width:192.3pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=247 colspan=7 valign=top style='width:185.55pt;padding:0in 5.4pt 0in 5.4pt;
   height:26.55pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=111 colspan=2 valign=top style='width:83.25pt;border:none;
+                <td width=123 colspan=3 valign=top style='width:92.55pt;border:none;
   border-right:solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:26.55pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
@@ -1244,36 +1257,37 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                 </td>
             </tr>
             <tr style='mso-yfti-irow:16;mso-yfti-lastrow:yes;height:22.05pt'>
-                <td width=107 valign=bottom style='width:80.6pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=130 valign=bottom style='width:97.4pt;padding:0in 5.4pt 0in 5.4pt;
   height:22.05pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
-                        <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>Item 62<o:p></o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>Item 62<o:p></o:p></span>
                     </p>
                 </td>
-                <td width=121 colspan=4 valign=bottom style='width:90.75pt;border:none;
+                <td width=116 colspan=4 valign=bottom style='width:86.9pt;border:none;
   border-bottom:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:22.05pt'>
                     <p class=MsoNormal align=center style='text-align:center;text-autospace:ideograph-other'>
-                        <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;mso-fareast-font-family:
-  Calibri;mso-fareast-theme-font:minor-latin;color:black'>62</span><span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p></o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;mso-fareast-font-family:
+  Calibri;mso-fareast-theme-font:minor-latin;color:black'>@Html.DisplayFor(modelItem => Model.Item62)</span><span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p></o:p></span>
                     </p>
                 </td>
-                <td width=256 colspan=7 valign=top style='width:192.3pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=247 colspan=7 valign=top style='width:185.55pt;padding:0in 5.4pt 0in 5.4pt;
   height:22.05pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=111 colspan=2 valign=top style='width:83.25pt;padding:0in 5.4pt 0in 5.4pt;
+                <td width=123 colspan=3 valign=top style='width:92.55pt;padding:0in 5.4pt 0in 5.4pt;
   height:22.05pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20;mso-font-width:
   105%'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
-                <td width=60 valign=bottom style='width:45.3pt;border:none;mso-border-top-alt:
-  solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:22.05pt'>
+                <td width=79 valign=bottom style='width:59.6pt;border:none;border-top:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
+  height:22.05pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>
                             Date:<span style='mso-spacerun:yes'></span><span style='letter-spacing:-.55pt'>
@@ -1283,7 +1297,7 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
                                      style='font-size:14.0pt;mso-bidi-font-size:12.0pt;mso-ansi-language:ES-MX'><o:p></o:p></span>
                     </p>
                 </td>
-                <td width=198 colspan=4 valign=bottom style='width:148.45pt;border-top:solid windowtext 1.0pt;
+                <td width=173 colspan=4 valign=bottom style='width:129.9pt;border-top:solid windowtext 1.0pt;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;
   mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:22.05pt'>
@@ -1292,32 +1306,33 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
   105%'>02/01/2018<o:p></o:p></span>
                     </p>
                 </td>
-                <td width=304 style='width:227.85pt;border:none;border-top:solid windowtext 1.0pt;
+                <td width=289 style='width:216.6pt;border:none;border-top:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
   height:22.05pt'></td>
             </tr>
             <![if !supportMisalignedColumns]>
             <tr height=0>
-                <td width=107 style='border:none'></td>
+                <td width=130 style='border:none'></td>
                 <td width=17 style='border:none'></td>
-                <td width=30 style='border:none'></td>
-                <td width=56 style='border:none'></td>
-                <td width=18 style='border:none'></td>
+                <td width=29 style='border:none'></td>
+                <td width=53 style='border:none'></td>
+                <td width=17 style='border:none'></td>
                 <td width=11 style='border:none'></td>
-                <td width=7 style='border:none'></td>
+                <td width=6 style='border:none'></td>
                 <td width=5 style='border:none'></td>
+                <td width=17 style='border:none'></td>
+                <td width=6 style='border:none'></td>
+                <td width=6 style='border:none'></td>
+                <td width=196 style='border:none'></td>
                 <td width=12 style='border:none'></td>
-                <td width=6 style='border:none'></td>
-                <td width=6 style='border:none'></td>
-                <td width=209 style='border:none'></td>
-                <td width=13 style='border:none'></td>
-                <td width=98 style='border:none'></td>
-                <td width=60 style='border:none'></td>
-                <td width=64 style='border:none'></td>
-                <td width=73 style='border:none'></td>
-                <td width=47 style='border:none'></td>
+                <td width=28 style='border:none'></td>
+                <td width=83 style='border:none'></td>
+                <td width=79 style='border:none'></td>
+                <td width=43 style='border:none'></td>
+                <td width=70 style='border:none'></td>
+                <td width=46 style='border:none'></td>
                 <td width=14 style='border:none'></td>
-                <td width=304 style='border:none'></td>
+                <td width=289 style='border:none'></td>
             </tr>
             <![endif]>
         </table>
@@ -1357,8 +1372,8 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
   border-top:dashed windowtext 1.5pt;mso-border-top-alt:dot-dash windowtext 1.5pt;
   padding:0in 5.4pt 0in 5.4pt;height:30.9pt'>
                     <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                        <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-  mso-font-width:105%'>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+  color:#231F20;mso-font-width:105%'>
                             <w:Sdt CheckBox="t" CheckBoxIsChecked="f"
                                    CheckBoxValueChecked="&#9746;" CheckBoxValueUnchecked="&#9744;"
                                    CheckBoxFontChecked="MS Gothic" CheckBoxFontUnchecked="MS Gothic"
@@ -1370,16 +1385,16 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
             </tr>
-            <tr style='mso-yfti-irow:1;height:29.2pt'>
+            <tr style='mso-yfti-irow:1;height:16.65pt'>
                 <td width=1160 colspan=7 valign=top style='width:870.35pt;padding:0in 5.4pt 0in 5.4pt;
-  height:29.2pt'>
+  height:16.65pt'>
                     <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                        <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-  mso-font-width:105%'>
-                            Plans available in the bridge folder for the subject
-                            structure (CSJ <u>
-                                c<span style='mso-spacerun:yes'>       </span><span class=SpellE>sj</span>
-                            </u>) indicate a design load of<span style='mso-spacerun:yes'></span><u>blank</u><span style='mso-spacerun:yes'></span><o:p></o:p>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+  color:#231F20;mso-font-width:105%'>
+                            Plans available in the bridge folder for
+                            the subject structure  <u>
+                                                       (@Html.DisplayFor(modelItem => Model.ComponentSummary.CSJ)<span style='mso-spacerun:yes'>       </span><span class=SpellE></span>
+                            </u>) indicate a design load of<span style='mso-spacerun:yes'></span><span style='mso-spacerun:yes'> </span><u>@Html.DisplayFor(modelItem => Model.ComponentSummary.Loadof)</u><span style='mso-spacerun:yes'></span><o:p></o:p>
                         </span>
                     </p>
                 </td>
@@ -1389,15 +1404,16 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
   height:67.5pt'>
                     <p class=MsoBodyText style='margin-top:3.75pt;text-align:justify;text-autospace:
   ideograph-other'>
-                        <span style='font-size:15.0pt;font-family:"Arial","sans-serif";
-  color:#231F20;mso-font-width:105%'>
-                            None of the principal structural elements
-                            have a condition rating below a value of &quot;5&quot; which indicates that the
-                            bridge elements, in their current state, continue to maintain structural
-                            capacity equivalent to the original design. Therefore, I have determined that
-                            new load rating calculations for this structure are not required.
-                            Furthermore, no other load rating calculations exist for this structure that
-                            would be in conflict with the original design load indicated.<o:p></o:p>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;
+  font-family:"Arial","sans-serif";color:#231F20;mso-font-width:105%'>
+                            None of
+                            the principal structural elements have a condition rating below a value of
+                            &quot;5&quot; which indicates that the bridge elements, in their current
+                            state, continue to maintain structural capacity equivalent to the original
+                            design. Therefore, I have determined that new load rating calculations for
+                            this structure are not required. Furthermore, no other load rating calculations
+                            exist for this structure that would be in conflict with the original design
+                            load indicated.<o:p></o:p>
                         </span>
                     </p>
                 </td>
@@ -1418,44 +1434,44 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
                 <td width=72 valign=top style='width:53.8pt;padding:0in 5.4pt 0in 5.4pt;
   height:20.15pt'>
                     <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                        <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-  mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+  color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
                 <td width=102 valign=bottom style='width:76.7pt;padding:0in 5.4pt 0in 5.4pt;
   height:20.15pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
-                        <span style='font-size:15.0pt;color:#231F20;mso-font-width:110%'>IR =</span><span style='font-size:15.0pt'><o:p></o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20;mso-font-width:
+  110%'>IR =</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt'><o:p></o:p></span>
                     </p>
                 </td>
                 <td width=90 valign=top style='width:67.5pt;border:none;border-bottom:solid windowtext 1.0pt;
   mso-border-bottom-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
   height:20.15pt'>
                     <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                        <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-  mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+  color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
                 <td width=102 valign=bottom style='width:76.5pt;padding:0in 5.4pt 0in 5.4pt;
   height:20.15pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
-                        <span style='font-size:15.0pt;color:#231F20'>Item 66</span><span style='font-size:
-  15.0pt'><o:p></o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20'>Item 66</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt'><o:p></o:p></span>
                     </p>
                 </td>
                 <td width=132 valign=top style='width:99.0pt;border:none;border-bottom:solid windowtext 1.0pt;
   mso-border-bottom-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
   height:20.15pt'>
                     <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                        <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-  mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+  color:#231F20;mso-font-width:105%'><o:p> @Html.DisplayFor(modelItem => Model.ComponentSummary.Item66)&nbsp;</o:p></span>
                     </p>
                 </td>
                 <td width=662 colspan=2 valign=top style='width:496.85pt;padding:0in 5.4pt 0in 5.4pt;
   height:20.15pt'>
                     <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                        <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-  mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+  color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
             </tr>
@@ -1463,14 +1479,15 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
                 <td width=72 valign=top style='width:53.8pt;padding:0in 5.4pt 0in 5.4pt;
   height:20.15pt'>
                     <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                        <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-  mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+  color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
                 <td width=102 valign=bottom style='width:76.7pt;padding:0in 5.4pt 0in 5.4pt;
   height:20.15pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
-                        <span style='font-size:15.0pt;color:#231F20;mso-font-width:110%'>OR =<o:p></o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20;mso-font-width:
+  110%'>OR =<o:p></o:p></span>
                     </p>
                 </td>
                 <td width=90 valign=top style='width:67.5pt;border:none;border-bottom:solid windowtext 1.0pt;
@@ -1478,15 +1495,14 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
   mso-border-bottom-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
   height:20.15pt'>
                     <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                        <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-  mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+  color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
                 <td width=102 valign=bottom style='width:76.5pt;padding:0in 5.4pt 0in 5.4pt;
   height:20.15pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
-                        <span style='font-size:15.0pt;color:#231F20'>Item 64</span><span style='font-size:
-  15.0pt'><o:p></o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20'>Item 64</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt'><o:p></o:p></span>
                     </p>
                 </td>
                 <td width=132 valign=top style='width:99.0pt;border:none;border-bottom:solid windowtext 1.0pt;
@@ -1494,15 +1510,15 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
   mso-border-bottom-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
   height:20.15pt'>
                     <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                        <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-  mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+  color:#231F20;mso-font-width:105%'><o:p>@Html.DisplayFor(modelItem => Model.ComponentSummary.Item64)&nbsp;</o:p></span>
                     </p>
                 </td>
                 <td width=662 colspan=2 valign=top style='width:496.85pt;padding:0in 5.4pt 0in 5.4pt;
   height:20.15pt'>
                     <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                        <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-  mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+  color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
                     </p>
                 </td>
             </tr>
@@ -1561,13 +1577,17 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
   mso-border-top-alt:dot-dash windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt;
   height:4.9pt'>
                     <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                        <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-  mso-font-width:105%'>
-                            <w:Sdt CheckBox="t" CheckBoxIsChecked="f"
+                        <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+  color:#231F20;mso-font-width:105%'>
+                          
+                            <w:Sdt CheckBox="t" CheckBoxIsChecked="t"
                                    CheckBoxValueChecked="&#9746;" CheckBoxValueUnchecked="&#9744;"
                                    CheckBoxFontChecked="MS Gothic" CheckBoxFontUnchecked="MS Gothic"
-                                   ID="-1826193670"><span style='font-family:"MS Gothic"'>&#9744;</span></w:Sdt>Load
-                            Rating Concurrence Statement<o:p></o:p>
+                                   ID="-1826193670">
+                                <span style='font-family:"MS Gothic";mso-bidi-font-family:
+   "MS Gothic"'>&#9744;</span>
+                            
+                            Load Rating Concurrence Statement<o:p></o:p>
                         </span>
                     </p>
                 </td>
@@ -1577,20 +1597,22 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
   height:4.9pt'>
                     <p class=MsoBodyText style='margin-top:3.75pt;text-align:justify;text-autospace:
   ideograph-other'>
-                        <span style='font-size:15.0pt;font-family:"Arial","sans-serif";
-  color:#231F20;mso-font-width:105%'>
-                            Existing load rating calculations exist
-                            and bridge conditions are very nearly unchanged since the last routine<o:p></o:p>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;
+  font-family:"Arial","sans-serif";color:#231F20;mso-font-width:105%'>
+                            Existing
+                            load rating calculations exist and bridge conditions are very nearly
+                            unchanged since the last routine<o:p></o:p>
                         </span>
                     </p>
                     <p class=MsoBodyText style='margin-top:3.75pt;text-align:justify;text-autospace:
   ideograph-other'>
                         <span class=GramE>
-                            <span style='font-size:15.0pt;font-family:
-  "Arial","sans-serif";color:#231F20;mso-font-width:105%'>inspection</span>
-                        </span><span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-  mso-font-width:105%'>
-                            . I concur with the previous load rating calculations <span class=GramE>dated<span style='mso-spacerun:yes'>  </span><u>date</u></span><u>.</u><o:p></o:p>
+                            <span style='font-size:16.0pt;mso-bidi-font-size:
+  15.0pt;font-family:"Arial","sans-serif";color:#231F20;mso-font-width:105%'>inspection</span>
+                        </span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+  color:#231F20;mso-font-width:105%'>
+                            . I concur with the previous load rating
+                            calculations <span class=GramE>dated<span style='mso-spacerun:yes'>  </span><u>date</u></span><u>.</u><o:p></o:p>
                         </span>
                     </p>
                 </td>
@@ -1598,211 +1620,213 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
             <tr style='mso-yfti-irow:9;mso-yfti-lastrow:yes;height:4.9pt'>
                 <td width=1160 colspan=7 valign=top style='width:870.35pt;padding:0in 5.4pt 0in 5.4pt;
   height:4.9pt'>
-                    <table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width=1139
-                           style='width:854.1pt;border-collapse:collapse;border:none;mso-yfti-tbllook:
+                    <table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width=1143
+                           style='width:857.1pt;border-collapse:collapse;border:none;mso-yfti-tbllook:
    1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:none;mso-border-insidev:
    none'>
-                        <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:20.15pt'>
-                            <td width=55 valign=top style='width:40.9pt;padding:0in 5.4pt 0in 5.4pt;
-    height:20.15pt'>
+                        <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:21.8pt'>
+                            <td width=55 valign=top style='width:41.05pt;padding:0in 5.4pt 0in 5.4pt;
+    height:21.8pt'>
                                 <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-    mso-font-width:105%'><o:p>&nbsp;</o:p></span>
-                                </p>
-                            </td>
-                            <td width=108 colspan=2 valign=bottom style='width:81.0pt;padding:0in 5.4pt 0in 5.4pt;
-    height:20.15pt'>
-                                <p class=MsoNormal style='text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;color:#231F20;mso-font-width:110%'>IR =</span><span style='font-size:15.0pt'><o:p></o:p></span>
-                                </p>
-                            </td>
-                            <td width=96 valign=top style='width:71.8pt;border:none;border-bottom:solid windowtext 1.0pt;
-    mso-border-bottom-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
-    height:20.15pt'>
-                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-    mso-font-width:105%'><o:p>&nbsp;</o:p></span>
-                                </p>
-                            </td>
-                            <td width=101 valign=bottom style='width:75.4pt;padding:0in 5.4pt 0in 5.4pt;
-    height:20.15pt'>
-                                <p class=MsoNormal style='text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;color:#231F20'>Item 66</span><span style='font-size:15.0pt'><o:p></o:p></span>
-                                </p>
-                            </td>
-                            <td width=132 colspan=3 valign=top style='width:99.0pt;border:none;
-    border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
-    padding:0in 5.4pt 0in 5.4pt;height:20.15pt'>
-                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-    mso-font-width:105%'><o:p>&nbsp;</o:p></span>
-                                </p>
-                            </td>
-                            <td width=648 valign=top style='width:6.75in;padding:0in 5.4pt 0in 5.4pt;
-    height:20.15pt'>
-                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-    mso-font-width:105%'><o:p>&nbsp;</o:p></span>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr style='mso-yfti-irow:1;height:20.15pt'>
-                            <td width=55 valign=top style='width:40.9pt;padding:0in 5.4pt 0in 5.4pt;
-    height:20.15pt'>
-                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-    mso-font-width:105%'><o:p>&nbsp;</o:p></span>
-                                </p>
-                            </td>
-                            <td width=108 colspan=2 valign=bottom style='width:81.0pt;padding:0in 5.4pt 0in 5.4pt;
-    height:20.15pt'>
-                                <p class=MsoNormal style='text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;color:#231F20;mso-font-width:110%'>OR =<o:p></o:p></span>
-                                </p>
-                            </td>
-                            <td width=96 valign=top style='width:71.8pt;border:none;border-bottom:solid windowtext 1.0pt;
-    mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-    mso-border-bottom-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
-    height:20.15pt'>
-                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-    mso-font-width:105%'><o:p>&nbsp;</o:p></span>
-                                </p>
-                            </td>
-                            <td width=101 valign=bottom style='width:75.4pt;padding:0in 5.4pt 0in 5.4pt;
-    height:20.15pt'>
-                                <p class=MsoNormal style='text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;color:#231F20'>Item 64</span><span style='font-size:15.0pt'><o:p></o:p></span>
-                                </p>
-                            </td>
-                            <td width=132 colspan=3 valign=top style='width:99.0pt;border:none;
-    border-bottom:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
-    mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
-    padding:0in 5.4pt 0in 5.4pt;height:20.15pt'>
-                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-    mso-font-width:105%'><o:p>&nbsp;</o:p></span>
-                                </p>
-                            </td>
-                            <td width=648 valign=top style='width:6.75in;padding:0in 5.4pt 0in 5.4pt;
-    height:20.15pt'>
-                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-    mso-font-width:105%'><o:p>&nbsp;</o:p></span>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr style='mso-yfti-irow:2;height:5.4pt'>
-                            <td width=99 colspan=2 valign=top style='width:74.0pt;border:none;
-    border-bottom:dashed windowtext 1.5pt;mso-border-bottom-alt:dot-dash windowtext 1.5pt;
-    padding:0in 5.4pt 0in 5.4pt;height:5.4pt'>
-                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:4.0pt;mso-bidi-font-size:8.0pt;font-family:"Arial","sans-serif";
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
     color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
                                 </p>
                             </td>
-                            <td width=64 valign=bottom style='width:47.9pt;border:none;border-bottom:
-    dashed windowtext 1.5pt;mso-border-bottom-alt:dot-dash windowtext 1.5pt;
-    padding:0in 5.4pt 0in 5.4pt;height:5.4pt'>
+                            <td width=108 colspan=2 valign=bottom style='width:81.3pt;padding:0in 5.4pt 0in 5.4pt;
+    height:21.8pt'>
                                 <p class=MsoNormal style='text-autospace:ideograph-other'>
-                                    <span style='font-size:4.0pt;mso-bidi-font-size:8.0pt;color:#231F20;mso-font-width:
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20;mso-font-width:
+    110%'>IR =</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt'><o:p></o:p></span>
+                                </p>
+                            </td>
+                            <td width=96 valign=top style='width:72.05pt;border:none;border-bottom:
+    solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+    padding:0in 5.4pt 0in 5.4pt;height:21.8pt'>
+                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+    color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                                </p>
+                            </td>
+                            <td width=101 valign=bottom style='width:75.65pt;padding:0in 5.4pt 0in 5.4pt;
+    height:21.8pt'>
+                                <p class=MsoNormal style='text-autospace:ideograph-other'>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20'>Item 66</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt'><o:p></o:p></span>
+                                </p>
+                            </td>
+                            <td width=132 colspan=3 valign=top style='width:99.35pt;border:none;
+    border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+    padding:0in 5.4pt 0in 5.4pt;height:21.8pt'>
+                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+    color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                                </p>
+                            </td>
+                            <td width=650 valign=top style='width:487.7pt;padding:0in 5.4pt 0in 5.4pt;
+    height:21.8pt'>
+                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+    color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr style='mso-yfti-irow:1;height:21.8pt'>
+                            <td width=55 valign=top style='width:41.05pt;padding:0in 5.4pt 0in 5.4pt;
+    height:21.8pt'>
+                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+    color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                                </p>
+                            </td>
+                            <td width=108 colspan=2 valign=bottom style='width:81.3pt;padding:0in 5.4pt 0in 5.4pt;
+    height:21.8pt'>
+                                <p class=MsoNormal style='text-autospace:ideograph-other'>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20;mso-font-width:
+    110%'>OR =<o:p></o:p></span>
+                                </p>
+                            </td>
+                            <td width=96 valign=top style='width:72.05pt;border:none;border-bottom:
+    solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:
+    solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
+    padding:0in 5.4pt 0in 5.4pt;height:21.8pt'>
+                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+    color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                                </p>
+                            </td>
+                            <td width=101 valign=bottom style='width:75.65pt;padding:0in 5.4pt 0in 5.4pt;
+    height:21.8pt'>
+                                <p class=MsoNormal style='text-autospace:ideograph-other'>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20'>Item 64</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt'><o:p></o:p></span>
+                                </p>
+                            </td>
+                            <td width=132 colspan=3 valign=top style='width:99.35pt;border:none;
+    border-bottom:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
+    padding:0in 5.4pt 0in 5.4pt;height:21.8pt'>
+                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+    color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                                </p>
+                            </td>
+                            <td width=650 valign=top style='width:487.7pt;padding:0in 5.4pt 0in 5.4pt;
+    height:21.8pt'>
+                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+    color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr style='mso-yfti-irow:2;height:5.85pt'>
+                            <td width=99 colspan=2 valign=top style='width:74.25pt;border:none;
+    border-bottom:dashed windowtext 1.5pt;mso-border-bottom-alt:dot-dash windowtext 1.5pt;
+    padding:0in 5.4pt 0in 5.4pt;height:5.85pt'>
+                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:8.0pt;font-family:"Arial","sans-serif";
+    color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                                </p>
+                            </td>
+                            <td width=64 valign=bottom style='width:48.05pt;border:none;border-bottom:
+    dashed windowtext 1.5pt;mso-border-bottom-alt:dot-dash windowtext 1.5pt;
+    padding:0in 5.4pt 0in 5.4pt;height:5.85pt'>
+                                <p class=MsoNormal style='text-autospace:ideograph-other'>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:8.0pt;color:#231F20;mso-font-width:
     110%'><o:p>&nbsp;</o:p></span>
                                 </p>
                             </td>
-                            <td width=96 valign=top style='width:71.8pt;border:none;border-bottom:dashed windowtext 1.5pt;
-    mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-    mso-border-bottom-alt:dot-dash windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt;
-    height:5.4pt'>
+                            <td width=96 valign=top style='width:72.05pt;border:none;border-bottom:
+    dashed windowtext 1.5pt;mso-border-top-alt:solid windowtext .5pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:dot-dash windowtext 1.5pt;
+    padding:0in 5.4pt 0in 5.4pt;height:5.85pt'>
                                 <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:4.0pt;mso-bidi-font-size:8.0pt;font-family:"Arial","sans-serif";
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:8.0pt;font-family:"Arial","sans-serif";
     color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
                                 </p>
                             </td>
-                            <td width=144 colspan=2 valign=bottom style='width:108.2pt;border:none;
+                            <td width=145 colspan=2 valign=bottom style='width:108.6pt;border:none;
     border-bottom:dashed windowtext 1.5pt;mso-border-bottom-alt:dot-dash windowtext 1.5pt;
-    padding:0in 5.4pt 0in 5.4pt;height:5.4pt'>
+    padding:0in 5.4pt 0in 5.4pt;height:5.85pt'>
                                 <p class=MsoNormal style='text-autospace:ideograph-other'>
-                                    <span style='font-size:4.0pt;mso-bidi-font-size:8.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:8.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                                 </p>
                             </td>
-                            <td width=79 valign=top style='width:59.5pt;border-top:solid windowtext 1.0pt;
+                            <td width=80 valign=top style='width:59.7pt;border-top:solid windowtext 1.0pt;
     border-left:none;border-bottom:dashed windowtext 1.5pt;border-right:none;
     mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:dot-dash windowtext 1.5pt;
-    padding:0in 5.4pt 0in 5.4pt;height:5.4pt'>
+    padding:0in 5.4pt 0in 5.4pt;height:5.85pt'>
                                 <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:4.0pt;mso-bidi-font-size:8.0pt;font-family:"Arial","sans-serif";
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:8.0pt;font-family:"Arial","sans-serif";
     color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
                                 </p>
                             </td>
-                            <td width=657 colspan=2 valign=top style='width:492.7pt;border:none;
+                            <td width=659 colspan=2 valign=top style='width:494.45pt;border:none;
     border-bottom:dashed windowtext 1.5pt;mso-border-bottom-alt:dot-dash windowtext 1.5pt;
-    padding:0in 5.4pt 0in 5.4pt;height:5.4pt'>
+    padding:0in 5.4pt 0in 5.4pt;height:5.85pt'>
                                 <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:4.0pt;mso-bidi-font-size:8.0pt;font-family:"Arial","sans-serif";
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:8.0pt;font-family:"Arial","sans-serif";
     color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
                                 </p>
                             </td>
                         </tr>
-                        <tr style='mso-yfti-irow:3;height:5.4pt'>
-                            <td width=1139 colspan=9 valign=top style='width:854.1pt;border:none;
+                        <tr style='mso-yfti-irow:3;height:5.85pt'>
+                            <td width=1143 colspan=9 valign=top style='width:857.1pt;border:none;
     mso-border-top-alt:dot-dash windowtext 1.5pt;padding:0in 5.4pt 0in 5.4pt;
-    height:5.4pt'>
+    height:5.85pt'>
                                 <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;font-family:"MS Gothic";mso-bidi-font-family:"MS Gothic";
-    color:#231F20;mso-font-width:105%'>&#9744;</span><span style='font-size:
-    15.0pt;font-family:"Arial","sans-serif";color:#231F20;mso-font-width:105%'>
-                                        Assumed
-                                        Load Rating Statement<o:p></o:p>
-                                    </span>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"MS Gothic";
+    mso-bidi-font-family:"MS Gothic";color:#231F20;mso-font-width:105%'>&#9744;</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+    color:#231F20;mso-font-width:105%'>Assumed Load Rating Statement<o:p></o:p></span>
                                 </p>
                             </td>
                         </tr>
-                        <tr style='mso-yfti-irow:4;mso-yfti-lastrow:yes;height:5.4pt'>
-                            <td width=1139 colspan=9 valign=top style='width:854.1pt;padding:0in 5.4pt 0in 5.4pt;
-    height:5.4pt'>
+                        <tr style='mso-yfti-irow:4;mso-yfti-lastrow:yes;height:5.85pt'>
+                            <td width=1143 colspan=9 valign=top style='width:857.1pt;padding:0in 5.4pt 0in 5.4pt;
+    height:5.85pt'>
                                 <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-    mso-font-width:105%'>
-                                        Reinforcing steel details and bridge plans do not
-                                        exist for this concrete bridge structure. Based on the current conditions
-                                        of the principal structural elements of the bridge and as per <span class=SpellE>TxDOT's</span> Bridge Inspection Manual <span class=SpellE>Chpt</span>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+    color:#231F20;mso-font-width:105%'>
+                                        Reinforcing steel details and bridge
+                                        plans do not exist for this concrete bridge structure. Based on the current
+                                        conditions of the principal structural elements of the bridge and as per <span class=SpellE>TxDOT's</span> Bridge Inspection Manual <span class=SpellE>Chpt</span>
                                         5, Section 3 Load Ratings, this bridge may be rated for the State Legal
                                         Load of HS-20 at the Operating Level and HS-15 at the Inventory Level if
                                         the following conditions apply:<o:p></o:p>
                                     </span>
                                 </p>
                                 <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-    mso-font-width:105%'>
-                                        1.) the bridge has been carrying unrestricted traffic
-                                        for many years, <o:p></o:p>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+    color:#231F20;mso-font-width:105%'>
+                                        1.) the bridge has been carrying
+                                        unrestricted traffic for many years, <o:p></o:p>
                                     </span>
                                 </p>
                                 <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-    mso-font-width:105%'>2.) the bridge shows no signs of significant distress,<o:p></o:p></span>
-                                </p>
-                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-    mso-font-width:105%'>
-                                        3.) the simple span bridge's span-to-depth ratio of
-                                        the main members does not exceed approximately 20, <o:p></o:p>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+    color:#231F20;mso-font-width:105%'>
+                                        2.) the bridge shows no signs of
+                                        significant distress,<o:p></o:p>
                                     </span>
                                 </p>
                                 <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-    mso-font-width:105%'>
-                                        4.) construction details confirm to specifications at
-                                        the time of the estimated construction, and<o:p></o:p>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+    color:#231F20;mso-font-width:105%'>
+                                        3.) the simple span bridge's span-to-depth
+                                        ratio of the main members does not exceed approximately 20, <o:p></o:p>
                                     </span>
                                 </p>
                                 <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                    <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-    mso-font-width:105%'>
-                                        5.) <span class=GramE>appearance</span> of the bridge
-                                        indicates that construction was performed by a competent builder.
-                                    </span><span style='font-size:15.0pt;font-family:"MS Gothic";mso-bidi-font-family:"MS Gothic";
-    color:#231F20;mso-font-width:105%'><o:p></o:p></span>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+    color:#231F20;mso-font-width:105%'>
+                                        4.) construction details confirm to
+                                        specifications at the time of the estimated construction, and<o:p></o:p>
+                                    </span>
+                                </p>
+                                <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+    color:#231F20;mso-font-width:105%'>
+                                        5.) <span class=GramE>appearance</span>
+                                        of the bridge indicates that construction was performed by a competent builder.
+                                    </span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+    mso-fareast-font-family:"MS Gothic";color:#231F20;mso-font-width:105%'><o:p></o:p></span>
                                 </p>
                             </td>
                         </tr>
@@ -1814,17 +1838,15 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
                             <td width=96 style='border:none'></td>
                             <td width=101 style='border:none'></td>
                             <td width=44 style='border:none'></td>
-                            <td width=79 style='border:none'></td>
+                            <td width=80 style='border:none'></td>
                             <td width=9 style='border:none'></td>
-                            <td width=648 style='border:none'></td>
+                            <td width=650 style='border:none'></td>
                         </tr>
                         <![endif]>
                     </table>
-                    <p class=MsoNormal style='mso-pagination:widow-orphan;text-autospace:ideograph-numeric ideograph-other'>
-                        <span style='font-family:"Calibri","sans-serif";mso-ascii-theme-font:minor-latin;
-  mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;
-  mso-hansi-theme-font:minor-latin;mso-bidi-font-family:"Times New Roman";
-  mso-bidi-theme-font:minor-bidi;display:none;mso-hide:all'><o:p>&nbsp;</o:p></span>
+                    <p class=MsoNormal style='mso-pagination:widow-orphan;text-autospace:ideograph-other'>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:11.0pt;mso-fareast-font-family:
+  Calibri;mso-fareast-theme-font:minor-latin;display:none;mso-hide:all'><o:p>&nbsp;</o:p></span>
                     </p>
                     <table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width=1038
                            style='width:778.25pt;border-collapse:collapse;border:none;mso-yfti-tbllook:
@@ -1834,158 +1856,161 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
     height:4.9pt'>
                             <td width=1038 valign=top style='width:778.25pt;padding:0in 5.4pt 0in 5.4pt;
     height:4.9pt'>
-                                <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=1123
-                                       style='width:841.9pt;margin-left:6.8pt;border-collapse:collapse;
+                                <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=1135
+                                       style='width:850.95pt;margin-left:6.8pt;border-collapse:collapse;
      border:none;mso-border-alt:solid windowtext .5pt;mso-yfti-tbllook:1184;
      mso-padding-alt:0in 5.4pt 0in 5.4pt'>
-                                    <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:20.15pt'>
-                                        <td width=49 valign=top style='width:36.4pt;border:none;padding:0in 5.4pt 0in 5.4pt;
-      height:20.15pt'>
+                                    <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:22.2pt'>
+                                        <td width=49 valign=top style='width:36.8pt;border:none;padding:0in 5.4pt 0in 5.4pt;
+      height:22.2pt'>
                                             <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                                <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-      mso-font-width:105%'><o:p>&nbsp;</o:p></span>
-                                            </p>
-                                        </td>
-                                        <td width=96 colspan=2 valign=bottom style='width:1.0in;border:none;
-      padding:0in 5.4pt 0in 5.4pt;height:20.15pt'>
-                                            <p class=MsoNormal style='text-autospace:ideograph-other'>
-                                                <span style='font-size:15.0pt;color:#231F20;mso-font-width:110%'>IR =</span><span style='font-size:15.0pt'><o:p></o:p></span>
-                                            </p>
-                                        </td>
-                                        <td width=102 colspan=2 valign=top style='width:76.5pt;border:none;
-      border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
-      padding:0in 5.4pt 0in 5.4pt;height:20.15pt'>
-                                            <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                                <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-      mso-font-width:105%'><o:p>&nbsp;</o:p></span>
-                                            </p>
-                                        </td>
-                                        <td width=93 colspan=2 valign=bottom style='width:69.45pt;border:none;
-      padding:0in 5.4pt 0in 5.4pt;height:20.15pt'>
-                                            <p class=MsoNormal style='text-autospace:ideograph-other'>
-                                                <span style='font-size:15.0pt;color:#231F20'>Item 66</span><span style='font-size:15.0pt'><o:p></o:p></span>
-                                            </p>
-                                        </td>
-                                        <td width=138 valign=top style='width:103.45pt;border:none;border-bottom:
-      solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
-      padding:0in 5.4pt 0in 5.4pt;height:20.15pt'>
-                                            <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                                <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-      mso-font-width:105%'><o:p>&nbsp;</o:p></span>
-                                            </p>
-                                        </td>
-                                        <td width=645 valign=top style='width:484.1pt;border:none;padding:0in 5.4pt 0in 5.4pt;
-      height:20.15pt'>
-                                            <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                                <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-      mso-font-width:105%'><o:p>&nbsp;</o:p></span>
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr style='mso-yfti-irow:1;height:20.15pt'>
-                                        <td width=49 valign=top style='width:36.4pt;border:none;padding:0in 5.4pt 0in 5.4pt;
-      height:20.15pt'>
-                                            <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                                <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-      mso-font-width:105%'><o:p>&nbsp;</o:p></span>
-                                            </p>
-                                        </td>
-                                        <td width=96 colspan=2 valign=bottom style='width:1.0in;border:none;
-      padding:0in 5.4pt 0in 5.4pt;height:20.15pt'>
-                                            <p class=MsoNormal style='text-autospace:ideograph-other'>
-                                                <span style='font-size:15.0pt;color:#231F20;mso-font-width:110%'>OR =<o:p></o:p></span>
-                                            </p>
-                                        </td>
-                                        <td width=102 colspan=2 valign=top style='width:76.5pt;border:none;
-      border-bottom:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
-      mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
-      padding:0in 5.4pt 0in 5.4pt;height:20.15pt'>
-                                            <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                                <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-      mso-font-width:105%'><o:p>&nbsp;</o:p></span>
-                                            </p>
-                                        </td>
-                                        <td width=93 colspan=2 valign=bottom style='width:69.45pt;border:none;
-      padding:0in 5.4pt 0in 5.4pt;height:20.15pt'>
-                                            <p class=MsoNormal style='text-autospace:ideograph-other'>
-                                                <span style='font-size:15.0pt;color:#231F20'>Item 64</span><span style='font-size:15.0pt'><o:p></o:p></span>
-                                            </p>
-                                        </td>
-                                        <td width=138 valign=top style='width:103.45pt;border:none;border-bottom:
-      solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
-      mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
-      padding:0in 5.4pt 0in 5.4pt;height:20.15pt'>
-                                            <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                                <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-      mso-font-width:105%'><o:p>&nbsp;</o:p></span>
-                                            </p>
-                                        </td>
-                                        <td width=645 valign=top style='width:484.1pt;border:none;padding:0in 5.4pt 0in 5.4pt;
-      height:20.15pt'>
-                                            <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                                <span style='font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
-      mso-font-width:105%'><o:p>&nbsp;</o:p></span>
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr style='mso-yfti-irow:2;height:5.4pt'>
-                                        <td width=94 colspan=2 valign=top style='width:70.4pt;border:none;
-      border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
-      padding:0in 5.4pt 0in 5.4pt;height:5.4pt'>
-                                            <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                                <span style='font-size:5.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+                                                <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
       color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
                                             </p>
                                         </td>
-                                        <td width=79 colspan=2 valign=bottom style='width:59.4pt;border:none;
-      border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
-      padding:0in 5.4pt 0in 5.4pt;height:5.4pt'>
+                                        <td width=97 colspan=2 valign=bottom style='width:72.75pt;border:none;
+      padding:0in 5.4pt 0in 5.4pt;height:22.2pt'>
                                             <p class=MsoNormal style='text-autospace:ideograph-other'>
-                                                <span style='font-size:5.0pt;mso-bidi-font-size:15.0pt;color:#231F20;
+                                                <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20;
+      mso-font-width:110%'>IR =</span><span style='font-size:16.0pt;mso-bidi-font-size:
+      15.0pt'><o:p></o:p></span>
+                                            </p>
+                                        </td>
+                                        <td width=103 colspan=2 valign=top style='width:77.3pt;border:none;
+      border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+      padding:0in 5.4pt 0in 5.4pt;height:22.2pt'>
+                                            <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
+                                                <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+      color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                                            </p>
+                                        </td>
+                                        <td width=94 colspan=2 valign=bottom style='width:70.2pt;border:none;
+      padding:0in 5.4pt 0in 5.4pt;height:22.2pt'>
+                                            <p class=MsoNormal style='text-autospace:ideograph-other'>
+                                                <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20'>Item 66</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt'><o:p></o:p></span>
+                                            </p>
+                                        </td>
+                                        <td width=139 valign=top style='width:104.55pt;border:none;border-bottom:
+      solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+      padding:0in 5.4pt 0in 5.4pt;height:22.2pt'>
+                                            <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
+                                                <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+      color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                                            </p>
+                                        </td>
+                                        <td width=652 valign=top style='width:489.3pt;border:none;padding:0in 5.4pt 0in 5.4pt;
+      height:22.2pt'>
+                                            <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
+                                                <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+      color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr style='mso-yfti-irow:1;height:22.2pt'>
+                                        <td width=49 valign=top style='width:36.8pt;border:none;padding:0in 5.4pt 0in 5.4pt;
+      height:22.2pt'>
+                                            <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
+                                                <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+      color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                                            </p>
+                                        </td>
+                                        <td width=97 colspan=2 valign=bottom style='width:72.75pt;border:none;
+      padding:0in 5.4pt 0in 5.4pt;height:22.2pt'>
+                                            <p class=MsoNormal style='text-autospace:ideograph-other'>
+                                                <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20;
+      mso-font-width:110%'>OR =<o:p></o:p></span>
+                                            </p>
+                                        </td>
+                                        <td width=103 colspan=2 valign=top style='width:77.3pt;border:none;
+      border-bottom:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+      mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
+      padding:0in 5.4pt 0in 5.4pt;height:22.2pt'>
+                                            <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
+                                                <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+      color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                                            </p>
+                                        </td>
+                                        <td width=94 colspan=2 valign=bottom style='width:70.2pt;border:none;
+      padding:0in 5.4pt 0in 5.4pt;height:22.2pt'>
+                                            <p class=MsoNormal style='text-autospace:ideograph-other'>
+                                                <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20'>Item 64</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt'><o:p></o:p></span>
+                                            </p>
+                                        </td>
+                                        <td width=139 valign=top style='width:104.55pt;border:none;border-bottom:
+      solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+      mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
+      padding:0in 5.4pt 0in 5.4pt;height:22.2pt'>
+                                            <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
+                                                <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+      color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                                            </p>
+                                        </td>
+                                        <td width=652 valign=top style='width:489.3pt;border:none;padding:0in 5.4pt 0in 5.4pt;
+      height:22.2pt'>
+                                            <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
+                                                <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+      color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr style='mso-yfti-irow:2;height:5.95pt'>
+                                        <td width=95 colspan=2 valign=top style='width:71.15pt;border:none;
+      border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+      padding:0in 5.4pt 0in 5.4pt;height:5.95pt'>
+                                            <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
+                                                <span style='font-size:12.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+      color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
+                                            </p>
+                                        </td>
+                                        <td width=80 colspan=2 valign=bottom style='width:60.05pt;border:none;
+      border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+      padding:0in 5.4pt 0in 5.4pt;height:5.95pt'>
+                                            <p class=MsoNormal style='text-autospace:ideograph-other'>
+                                                <span style='font-size:12.0pt;mso-bidi-font-size:15.0pt;color:#231F20;
       mso-font-width:110%'><o:p>&nbsp;</o:p></span>
                                             </p>
                                         </td>
-                                        <td width=80 colspan=2 valign=top style='width:60.3pt;border:none;
+                                        <td width=81 colspan=2 valign=top style='width:60.95pt;border:none;
       border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
-      padding:0in 5.4pt 0in 5.4pt;height:5.4pt'>
+      padding:0in 5.4pt 0in 5.4pt;height:5.95pt'>
                                             <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                                <span style='font-size:5.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+                                                <span style='font-size:12.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
       color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
                                             </p>
                                         </td>
-                                        <td width=86 valign=bottom style='width:64.25pt;border:none;border-bottom:
+                                        <td width=87 valign=bottom style='width:64.95pt;border:none;border-bottom:
       solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
-      padding:0in 5.4pt 0in 5.4pt;height:5.4pt'>
+      padding:0in 5.4pt 0in 5.4pt;height:5.95pt'>
                                             <p class=MsoNormal style='text-autospace:ideograph-other'>
-                                                <span style='font-size:5.0pt;mso-bidi-font-size:15.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
+                                                <span style='font-size:12.0pt;mso-bidi-font-size:15.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
                                             </p>
                                         </td>
-                                        <td width=138 valign=top style='width:103.45pt;border:none;border-bottom:
+                                        <td width=139 valign=top style='width:104.55pt;border:none;border-bottom:
       solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
-      padding:0in 5.4pt 0in 5.4pt;height:5.4pt'>
+      padding:0in 5.4pt 0in 5.4pt;height:5.95pt'>
                                             <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                                <span style='font-size:5.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+                                                <span style='font-size:12.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
       color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
                                             </p>
                                         </td>
-                                        <td width=645 valign=top style='width:484.1pt;border:none;border-bottom:
+                                        <td width=652 valign=top style='width:489.3pt;border:none;border-bottom:
       solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
-      padding:0in 5.4pt 0in 5.4pt;height:5.4pt'>
+      padding:0in 5.4pt 0in 5.4pt;height:5.95pt'>
                                             <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
-                                                <span style='font-size:5.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+                                                <span style='font-size:12.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
       color:#231F20;mso-font-width:105%'><o:p>&nbsp;</o:p></span>
                                             </p>
                                         </td>
                                     </tr>
-                                    <tr style='mso-yfti-irow:3;mso-yfti-lastrow:yes;height:5.4pt'>
-                                        <td width=1123 colspan=9 valign=top style='width:841.9pt;border:solid windowtext 1.0pt;
+                                    <tr style='mso-yfti-irow:3;mso-yfti-lastrow:yes;height:5.95pt'>
+                                        <td width=1135 colspan=9 valign=top style='width:850.9pt;border:solid windowtext 1.0pt;
       border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:
-      solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:5.4pt'>
+      solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:5.95pt'>
                                             <p class=MsoBodyText align=center style='margin-top:1.85pt;margin-right:
       66.15pt;margin-bottom:0in;margin-left:-5.8pt;margin-bottom:.0001pt;
       text-align:center;text-indent:72.3pt;line-height:115%;text-autospace:
       ideograph-other'>
-                                                <span style='font-size:12.0pt;mso-bidi-font-size:15.0pt;
+                                                <span style='font-size:14.0pt;mso-bidi-font-size:15.0pt;
       line-height:115%;font-family:"Arial","sans-serif";color:#231F20;
       mso-font-width:105%'>
                                                     DO<span style='letter-spacing:-.7pt'>
@@ -2001,7 +2026,7 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
                                             </p>
                                             <p class=MsoBodyText align=center style='margin-top:3.75pt;text-align:
       center;text-autospace:ideograph-other'>
-                                                <span style='font-size:12.0pt;
+                                                <span style='font-size:14.0pt;
       mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";color:#231F20;
       mso-font-width:105%'>
                                                     AND<span style='letter-spacing:-.45pt'> </span>23<span style='letter-spacing:-.45pt'></span>USC<span style='letter-spacing:
@@ -2014,20 +2039,24 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
                                     <![if !supportMisalignedColumns]>
                                     <tr height=0>
                                         <td width=49 style='border:none'></td>
-                                        <td width=45 style='border:none'></td>
+                                        <td width=46 style='border:none'></td>
                                         <td width=51 style='border:none'></td>
                                         <td width=29 style='border:none'></td>
-                                        <td width=73 style='border:none'></td>
+                                        <td width=74 style='border:none'></td>
                                         <td width=7 style='border:none'></td>
-                                        <td width=86 style='border:none'></td>
-                                        <td width=138 style='border:none'></td>
-                                        <td width=645 style='border:none'></td>
+                                        <td width=87 style='border:none'></td>
+                                        <td width=139 style='border:none'></td>
+                                        <td width=652 style='border:none'></td>
                                     </tr>
                                     <![endif]>
                                 </table>
                             </td>
                         </tr>
                     </table>
+                    <p class=MsoNormal style='mso-pagination:widow-orphan;text-autospace:ideograph-numeric ideograph-other'>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:11.0pt;mso-fareast-font-family:
+  Calibri;mso-fareast-theme-font:minor-latin'><o:p></o:p></span>
+                    </p>
                 </td>
             </tr>
         </table>
