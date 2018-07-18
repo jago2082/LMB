@@ -78,7 +78,7 @@ namespace LMB.Controllers
                         ModelState.AddModelError("File", "This file format is not supported");
                         return View();
                     }
-                    var name = uploadfile.FileName.Split('_');
+                    var name = uploadfile.FileName.Split('.');
                     var tmp = name[0];
                     if (tmp == "Raw Data from District")
                     {
