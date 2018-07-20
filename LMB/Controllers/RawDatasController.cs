@@ -110,7 +110,7 @@ namespace LMB.Controllers
                                 rdt.District = data[3].ToString();
                                 rdt.County = data[4].ToString();
                                 rdt.Control = data[5].ToString();
-                                
+
                                 bool isLetter = !String.IsNullOrEmpty(rdt.Control) && Char.IsLetter(rdt.Control[0]);
                                 rdt.Section = data[6].ToString();
                                 rdt.Milepnt = data[7].ToString();
@@ -131,7 +131,7 @@ namespace LMB.Controllers
                                 //rdt.PlaceCode = data[19].ToString();
                                 if (string.IsNullOrEmpty(data[22].ToString())) { rdt.FeatXed = ""; } else { rdt.FeatXed = data[22].ToString(); };
                                 //rdt.CritBdg = data[21].ToString();
-                               // rdt.MiPtDatePr = data[22].ToString();
+                                // rdt.MiPtDatePr = data[22].ToString();
                                 //rdt.AMiPtDateInt = data[23].ToString();
                                 //rdt.Blanks2 = data[24].ToString();
                                 rdt.FacCarried = data[27].ToString();
@@ -139,13 +139,13 @@ namespace LMB.Controllers
                                 //rdt.RtMinVrtClear = data[27].ToString();
                                 //if (string.IsNullOrEmpty(data[28].ToString())) { rdt.OLD16Latitude = 0; } else { rdt.OLD16Latitude = float.Parse(data[28].ToString()); };
                                 //if (string.IsNullOrEmpty(data[29].ToString())) { rdt.OLD17Longitude = 0; } else { rdt.OLD17Longitude = float.Parse(data[29].ToString()); };
-                               // rdt.DetourLgth = data[30].ToString();
-                               // rdt.Toll = data[31].ToString();
-                               // rdt.Custodian = data[32].ToString();
-                               // rdt.Owner = data[33].ToString();
+                                // rdt.DetourLgth = data[30].ToString();
+                                // rdt.Toll = data[31].ToString();
+                                // rdt.Custodian = data[32].ToString();
+                                // rdt.Owner = data[33].ToString();
                                 rdt.MaintSect = data[36].ToString();
                                 //rdt.ProjType = data[35].ToString();
-                               // if (string.IsNullOrEmpty(data[36].ToString())) { rdt.CSJWhnBlt = 0; } else { rdt.CSJWhnBlt = double.Parse(data[36].ToString()); };
+                                // if (string.IsNullOrEmpty(data[36].ToString())) { rdt.CSJWhnBlt = 0; } else { rdt.CSJWhnBlt = double.Parse(data[36].ToString()); };
                                 //rdt.FuncClass = data[37].ToString();
                                 rdt.YrBuilt = data[40].ToString();
                                 //rdt.LanesOn = data[39].ToString();
@@ -179,12 +179,12 @@ namespace LMB.Controllers
                                 //rdt.NoMnAprSp = data[67].ToString();
                                 //rdt.TotalNoSpans = data[68].ToString();
                                 //rdt.TotHrzClear = data[69].ToString();
-                              //  rdt.MaxSpLgth = data[70].ToString();
-                             //   rdt.StrLgth = data[71].ToString();
+                                //  rdt.MaxSpLgth = data[70].ToString();
+                                //   rdt.StrLgth = data[71].ToString();
                                 //rdt.LtSdwalk = data[72].ToString();
                                 //rdt.RtSdwalk = data[73].ToString();
-                               // rdt.RdwyWidth = data[74].ToString();
-                               // rdt.DeckWidth = data[75].ToString();
+                                // rdt.RdwyWidth = data[74].ToString();
+                                // rdt.DeckWidth = data[75].ToString();
                                 //rdt.VrtClrOver = data[76].ToString();
                                 //rdt.VrtClrRefFeat = data[77].ToString();
                                 //rdt.VrtClrUnder = data[78].ToString();
@@ -324,7 +324,7 @@ namespace LMB.Controllers
                                 {
                                     inspectiondaily.IdProject = 1;
                                 }
-                               // var idproject = validarcontrol(rdt.Control);
+                                // var idproject = validarcontrol(rdt.Control);
                                 //inspectiondaily.IdProject = idproject;
                                 var numinsp = String.Format("{0}-{1}-{2}-{3}-{4}", rdt.District, rdt.County, rdt.Control, rdt.Section, rdt.StrNo);
                                 var exist = db.InspectionDaily.Where(i => i.NumInspection == numinsp).FirstOrDefault();
@@ -343,8 +343,8 @@ namespace LMB.Controllers
                                 inspectiondaily.City = rdt.FacCarried;
                                 inspectiondaily.TypeInspection = 1;
                                 inspectiondaily.Address = rdt.Location;
-                                inspectiondaily.LatitudeIni = rdt.Latitude;
-                                inspectiondaily.LongitudeIni = rdt.Longitude;
+                                inspectiondaily.LatitudeIni = rdt.GPSLatitude;
+                                inspectiondaily.LongitudeIni = rdt.GPSLongitude;
                                 inspectiondaily.Structure = rdt.StrNo;
                                 inspectiondaily.MaintanSection = rdt.MaintSect;
                                 inspectiondaily.Milepnt = rdt.Milepnt;

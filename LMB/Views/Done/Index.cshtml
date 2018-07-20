@@ -41,10 +41,10 @@
                 @Html.DisplayNameFor(model => model.Scope)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateInspection)
+                @Html.DisplayNameFor(model => model.Date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+                @Html.DisplayNameFor(model => model.DateInspection)
             </th>
             <th></th>
             <th></th>
@@ -78,12 +78,12 @@
                     @Html.DisplayFor(modelItem => item.Scope)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DateInspection)
+                    @Html.DisplayFor(modelItem => item.Date)
                 </td>
 
 
                 <td>
-                    @Html.DisplayFor(modelItem => item.Date)
+                    @Html.DisplayFor(modelItem => item.DateInspection)
                 </td>
                 <td>
                     <a id="Photos" data-target="#Photos" data-toggle="modal" data-id="" onclick="location.href='@Url.Action("Edit", new { id = item.IdInspection })'" href="#" class="unlock" title="Photos Report">
@@ -115,13 +115,13 @@
                       </button>-->
                 </td>
                 <td>
-                    <a id="DownloadData"  onclick="location.href='@Url.Action("Reports", new { id = item.IdInspection })'" href="#" class="unlock" title="Other Report">
+                    <a id="DownloadData" onclick="location.href='@Url.Action("Reports", new { id = item.IdInspection })'" href="#" class="unlock" title="Other Report">
                         <img width="30" alt="Download Data" title="Download Data" src="~/img/iconodown.png">
                     </a>
                     <!--   <button type="button" class="w3-button w3-light-grey w3-round" onclick="location.href='@Url.Action("Reports", new { id = item.IdInspection })'">
 
-              <img width="30" alt="Other Reports" title="Other Reports" src="~/img/ic_reportAll.png">
-          </button>-->
+                        <img width="30" alt="Other Reports" title="Other Reports" src="~/img/ic_reportAll.png">
+                    </button>-->
                 </td>
             </tr>
 
@@ -152,10 +152,10 @@
                         <label for="idTourDateDetails">Invoice Range Date</label>
                         <div class="form-group">
                             <label for="dateini">initial Date</label>
-                            <input type="date" data-date-format="DD MMMM YYYY" name="dateini" id="dateini"  />
+                            <input type="date" data-date-format="DD MMMM YYYY" name="dateini" id="dateini" />
                             <label for="datefin">final Date</label>
                             <input type="date" data-date-format="DD MMMM YYYY" name="datefin" id="datefin" />
-                           
+
                             <div class="modal-body">
                                 <input type="hidden" name="bookId" id="bookId" value="" />
                                 <input type="hidden" name="userId" id="userId" value="" />
@@ -163,7 +163,7 @@
 
                                 <div class="form-group">
                                     <label for="sel1">User</label>
-                                    <input name="user" id="user" value="" />
+                                    @Html.DropDownList("Userdb", null, "[Select a User]", htmlAttributes: new { @class = "form-control", @onchange = "getval(this);" })
                                 </div>
                             </div>
 
@@ -183,9 +183,10 @@
     <!-- /.modal -->
 </div>
 
-@Html.Raw(TempData["msg"])
 @section Scripts {
-@Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.25.6/sweetalert2.all.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.25.6/sweetalert2.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
@@ -205,13 +206,16 @@
     <script type="text/javascript">
             var Url = '@Url.Action("filterDate", "Done")';
             var user = 0;
+            function getval(sel) {
+            user = sel.value;
+            }
             $("#filter").on("click", function () {
                 var date1 = $('#dateini').val();
                 var date2 = $('#datefin').val();
-                var user = $('#user').text();
                 if (date1 == "" || date2 == "") {
 
                 }
+                $("#myModal").trigger('click');
 
                 $.post(Url, { "dateI": date1, "dateF": date2, "user": user })
                 .done(function (data) {
