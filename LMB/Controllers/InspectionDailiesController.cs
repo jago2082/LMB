@@ -22,6 +22,7 @@ namespace LMB.Controllers
         public async Task<ActionResult> Index()
         {
             var markers = await UtilsHelper.GetMarcadores();
+
             var inspectionDaily = db.InspectionDaily.Include(i => i.InspectionState)
                 .Include(u => u.UserDBs);
             ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "UserName");

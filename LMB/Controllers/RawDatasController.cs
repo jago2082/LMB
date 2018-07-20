@@ -343,8 +343,8 @@ namespace LMB.Controllers
                                 inspectiondaily.City = rdt.FacCarried;
                                 inspectiondaily.TypeInspection = 1;
                                 inspectiondaily.Address = rdt.Location;
-                                inspectiondaily.LatitudeIni = rdt.Latitude;
-                                inspectiondaily.LongitudeIni = rdt.Longitude;
+                                inspectiondaily.LatitudeIni = rdt.GPSLatitude;
+                                inspectiondaily.LongitudeIni = rdt.GPSLongitude;
                                 inspectiondaily.Structure = rdt.StrNo;
                                 inspectiondaily.MaintanSection = rdt.MaintSect;
                                 inspectiondaily.Milepnt = rdt.Milepnt;
