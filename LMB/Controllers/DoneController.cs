@@ -48,14 +48,14 @@ namespace LMB.Controllers
             {
                 var fi = DateTime.Parse(dateI);
                 var ff = DateTime.Parse(dateF);
-                if (!String.IsNullOrEmpty(user) || user!="0")
-                {
-                    insp = db.InspectionDaily.Where(i => i.Date > fi && i.Date < ff && i.UserDBs.UserName == user).ToList();
-                }
-                else
-                {
+                //if (!String.IsNullOrEmpty(user) || user!="0")
+                //{
+                //    insp = db.InspectionDaily.Where(i => i.Date > fi && i.Date < ff && i.UserDBs.UserName == user).ToList();
+                //}
+                //else
+                //{
                     insp = db.InspectionDaily.Where(i => i.Date > fi && i.Date < ff).ToList();
-                }
+                //}
 
             }
             else
@@ -152,6 +152,29 @@ namespace LMB.Controllers
             return View(await ValueCheckList.ToListAsync());
         }
 
+        public async Task<ActionResult> UnderTable(int? id, int IDIns)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var ValueCheckList = db.ValueCheckList.Where(i => i.IdInspection == IDIns && i.RowIDQuestion == id);
+            var inspection = db.InspectionDaily.Find(id);
+
+
+            // ValueCheckList valueCheckList = await db.ValueCheckList.FindAsync(id);
+            if (ValueCheckList == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            return View(await ValueCheckList.ToListAsync());
+        }
+        
+
                public async Task<ActionResult> IndexInv(int? id)
         {
 
@@ -217,6 +240,18 @@ namespace LMB.Controllers
             return View(await secciones.ToListAsync());
 
         }
+
+        public async Task<ActionResult> UnderList(int id)
+        {
+            var secciones = db.UnderClearanceRecord.Where(y=>y.IdInspection == id).OrderByDescending(x=> x.PSN);
+
+            //  .Where(i => i.IdClient == id);
+
+            ViewBag.idinspect = id;
+            return View(await secciones.ToListAsync());
+
+        }
+        
 
         public ActionResult LoadBridgeInspectionRecord(int? id)
         {

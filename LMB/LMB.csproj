@@ -869,6 +869,7 @@
     <Content Include="Views\InspectionBasicRegistryValues\Edit.cshtml" />
     <Content Include="Views\Done\IndexInv.cshtml" />
     <Content Include="Views\Done\CreateCross.cshtml" />
+    <Content Include="Views\Done\UnderList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
