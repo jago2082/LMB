@@ -300,11 +300,11 @@
                 scrollCollapse: true,
                 "createdRow": function (row, data, dataIndex) {
                     if (data[12] == "Almost time expires") {
-                        $(row).addClass('lila');
+                        $('td', row).css('background-color', '#eefbf6');
                     } else if (data[12] == "In Mobile") {
-                        $(row).addClass('green');
+                        $('td', row).css('background-color', '#eefbf6');
                     } else if (data[12] == "Assigned") {
-                        $(row).addClass('grey');
+                        $('td', row).css('background-color', '#fcfde1');
                     }
 
                 }

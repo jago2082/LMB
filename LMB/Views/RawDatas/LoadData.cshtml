@@ -59,10 +59,12 @@
 
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.25.6/sweetalert2.js"></script>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.25.6/sweetalert2.all.min.js"></script>
             <script type="text/javascript">
                 var user = 0;
                 function getval(sel) {
-                    user = sel.value;
+                    user = sel.value; 
                 }
                 $('input[type=file]').change(function () {
                     var select = $('#Files option:selected').text();
@@ -87,7 +89,7 @@
                 })
 
                 $('#myform').submit(function () {
-                    $('#modalUser').modal()
+                    $('#mod-progress').modal()
                 });
             </script>
 

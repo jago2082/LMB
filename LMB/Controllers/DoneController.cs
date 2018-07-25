@@ -48,14 +48,14 @@ namespace LMB.Controllers
             {
                 var fi = DateTime.Parse(dateI);
                 var ff = DateTime.Parse(dateF);
-                //if (!String.IsNullOrEmpty(user) || user!="0")
-                //{
-                //    insp = db.InspectionDaily.Where(i => i.Date > fi && i.Date < ff && i.UserDBs.UserName == user).ToList();
-                //}
-                //else
-                //{
+                if (!String.IsNullOrEmpty(user) && user!="0")
+                {
+                    insp = db.InspectionDaily.Where(i => i.Date > fi && i.Date < ff && i.UserDBs.UserName == user).ToList();
+                }
+                else
+                {
                     insp = db.InspectionDaily.Where(i => i.Date > fi && i.Date < ff).ToList();
-                //}
+                }
 
             }
             else
@@ -89,6 +89,7 @@ namespace LMB.Controllers
             if (insp == null  || insp.ToList().Count()==0)
             {
                 ViewBag.Info = null;
+                ViewBag.remove();
                 ViewBag.Info = "<script type='text/javascript'>swal('¡Info!', 'Not Data Found', 'info');</script>";
                 var inspectionDaily = db.InspectionDaily.Include(u => u.UserDBs);
                 ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "UserName");
@@ -152,7 +153,28 @@ namespace LMB.Controllers
             return View(await ValueCheckList.ToListAsync());
         }
 
-  
+        public async Task<ActionResult> UnderTable(int? id, int IDIns)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var ValueCheckList = db.ValueCheckList.Where(i => i.IdInspection == IDIns && i.RowIDQuestion == id);
+            var inspection = db.InspectionDaily.Find(id);
+
+
+            // ValueCheckList valueCheckList = await db.ValueCheckList.FindAsync(id);
+            if (ValueCheckList == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            return View(await ValueCheckList.ToListAsync());
+        }
+        
 
                public async Task<ActionResult> IndexInv(int? id)
         {
@@ -230,27 +252,7 @@ namespace LMB.Controllers
             return View(await secciones.ToListAsync());
 
         }
-
-        public async Task<ActionResult> UnderTable(int? id, int IDIns)
-        {
-
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var secciones = db.UnderClearanceRecord.Where(y => y.IdUndCValue == id).OrderByDescending(x => x.PSN);
-
-            // var inspection = db.UnderClearanceRecord.Find(id);
-
-
-            // UnderClearValues valueCheckList = db.UnderClearanceRecord.FindAsync(id);
-
-            ViewBag.idinspect = IDIns;
-            return View(await secciones.ToListAsync());
-
-        }
-
+        
 
         public ActionResult LoadBridgeInspectionRecord(int? id)
         {

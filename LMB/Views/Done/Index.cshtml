@@ -152,9 +152,11 @@
                         <label for="idTourDateDetails">Invoice Range Date</label>
                         <div class="form-group">
                             <label for="dateini">initial Date</label>
-                            <input type="date" data-date-format="DD MMMM YYYY" name="dateini" id="dateini" />
+                            <input type="text"  name="dateini" id="dateini" />
+                            @*<input type="date" data-date-format="DD MMMM YYYY" name="dateini" id="dateini" />*@
                             <label for="datefin">final Date</label>
-                            <input type="date" data-date-format="DD MMMM YYYY" name="datefin" id="datefin" />
+                            <input type="text" name="datefin" id="datefin" />
+                            @*<input type="date" data-date-format="DD MMMM YYYY" name="datefin" id="datefin" />*@
 
                             <div class="modal-body">
                                 <input type="hidden" name="bookId" id="bookId" value="" />
@@ -185,12 +187,16 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.25.6/sweetalert2.all.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.25.6/sweetalert2.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript">
-            $(document).ready(function (e) {
+        $(document).ready(function (e) {
+            $('#dateini').datepicker({ dateFormat: 'dd/mm/yy' });
+            $('#datefin').datepicker({ dateFormat: 'dd/mm/yy' });
                 inicializar(e);
             });
                function tabla() {

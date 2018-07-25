@@ -73,4 +73,23 @@ namespace LMB.Helpers
             public double? longitude { get; set; }
         }
     }
+    // The extension method
+    public static class DataContextExtensions
+    {
+        public static DataContext BulkInsert<T>(this DataContext context, T entity, int count, int batchSize) where T : class
+        {
+            context.Set<T>().Add(entity);
+
+            if (count % batchSize == 0)
+            {
+                context.SaveChanges();
+                context.Dispose();
+                context = new DataContext();
+
+                // This is optional
+                context.Configuration.AutoDetectChangesEnabled = false;
+            }
+            return context;
+        }
+    }
 }
