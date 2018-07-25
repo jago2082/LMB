@@ -144,6 +144,11 @@ namespace LMB.Helpers
                 Text = "Configuration Checklist",
                 Value = "2",
             });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Detailed Work Schedule  B",
+                Value = "3",
+            });
             /*
             listItems.Add(new SelectListItem
             {

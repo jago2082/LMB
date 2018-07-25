@@ -48,7 +48,7 @@ namespace LMB.Controllers
             {
                 var fi = DateTime.Parse(dateI);
                 var ff = DateTime.Parse(dateF);
-                if (!String.IsNullOrEmpty(user) || user!="0")
+                if (!String.IsNullOrEmpty(user) && user!="0")
                 {
                     insp = db.InspectionDaily.Where(i => i.Date > fi && i.Date < ff && i.UserDBs.UserName == user).ToList();
                 }
@@ -89,6 +89,7 @@ namespace LMB.Controllers
             if (insp == null  || insp.ToList().Count()==0)
             {
                 ViewBag.Info = null;
+                ViewBag.remove();
                 ViewBag.Info = "<script type='text/javascript'>swal('¡Info!', 'Not Data Found', 'info');</script>";
                 var inspectionDaily = db.InspectionDaily.Include(u => u.UserDBs);
                 ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "UserName");

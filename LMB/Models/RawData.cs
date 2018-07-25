@@ -12,6 +12,7 @@ namespace LMB.Models
         [Key]
         public int IDRawData { get; set; }
 
+        public string StructureNumber { get; set; }
         public string FileNo { get; set; }
 
         public string District { get; set; } //205
