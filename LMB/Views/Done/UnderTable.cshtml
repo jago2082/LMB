@@ -1,0 +1,342 @@
+﻿@model IEnumerable<LMB.Models.UnderClearValues>
+@{
+    LMB.Models.UnderClearValues inspection = Model.FirstOrDefault();
+
+
+}
+@{
+    ViewBag.Title = "Done";
+    int IdIns = (int)ViewBag.idinspect;
+}
+
+<h2>UnderClearance</h2>
+
+<p>
+</p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+       style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+    <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+        <td width=335 valign=top style='width:251.6pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>
+                <span style='font-size:16.0pt;mso-bidi-font-size:8.0pt'>
+                    Feature <span class=SpellE>Xed</span>-&gt;<o:p></o:p>
+                </span>
+            </p>
+        </td>
+        <td width=648 colspan=3 valign=top style='width:6.75in;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <b style='mso-bidi-font-weight:normal'>
+                    <span style='font-size:14.0pt;mso-bidi-font-size:8.0pt'> @inspection.FeatureXed<o:p></o:p></span>
+                </b>
+            </p>
+        </td>
+    </tr>
+    <tr style='mso-yfti-irow:1'>
+        <td width=335 valign=top style='width:251.6pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>
+                <b style='mso-bidi-font-weight:normal'>
+                    <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'>PSN: @inspection.PSN<o:p></o:p></span>
+                </b>
+            </p>
+        </td>
+        <td width=210 valign=top style='width:157.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'>Field Data<o:p></o:p></span>
+            </p>
+        </td>
+        <td width=246 valign=top style='width:184.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'>Reference<o:p></o:p></span>
+            </p>
+        </td>
+        <td width=192 valign=top style='width:2.0in;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'>Item No.<o:p></o:p></span>
+            </p>
+        </td>
+    </tr>
+    <tr style='mso-yfti-irow:2'>
+        <td width=335 valign=top style='width:251.6pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>
+                <span style='font-size:14.0pt;mso-bidi-font-size:8.0pt'>
+                    Right
+                    Lateral Clearance<o:p></o:p>
+                </span>
+            </p>
+        </td>
+        <td width=210 valign=top style='width:157.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.FieldDataRLC<o:p></o:p></span>
+            </p>
+        </td>
+        <td width=246 valign=top style='width:184.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.RefFeRLC- @inspection.RefFeRLCTo<o:p></o:p></span>
+            </p>
+        </td>
+        <td width=192 valign=top style='width:2.0in;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.ItemRLC<o:p></o:p></span>
+            </p>
+        </td>
+    </tr>
+    <tr style='mso-yfti-irow:3'>
+        <td width=335 valign=top style='width:251.6pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>
+                <span style='font-size:14.0pt;mso-bidi-font-size:8.0pt'>
+                    Left Lateral
+                    Clearance<o:p></o:p>
+                </span>
+            </p>
+        </td>
+        <td width=210 valign=top style='width:157.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.FieldDataLLC<o:p></o:p></span>
+            </p>
+        </td>
+        <td width=246 valign=top style='width:184.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.RefFeLLC- @inspection.RefFeLLCTo<o:p></o:p></span>
+            </p>
+        </td>
+        <td width=192 valign=top style='width:2.0in;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.ItemLLC<o:p></o:p></span>
+            </p>
+        </td>
+    </tr>
+    <tr style='mso-yfti-irow:4'>
+        <td width=335 valign=top style='width:251.6pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>
+                <span style='font-size:14.0pt;mso-bidi-font-size:8.0pt'>
+                    Total
+                    Horizontal <span class=SpellE>Clr</span><o:p></o:p>
+                </span>
+            </p>
+        </td>
+        <td width=210 valign=top style='width:157.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.FieldDataTHC<o:p></o:p></span>
+            </p>
+        </td>
+        <td width=246 valign=top style='width:184.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.RefFeTHC- @inspection.RefFeTHCTo<o:p></o:p></span>
+            </p>
+        </td>
+        <td width=192 valign=top style='width:2.0in;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.ItemTHC<o:p></o:p></span>
+            </p>
+        </td>
+    </tr>
+    <tr style='mso-yfti-irow:5'>
+        <td width=335 valign=top style='width:251.6pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>
+                <span style='font-size:14.0pt;mso-bidi-font-size:8.0pt'>
+                    Max
+                    Practical Vert <span class=SpellE>Clr</span><o:p></o:p>
+                </span>
+            </p>
+        </td>
+        <td width=210 valign=top style='width:157.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.FieldDataMPV<o:p></o:p></span>
+            </p>
+        </td>
+        <td width=246 valign=top style='width:184.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.RefFeMPV- @inspection.RefFeMPVTo<o:p></o:p></span>
+            </p>
+        </td>
+        <td width=192 valign=top style='width:2.0in;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.ItemMPV<o:p></o:p></span>
+            </p>
+        </td>
+    </tr>
+    <tr style='mso-yfti-irow:6'>
+        <td width=335 valign=top style='width:251.6pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>
+                <span style='font-size:14.0pt;mso-bidi-font-size:8.0pt'>
+                    Min Measured
+                    Vert <span class=SpellE>Clr</span><o:p></o:p>
+                </span>
+            </p>
+        </td>
+        <td width=210 valign=top style='width:157.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.FieldDataMMV<o:p></o:p></span>
+            </p>
+        </td>
+        <td width=246 valign=top style='width:184.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.RefFeMMV- @inspection.RefFeMMVTo<o:p></o:p></span>
+            </p>
+        </td>
+        <td width=192 valign=top style='width:2.0in;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.ItemMMV<o:p></o:p></span>
+            </p>
+        </td>
+    </tr>
+    <tr style='mso-yfti-irow:7;mso-yfti-lastrow:yes'>
+        <td width=335 valign=top style='width:251.6pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'>
+                <span style='font-size:14.0pt;mso-bidi-font-size:8.0pt'>
+                    Signed
+                    Vertical <span class=SpellE>Clr</span><o:p></o:p>
+                </span>
+            </p>
+        </td>
+        <td width=210 valign=top style='width:157.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.FieldDataSVC<o:p></o:p></span>
+            </p>
+        </td>
+        <td width=246 valign=top style='width:184.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.RefFeSVC- @inspection.RefFeSVCTo<o:p></o:p></span>
+            </p>
+        </td>
+        <td width=192 valign=top style='width:2.0in;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'>
+                <span style='font-size:14.0pt;
+  mso-bidi-font-size:8.0pt'> @inspection.ItemSVC<o:p></o:p></span>
+            </p>
+        </td>
+    </tr>
+</table>

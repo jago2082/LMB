@@ -37,6 +37,7 @@ namespace LMB.Models
 
         public System.Data.Entity.DbSet<LMB.Models.InspectionBasicRegistry> InspectionBasicRegistry { get; set; }
 
+       
         public System.Data.Entity.DbSet<LMB.Models.InspectionBasicRegistryValue> InspectionBasicRegistryValue { get; set; }
 
         public System.Data.Entity.DbSet<LMB.Models.InspectionDetailCount> InspectionDetailCount { get; set; }

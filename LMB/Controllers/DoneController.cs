@@ -152,28 +152,7 @@ namespace LMB.Controllers
             return View(await ValueCheckList.ToListAsync());
         }
 
-        public async Task<ActionResult> UnderTable(int? id, int IDIns)
-        {
-
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var ValueCheckList = db.ValueCheckList.Where(i => i.IdInspection == IDIns && i.RowIDQuestion == id);
-            var inspection = db.InspectionDaily.Find(id);
-
-
-            // ValueCheckList valueCheckList = await db.ValueCheckList.FindAsync(id);
-            if (ValueCheckList == null)
-            {
-                return HttpNotFound();
-            }
-
-
-            return View(await ValueCheckList.ToListAsync());
-        }
-        
+  
 
                public async Task<ActionResult> IndexInv(int? id)
         {
@@ -251,7 +230,27 @@ namespace LMB.Controllers
             return View(await secciones.ToListAsync());
 
         }
-        
+
+        public async Task<ActionResult> UnderTable(int? id, int IDIns)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var secciones = db.UnderClearanceRecord.Where(y => y.IdUndCValue == id).OrderByDescending(x => x.PSN);
+
+            // var inspection = db.UnderClearanceRecord.Find(id);
+
+
+            // UnderClearValues valueCheckList = db.UnderClearanceRecord.FindAsync(id);
+
+            ViewBag.idinspect = IDIns;
+            return View(await secciones.ToListAsync());
+
+        }
+
 
         public ActionResult LoadBridgeInspectionRecord(int? id)
         {
