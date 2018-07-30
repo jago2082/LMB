@@ -1549,7 +1549,7 @@ namespace LMB.Controllers
             return new ViewAsPdf("ReportPDF", lismpdf)
             {
 
-                RotativaOptions = { PageMargins = new Margins(10, 8,0, 8), PageSize = Rotativa.Core.Options.Size.Letter }
+                RotativaOptions = { PageMargins = new Margins(10,8,0, 8), PageSize = Rotativa.Core.Options.Size.Letter }
             };
         }
 
