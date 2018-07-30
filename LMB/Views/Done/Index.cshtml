@@ -195,8 +195,8 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript">
         $(document).ready(function (e) {
-            $('#dateini').datepicker({ dateFormat: 'dd/mm/yy' });
-            $('#datefin').datepicker({ dateFormat: 'dd/mm/yy' });
+            $('#dateini').datepicker({ dateFormat: 'MM/dd/yy' });
+            $('#datefin').datepicker({ dateFormat: 'MM/dd/yy' });
                 inicializar(e);
             });
                function tabla() {
@@ -221,13 +221,12 @@
                 if (date1 == "" || date2 == "") {
 
                 }
-                $("#myModal").trigger('click');
+               
 
                 $.post(Url, { "dateI": date1, "dateF": date2, "user": user })
                 .done(function (data) {
-                    swal('Info', 'Success', 'success');
-                    $("#modalUser").trigger('click');
-                    location.reload();
+                    $("#myModal").trigger('click');
+                 
                 })
                 .fail(function (xhr, status, error) {
                     swal('Error', xhr.responseText, 'error');

@@ -19,6 +19,7 @@ using System.Drawing;
 namespace LMB.Controllers
 {
     [Authorize]
+    [HandleError]
     public class DoneController : Controller
     {
         private DataContext db = new DataContext();
@@ -43,76 +44,84 @@ namespace LMB.Controllers
 
         public async Task<ActionResult> filterDate(string dateI, string dateF, string user)
         {
-            var insp = new List<InspectionDaily>();
-            if (!String.IsNullOrEmpty(dateI))
+            try
             {
-                var fi = DateTime.Parse(dateI);
-                var ff = DateTime.Parse(dateF);
-                if (!String.IsNullOrEmpty(user) && user!="0")
+                var insp = new List<InspectionDaily>();
+                if (!String.IsNullOrEmpty(dateI))
                 {
-                    insp = db.InspectionDaily.Where(i => i.Date > fi && i.Date < ff && i.UserDBs.UserName == user).ToList();
+                    var fi = DateTime.Parse(dateI);
+                    var ff = DateTime.Parse(dateF);
+                    if (!String.IsNullOrEmpty(user) && user != "0")
+                    {
+                        insp = db.InspectionDaily.Where(i => i.Date > fi && i.Date < ff && i.UserDBs.UserName == user).ToList();
+                    }
+                    else
+                    {
+                        insp = db.InspectionDaily.Where(i => i.Date > fi && i.Date < ff).ToList();
+                    }
+
                 }
                 else
                 {
-                    insp = db.InspectionDaily.Where(i => i.Date > fi && i.Date < ff).ToList();
+                    insp = db.InspectionDaily.ToList();
                 }
 
+                var TotalA = insp.ToList().Where(ing => ing.CommentGeneral == "A").Count();
+                var TotalAA = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "A").Count();
+                var TotalAB = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "B").Count();
+                var TotalAC = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "C").Count();
+                var TotalAD = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "D").Count();
+                var TotalAE = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "E").Count();
+                var TotalAF = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "F").Count();
+                var TotalAG = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "G").Count();
+                var TotalAH = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "H").Count();
+                var TotalAX = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "X").Count();
+
+                var TotalB = insp.ToList().Where(ing => ing.CommentGeneral == "B").Count();
+                var TotalBA = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "A").Count();
+                var TotalBB = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "B").Count();
+                var TotalBC = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "C").Count();
+                var TotalBD = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "D").Count();
+                var TotalBE = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "E").Count();
+                var TotalBF = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "F").Count();
+                var TotalBG = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "G").Count();
+                var TotalBH = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "H").Count();
+                var TotalBX = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "X").Count();
+
+
+                if (insp == null || insp.ToList().Count() == 0)
+                {
+                    ViewBag.Info = null;
+                    ViewBag.Info = "<script type='text/javascript'>swal('¡Info!', 'Not Data Found', 'info');</script>";
+                    var inspectionDaily = db.InspectionDaily.Include(u => u.UserDBs);
+                    ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "UserName");
+                    return View("Index", await inspectionDaily.Where(i => i.IdStatus == 2).ToListAsync());
+                }
+
+                string header = Server.MapPath("~/PDF/Header.html");//Path of PrintFooter.html File
+                string customSwitches = string.Format("--header-html  \"{0}\" " +
+                                       "--header-spacing \"0\" " +
+                                       "--footer-html \"{1}\" " +
+                                       "--header-font-size \"10\" ", header, Url.Action("Footer", "Done", "http"));
+
+                string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
+
+                 return View("ReportBill", insp);
+
+                //return new ViewAsPdf("ReportBill", insp)
+                //{
+
+                //    //  FileName = "firstPdf.pdf",
+                //    // CustomSwitches = footer
+                //    RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
+                //};
             }
-            else
+            catch (Exception ex)
             {
-                insp = db.InspectionDaily.ToList();
+
+                throw;
             }
-
-            var TotalA = insp.ToList().Where(ing => ing.CommentGeneral == "A").Count();
-            var TotalAA = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "A").Count();
-            var TotalAB = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "B").Count();
-            var TotalAC = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "C").Count();
-            var TotalAD = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "D").Count();
-            var TotalAE = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "E").Count();
-            var TotalAF = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "F").Count();
-            var TotalAG = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "G").Count();
-            var TotalAH = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "H").Count();
-            var TotalAX = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "X").Count();
-
-            var TotalB = insp.ToList().Where(ing => ing.CommentGeneral == "B").Count();
-            var TotalBA = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "A").Count();
-            var TotalBB = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "B").Count();
-            var TotalBC = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "C").Count();
-            var TotalBD = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "D").Count();
-            var TotalBE = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "E").Count();
-            var TotalBF = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "F").Count();
-            var TotalBG = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "G").Count();
-            var TotalBH = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "H").Count();
-            var TotalBX = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "X").Count();
-
-
-            if (insp == null  || insp.ToList().Count()==0)
-            {
-                ViewBag.Info = null;
-                ViewBag.remove();
-                ViewBag.Info = "<script type='text/javascript'>swal('¡Info!', 'Not Data Found', 'info');</script>";
-                var inspectionDaily = db.InspectionDaily.Include(u => u.UserDBs);
-                ViewBag.Userdb = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "UserName");
-                return View("Index",await inspectionDaily.Where(i => i.IdStatus == 2).ToListAsync());
-            }
-
-            string header = Server.MapPath("~/PDF/Header.html");//Path of PrintFooter.html File
-            string customSwitches = string.Format("--header-html  \"{0}\" " +
-                                   "--header-spacing \"0\" " +
-                                   "--footer-html \"{1}\" " +
-                                   "--header-font-size \"10\" ", header, Url.Action("Footer", "Done", "http"));
-
-            string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
-
-            // return View("ReportInventoryRecord", InventoryReport);
-
-            return new ViewAsPdf("ReportBill", insp)
-            {
-
-                //  FileName = "firstPdf.pdf",
-                // CustomSwitches = footer
-                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
-            };
+            
 
         }
 
