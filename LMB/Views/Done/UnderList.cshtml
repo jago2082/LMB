@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LMB.Models.>
+﻿@model IEnumerable<LMB.Models.UnderClearValues>
 @{
     ViewBag.Title = "Done";
     int IdIns = (int)ViewBag.idinspect;
@@ -29,7 +29,7 @@ Please select the section @IdIns
         <tr>
             <th scope="row">@Html.DisplayFor(modelItem => item.PSN)</th>
             <td>
-                @Html.ActionLink(item.Feadturexed, "UnderTable", new { id = item.i, IDIns= IdIns })
+                @Html.ActionLink(item.FeatureXed, "UnderTable", new { id = item.IdUndCValue, IDIns= IdIns })
             </td>
             <td></td>
             <td></td>

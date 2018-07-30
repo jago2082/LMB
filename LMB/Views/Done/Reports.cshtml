@@ -90,6 +90,9 @@ Other Reports Bridge No.: @Model.NumInspection
                 @Html.ActionLink("Underclearance Record", "ReportUnderClear", new { id = Model.IdInspection })
                 @*@Html.ActionLink("Underclearance Record", "ReportUnderClear")*@
             </td>
+            <td>
+                @Html.ActionLink("Details", "UnderList", new { id = Model.IdInspection })
+            </td>
             <td></td>
             <td></td>
         </tr>
