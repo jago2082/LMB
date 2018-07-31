@@ -131,10 +131,15 @@ namespace LMB.Controllers
                 .Include(b => b.RecommendationType).Include(b => b.ReferenceFeatureType)
                 .Where(i => i.IdInspection == id);
             var inspection = db.InspectionDaily.Find(id);
+            
             var descr = db.InspectionBasicRegistryValue.Where(ind => ind.IdInspection == id && ind.idInspBasic == 38).FirstOrDefault();
+
             foreach (var item in bridgeInspectionFollowUps)
             {
-                item.Description = descr.Value;
+                if (descr == null)
+                    item.Description = "";
+                else
+                    item.Description = descr.Value;
                 item.InspectionOwner = inspection.Owner;
             }
             return View(await bridgeInspectionFollowUps.ToListAsync());
