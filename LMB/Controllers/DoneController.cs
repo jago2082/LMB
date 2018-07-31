@@ -142,6 +142,7 @@ namespace LMB.Controllers
                     item.Description = descr.Value;
                 item.InspectionOwner = inspection.Owner;
             }
+            ViewBag.idinspect = id;
             return View(await bridgeInspectionFollowUps.ToListAsync());
         }
 
@@ -1288,8 +1289,15 @@ namespace LMB.Controllers
             ViewBag.Idinspection = id;
 
             ComponentSummary ComponentSummary = new ComponentSummary();
-            ComponentSummary.Description = db.InspectionBasicRegistryValue.ToList().Where(ins => ins.IdInspection == id && ins.idInspBasic == 38).FirstOrDefault().Value;
-
+            var description = db.InspectionBasicRegistryValue.ToList().Where(ins => ins.IdInspection == id && ins.idInspBasic == 38).FirstOrDefault();
+            if (description == null)
+            {
+                ComponentSummary.Description = "";
+            }
+            else
+            {
+                ComponentSummary.Description = description.Value;
+            }
             ComponentSummary.IdInspection = id;
             ViewBag.InspectionRaiting = new SelectList(CombosHelper.InspectionRaiting(), "InspectionRaitingType", "Description");
             return View(ComponentSummary);
