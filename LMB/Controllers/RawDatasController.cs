@@ -402,98 +402,107 @@ namespace LMB.Controllers
                         //contex.Database.ExecuteSqlCommand("TRUNCATE TABLE RawDatas");
                         List<InspectionDaily> linspdaily = new List<InspectionDaily>();
                         IList<InspectionDaily> iinspdaily = new List<InspectionDaily>();
+                        InspectionDaily inspectiondaily = new InspectionDaily();
                         int loop = 0;
                         var bandera = false;
-
-                        InspectionDaily inspectiondaily = new InspectionDaily();
-                        try
+                        var coun = db.RawData;
+                        if (coun != null)
                         {
-                            foreach (DataRow data in result.Tables[0].Rows)
+                            try
                             {
-                                if (loop == 0)
+                                foreach (DataRow data in result.Tables[0].Rows)
                                 {
-                                    loop++;
-                                    continue;
+                                    if (loop == 0)
+                                    {
+                                        loop++;
+                                        continue;
+                                    }
+                                    var StructureNumber = data[0].ToString();
+                                    rowdt = db.RawData.Where(r => r.StructureNumber == StructureNumber)
+                                       .FirstOrDefault();
+                                    if (rowdt == null)
+                                    {
+                                        loop++;
+                                        continue;
+                                    }
+                                    else
+                                    {
+                                        inspectiondaily.IdClient = 1;
+                                        inspectiondaily.IDUser = 1;
+                                        inspectiondaily.IdProject = 1;
+                                        //if (isLetter)
+                                        //{
+                                        //    inspectiondaily.IdProject = 2;
+                                        //}
+                                        //else
+                                        //{
+                                        //    inspectiondaily.IdProject = 1;
+                                        //}
+                                        var idproject = validarcontrol(rowdt.Control);
+                                        inspectiondaily.IdProject = idproject;
+                                        var numinsp = String.Format("{0}-{1}-{2}-{3}-{4}", rowdt.StructureNumber.Substring(1, 2), rowdt.StructureNumber.Substring(2, 3), rowdt.StructureNumber.Substring(6, 4), rowdt.StructureNumber.Substring(10, 2), rowdt.StructureNumber.Substring(12));
+                                        var exist = db.InspectionDaily.Where(i => i.NumInspection == numinsp).FirstOrDefault();
+                                        //if (exist != null)
+                                        //{ message.mensaje = "La inpeccion ya se encuentra registrada "; message.fila = loop; break; }
+                                        inspectiondaily.NumInspection = numinsp;
+                                        inspectiondaily.DO = rowdt.District;
+                                        inspectiondaily.Company = rowdt.County;
+                                        inspectiondaily.Control = rowdt.Control;
+                                        inspectiondaily.Section = rowdt.Section;
+                                        inspectiondaily.Scope = rowdt.FeatXed;
+                                        inspectiondaily.IdValueCheckList = 70;
+                                        inspectiondaily.IdAttach = 4;
+                                        inspectiondaily.Hour = rowdt.YrBuilt;
+                                        inspectiondaily.IdStatus = 5;
+                                        inspectiondaily.City = rowdt.FacCarried;
+                                        inspectiondaily.TypeInspection = 1;
+                                        inspectiondaily.Address = rowdt.Location;
+                                        inspectiondaily.LatitudeIni = rowdt.GPSLatitude;
+                                        inspectiondaily.LongitudeIni = rowdt.GPSLongitude;
+                                        inspectiondaily.Structure = rowdt.StrNo;
+                                        inspectiondaily.MaintanSection = rowdt.MaintSect;
+                                        inspectiondaily.Milepnt = rowdt.Milepnt;
+                                        inspectiondaily.Owner = rowdt.Owner;
+                                        db.InspectionDaily.Add(inspectiondaily);
+                                        db.SaveChanges();
+                                        bandera = true;
+                                    }
                                 }
-                                var StructureNumber = data[0].ToString();
-                                 rowdt = db.RawData.Where(r => r.StructureNumber== StructureNumber)
-                                    .FirstOrDefault();
-                                if (rowdt == null)
+
+                                if (!bandera)
                                 {
-                                    loop++;
-                                    continue;
+                                    ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'No data found','error');</script>";
+                                    ViewBag.Files = new SelectList(CombosHelper.GetFiles(), "Value", "Text");
+                                    return View("LoadData");
                                 }
                                 else
                                 {
-                                    inspectiondaily.IdClient = 1;
-                                    inspectiondaily.IDUser = 1;
-                                    inspectiondaily.IdProject = 1;
-                                    //if (isLetter)
-                                    //{
-                                    //    inspectiondaily.IdProject = 2;
-                                    //}
-                                    //else
-                                    //{
-                                    //    inspectiondaily.IdProject = 1;
-                                    //}
-                                    var idproject = validarcontrol(rowdt.Control);
-                                    inspectiondaily.IdProject = idproject;
-                                    var numinsp = String.Format("{0}-{1}-{2}-{3}-{4}", rowdt.StructureNumber.Substring(1, 2), rowdt.StructureNumber.Substring(2, 3), rowdt.StructureNumber.Substring(6, 4), rowdt.StructureNumber.Substring(10, 2), rowdt.StructureNumber.Substring(12));
-                                    var exist = db.InspectionDaily.Where(i => i.NumInspection == numinsp).FirstOrDefault();
-                                    //if (exist != null)
-                                    //{ message.mensaje = "La inpeccion ya se encuentra registrada "; message.fila = loop; break; }
-                                    inspectiondaily.NumInspection = numinsp;
-                                    inspectiondaily.DO = rowdt.District;
-                                    inspectiondaily.Company = rowdt.County;
-                                    inspectiondaily.Control = rowdt.Control;
-                                    inspectiondaily.Section = rowdt.Section;
-                                    inspectiondaily.Scope = rowdt.FeatXed;
-                                    inspectiondaily.IdValueCheckList = 70;
-                                    inspectiondaily.IdAttach = 4;
-                                    inspectiondaily.Hour = rowdt.YrBuilt;
-                                    inspectiondaily.IdStatus = 5;
-                                    inspectiondaily.City = rowdt.FacCarried;
-                                    inspectiondaily.TypeInspection = 1;
-                                    inspectiondaily.Address = rowdt.Location;
-                                    inspectiondaily.LatitudeIni = rowdt.GPSLatitude;
-                                    inspectiondaily.LongitudeIni = rowdt.GPSLongitude;
-                                    inspectiondaily.Structure = rowdt.StrNo;
-                                    inspectiondaily.MaintanSection = rowdt.MaintSect;
-                                    inspectiondaily.Milepnt = rowdt.Milepnt;
-                                    inspectiondaily.Owner = rowdt.Owner;
-                                    db.InspectionDaily.Add(inspectiondaily);
-                                    db.SaveChanges();
-                                    bandera = true;
+                                    dbContextTransaction.Commit();
+                                    reader.Close();
                                 }
                             }
-                            
-                            if (!bandera)
+                            catch (Exception ex)
                             {
-                                ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'No data found','error');</script>";
+
+                                dbContextTransaction.Rollback();
+                                reader.Close();
+                                message.mensaje = ex.InnerException.InnerException.ToString();
+                                if (message.mensaje.Contains("duplicate key"))
+                                {
+
+                                    ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'inspection duplicate in row " + loop + "', 'error');</script>";
+                                }
+                                else
+                                {
+                                    ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'Error " + ex.Message + "', 'error');</script>";
+                                }
                                 ViewBag.Files = new SelectList(CombosHelper.GetFiles(), "Value", "Text");
                                 return View("LoadData");
                             }
-                            else
-                            {
-                                dbContextTransaction.Commit();
-                                reader.Close();
-                            }
                         }
-                        catch (Exception ex)
+                        else
                         {
-
-                            dbContextTransaction.Rollback();
-                            reader.Close();
-                            message.mensaje = ex.InnerException.InnerException.ToString();
-                            if (message.mensaje.Contains("duplicate key"))
-                            {
-
-                                ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'inspection duplicate in row " + loop + "', 'error');</script>";
-                            }
-                            else
-                            {
-                                ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'Error " + ex.Message + "', 'error');</script>";
-                            }
+                            ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'First you need load Row Data', 'error');</script>";
                             ViewBag.Files = new SelectList(CombosHelper.GetFiles(), "Value", "Text");
                             return View("LoadData");
                         }
