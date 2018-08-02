@@ -42,6 +42,7 @@ namespace LMB.Controllers
 
         }
 
+
         public async Task<ActionResult> filterDate(string dateI, string dateF, string user)
         {
             try
@@ -623,9 +624,33 @@ namespace LMB.Controllers
 
         }
 
-        public ActionResult ReportBill()
+        public ActionResult ReportBill(string dateI, string dateF, string user)
         {
-            var insp = db.InspectionDaily.ToList();
+
+         
+                var insp = new List<InspectionDaily>();
+                if (!String.IsNullOrEmpty(dateI))
+                {
+                    var fi = DateTime.Parse(dateI);
+                    var ff = DateTime.Parse(dateF);
+                    if (!String.IsNullOrEmpty(user) && user != "0")
+                    {
+                        insp = db.InspectionDaily.Where(i => i.Date > fi && i.Date < ff && i.UserDBs.UserName == user).ToList();
+                    }
+                    else
+                    {
+                        insp = db.InspectionDaily.Where(i => i.Date > fi && i.Date < ff).ToList();
+                    }
+
+                }
+                else
+                {
+                    insp = db.InspectionDaily.ToList();
+                }
+
+
+
+                
             var TotalA = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A").Count();
             var TotalAA = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "A").Count();
             var TotalAB = db.InspectionDaily.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "B").Count();
@@ -664,15 +689,18 @@ namespace LMB.Controllers
 
             // return View("ReportInventoryRecord", InventoryReport);
 
-            return new ViewAsPdf("ReportBill", insp)
+            return new ActionAsPdf("ReportBill", insp)
+            
             {
 
-                //  FileName = "firstPdf.pdf",
+                 FileName = "firstPdf.pdf",
                 // CustomSwitches = footer
                 RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
             };
 
+
         }
+
 
 
         public async Task<ActionResult> ReportInspFollowUp(int id)
@@ -1245,7 +1273,12 @@ namespace LMB.Controllers
             var inspectionBasicRegistryValue = db.InspectionBasicRegistryValue
                 .Where(b => b.IdInspection == id && b.idInspBasic == 38).FirstOrDefault();
             bfollowup.IdInspection = id;
-            bfollowup.InspectionDescription = inspectionBasicRegistryValue.Value;
+            if (inspectionBasicRegistryValue == null)
+
+                    bfollowup.InspectionDescription = "";
+                else
+
+                    bfollowup.InspectionDescription = inspectionBasicRegistryValue.Value;
             var inpd = db.InspectionDaily.Find(id);
             bfollowup.InspectionOwner = inpd.Owner;
             ViewBag.Idinspection = id;
