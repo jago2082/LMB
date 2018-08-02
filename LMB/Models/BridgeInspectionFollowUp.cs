@@ -10,13 +10,14 @@ namespace LMB.Models
     {
         [Key]
         public int IdBridgeInspectionFollowUp { get; set; }
-
+        [Display(Name = "Action/Comments")]
         public string Description { get; set; }
 
+        [Display(Name = "Reference Features")]
         public int IdReferenceFeatureType { get; set; }
-
+        [Display(Name = "Recomendation Type")]
         public int IdRecommendationType { get; set; }
-
+        [Display(Name = "1085 Ratings")]
         public int InspectionRaitingType { get; set; }
 
         

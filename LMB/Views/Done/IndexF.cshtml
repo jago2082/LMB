@@ -14,7 +14,6 @@
 
 }
 
-@Html.ActionLink("Create", "CreateF", new { id = bridgeInspectionFollowUp.IdInspection })
 <div class="form-horizontal">
     <hr />
     @Html.Hidden("IdInspection", bridgeInspectionFollowUp.IdInspection.ToString())
@@ -31,11 +30,12 @@
             @Html.EditorFor(model => model.FirstOrDefault().InspectionOwner, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.FirstOrDefault().InspectionOwner, "", new { @class = "text-danger" })
         </div>
-        <input type="submit" value="Save" id="add" class="btn btn-success">
+        <input type="submit" style="margin-left:325pt; margin-top:10pt" value="Save" id="add" class="btn btn-primary">
     </div>
     <div id="mens"></div>
     <hr />
 </div>
+@Html.ActionLink("Create Item", "CreateF", new { id = bridgeInspectionFollowUp.IdInspection })
 
 <table class="table">
     <tr>
@@ -43,16 +43,18 @@
 
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.ReferenceFeatureType.Description)
+            
+        </th>
+        <th>
+           @Html.DisplayNameFor(model => model.Description) 
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.InspectionRaiting.Description)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RecommendationType.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReferenceFeatureType.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
+            
         </th>
         <th></th>
     </tr>
@@ -64,16 +66,18 @@
                 @Html.HiddenFor(modelItem => item.IdInspection)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.InspectionRaiting.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecommendationType.Description)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.ReferenceFeatureType.Description)
+               
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InspectionRaiting.Description)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.RecommendationType.Description)
             </td>
             <td>
                 @Html.ActionLink("Edit", "EditF", new { id = item.IdBridgeInspectionFollowUp })
