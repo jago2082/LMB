@@ -43,6 +43,9 @@ Other Reports Bridge No.: @Model.NumInspection
                 @*@Html.ActionLink("Bridge Summary Sheet", "ReportSummarySheet")*@
                 @Html.ActionLink("Bridge Summary Sheet", "ReportSummarySheet", new { id = Model.IdInspection })
         </td>
+        <td>
+            @Html.ActionLink("Details", "IndexBS", new { id = Model.IdInspection })
+        </td>
         <td></td>
         <td></td>
     </tr>

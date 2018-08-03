@@ -128,6 +128,7 @@ namespace LMB.Controllers
 
         public async Task<ActionResult> IndexF(int id)
         {
+            List<BridgeInspectionFollowUp> listtbr = new List<BridgeInspectionFollowUp>();
             var bridgeInspectionFollowUps = db.BridgeInspectionFollowUps.Include(b => b.InspectionRaiting)
                 .Include(b => b.RecommendationType).Include(b => b.ReferenceFeatureType)
                 .Where(i => i.IdInspection == id);
@@ -135,17 +136,70 @@ namespace LMB.Controllers
             
             var descr = db.InspectionBasicRegistryValue.Where(ind => ind.IdInspection == id && ind.idInspBasic == 38).FirstOrDefault();
 
-            foreach (var item in bridgeInspectionFollowUps)
+            if (bridgeInspectionFollowUps.ToList().Count()>0)
             {
-                if (descr == null)
-                    item.Description = "";
-                else
-                    item.Description = descr.Value;
-                item.InspectionOwner = inspection.Owner;
+                foreach (var item in bridgeInspectionFollowUps)
+                {
+                    if (descr == null)
+                        item.Description = "";
+                    else
+                    {
+                        item.Description = descr.Value;
+                        item.InspectionOwner = inspection.Owner;
+                        item.IdInspection = id;
+                    }
+
+                }
             }
+            else
+            {
+                listtbr.Add(new BridgeInspectionFollowUp());
+                foreach (var item in listtbr)
+                {
+                    if (descr!=null)
+                    {
+                        item.Description = descr.Value;
+                        item.InspectionOwner = inspection.Owner;
+                        item.IdInspection = id;
+                    }
+                    else
+                    {
+                        item.Description = "";
+                        item.InspectionOwner = "";
+                        item.IdInspection = id;
+                    }
+                    
+                }
+                ViewBag.idinspect = id;
+                return View(listtbr.ToList());
+            }
+           
             ViewBag.idinspect = id;
             return View(await bridgeInspectionFollowUps.ToListAsync());
         }
+
+        public async Task<ActionResult> IndexBS(int id)
+        {
+          //  List<ReportSummarySheet> listtbr = new List<ReportSummarySheet>();
+
+            ReportSummarySheet reportf = new ReportSummarySheet();
+            reportf.InspectionDaily = await db.InspectionDaily.FindAsync(id);
+
+            reportf.BridgeSummaryComments = await db.BridgeSummaryComments
+                .Where(i => i.IdInspection == id).ToListAsync();
+
+
+            reportf.BridgeSummaryComponent = await db.BridgeSummaryComponent
+                .Where(i => i.IdInspection == id).ToListAsync();
+
+        
+                
+                ViewBag.idinspect = id;
+             //  return View(listtbr.ToList());
+            
+            return View(reportf);
+        }
+
 
         public async Task<ActionResult> IndexIR(int? id, int IDIns)
         {
@@ -705,15 +759,28 @@ namespace LMB.Controllers
 
         public async Task<ActionResult> ReportInspFollowUp(int id)
         {
+            ViewBag.Idinspection = id;
             ReportInspFollowUp reportf = new ReportInspFollowUp();
-
             reportf.InspectionDaily = await db.InspectionDaily.FindAsync(id);
             var distrcode = string.Format("{0}", reportf.InspectionDaily.DO);
             var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
+
+
             reportf.InspectionDaily.DO = distric.ABBR;
             var countrycode = reportf.InspectionDaily.Company.TrimStart('0');
             int code = int.Parse(countrycode);
             var country = db.Counties.Find(code);
+            var dato1 = db.FollowUpOptional.Where(d => d.IdInspection.Equals(id)).FirstOrDefault();
+            var dato2 = db.FollowUpOptional.Where(d => d.IdInspection.Equals(id)).FirstOrDefault();
+            if (dato1 == null)
+                reportf.Dato1 = "";
+            else
+                reportf.Dato1 = dato1.Data1;
+            if (dato2 == null)
+                reportf.Dato2 = "";
+            else
+                reportf.Dato2 = dato2.Data2;
+
             reportf.InspectionDaily.Company = country.Description;
             reportf.Reports = db.Reports.Find(3);
             reportf.Configuration = db.Configurations.FirstOrDefault();
@@ -768,6 +835,17 @@ namespace LMB.Controllers
             reportf.Reports = db.Reports.Find(1);
             reportf.Configuration = db.Configurations.FirstOrDefault();
             reportf.Usuario = UsersHelper.finduser(User.Identity.GetUserName());
+
+            reportf.BridgeSummaryComments = await db.BridgeSummaryComments.Include(b => b.Comment)
+                .Where(i => i.IdInspection == id).ToListAsync();
+
+
+            reportf.BridgeSummaryComponent = await db.BridgeSummaryComponent.Include(b => b.IdRating)
+                .Include(b => b.InvH)
+                .Include(b => b.InvHS)
+                .Include(b => b.OpH)
+                .Include(b => b.OpHS)
+                .Where(i => i.IdInspection == id).ToListAsync();
 
             string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
 
@@ -1196,6 +1274,7 @@ namespace LMB.Controllers
             var bridgeInspectionFollowUps = db.BridgeInspectionFollowUps.Include(b => b.InspectionRaiting)
                 .Include(b => b.RecommendationType).Include(b => b.ReferenceFeatureType)
                 .Where(i => i.IdInspection == idis);
+            ViewBag.idinspect = idis;
             return View("IndexF", await bridgeInspectionFollowUps.ToListAsync());
         }
 

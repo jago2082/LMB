@@ -11,6 +11,10 @@ namespace LMB.Models
         public InspectionDaily InspectionDaily { get; set; }
         public Reports Reports { get; set; }
         public UserDB Usuario { get; set; }
-       // public ICollection<BridgeInspectionFollowUp> BridgeInspectionFollowUps { get; set; }
+
+       public ICollection<BridgeSummaryComponent> BridgeSummaryComponent { get; set; }
+       public ICollection<BridgeSummaryComments> BridgeSummaryComments { get; set; }
+
+       public BridgeSummaryData BridgeSummaryData { get; set; }
     }
 }

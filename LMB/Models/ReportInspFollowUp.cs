@@ -15,6 +15,8 @@ namespace LMB.Models
         public FollowUpOther FollowUpOther { get; set; }
         public ICollection<NoveltyInspection> NoveltyInspection { get; set; }
         public string ComentGeneral { get; set; }
+        public string Dato1 { get; set; }
+        public string Dato2 { get; set; }
 
     }
 }

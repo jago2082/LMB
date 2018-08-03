@@ -116,5 +116,15 @@ namespace LMB.Models
         public DbSet<Image_orig_attach> Image_orig_attachs { get; set; }
 
         public System.Data.Entity.DbSet<LMB.Models.ComponentSummary> ComponentSummaries { get; set; }
+
+        public DbSet<FollowUpOptional> FollowUpOptional { get; set; }
+
+        public DbSet<BridgeSummaryComments> BridgeSummaryComments { get; set; }
+
+        public DbSet<BridgeSummaryData> BridgeSummaryData { get; set; }
+
+        public DbSet<BridgeSummaryComponent> BridgeSummaryComponent { get; set; }
+
+
     }
 }
