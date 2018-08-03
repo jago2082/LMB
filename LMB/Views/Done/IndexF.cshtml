@@ -13,6 +13,7 @@
 <div class="form-horizontal">
     <hr />
     @Html.HiddenFor(model => model.FirstOrDefault().IdInspection)
+    
     <div class="form-group">
         @Html.LabelFor(model => model.FirstOrDefault().InspectionDescription, "Description", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -31,6 +32,7 @@
     <div id="mens"></div>
     <hr />
 </div>
+<h4>Follow-Up Action/Comments</h4>
 @Html.ActionLink("Create Item", "CreateF", new { id = bridgeInspectionFollowUp.IdInspection })
 
 <table class="table">

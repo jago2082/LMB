@@ -9,7 +9,8 @@
 <div class="form-horizontal">
     <hr />
     @Html.HiddenFor(model => model.InspectionDaily.IdInspection)
-    @@Html.ActionLink("Create Item", "CreateF", new { id = reportSummarySheet.BridgeSummaryComponent.FirstOrDefault().IdBScomponent })
+    <h4>Component Description and Raiting</h4>
+
 
     <table class="table">
         <tr>
@@ -39,36 +40,37 @@
 
         @foreach (var item in Model.BridgeSummaryComponent)
         {
-            <tr>
-                <td>
-                    @Html.HiddenFor(modelItem => item.IdInspection)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdRating)
+        <tr>
+            <td>
+                @Html.HiddenFor(modelItem => item.IdInspection)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdRating)
 
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.InvH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvH)
 
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.InvHS)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OpH)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OpHS)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "EditF", new { id = item.IdBScomponent })
-                    @Html.ActionLink("Delete", "DeleteF", new { id = item.IdBScomponent })
-                </td>
-            </tr>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvHS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpHS)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditF", new { id = item.IdBScomponent })
+                @Html.ActionLink("Delete", "DeleteF", new { id = item.IdBScomponent })
+            </td>
+        </tr>
         }
 
     </table>
 
+    <h4>Comments and/or Upgrade Recommendations</h4>
     <table class="table">
         <tr>
             <th>
@@ -78,7 +80,7 @@
                 @Html.DisplayNameFor(model => model.BridgeSummaryComments.FirstOrDefault().Comment)
 
             </th>
- 
+
             <th></th>
         </tr>
 
@@ -92,7 +94,7 @@
                     @Html.DisplayFor(modelItem => item.Comment)
 
                 </td>
- 
+
                 <td>
                     @Html.ActionLink("Edit", "EditF", new { id = item.IdBSComment })
                     @Html.ActionLink("Delete", "DeleteF", new { id = item.IdBSComment })
@@ -101,23 +103,138 @@
         }
 
     </table>
-    <div class="form-group">
-        @Html.LabelFor(model => model.BridgeSummaryData.InvGross, "lbs Gross", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.BridgeSummaryData.InvGross, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BridgeSummaryData.InvGross, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.BridgeSummaryData.InvGross, "lbs TandemAxle", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.BridgeSummaryData.InvGross, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BridgeSummaryData.InvGross, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <input type="submit" style="margin-left:325pt; margin-top:10pt" value="Save" id="add" class="btn btn-primary">
-    <div id="mens"></div>
-    <hr />
+    <h4>Load Posting Limits for Present Condition</h4>
+            <div class="form-group">
+                
+                <table>
+                    <tr>
+                        <td><h4><u>Inventory</u></h4></td>
+                        <td><h4><u></u></h4></td>
+                        <td><h4><u></u></h4></td>
+                        <td><h4><u>Operating</u></h4></td>
+                    </tr>
+                    <tr>
+                        <td width=200>
+                            <div class="col-md-7">
+                                @Html.EditorFor(model => model.BridgeSummaryData.InvGross, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BridgeSummaryData.InvGross, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td width=150>
+                             @Html.LabelFor(model => model.BridgeSummaryData.InvGross, "lbs Gross", htmlAttributes: new { @class = "control-label col-md-2" })
+                        </td>
+
+
+                        <td width=52>
+                            <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:normal'><o:p>&nbsp;</o:p></p>
+                        </td>
+                        <td width=200>
+                            <div class="col-md-7">
+                                @Html.EditorFor(model => model.BridgeSummaryData.OpGross, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BridgeSummaryData.OpGross, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td width=150>
+                            @Html.LabelFor(model => model.BridgeSummaryData.OpGross, "lbs Gross", htmlAttributes: new { @class = "control-label col-md-2" })
+>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td width=200>
+                            <div class="col-md-7">
+                                @Html.EditorFor(model => model.BridgeSummaryData.InvAxle, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BridgeSummaryData.InvAxle, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td width=150>
+                            @Html.LabelFor(model => model.BridgeSummaryData.InvAxle, "lbs TandemAxle", htmlAttributes: new { @class = "control-label col-md-2" })
+                        </td>
+
+
+                        <td width=52>
+                            <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:normal'><o:p>&nbsp;</o:p></p>
+                        </td>
+                        <td width=200>
+                            <div class="col-md-7">
+                                @Html.EditorFor(model => model.BridgeSummaryData.OpAxle, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BridgeSummaryData.OpAxle, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td width=150>
+                            @Html.LabelFor(model => model.BridgeSummaryData.OpAxle, "lbs TandemAxle", htmlAttributes: new { @class = "control-label col-md-2" })
+                            
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+                        <td width=200>
+                            <div class="col-md-7">
+                                @Html.EditorFor(model => model.BridgeSummaryData.InvTandem, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BridgeSummaryData.InvTandem, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td width=150>
+                            @Html.LabelFor(model => model.BridgeSummaryData.InvTandem, "lbs Axle or Tandem", htmlAttributes: new { @class = "control-label col-md-2" })
+                        </td>
+
+
+                        <td width=52>
+                            <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:normal'><o:p>&nbsp;</o:p></p>
+                        </td>
+                        <td width=200>
+                            <div class="col-md-7">
+                                @Html.EditorFor(model => model.BridgeSummaryData.OpTandem, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BridgeSummaryData.OpTandem, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td width=150>
+                            @Html.LabelFor(model => model.BridgeSummaryData.OpAxle, "lbs Axle or Tandem", htmlAttributes: new { @class = "control-label col-md-2" })
+                            
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td width=150>
+                            @Html.LabelFor(model => model.BridgeSummaryData.InvSign, "Sign Code", htmlAttributes: new { @class = "control-label col-md-2" })
+                        </td>
+
+                        <td width=200>
+                            <div class="col-md-7">
+                                @Html.EditorFor(model => model.BridgeSummaryData.InvSign, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BridgeSummaryData.InvSign, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td width=52>
+                            <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:normal'><o:p>&nbsp;</o:p></p>
+                        </td>
+                        <td width=150>
+                            @Html.LabelFor(model => model.BridgeSummaryData.OpSign, "Sign Code", htmlAttributes: new { @class = "control-label col-md-2" })
+                            
+                        </td>
+                        <td width=200>
+                            <div class="col-md-7">
+                                @Html.EditorFor(model => model.BridgeSummaryData.OpSign, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BridgeSummaryData.OpSign, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+
+
+
+
+            </div>
+
+  
+
+            <input type="submit" style="margin-left:325pt; margin-top:10pt" value="Save" id="add" class="btn btn-primary">
+            <div id="mens"></div>
+            <hr />
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -836,15 +836,11 @@ namespace LMB.Controllers
             reportf.Configuration = db.Configurations.FirstOrDefault();
             reportf.Usuario = UsersHelper.finduser(User.Identity.GetUserName());
 
-            reportf.BridgeSummaryComments = await db.BridgeSummaryComments.Include(b => b.Comment)
+            reportf.BridgeSummaryComments = await db.BridgeSummaryComments
                 .Where(i => i.IdInspection == id).ToListAsync();
 
 
-            reportf.BridgeSummaryComponent = await db.BridgeSummaryComponent.Include(b => b.IdRating)
-                .Include(b => b.InvH)
-                .Include(b => b.InvHS)
-                .Include(b => b.OpH)
-                .Include(b => b.OpHS)
+            reportf.BridgeSummaryComponent = await db.BridgeSummaryComponent
                 .Where(i => i.IdInspection == id).ToListAsync();
 
             string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
@@ -1413,6 +1409,35 @@ namespace LMB.Controllers
             ComponentSummary.IdInspection = id;
             ViewBag.InspectionRaiting = new SelectList(CombosHelper.InspectionRaiting(), "InspectionRaitingType", "Description");
             return View(ComponentSummary);
+
+        }
+
+        public ActionResult CreateBS(int id)
+        {
+            ViewBag.Idinspection = id;
+
+            ReportSummarySheet ReportSummarySheet = new ReportSummarySheet();
+            var comments = db.BridgeSummaryComments.ToList().Where(ins => ins.IdInspection==id);
+            if (comments != null)
+            {
+                ReportSummarySheet.BridgeSummaryComments= comments.ToList();
+            }
+
+            var data = db.BridgeSummaryData.ToList().Where(ins => ins.IdInspection==id).FirstOrDefault();
+            if (data != null)
+            {
+                ReportSummarySheet.BridgeSummaryData = data;
+            }
+
+            var component = db.BridgeSummaryComponent.ToList().Where(ins => ins.IdInspection == id);
+            if (component != null)
+            {
+                ReportSummarySheet.BridgeSummaryComponent = component.ToList();
+            }
+
+            ReportSummarySheet.InspectionDaily.IdInspection = id;
+            ViewBag.ReportSummarySheet = new SelectList(CombosHelper.InspectionRaiting(), "InspectionRaitingType", "Description");
+            return View(ReportSummarySheet);
 
         }
 
