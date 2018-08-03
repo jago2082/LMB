@@ -85,11 +85,17 @@
 </table>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.25.6/sweetalert2.all.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.25.6/sweetalert2.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript">
 
     $(document).ready(function () {
         $("#add").click(function () {
-            var description = $("#InspectionDescription").val();
+            var description = $("#Description").val();
             var owner = $("#InspectionOwner").val();
             var idinsp = $("#IdInspection").val();
             if (description != "" || owner != "") {
@@ -97,6 +103,8 @@
                 $.post(Url, { "id": idinsp, "InspectionDescription": description, "InspectionOwner": owner })
                .done(function (data) {
                    swal('Info', 'Success', 'success');
+                   $("#Description").text(" ");
+                   $("#InspectionOwner").text(" ");
                })
                .fail(function (xhr, status, error) {
                    swal('Error', xhr.responseText, 'error');
