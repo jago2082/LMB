@@ -42,19 +42,25 @@ namespace LMB.Controllers
 
         }
 
-
-        public async Task<ActionResult> filterDate(string dateI, string dateF, string user)
+        public ActionResult filterDate()
+        {
+            ViewBag.IDUser = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "UserName");
+            return View("filterdate");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> filterDate(FilterDate filterdate)
         {
             try
             {
                 var insp = new List<InspectionDaily>();
-                if (!String.IsNullOrEmpty(dateI))
+                if (!String.IsNullOrEmpty(filterdate.dateini))
                 {
-                    var fi = DateTime.Parse(dateI);
-                    var ff = DateTime.Parse(dateF);
-                    if (!String.IsNullOrEmpty(user) && user != "0")
+                    var fi = DateTime.Parse(filterdate.dateini);
+                    var ff = DateTime.Parse(filterdate.datefin);
+                    if (filterdate.IDUser != null && filterdate.IDUser != 0)
                     {
-                        insp = db.InspectionDaily.Where(i => i.Date > fi && i.Date < ff && i.UserDBs.UserName == user).ToList();
+                        insp = db.InspectionDaily.Where(i => i.Date > fi && i.Date < ff && i.UserDBs.IDUser == filterdate.IDUser).ToList();
                     }
                     else
                     {
@@ -107,22 +113,22 @@ namespace LMB.Controllers
 
                 string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
 
-                 return View("ReportBill", insp);
+                //return View("ReportBill", insp);
 
-                //return new ViewAsPdf("ReportBill", insp)
-                //{
+                return new ViewAsPdf("ReportBill", insp)
+                {
 
-                //    //  FileName = "firstPdf.pdf",
-                //    // CustomSwitches = footer
-                //    RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
-                //};
+                    //  FileName = "firstPdf.pdf",
+                    // CustomSwitches = footer
+                    RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
+                };
             }
             catch (Exception ex)
             {
 
                 throw;
             }
-            
+
 
         }
 

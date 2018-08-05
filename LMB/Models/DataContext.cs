@@ -125,6 +125,6 @@ namespace LMB.Models
 
         public DbSet<BridgeSummaryComponent> BridgeSummaryComponent { get; set; }
 
-
+        public System.Data.Entity.DbSet<LMB.Models.FilterDate> FilterDates { get; set; }
     }
 }

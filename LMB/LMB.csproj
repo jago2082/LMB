@@ -288,6 +288,7 @@
     <Compile Include="Models\DirectionPhotoType.cs" />
     <Compile Include="Models\District.cs" />
     <Compile Include="Models\FileLoad.cs" />
+    <Compile Include="Models\FilterDate.cs" />
     <Compile Include="Models\FollowUpOptional.cs" />
     <Compile Include="Models\FollowUpOther.cs" />
     <Compile Include="Models\Footer.cs" />
@@ -877,6 +878,7 @@
     <Content Include="Views\Done\UnderList.cshtml" />
     <Content Include="Views\Done\UnderTable.cshtml" />
     <Content Include="Views\Done\IndexBS.cshtml" />
+    <Content Include="Views\Done\filterdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
