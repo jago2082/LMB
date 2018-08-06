@@ -1401,7 +1401,6 @@ namespace LMB.Controllers
         public ActionResult CreateCS(int id)
         {
             ViewBag.Idinspection = id;
-
             ComponentSummary ComponentSummary = new ComponentSummary();
             var description = db.InspectionBasicRegistryValue.ToList().Where(ins => ins.IdInspection == id && ins.idInspBasic == 38).FirstOrDefault();
             if (description == null)
@@ -1466,8 +1465,10 @@ namespace LMB.Controllers
                 db.ComponentSummaries.Add(componentSummary);
                 await db.SaveChangesAsync();
                 var inspd = db.InspectionDaily.Find(componentSummary.IdInspection);
+                ViewBag.InspectionRaiting = new SelectList(CombosHelper.InspectionRaiting(), "InspectionRaitingType", "Description");
                 return View("Reports", inspd);
             }
+            ViewBag.InspectionRaiting = new SelectList(CombosHelper.InspectionRaiting(), "InspectionRaitingType", "Description");
             return View(componentSummary);
 
         }
