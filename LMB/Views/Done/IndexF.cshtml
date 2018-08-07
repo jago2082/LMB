@@ -33,7 +33,7 @@
     <hr />
 </div>
 <h4>Follow-Up Action/Comments</h4>
-@Html.ActionLink("Create Item", "CreateF", new { id = bridgeInspectionFollowUp.IdInspection })
+@Html.ActionLink("Create Item", "CreateF", new { id = (int)ViewBag.idinspect })
 
 <table class="table">
     <tr>
@@ -45,7 +45,7 @@
             
         </th>
         <th>
-           @Html.DisplayNameFor(model => model.Description) 
+           @Html.DisplayNameFor(model => model.InspectionDescription) 
         </th>
         <th>
             @Html.DisplayNameFor(model => model.InspectionRaiting.Description)
@@ -78,8 +78,8 @@
                @Html.DisplayFor(modelItem => item.RecommendationType.Description)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditF", new { id = item.IdBridgeInspectionFollowUp })
-                @Html.ActionLink("Delete", "DeleteF", new { id = item.IdBridgeInspectionFollowUp })
+                @Html.ActionLink("Edit", "EditF", new { id = (int)ViewBag.idinspect })
+                @Html.ActionLink("Delete", "DeleteF", new { id = (int)ViewBag.idinspect })
             </td>
         </tr>
     }
