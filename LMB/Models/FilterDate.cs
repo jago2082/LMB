@@ -10,10 +10,10 @@ namespace LMB.Models
     {
         [Key]
         public int IdFilterDate { get; set; }
-        [Display(Name = "initial Date")]
+        [Display(Name = "Initial Date")]
         [DataType(DataType.DateTime)]
         public string dateini { get; set; }
-        [Display(Name = "final Date")]
+        [Display(Name = "Final Date")]
         [DataType(DataType.DateTime)]
         public string datefin { get; set; }
         [Display(Name = "User")]

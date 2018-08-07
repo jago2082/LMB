@@ -53,25 +53,37 @@ namespace LMB.Controllers
         {
             try
             {
+                Invoice Invoice = new Invoice();
                 var insp = new List<InspectionDaily>();
                 if (!String.IsNullOrEmpty(filterdate.dateini))
                 {
                     var fi = DateTime.Parse(filterdate.dateini);
                     var ff = DateTime.Parse(filterdate.datefin);
+                    Invoice.InitialDate = fi;
+                    Invoice.FinalDate = ff;
                     if (filterdate.IDUser != null && filterdate.IDUser != 0)
                     {
-                        insp = db.InspectionDaily.Where(i => i.Date > fi && i.Date < ff && i.UserDBs.IDUser == filterdate.IDUser).ToList();
+                        insp = db.InspectionDaily.Where(i => (i.Date > fi) && (i.Date < ff) && (i.UserDBs.IDUser == filterdate.IDUser) && (i.IdStatus==2)).ToList();
                     }
                     else
                     {
-                        insp = db.InspectionDaily.Where(i => i.Date > fi && i.Date < ff).ToList();
+                        insp = db.InspectionDaily.Where(i =>( i.Date > fi) && ( i.Date < ff )&& (i.IdStatus == 2)).ToList();
                     }
 
                 }
                 else
                 {
-                    insp = db.InspectionDaily.ToList();
+                    
+                    insp = db.InspectionDaily.Where(i => i.IdStatus == 2).ToList();
+                    Invoice.InitialDate = Convert.ToDateTime(insp.OrderByDescending(d => d.Date).FirstOrDefault().Date);
+                    Invoice.FinalDate = Convert.ToDateTime(insp.OrderByDescending(d => d.Date).LastOrDefault().Date); 
                 }
+
+                
+
+               
+
+                    Invoice.Configuration = db.Configurations.FirstOrDefault();
 
                 var TotalA = insp.ToList().Where(ing => ing.CommentGeneral == "A").Count();
                 var TotalAA = insp.ToList().Where(ing => ing.CommentGeneral == "A" && ing.Sync == "A").Count();
@@ -94,8 +106,27 @@ namespace LMB.Controllers
                 var TotalBG = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "G").Count();
                 var TotalBH = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "H").Count();
                 var TotalBX = insp.ToList().Where(ing => ing.CommentGeneral == "B" && ing.Sync == "X").Count();
-
-
+                Invoice.InspectionDaily = insp;
+                Invoice.TotalA = TotalA;
+                Invoice.TotalAB = TotalAB;
+                Invoice.TotalAA = TotalAA;
+                Invoice.TotalAC = TotalAC;
+                Invoice.TotalAD = TotalAD;
+                Invoice.TotalAE = TotalAE;
+                Invoice.TotalAF = TotalAF;
+                Invoice.TotalAG = TotalAG;
+                Invoice.TotalAH = TotalAH;
+                Invoice.TotalAX = TotalAX;
+                Invoice.TotalB = TotalB;
+                Invoice.TotalBA = TotalBA;
+                Invoice.TotalBB = TotalBB;
+                Invoice.TotalBC = TotalBC;
+                Invoice.TotalBD = TotalBD;
+                Invoice.TotalBE = TotalBE;
+                Invoice.TotalBF = TotalBF;
+                Invoice.TotalBG = TotalBG;
+                Invoice.TotalBH = TotalBH;
+                Invoice.TotalBX = TotalBX;
                 if (insp == null || insp.ToList().Count() == 0)
                 {
                     ViewBag.Info = null;
@@ -115,12 +146,12 @@ namespace LMB.Controllers
 
                 //return View("ReportBill", insp);
 
-                return new ViewAsPdf("ReportBill", insp)
+                return new ViewAsPdf("ReportBill", Invoice)
                 {
 
                     //  FileName = "firstPdf.pdf",
                     // CustomSwitches = footer
-                    RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
+                    RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(15, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
                 };
             }
             catch (Exception ex)
