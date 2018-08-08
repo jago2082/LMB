@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LMB.Models.ValueCheckList>
+﻿@model IEnumerable<LMB.Models.QuestionDetails>
 
 @{
     ViewBag.Title = "IndexIR";
@@ -11,17 +11,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.IdInspection)
+            @Html.DisplayNameFor(model => model.InspectionDaily.IdInspection)
         </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.RowIDQuestion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comment)
+           <th>
+            @Html.DisplayNameFor(model => model.Question)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Value)
+            @Html.DisplayNameFor(model => model.value)
         </th>
         <th></th>
     </tr>
@@ -30,20 +26,17 @@
     <tr>
 
         <td>
-            @Html.DisplayFor(modelItem => item.IdInspection)
+            @Html.DisplayFor(modelItem => item.InspectionDaily.IdInspection)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RowIDQuestion)
+            @Html.DisplayFor(modelItem => item.Question)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Comment)
+            @Html.DisplayFor(modelItem => item.value)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Value)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdValueCheckList }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdValueCheckList })
+            @*@@Html.ActionLink("Edit", "Edit", new { id=item.InspectionDaily.IdInspection }) |
+           @@Html.ActionLink("Delete", "Delete", new { id=item.InspectionDaily.IdInspection })*@
         </td>
     </tr>
 }

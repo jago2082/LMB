@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using ExcelDataReader;
 using System.IO;
 using LMB.Helpers;
+using Newtonsoft.Json;
 
 namespace LMB.Controllers
 {
@@ -30,6 +31,7 @@ namespace LMB.Controllers
         public ActionResult LoadData()
         {
             ViewBag.Files = new SelectList(CombosHelper.GetFiles(), "Value", "Text");
+            ViewBag.ok = " ";
             return View();
         }
 
@@ -48,6 +50,11 @@ namespace LMB.Controllers
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="uploadfile"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult RowData(HttpPostedFileBase uploadfile)
@@ -58,7 +65,7 @@ namespace LMB.Controllers
                 if (uploadfile != null && uploadfile.ContentLength > 0)
                 {
                     var dbContextTransaction = db.Database.BeginTransaction();
-                    Message message = new Message();
+                    List<Message> messages = new List<Message>();
                     //ExcelDataReader works on binary excel file
                     Stream stream = uploadfile.InputStream;
                     //We need to written the Interface.
@@ -368,8 +375,9 @@ namespace LMB.Controllers
                         {
                             dbContextTransaction.Rollback();
                             reader.Close();
-                            message.mensaje = ex.InnerException.InnerException.ToString();
-                            if (message.mensaje.Contains("duplicate key"))
+                            Message message1 = new Message();
+                            message1.mensaje = ex.InnerException.InnerException.ToString();
+                            if (message1.mensaje.Contains("duplicate key"))
                             {
 
                                 ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'inspection duplicate in row " + loop + "', 'error');</script>";
@@ -395,6 +403,16 @@ namespace LMB.Controllers
                     }
                     else if (tmp == "Detailed Work Schedule  B")
                     {
+                        var contar = 0;
+                        var raw = db.RawData;
+                       
+                        if (raw.ToList().Count()==0)
+                        {
+                            ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'First you need load Row Data','error');</script>";
+                            ViewBag.Files = new SelectList(CombosHelper.GetFiles(), "Value", "Text");
+                            return View("LoadData");
+                        }
+                        List<Message> messages1 = new List<Message>();
                         RawData rowdt =null;
                         DataSet result = reader.AsDataSet();
                         //result.Tables[0].Rows[0].
@@ -422,7 +440,12 @@ namespace LMB.Controllers
                                        .FirstOrDefault();
                                     if (rowdt == null)
                                     {
+                                        Message message = new Message();
+                                        message.fila = loop;
+                                        message.mensaje = "The inspection "+ StructureNumber+ " is new";
                                         loop++;
+                                        messages1.Add(message);
+                                        bandera = true;
                                         continue;
                                     }
                                     else
@@ -442,8 +465,16 @@ namespace LMB.Controllers
                                         inspectiondaily.IdProject = idproject;
                                         var numinsp = String.Format("{0}-{1}-{2}-{3}-{4}", rowdt.StructureNumber.Substring(1, 2), rowdt.StructureNumber.Substring(2, 3), rowdt.StructureNumber.Substring(6, 4), rowdt.StructureNumber.Substring(10, 2), rowdt.StructureNumber.Substring(12));
                                         var exist = db.InspectionDaily.Where(i => i.NumInspection == numinsp).FirstOrDefault();
-                                        //if (exist != null)
-                                        //{ message.mensaje = "La inpeccion ya se encuentra registrada "; message.fila = loop; break; }
+                                        
+                                        Message message = new Message();
+                                        if (exist != null)
+                                        { message.fila = loop;
+                                          message.mensaje = "The inspection "+ StructureNumber+" was load before ";
+                                            loop++;
+                                            messages1.Add(message);
+                                            continue;
+                                            
+                                        }
                                         inspectiondaily.NumInspection = numinsp;
                                         inspectiondaily.DO = rowdt.District;
                                         inspectiondaily.Company = rowdt.County;
@@ -465,20 +496,30 @@ namespace LMB.Controllers
                                         inspectiondaily.Owner = rowdt.Owner;
                                         db.InspectionDaily.Add(inspectiondaily);
                                         db.SaveChanges();
-                                        bandera = true;
+                                        contar++;
+                                        loop++;
                                     }
                                 }
+                                Message message2 = new Message();
 
-                                if (!bandera)
-                                {
-                                    ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'No data found','error');</script>";
-                                    ViewBag.Files = new SelectList(CombosHelper.GetFiles(), "Value", "Text");
-                                    return View("LoadData");
-                                }
-                                else
+                                message2.mensaje = "Loaded " + contar + " inspections";
+                                messages1.Add(message2);
+                                if (bandera)
                                 {
                                     dbContextTransaction.Commit();
                                     reader.Close();
+                                    ViewBag.ok = JsonConvert.SerializeObject(messages1);
+                                    //ViewBag.Script = "<script type='text/javascript'>swal('¡info!', '" + messages.ToList() + "','error');</script>";
+                                    ViewBag.Files = new SelectList(CombosHelper.GetFiles(), "Value", "Text");
+                                    return View("LoadData");
+
+                                }
+                                else
+                                {
+
+                                    ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'No data found','error');</script>";
+                                    ViewBag.Files = new SelectList(CombosHelper.GetFiles(), "Value", "Text");
+                                    return View("LoadData");
                                 }
                             }
                             catch (Exception ex)
@@ -486,11 +527,11 @@ namespace LMB.Controllers
 
                                 dbContextTransaction.Rollback();
                                 reader.Close();
-                                message.mensaje = ex.InnerException.InnerException.ToString();
-                                if (message.mensaje.Contains("duplicate key"))
+                                var mensaje = ex.InnerException.InnerException.ToString();
+                                if (mensaje.Contains("duplicate key"))
                                 {
 
-                                    ViewBag.Script = "<script type='text/javascript'>swal('¡Alert!', 'inspection duplicate in row " + loop + "', 'error');</script>";
+                                    
                                 }
                                 else
                                 {

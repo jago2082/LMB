@@ -181,7 +181,7 @@ namespace LMB.Controllers
                         item.Description = "";
                     else
                     {
-                        item.Description = descr.Value;
+                        item.InspectionDescription = descr.Value;
                         item.InspectionOwner = inspection.Owner;
                         item.IdInspection = id;
                     }
@@ -195,13 +195,13 @@ namespace LMB.Controllers
                 {
                     if (descr!=null)
                     {
-                        item.Description = descr.Value;
+                        item.InspectionDescription = descr.Value;
                         item.InspectionOwner = inspection.Owner;
                         item.IdInspection = id;
                     }
                     else
                     {
-                        item.Description = "";
+                        item.InspectionDescription = "";
                         item.InspectionOwner = "";
                         item.IdInspection = id;
                     }
@@ -245,8 +245,29 @@ namespace LMB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            var ValueCheckList = db.ValueCheckList.Where(i => i.IdInspection == IDIns && i.RowIDQuestion==id);
+            List<QuestionDetails> QuestionDetails = new List<QuestionDetails>();
+            var questions = db2.CheckListQuestion.Where(i => i.CheckListSection.IdCheckListSection == id);
+            var ValueCheckList = db.ValueCheckList.Where(i => i.IdInspection == IDIns && i.RowIDQuestion == id);
+            foreach (var dato in questions)
+            {
+                QuestionDetails QuestionDetail = new QuestionDetails();
+                QuestionDetail.Question = dato.Question;
+                foreach (var item in ValueCheckList)
+                {
+                   
+                    if (dato.IdCheckListQuestion == item.IdChecklistQuestion)
+                    {
+                        QuestionDetail.value = item.Value;
+                    }
+                    else
+                    {
+                        QuestionDetail.value = 0;
+                    }
+                    
+                }
+                QuestionDetails.Add(QuestionDetail);
+            }
+            
             var inspection = db.InspectionDaily.Find(id);
 
 
@@ -257,7 +278,7 @@ namespace LMB.Controllers
             }
            
 
-            return View(await ValueCheckList.ToListAsync());
+            return View(QuestionDetails.ToList());
         }
 
         public async Task<ActionResult> UnderTable(int? id, int IDIns)
@@ -1249,6 +1270,7 @@ namespace LMB.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.idinspect = db.BridgeInspectionFollowUps.Find(id).IdInspection;
             ViewBag.InspectionRaitingType = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description", bridgeInspectionFollowUp.InspectionRaitingType);
             ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "Description", bridgeInspectionFollowUp.IdRecommendationType);
             ViewBag.IdReferenceFeatureType = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description", bridgeInspectionFollowUp.IdReferenceFeatureType);
@@ -1267,7 +1289,7 @@ namespace LMB.Controllers
                 db.Entry(bridgeInspectionFollowUp).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 var inspd = db.InspectionDaily.Find(bridgeInspectionFollowUp.IdInspection);
-                return View("Reports", inspd);
+                return View("IndexF", inspd);
             }
             ViewBag.InspectionRaitingType = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description", bridgeInspectionFollowUp.InspectionRaitingType);
             ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "Description", bridgeInspectionFollowUp.IdRecommendationType);
@@ -1409,8 +1431,15 @@ namespace LMB.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.BridgeInspectionFollowUps.Add(bridgeInspectionFollowUp);
-                await db.SaveChangesAsync();
+                try
+                {
+                    db.BridgeInspectionFollowUps.Add(bridgeInspectionFollowUp);
+                    await db.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    
+                }
                 var inspd = db.InspectionDaily.Find(bridgeInspectionFollowUp.IdInspection);
                 return View("Reports", inspd);
             }
@@ -1447,7 +1476,22 @@ namespace LMB.Controllers
             return View(ComponentSummary);
 
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateBS(BridgeSummaryComponent bridgeSummaryComponent)
+        {
+            if (ModelState.IsValid)
+            {
+                db.BridgeSummaryComponent.Add(bridgeSummaryComponent);
+                await db.SaveChangesAsync();
+                var inspd = db.InspectionDaily.Find(bridgeSummaryComponent.IdInspection);
+                ViewBag.InspectionRaiting = new SelectList(CombosHelper.InspectionRaiting(), "InspectionRaitingType", "Description");
+                return View("IndexBS", inspd);
+            }
+            ViewBag.InspectionRaiting = new SelectList(CombosHelper.InspectionRaiting(), "InspectionRaitingType", "Description");
+            return View(bridgeSummaryComponent);
 
+        }
         public ActionResult CreateBS(int id)
         {
             ViewBag.Idinspection = id;
@@ -1522,7 +1566,8 @@ namespace LMB.Controllers
         //}
 
         // GET: BridgeInspectionFollowUps/Delete/5
-        public async Task<ActionResult> DeleteF(int? id)
+
+        public async Task<ActionResult> DeleteFL(int? id)
         {
             if (id == null)
             {

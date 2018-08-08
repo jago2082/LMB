@@ -328,6 +328,7 @@
     <Compile Include="Models\ReferenceFeatureUnderType.cs" />
     <Compile Include="Models\RegistrySerial.cs" />
     <Compile Include="Models\RegistrySerialAttach.cs" />
+    <Compile Include="Models\QuestionDetails.cs" />
     <Compile Include="Models\ReportSummarySheet.cs" />
     <Compile Include="Models\ReportInspFollowUp.cs" />
     <Compile Include="Models\Reports.cs" />
@@ -880,6 +881,7 @@
     <Content Include="Views\Done\UnderTable.cshtml" />
     <Content Include="Views\Done\IndexBS.cshtml" />
     <Content Include="Views\Done\filterdate.cshtml" />
+    <Content Include="Views\Done\CreateBS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

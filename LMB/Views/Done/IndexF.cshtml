@@ -9,6 +9,7 @@
     }
 
 }
+<h2>Bridge Inspection Follow-Up Action Worksheet</h2>
 
 <div class="form-horizontal">
     <hr />
@@ -17,8 +18,8 @@
     <div class="form-group">
         @Html.LabelFor(model => model.FirstOrDefault().InspectionDescription, "Description", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.FirstOrDefault().Description, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.FirstOrDefault().Description, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.FirstOrDefault().InspectionDescription, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FirstOrDefault().InspectionDescription, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
@@ -45,7 +46,7 @@
             
         </th>
         <th>
-           @Html.DisplayNameFor(model => model.InspectionDescription) 
+           @Html.DisplayNameFor(model => model.Description) 
         </th>
         <th>
             @Html.DisplayNameFor(model => model.InspectionRaiting.Description)
@@ -78,8 +79,8 @@
                @Html.DisplayFor(modelItem => item.RecommendationType.Description)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditF", new { id = (int)ViewBag.idinspect })
-                @Html.ActionLink("Delete", "DeleteF", new { id = (int)ViewBag.idinspect })
+                @Html.ActionLink("Edit", "EditF", new { id = item.IdBridgeInspectionFollowUp })
+                @Html.ActionLink("Delete", "DeleteFL", new { id = item.IdBridgeInspectionFollowUp })
             </td>
         </tr>
     }

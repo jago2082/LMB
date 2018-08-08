@@ -5,12 +5,12 @@
     LMB.Models.ReportSummarySheet reportSummarySheet = new LMB.Models.ReportSummarySheet();
 
 }
-
+<h2>Bridge Summary Sheet</h2>
 <div class="form-horizontal">
     <hr />
     @Html.HiddenFor(model => model.InspectionDaily.IdInspection)
     <h4>Component Description and Raiting</h4>
-
+    @Html.ActionLink("Create Item", "CreateBS", new { id = (int)ViewBag.idinspect })
 
     <table class="table">
         <tr>
@@ -197,28 +197,30 @@
                     </tr>
 
                     <tr>
-                        <td width=150>
-                            @Html.LabelFor(model => model.BridgeSummaryData.InvSign, "Sign Code", htmlAttributes: new { @class = "control-label col-md-2" })
-                        </td>
-
                         <td width=200>
                             <div class="col-md-7">
                                 @Html.EditorFor(model => model.BridgeSummaryData.InvSign, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.BridgeSummaryData.InvSign, "", new { @class = "text-danger" })
                             </div>
                         </td>
+                        <td width=150>
+                            @Html.LabelFor(model => model.BridgeSummaryData.InvSign, "Sign Code", htmlAttributes: new { @class = "control-label col-md-2" })
+                        </td>
+
+
                         <td width=52>
                             <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:normal'><o:p>&nbsp;</o:p></p>
                         </td>
-                        <td width=150>
-                            @Html.LabelFor(model => model.BridgeSummaryData.OpSign, "Sign Code", htmlAttributes: new { @class = "control-label col-md-2" })
-                            
-                        </td>
+
                         <td width=200>
                             <div class="col-md-7">
                                 @Html.EditorFor(model => model.BridgeSummaryData.OpSign, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.BridgeSummaryData.OpSign, "", new { @class = "text-danger" })
                             </div>
+                        </td>
+                        <td width=150>
+                            @Html.LabelFor(model => model.BridgeSummaryData.OpSign, "Sign Code", htmlAttributes: new { @class = "control-label col-md-2" })
+
                         </td>
                     </tr>
                 </table>
