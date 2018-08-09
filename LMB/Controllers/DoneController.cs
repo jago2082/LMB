@@ -289,18 +289,18 @@ namespace LMB.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var ValueCheckList = db.ValueCheckList.Where(i => i.IdInspection == IDIns && i.RowIDQuestion == id);
+            var UnderClearValues = db.UnderClearValues.Where(i => i.IdInspection == IDIns && i.IdInspection == id);
             var inspection = db.InspectionDaily.Find(id);
 
 
             // ValueCheckList valueCheckList = await db.ValueCheckList.FindAsync(id);
-            if (ValueCheckList == null)
+            if (UnderClearValues == null)
             {
                 return HttpNotFound();
             }
 
 
-            return View(await ValueCheckList.ToListAsync());
+            return View(await UnderClearValues.ToListAsync());
         }
         
 
@@ -372,7 +372,7 @@ namespace LMB.Controllers
 
         public async Task<ActionResult> UnderList(int id)
         {
-            var secciones = db.UnderClearanceRecord.Where(y=>y.IdInspection == id).OrderByDescending(x=> x.PSN);
+            var secciones = db.UnderClearValues.Where(y=>y.IdInspection == id).OrderByDescending(x=> x.PSN);
 
             //  .Where(i => i.IdClient == id);
 
@@ -913,6 +913,14 @@ namespace LMB.Controllers
             };
             //   return View("ReportSummarySheet");
         }
+
+        public ActionResult DownLoadData()
+        {
+            ViewBag.Files = new SelectList(CombosHelper.GetFiles(), "Value", "Text");
+            ViewBag.ok = " ";
+            return View();
+        }
+
         public ActionResult ReportStructuralCondition()
         {
             return View("ReportStructuralCondition");
@@ -1140,10 +1148,10 @@ namespace LMB.Controllers
             // int id = 10;
             var insp = db.InspectionDaily.Find(id);
             // var inspListFeat = db.UnderClearanceRecord.ToList().Where(ins => ins.IdInspection == id).Select(ins => ins.FeatureXed).Distinct();
-            var inspListFeat = db.UnderClearanceRecord.Where(ins => ins.IdInspection == id).GroupBy(ins => ins.FeatureXed).Select(group => group.FirstOrDefault());
-            var inspListPSN = db.UnderClearanceRecord.Where(ins => ins.IdInspection == id).GroupBy(ins => ins.PSN).Select(group => group.FirstOrDefault());
+            var inspListFeat = db.UnderClearValues.Where(ins => ins.IdInspection == id).GroupBy(ins => ins.FeatureXed).Select(group => group.FirstOrDefault());
+            var inspListPSN = db.UnderClearValues.Where(ins => ins.IdInspection == id).GroupBy(ins => ins.PSN).Select(group => group.FirstOrDefault());
 
-            var inspList = db.UnderClearanceRecord.ToList().Where(ins => ins.IdInspection == id).OrderBy(ins => ins.PSN);
+            var inspList = db.UnderClearValues.ToList().Where(ins => ins.IdInspection == id).OrderBy(ins => ins.PSN);
             var imageUnder = db.Insp_Attach.Where(insp1 => insp1.IDInspection == id).FirstOrDefault().ImageString;
             UnderClearReport UnderClearReport = new UnderClearReport();
 
@@ -1567,7 +1575,7 @@ namespace LMB.Controllers
 
         // GET: BridgeInspectionFollowUps/Delete/5
 
-        public async Task<ActionResult> DeleteFL(int? id)
+        public async Task<ActionResult> DeleteF(int? id)
         {
             if (id == null)
             {
@@ -1582,12 +1590,13 @@ namespace LMB.Controllers
             {
                 return HttpNotFound();
             }
-            return View(bridgeInspectionFollowUp);
+            return View("DeleteF", bridgeInspectionFollowUp);
         }
 
+
         // POST: BridgeInspectionFollowUps/Delete/5
-        [HttpPost, ActionName("DeleteF")]
-        [ValidateAntiForgeryToken]
+        // [HttpPost, ActionName("DeleteF")]
+        // [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             BridgeInspectionFollowUp bridgeInspectionFollowUp = await db.BridgeInspectionFollowUps.FindAsync(id);

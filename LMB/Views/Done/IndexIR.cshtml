@@ -9,9 +9,10 @@
 <p>
 </p>
 <table class="table">
+    @Html.HiddenFor(model => model.FirstOrDefault().InspectionDaily.IdInspection)
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.InspectionDaily.IdInspection)
+          
         </th>
            <th>
             @Html.DisplayNameFor(model => model.Question)
@@ -26,19 +27,25 @@
     <tr>
 
         <td>
-            @Html.DisplayFor(modelItem => item.InspectionDaily.IdInspection)
+            @Html.HiddenFor(modelItem => item.InspectionDaily.IdValueCheckList)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Question)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.value)
+                @Html.EditorFor(model => model.FirstOrDefault().value, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstOrDefault().value, "", new { @class = "text-danger" })
+       
+ 
         </td>
-        <td>
+        
+       <td>
             @*@@Html.ActionLink("Edit", "Edit", new { id=item.InspectionDaily.IdInspection }) |
            @@Html.ActionLink("Delete", "Delete", new { id=item.InspectionDaily.IdInspection })*@
         </td>
     </tr>
+
 }
 
 </table>
+<input type="submit" style="margin-left:325pt; margin-top:10pt" value="Save" id="add" class="btn btn-primary">

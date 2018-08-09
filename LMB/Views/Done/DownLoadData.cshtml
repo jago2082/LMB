@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Read Excel File and Display in mvc5";
+}
+<style>
+    #icon {
+        float: right;
+        margin-right: 838px;
+        margin-top: -20px;
+    }
+</style>
+@using (Html.BeginForm("RowData", "RawDatas", FormMethod.Post, new { enctype = "multipart/form-data", id = "myform" }))
+{
+    <div class="container well">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+
+
+        <div class="form-group">
+            <label for="pwd">Download Files</label>
+            <input type="file" onchange="selectFolder(event);" webkitdirectory mozdirectory msdirectory odirectory directory multiple="multiple" />
+            @*<input type="file" name="datafile" size="60" multiple>*@ 
+            
+        </div>
+        <div class="pull-right">
+            <button type="submit" id="btnRowdata" name="btnRowdata" class="btn btn-primary" disabled>Start Download</button>
+        </div>
+            
+        </div>
+        
+        }
+
+        <!-- Modal -->
+        <div id="modalUser" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                    </div>
+                    <div class="modal-body">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                                Loading....
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 text-success" id="result">
+
+            </div>
+        </div>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.25.6/sweetalert2.js"></script>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.25.6/sweetalert2.all.min.js"></script>
+            <script type="text/javascript">
+                function selectFolder(e) {
+                    for (var i = 0; i < e.target.files.length; i++) {
+                        var s = e.target.files[i].name + '\n';
+                        s += e.target.files[i].size + ' Bytes\n';
+                        s += e.target.files[i].type;
+                        alert(s);
+                    }
+                }
+                //$('#myform').submit(function () {
+                //    $('#mod-progress').modal()
+                //});
+            </script>
+
+            @Html.Raw(ViewBag.Script)
+            
+        }

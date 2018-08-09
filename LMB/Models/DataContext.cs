@@ -89,7 +89,7 @@ namespace LMB.Models
 
         public DbSet<InspectionRaiting> InspectionRaiting { get; set; }
 
-        public DbSet<UnderClearValues> UnderClearanceRecord { get; set; }
+        public DbSet<UnderClearValues> UnderClearValues { get; set; }
 
         public DbSet<CrossSectionValues> CrossSectionValues { get; set; }
 

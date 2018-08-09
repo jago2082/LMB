@@ -30,6 +30,7 @@
             
         </div>
         
+        
         }
 
         <!-- Modal -->
@@ -60,6 +61,11 @@
 
             </div>
         </div>
+<div>
+    <div class="col-md-offset-2 col-md-10">
+        <input type="button" id="btnaddinsp" value="Create Inspection" class="btn btn-primary" />
+    </div>
+</div>
 
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")
@@ -95,6 +101,11 @@
                 $('#myform').submit(function () {
                     $('#mod-progress').modal()
                 });
+
+                $('#btnaddinsp').on("click", function () {
+                    var Url = '@Url.Action("create", "InspectionDailies")';
+                    window.open(Url);
+                });
             </script>
 
             @Html.Raw(ViewBag.Script)
@@ -104,5 +115,5 @@
         mensaje.forEach(function (mensaje, index) {
             $('#result').append('Row: ' + mensaje.fila + ' result: ' + mensaje.mensaje+ '</br>');
         });
-</script>
+   </script>
         }

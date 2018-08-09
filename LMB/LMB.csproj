@@ -882,6 +882,7 @@
     <Content Include="Views\Done\IndexBS.cshtml" />
     <Content Include="Views\Done\filterdate.cshtml" />
     <Content Include="Views\Done\CreateBS.cshtml" />
+    <Content Include="Views\Done\DownLoadData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
