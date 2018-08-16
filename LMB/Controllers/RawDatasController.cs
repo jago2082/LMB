@@ -401,7 +401,7 @@ namespace LMB.Controllers
 
 
                     }
-                    else if (tmp == "Detailed Work Schedule  B")
+                    else if (tmp == "Detailed Work Schedule")
                     {
                         var contar = 0;
                         var raw = db.RawData;
@@ -422,7 +422,7 @@ namespace LMB.Controllers
                         IList<InspectionDaily> iinspdaily = new List<InspectionDaily>();
                         InspectionDaily inspectiondaily = new InspectionDaily();
                         int loop = 0;
-                        var bandera = false;
+                        var bandera = true;
                         var coun = db.RawData;
                         if (coun != null)
                         {
@@ -463,7 +463,7 @@ namespace LMB.Controllers
                                         //}
                                         var idproject = validarcontrol(rowdt.Control);
                                         inspectiondaily.IdProject = idproject;
-                                        var numinsp = String.Format("{0}-{1}-{2}-{3}-{4}", rowdt.StructureNumber.Substring(1, 2), rowdt.StructureNumber.Substring(2, 3), rowdt.StructureNumber.Substring(6, 4), rowdt.StructureNumber.Substring(10, 2), rowdt.StructureNumber.Substring(12));
+                                        var numinsp = String.Format("{0}-{1}-{2}-{3}-{4}", rowdt.StructureNumber.Substring(0, 2), rowdt.StructureNumber.Substring(2, 3), rowdt.StructureNumber.Substring(6, 4), rowdt.StructureNumber.Substring(10, 2), rowdt.StructureNumber.Substring(12));
                                         var exist = db.InspectionDaily.Where(i => i.NumInspection == numinsp).FirstOrDefault();
                                         
                                         Message message = new Message();

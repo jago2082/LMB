@@ -659,7 +659,7 @@ namespace LMB.Controllers
         }
 
 
-        public ActionResult LoadRating(int? id)
+        public ActionResult LoadRating(int? id, int? accion)
         {
             // int id = 5;
             var insp = db.InspectionDaily.Find(id);
@@ -723,18 +723,35 @@ namespace LMB.Controllers
             string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
 
 
-            //return View("LoadRating", LoadRatingReport);
+            if (accion ==1)
+            { return View("LoadRatingE", LoadRatingReport); }
+            else
+            
+                if (accion == 2)
+                {
+                    return new ViewAsPdf("LoadRating", LoadRatingReport)
+                    {
 
-            return new ViewAsPdf("LoadRating", LoadRatingReport)
+                        //  FileName = "firstPdf.pdf",
+                        // CustomSwitches = footer
+                        RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(5, 10, 0, 8), PageSize = Rotativa.Core.Options.Size.Letter }
+                    };
+                }
+            return new ActionAsPdf("LoadRating", LoadRatingReport)
             {
 
-                //  FileName = "firstPdf.pdf",
+                FileName = "ReportSummarySheet_" + id + ".pdf",
                 // CustomSwitches = footer
-                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(5, 10,0,8), PageSize = Rotativa.Core.Options.Size.Letter }
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(5, 10, 0, 8), PageSize = Rotativa.Core.Options.Size.Letter }
             };
+        
+
+
 
 
         }
+        
+
 
         public ActionResult ReportBill(string dateI, string dateF, string user)
         {
@@ -815,7 +832,7 @@ namespace LMB.Controllers
 
 
 
-        public async Task<ActionResult> ReportInspFollowUp(int id)
+        public async Task<ActionResult> ReportInspFollowUp(int id, int? accion)
         {
             ViewBag.Idinspection = id;
             ReportInspFollowUp reportf = new ReportInspFollowUp();
@@ -869,18 +886,35 @@ namespace LMB.Controllers
 
             string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
 
+            if (accion==1)
+            {
+                return View("ReportInspFollowUpE", reportf);
+            }
+            else
+                if (accion==2)
+                {
+                return new ViewAsPdf("ReportInspFollowUp", reportf)
+                {
 
-            return new ViewAsPdf("ReportInspFollowUp", reportf)
+                    //  FileName = "firstPdf.pdf",
+                    // CustomSwitches = footer
+                    RotativaOptions = { MinimumFontSize = 11, PageMargins = new Margins(13, 15, 5, 8), PageSize = Rotativa.Core.Options.Size.Letter }
+                };
+            }
+            return new ActionAsPdf("ReportInspFollowUp", reportf)
             {
 
-                //  FileName = "firstPdf.pdf",
+                FileName = "ReportInspFollowUp" + id + ".pdf",
                 // CustomSwitches = footer
                 RotativaOptions = { MinimumFontSize = 11, PageMargins = new Margins(13, 15, 5, 8), PageSize = Rotativa.Core.Options.Size.Letter }
             };
         }
 
-        public async Task<ActionResult> ReportSummarySheet(int id)
+
+        public async Task<ActionResult> ReportSummarySheet(int id, int? accion)
+
         {
+          //  accion = 1;
             ReportSummarySheet reportf = new ReportSummarySheet();
             reportf.InspectionDaily = await db.InspectionDaily.FindAsync(id);
             var distrcode = string.Format("{0}", reportf.InspectionDaily.DO);
@@ -901,9 +935,15 @@ namespace LMB.Controllers
             reportf.BridgeSummaryComponent = await db.BridgeSummaryComponent
                 .Where(i => i.IdInspection == id).ToListAsync();
 
-            string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
+             string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
 
-
+        if (accion == 1)
+        {
+            return View("ReportSummarySheetE", reportf);
+        }
+        else
+          if (accion == 2)
+        {
             return new ViewAsPdf("ReportSummarySheet", reportf)
             {
 
@@ -911,7 +951,18 @@ namespace LMB.Controllers
                 // CustomSwitches = footer
                 RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(5, 10, 5, 10), PageSize = Rotativa.Core.Options.Size.Letter }
             };
-            //   return View("ReportSummarySheet");
+        }
+        else
+        {
+            return new ActionAsPdf("ReportSummarySheet", reportf)
+            {
+
+                FileName = "ReportSummarySheet_" + id + ".pdf",
+                // CustomSwitches = footer
+                RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(5, 10, 5, 10), PageSize = Rotativa.Core.Options.Size.Letter }
+            };
+        }
+
         }
 
         public ActionResult DownLoadData()
@@ -926,7 +977,7 @@ namespace LMB.Controllers
             return View("ReportStructuralCondition");
         }
 
-        public ActionResult ReportInventoryRecord(int? id)
+        public ActionResult ReportInventoryRecord(int? id, int? accion)
         {
             // int id = 5;
             var insp = db.InspectionDaily.Find(id);
@@ -1083,20 +1134,39 @@ namespace LMB.Controllers
             string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
 
 
+            if (accion == 1)
 
-
-            // return View("ReportInventoryRecord", InventoryReport);
-            return new ViewAsPdf("ReportInventoryRecord", InventoryReport)
             {
-                //  FileName = "firstPdf.pdf",
-                // CustomSwitches = footer
-                //PageWidth = 180, PageHeight = 297, 
+                return View("ReportInventoryRecordE", InventoryReport);
+            }
+            else
+                if (accion == 2)
+            {
+                return new ViewAsPdf("ReportInventoryRecord", InventoryReport)
+                {
 
-                RotativaOptions = { MinimumFontSize = 12, PageMargins = new Margins(5, 10, 3, 5), PageSize = Rotativa.Core.Options.Size.Letter }
-            };
+                    //  FileName = "firstPdf.pdf",
+                    // CustomSwitches = footer
+                    //PageWidth = 180, PageHeight = 297, 
 
+                    RotativaOptions = { MinimumFontSize = 12, PageMargins = new Margins(5, 10, 3, 5), PageSize = Rotativa.Core.Options.Size.Letter }
+                };
+            }
+            else
+            {
+                return new ActionAsPdf("ReportInventoryRecord", InventoryReport)
+                {
+                    FileName = "ReportInventoryRecord" + id + ".pdf",
+                    // CustomSwitches = footer
+                    //PageWidth = 180, PageHeight = 297, 
+
+                    RotativaOptions = { MinimumFontSize = 12, PageMargins = new Margins(5, 10, 3, 5), PageSize = Rotativa.Core.Options.Size.Letter }
+                };
+            }
 
         }
+        /// <summary>
+
 
         public ActionResult ReportChannelCross(int? id)
         {
@@ -1143,7 +1213,7 @@ namespace LMB.Controllers
             };
         }
 
-        public ActionResult ReportUnderClear(int? id)
+        public ActionResult ReportUnderClear(int? id, int? accion)
         {
             // int id = 10;
             var insp = db.InspectionDaily.Find(id);
@@ -1189,19 +1259,36 @@ namespace LMB.Controllers
 
 
             //return View("ReportUnderClear", UnderClearReport);
-
-            return new ViewAsPdf("ReportUnderClear", UnderClearReport)
+            if (accion == 1)
+            {
+                return View("ReportUnderClearE", UnderClearReport);
+            }
+            else
+                if (accion == 2)
             {
 
-                //  FileName = "firstPdf.pdf",
+                return new ViewAsPdf("ReportUnderClear", UnderClearReport)
+                {
+                    FileName = "ReportUnderClear" + id + ".pdf",
+                   
+                    // CustomSwitches = footer
+                    RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
+                };
+            }
+            return new ActionAsPdf("ReportUnderClear", UnderClearReport)
+            {
+
+                  FileName = "firstPdf.pdf",
                 // CustomSwitches = footer
                 RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(10, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
             };
+        
 
         }
 
 
-        public ActionResult Reports(int? id)
+
+public ActionResult Reports(int? id)
         {
             if (id == null)
             {

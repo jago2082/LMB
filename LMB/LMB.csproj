@@ -883,6 +883,14 @@
     <Content Include="Views\Done\filterdate.cshtml" />
     <Content Include="Views\Done\CreateBS.cshtml" />
     <Content Include="Views\Done\DownLoadData.cshtml" />
+    <Content Include="Views\Done\ReportStructuralConditionE.cshtml" />
+    <Content Include="Views\Done\ReportSummarySheetE.cshtml" />
+    <Content Include="Views\Done\ReportUnderClearE.cshtml" />
+    <Content Include="Views\Done\ReportInventoryRecordE.cshtml" />
+    <Content Include="Views\Done\ReportInspFollowUpE.cshtml" />
+    <Content Include="Views\Done\ReportChannelCrossE.cshtml" />
+    <Content Include="Views\Done\ReportBridgeInspectionRecordE.cshtml" />
+    <Content Include="Views\Done\LoadRatingE.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

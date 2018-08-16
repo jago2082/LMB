@@ -146,7 +146,7 @@ namespace LMB.Helpers
             });
             listItems.Add(new SelectListItem
             {
-                Text = "Detailed Work Schedule  B",
+                Text = "Detailed Work Schedule",
                 Value = "3",
             });
             /*

@@ -35,10 +35,10 @@ namespace LMB.Models
         [Display(Name = "Location")]
         public string Address { get; set; }
 
-        [Display(Name = "7 Fac Carried")]
+        [Display(Name = "Route")]
         public string City { get; set; }
         public Nullable<int> TypeInspection { get; set; }
-        [Display(Name = "Feat Xed")]
+        [Display(Name = "Feature Crossed")]
         public string Scope { get; set; }
         [Display(Name = "Date Inspection")]
         public Nullable<System.DateTime> Date { get; set; }
@@ -52,7 +52,7 @@ namespace LMB.Models
         public Nullable<double> LongitudeIni { get; set; }
         [Display(Name = "Latitude")]
         public Nullable<double> LatitudeIni { get; set; }
-        [Display(Name = "Date Assign")]
+        [Display(Name = "Date Assigned")]
         public string DateInspection { get; set; }
         public string CommentGeneral { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

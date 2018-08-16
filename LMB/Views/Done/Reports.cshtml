@@ -27,11 +27,12 @@ Other Reports Bridge No.: @Model.NumInspection
         <tr>
             <th scope="row">1</th>
             <td>
-               @Html.ActionLink("Bridge Inspection Follow-Up Action Worksheet", "ReportInspFollowUp", new { id = Model.IdInspection })
-               @*@Html.ActionLink("Edit", "BridgeInspectionFollowUps", new { id = Model.IdInspection })*@
+               @Html.ActionLink("Bridge Inspection Follow-Up Action Worksheet", "ReportInspFollowUp", new { id = Model.IdInspection, @accion = 2 })
+               @*@Html.ActionLink("Edit", "BridgeInspectionFollowUps", new { id = Model.IdInspection, @accion = 2  })*@
             </td>
             <td>
-                @Html.ActionLink("Details", "IndexF", new { id = Model.IdInspection })
+                @Html.ActionLink("Edit", "ReportInspFollowUp", new { id = Model.IdInspection, @accion = 1 })
+                @*Html.ActionLink("Details", "IndexF", new { id = Model.IdInspection })*@
             </td>
             <td></td>
             <td></td>
@@ -41,10 +42,13 @@ Other Reports Bridge No.: @Model.NumInspection
         <th scope="row">2</th>
         <td>
                 @*@Html.ActionLink("Bridge Summary Sheet", "ReportSummarySheet")*@
-                @Html.ActionLink("Bridge Summary Sheet", "ReportSummarySheet", new { id = Model.IdInspection })
+                @Html.ActionLink("Bridge Summary Sheet", "ReportSummarySheet", new { id = Model.IdInspection, @accion = 2 })
         </td>
         <td>
-            @Html.ActionLink("Details", "IndexBS", new { id = Model.IdInspection })
+            @Html.ActionLink("Edit", "ReportSummarySheet", new { id = Model.IdInspection, @accion = 1 })
+
+
+            @*Html.ActionLink("Details", "IndexBS", new { id = Model.IdInspection })*@
         </td>
         <td></td>
         <td></td>
@@ -53,10 +57,13 @@ Other Reports Bridge No.: @Model.NumInspection
         <th scope="row">3</th>
         <td>
             @*@Html.ActionLink("Bridge Structural Condition History", "ReportStructuralCondition")*@
-            @Html.ActionLink("Bridge Load Rating Statement", "LoadRating", new { id = Model.IdInspection })
+            @Html.ActionLink("Bridge Load Rating Statement", "LoadRating", new { @id = Model.IdInspection, @accion = 2 })
             </td>
         <td>
-            @Html.ActionLink("Details", "CreateCS", new { id = Model.IdInspection })
+            @Html.ActionLink("Edit", "LoadRating", new { @id = Model.IdInspection, @accion = 1 })
+
+
+            @*Html.ActionLink("PDF Report", "CreateCS", new { id = Model.IdInspection })*@
         </td>
         <td></td>
         <td></td>
@@ -66,10 +73,13 @@ Other Reports Bridge No.: @Model.NumInspection
             <th scope="row">4</th>
             <td>
                @*@Html.ActionLink("Bridge Inspecton Record", "ReportStructuralCondition")*@
-            @Html.ActionLink("Bridge Inspecton Record", "LoadReportBridgeInspection", new { id = Model.IdInspection })
+            @Html.ActionLink("Bridge Inspecton Record", "LoadReportBridgeInspection", new { id = Model.IdInspection, @accion = 2 })
             </td>
             <td>
-                @Html.ActionLink("Details", "Seccions", new { id = Model.IdInspection })
+                @Html.ActionLink("Edit", "LoadReportBridgeInspection", new { id = Model.IdInspection, @accion = 1 })
+
+
+                @*Html.ActionLink("PDF Report", "Seccions", new { id = Model.IdInspection })*@
             </td>
             <td></td>
             <td></td>
@@ -79,10 +89,13 @@ Other Reports Bridge No.: @Model.NumInspection
             <th scope="row">5</th>
             <td>
                @* @Html.ActionLink("Bridge Inventory Record", "ReportInventoryRecord")*@
-               @Html.ActionLink("Bridge Inventory Record", "ReportInventoryRecord", new { id = Model.IdInspection })
+               @Html.ActionLink("Bridge Inventory Record", "ReportInventoryRecord", new { id = Model.IdInspection, @accion = 2 })
             </td>
             <td>
-                @Html.ActionLink("Details", "IndexInv", new { id = Model.IdInspection })
+                @Html.ActionLink("Edit", "ReportInventoryRecord", new { id = Model.IdInspection, @accion = 1 })
+
+
+                @*Html.ActionLink("PDF Report", "IndexInv", new { id = Model.IdInspection })*@
             </td>
             <td></td>
             <td></td>
@@ -90,11 +103,12 @@ Other Reports Bridge No.: @Model.NumInspection
         <tr>
             <th scope="row">6</th>
             <td>
-                @Html.ActionLink("Underclearance Record", "ReportUnderClear", new { id = Model.IdInspection })
+                @Html.ActionLink("Underclearance Record", "ReportUnderClear", new { id = Model.IdInspection, @accion =2 })
                 @*@Html.ActionLink("Underclearance Record", "ReportUnderClear")*@
             </td>
             <td>
-                @Html.ActionLink("Details", "UnderList", new { id = Model.IdInspection })
+                @Html.ActionLink("Edit", "ReportUnderClear", new { id = Model.IdInspection, @accion = 1 })
+                @*@Html.ActionLink("PDF Report", "UnderList", new { id = Model.IdInspection })*@
             </td>
             <td></td>
             <td></td>
@@ -102,11 +116,14 @@ Other Reports Bridge No.: @Model.NumInspection
         <tr>
             <th scope="row">7</th>
             <td>
-                @Html.ActionLink("Channel Cross-Section Measurements Record", "ReportChannelCross", new { id = Model.IdInspection })
+                @Html.ActionLink("Channel Cross-Section Measurements Record", "ReportChannelCross", new { id = Model.IdInspection, @accion = 2 })
                 @*@Html.ActionLink("Channel Cross-Section Measurements Record", "ReportChannelCross")*@
             </td>
             <td>
-                @Html.ActionLink("Details", "CreateCross", new { id = Model.IdInspection })
+                @Html.ActionLink("Edit", "ReportChannelCross", new { id = Model.IdInspection, @accion = 1 })
+
+
+                @*Html.ActionLink("PDF Report", "CreateCross", new { id = Model.IdInspection })*@
             </td>
             <td></td>
             <td></td>
