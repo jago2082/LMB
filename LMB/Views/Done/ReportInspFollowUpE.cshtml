@@ -697,6 +697,9 @@
                         <b>
                             <span style='font-size:18.0pt;color:#231F20'>
                                 <span class=SpellE>@Model.Reports.Title</span>
+                                @Html.ActionLink("Save", "CreateF", new { BridgeInspectionFollowUp= Model.BridgeInspectionFollowUps })
+                                                                    
+
                             </span>
                         </b><span style='font-size:18.0pt;color:#231F20'><o:p></o:p></span>
                     </p>
@@ -1025,7 +1028,10 @@
   padding:0in 5.4pt 0in 5.4pt;height:.3in'>
             <p class=MsoNormal style='mso-layout-grid-align:none'>
                 <span class=SpellE>
-                    <span style='font-size:14.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.InspectionDaily.MaintanSection)</span>
+                    <span style='font-size:14.0pt;color:#231F20'>
+                        @Html.EditorFor(modelItem => Model.InspectionDaily.MaintanSection, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => Model.InspectionDaily.MaintanSection, "", new { @class = "text-danger" })
+               
                 </span><span style='font-size:14.0pt;color:#231F20'><o:p></o:p></span>
             </p>
         </td>
@@ -1045,7 +1051,10 @@
   padding:0in 5.4pt 0in 5.4pt;height:.3in'>
             <p class=MsoNormal style='mso-layout-grid-align:none'>
                 <span class=SpellE>
-                    <span style='font-size:14.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.InspectionDaily.Owner)</span>
+                    <span style='font-size:14.0pt;color:#231F20'>
+                        @Html.EditorFor(modelItem => Model.InspectionDaily.Owner, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => Model.InspectionDaily.Owner, "", new { @class = "text-danger" })
+                   
                 </span><span style='font-size:14.0pt;color:#231F20'><o:p></o:p></span>
             </p>
         </td>
@@ -1197,7 +1206,10 @@
   solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .25pt;
   padding:0in 5.4pt 0in 5.4pt;height:19.05pt'>
             <p class=MsoNormal style='text-align:justify;mso-layout-grid-align:none;
-  text-autospace:ideograph-other'><span style='font-size:12.5pt;color:#231F20'>@Model.Dato1<o:p></o:p></span></p>
+  text-autospace:ideograph-other'><span style='font-size:12.5pt;color:#231F20'>
+                                      @Html.EditorFor(modelItem => @Model.Dato1, new { htmlAttributes = new { @class = "form-control" } })
+                                      @Html.ValidationMessageFor(model => @Model.Dato1, "", new { @class = "text-danger" })
+                <o:p></o:p></span></p>
         </td>
         <td width=16 valign=bottom style='width:12.1pt;border:none;border-right:solid windowtext 1.0pt;
   mso-border-right-alt:solid windowtext .25pt;padding:0in 5.4pt 0in 5.4pt;
@@ -1241,7 +1253,10 @@
   solid windowtext .25pt;mso-border-bottom-alt:solid windowtext .25pt;
   padding:0in 5.4pt 0in 5.4pt;height:19.05pt'>
             <p class=MsoNormal style='text-align:justify;mso-layout-grid-align:none;
-  text-autospace:ideograph-other'><span style='font-size:12.5pt;color:#231F20'>@Model.Dato2<o:p></o:p></span></p>
+  text-autospace:ideograph-other'><span style='font-size:12.5pt;color:#231F20'>
+                                      @Html.EditorFor(modelItem => @Model.Dato2, new { htmlAttributes = new { @class = "form-control" } })
+                                      @Html.ValidationMessageFor(model => @Model.Dato2, "", new { @class = "text-danger" })
+                <o:p></o:p></span></p>
         </td>
         <td width=16 valign=bottom style='width:12.1pt;border:none;border-right:solid windowtext 1.0pt;
   mso-border-right-alt:solid windowtext .25pt;padding:0in 5.4pt 0in 5.4pt;
@@ -1368,7 +1383,11 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
   .5pt;mso-border-color-alt:#231F20;mso-border-style-alt:solid;padding:0in 0in 0in 0in;
   height:33.85pt'>
                 <p class=TableParagraph align=center style='text-align:center'>
-                    <span style='font-size:13.0pt'>@Html.DisplayFor(modelItem => item.ReferenceFeatureType.IdReferenceFeatureType)<o:p></o:p></span>
+                    <span style='font-size:13.0pt'>
+                        @Html.EditorFor(modelItem => item.ReferenceFeatureType.IdReferenceFeatureType, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => item.ReferenceFeatureType.IdReferenceFeatureType, "", new { @class = "text-danger" })
+                    <o:p></o:p>
+                </span>
                 </p>
             </td>
             <td width=834 style='width:625.5pt;border-top:none;border-left:none;
@@ -1382,11 +1401,19 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
   center;text-indent:4.5pt'>
                     @if (!string.IsNullOrEmpty(item.Description))
                     {
-                        <span style='font-size:13.0pt'>@Html.DisplayFor(modelItem => item.Description)<o:p></o:p></span>
+                        <span style='font-size:13.0pt'>
+                    @Html.EditorFor(modelItem => item.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => item.Description, "", new { @class = "text-danger" })
+                    
+                    
+                    
+                    <o:p></o:p></span>
                     }
                     else
                     {
-                        <span style='font-size:13.0pt'>No action required.<o:p></o:p></span>
+                        <span style='font-size:13.0pt'>
+                    No action required.
+                    <o:p></o:p></span>
                     }
                 </p>
             </td>
@@ -1396,7 +1423,10 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
   .5pt;mso-border-bottom-alt:.75pt;mso-border-right-alt:.5pt;mso-border-color-alt:
   #231F20;mso-border-style-alt:solid;padding:0in 0in 0in 0in;height:33.85pt'>
                 <p class=TableParagraph align=center style='text-align:center'>
-                    <span style='font-size:13.0pt'>@Html.DisplayFor(modelItem => item.InspectionRaiting.Value)<o:p></o:p></span>
+                    <span style='font-size:13.0pt'>
+                        @Html.EditorFor(modelItem => item.InspectionRaiting.Value, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => item.InspectionRaiting.Value, "", new { @class = "text-danger" })
+                    <o:p></o:p></span>
                 </p>
             </td>
             <td width=84 style='width:63.0pt;border-top:none;border-left:none;border-bottom:
@@ -1405,7 +1435,10 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
   .5pt;mso-border-bottom-alt:.75pt;mso-border-right-alt:.5pt;mso-border-color-alt:
   #231F20;mso-border-style-alt:solid;padding:0in 0in 0in 0in;height:33.85pt'>
                 <p class=TableParagraph align=center style='text-align:center'>
-                    <span style='font-size:13.0pt'>@Html.DisplayFor(modelItem => item.RecommendationType.idvalue)<o:p></o:p></span>
+                    <span style='font-size:13.0pt'>
+                    @Html.EditorFor(modelItem => item.RecommendationType.idvalue, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => item.RecommendationType.idvalue, "", new { @class = "text-danger" })
+
                 </p>
             </td>
         </tr>

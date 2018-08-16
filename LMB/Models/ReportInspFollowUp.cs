@@ -18,5 +18,7 @@ namespace LMB.Models
         public string Dato1 { get; set; }
         public string Dato2 { get; set; }
 
+        public int accion { get; set; }
+
     }
 }
