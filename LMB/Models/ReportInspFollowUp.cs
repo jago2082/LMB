@@ -7,6 +7,7 @@ namespace LMB.Models
 {
     public class ReportInspFollowUp
     {
+
         public Configuration Configuration { get; set; }
         public InspectionDaily InspectionDaily { get; set; }
         public Reports Reports { get; set; }

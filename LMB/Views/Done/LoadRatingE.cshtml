@@ -652,7 +652,11 @@
 </head>
 
 <body lang=EN-US style='tab-interval:.5in'>
-
+@using (Html.BeginForm("LoadRatingE","Done",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.InspectionDaily.IdInspection)
+    @Html.HiddenFor(model => model.ComponentSummary.IdComponentSummary)
     <div class=WordSection1>
 
         <p class=MsoBodyText style='margin-top:.1pt'>
@@ -899,7 +903,7 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
   padding:0in 5.4pt 0in 5.4pt;height:8.25pt'>
                     <p class=MsoNormal style='text-autospace:ideograph-other'>
                         <span class=SpellE>
-                            <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt'>Descripcion</span>
+                            <span style='font-size:14.0pt;mso-bidi-font-size:12.0pt'>@Html.EditorFor(model => model.ComponentSummary.Description, new { htmlAttributes = new { @class = "form-control" } })</span>
                         </span><span style='font-size:14.0pt;mso-bidi-font-size:12.0pt'><o:p></o:p></span>
                     </p>
                 </td>
@@ -1161,7 +1165,7 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
   padding:0in 5.4pt 0in 5.4pt;height:23.85pt'>
                     <p class=MsoNormal align=center style='text-align:center;text-autospace:ideograph-other'>
                         <span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;mso-fareast-font-family:
-  Calibri;mso-fareast-theme-font:minor-latin;color:black'>@Html.DisplayFor(modelItem => Model.Item58)</span><span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p></o:p></span>
+  Calibri;mso-fareast-theme-font:minor-latin;color:black'>@Html.EditorFor(modelItem => Model.Item58)</span><span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p></o:p></span>
                     </p>
                 </td>
                 <td width=46 colspan=5 valign=top style='width:34.4pt;padding:0in 5.4pt 0in 5.4pt;
@@ -1239,7 +1243,7 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
   mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:26.55pt'>
                     <p class=MsoNormal align=center style='text-align:center;text-autospace:ideograph-other'>
-                        <span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>@Html.DisplayFor(modelItem => Model.Item60)<o:p></o:p></span>
+                        <span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;color:#231F20'>@Html.EditorFor(modelItem => Model.Item60)<o:p></o:p></span>
                     </p>
                 </td>
                 <td width=247 colspan=7 valign=top style='width:185.55pt;padding:0in 5.4pt 0in 5.4pt;
@@ -1269,7 +1273,7 @@ mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></s
   padding:0in 5.4pt 0in 5.4pt;height:22.05pt'>
                     <p class=MsoNormal align=center style='text-align:center;text-autospace:ideograph-other'>
                         <span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;mso-fareast-font-family:
-  Calibri;mso-fareast-theme-font:minor-latin;color:black'>@Html.DisplayFor(modelItem => Model.Item62)</span><span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p></o:p></span>
+  Calibri;mso-fareast-theme-font:minor-latin;color:black'>@Html.EditorFor(modelItem => Model.Item62)</span><span style='font-size:16.0pt;mso-bidi-font-size:12.0pt;color:#231F20'><o:p></o:p></span>
                     </p>
                 </td>
                 <td width=247 colspan=7 valign=top style='width:185.55pt;padding:0in 5.4pt 0in 5.4pt;
@@ -1374,13 +1378,9 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
                     <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
                         <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
   color:#231F20;mso-font-width:105%'>
-                            <w:Sdt CheckBox="t" CheckBoxIsChecked="f"
-                                   CheckBoxValueChecked="&#9746;" CheckBoxValueUnchecked="&#9744;"
-                                   CheckBoxFontChecked="MS Gothic" CheckBoxFontUnchecked="MS Gothic"
-                                   ID="-1527703869">
-                                <span style='font-family:"MS Gothic";mso-bidi-font-family:
-   "MS Gothic"'>&#9744;</span>
-                            </w:Sdt>Assigned Load Rating Statement<o:p></o:p>
+                            
+                            @Html.EditorFor(modelItem => Model.ComponentSummary.ALRS)
+                            Assigned Load Rating Statement<o:p></o:p>
                         </span>
                     </p>
                 </td>
@@ -1393,7 +1393,7 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
   color:#231F20;mso-font-width:105%'>
                             Plans available in the bridge folder for
                             the subject structure  <u>
-                                                       (@Html.DisplayFor(modelItem => Model.ComponentSummary.CSJ)<span style='mso-spacerun:yes'>       </span><span class=SpellE></span>
+                                                       (@Html.EditorFor(modelItem => Model.ComponentSummary.CSJ)<span style='mso-spacerun:yes'>       </span><span class=SpellE></span>
                             </u>) indicate a design load of<span style='mso-spacerun:yes'></span><span style='mso-spacerun:yes'> </span><u>@Html.DisplayFor(modelItem => Model.ComponentSummary.Loadof)</u><span style='mso-spacerun:yes'></span><o:p></o:p>
                         </span>
                     </p>
@@ -1464,7 +1464,7 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
   height:20.15pt'>
                     <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
                         <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
-  color:#231F20;mso-font-width:105%'><o:p> @Html.DisplayFor(modelItem => Model.ComponentSummary.Item66)&nbsp;</o:p></span>
+  color:#231F20;mso-font-width:105%'><o:p> @Html.EditorFor(modelItem => Model.ComponentSummary.Item66)&nbsp;</o:p></span>
                     </p>
                 </td>
                 <td width=662 colspan=2 valign=top style='width:496.85pt;padding:0in 5.4pt 0in 5.4pt;
@@ -1511,7 +1511,7 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
   height:20.15pt'>
                     <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
                         <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
-  color:#231F20;mso-font-width:105%'><o:p>@Html.DisplayFor(modelItem => Model.ComponentSummary.Item64)&nbsp;</o:p></span>
+  color:#231F20;mso-font-width:105%'><o:p>@Html.EditorFor(modelItem => Model.ComponentSummary.Item64)&nbsp;</o:p></span>
                     </p>
                 </td>
                 <td width=662 colspan=2 valign=top style='width:496.85pt;padding:0in 5.4pt 0in 5.4pt;
@@ -1580,10 +1580,7 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
                         <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
   color:#231F20;mso-font-width:105%'>
                           
-                            <w:Sdt CheckBox="t" CheckBoxIsChecked="t"
-                                   CheckBoxValueChecked="&#9746;" CheckBoxValueUnchecked="&#9744;"
-                                   CheckBoxFontChecked="MS Gothic" CheckBoxFontUnchecked="MS Gothic"
-                                   ID="-1826193670">
+                                @Html.EditorFor(modelItem => Model.ComponentSummary.LRCS)                            
                                 <span style='font-family:"MS Gothic";mso-bidi-font-family:
    "MS Gothic"'>&#9744;</span>
                             
@@ -1650,7 +1647,7 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
                             <td width=101 valign=bottom style='width:75.65pt;padding:0in 5.4pt 0in 5.4pt;
     height:21.8pt'>
                                 <p class=MsoNormal style='text-autospace:ideograph-other'>
-                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20'>Item 66</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt'><o:p></o:p></span>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20'>@Html.EditorFor(modelItem => Model.ComponentSummary.Item66)</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt'><o:p></o:p></span>
                                 </p>
                             </td>
                             <td width=132 colspan=3 valign=top style='width:99.35pt;border:none;
@@ -1696,7 +1693,7 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
                             <td width=101 valign=bottom style='width:75.65pt;padding:0in 5.4pt 0in 5.4pt;
     height:21.8pt'>
                                 <p class=MsoNormal style='text-autospace:ideograph-other'>
-                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20'>Item 64</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt'><o:p></o:p></span>
+                                    <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20'>@Html.EditorFor(modelItem => Model.ComponentSummary.Item64)</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt'><o:p></o:p></span>
                                 </p>
                             </td>
                             <td width=132 colspan=3 valign=top style='width:99.35pt;border:none;
@@ -1773,7 +1770,7 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
     height:5.85pt'>
                                 <p class=MsoBodyText style='margin-top:3.75pt;text-autospace:ideograph-other'>
                                     <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"MS Gothic";
-    mso-bidi-font-family:"MS Gothic";color:#231F20;mso-font-width:105%'>&#9744;</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
+    mso-bidi-font-family:"MS Gothic";color:#231F20;mso-font-width:105%'>@Html.EditorFor(modelItem => Model.ComponentSummary.ASLRS)</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;font-family:"Arial","sans-serif";
     color:#231F20;mso-font-width:105%'>Assumed Load Rating Statement<o:p></o:p></span>
                                 </p>
                             </td>
@@ -1887,7 +1884,7 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
                                         <td width=94 colspan=2 valign=bottom style='width:70.2pt;border:none;
       padding:0in 5.4pt 0in 5.4pt;height:22.2pt'>
                                             <p class=MsoNormal style='text-autospace:ideograph-other'>
-                                                <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20'>Item 66</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt'><o:p></o:p></span>
+                                                <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20'>@Html.EditorFor(modelItem => Model.ComponentSummary.Item66)</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt'><o:p></o:p></span>
                                             </p>
                                         </td>
                                         <td width=139 valign=top style='width:104.55pt;border:none;border-bottom:
@@ -1933,7 +1930,7 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
                                         <td width=94 colspan=2 valign=bottom style='width:70.2pt;border:none;
       padding:0in 5.4pt 0in 5.4pt;height:22.2pt'>
                                             <p class=MsoNormal style='text-autospace:ideograph-other'>
-                                                <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20'>Item 64</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt'><o:p></o:p></span>
+                                                <span style='font-size:16.0pt;mso-bidi-font-size:15.0pt;color:#231F20'>@Html.EditorFor(modelItem => Model.ComponentSummary.Item64)</span><span style='font-size:16.0pt;mso-bidi-font-size:15.0pt'><o:p></o:p></span>
                                             </p>
                                         </td>
                                         <td width=139 valign=top style='width:104.55pt;border:none;border-bottom:
@@ -2089,7 +2086,12 @@ font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span>
         </p>
 
     </div>
-
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+}
 </body>
 
 </html>

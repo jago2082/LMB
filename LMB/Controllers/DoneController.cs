@@ -15,6 +15,7 @@ using Rotativa.Core.Options;
 using Newtonsoft.Json;
 using Microsoft.AspNet.Identity;
 using System.Drawing;
+using System.IO.Compression;
 
 namespace LMB.Controllers
 {
@@ -47,6 +48,35 @@ namespace LMB.Controllers
             ViewBag.IDUser = new SelectList(CombosHelper.GetUsersDB(), "IDUser", "UserName");
             return View("filterdate");
         }
+        //LoadRatingE
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> LoadRatingE(LoadRatingReport loadratingreport)
+        {
+            if (ModelState.IsValid)
+            {
+                var inspecio = db.InspectionDaily.Find(loadratingreport.InspectionDaily.IdInspection);
+                var components = db.ComponentSummaries.Find(loadratingreport.ComponentSummary.IdComponentSummary);
+                components.Description = loadratingreport.ComponentSummary.Description;
+                components.Item64 = loadratingreport.ComponentSummary.Item64;
+                components.Item66 = loadratingreport.ComponentSummary.Item66;
+                components.LRCS = loadratingreport.ComponentSummary.LRCS;
+                components.ALRS = loadratingreport.ComponentSummary.ALRS;
+                components.ASLRS = loadratingreport.ComponentSummary.ASLRS;
+                db.Entry(components).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                //var valuecl = db.ValueCheckList.Where(ins => ins.IdInspection == loadratingreport.InspectionDaily.IdInspection && ins.RowIDQuestion == 1 && ins.IdChecklistQuestion == 1).FirstOrDefault();
+                //valuecl.Value = Convert.ToInt32( loadratingreport.Item58);
+                //db2.Entry(valuecl).State = EntityState.Modified;
+                //await db2.SaveChangesAsync();
+                return View("Reports", inspecio);
+            }
+            return View(loadratingreport);
+        }
+
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> filterDate(FilterDate filterdate)
@@ -149,7 +179,7 @@ namespace LMB.Controllers
                 return new ViewAsPdf("ReportBill", Invoice)
                 {
 
-                    //  FileName = "firstPdf.pdf",
+                    // FileName = "firstPdf.pdf",
                     // CustomSwitches = footer
                     RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(15, 10, 10, 10), PageSize = Rotativa.Core.Options.Size.Letter }
                 };
@@ -839,6 +869,7 @@ namespace LMB.Controllers
         {
             ViewBag.Idinspection = id;
             ReportInspFollowUp reportf = new ReportInspFollowUp();
+            ReportInspFollowUpE reportfe = new ReportInspFollowUpE();
             reportf.InspectionDaily = await db.InspectionDaily.FindAsync(id);
             var distrcode = string.Format("{0}", reportf.InspectionDaily.DO);
             var distric = db.Districts.Where(d => d.NAME.Equals(distrcode)).FirstOrDefault();
@@ -891,7 +922,13 @@ namespace LMB.Controllers
 
             if (accion==1)
             {
-                return View("ReportInspFollowUpE", reportf);
+                ViewBag.InspectionRaitingType = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description", reportf.BridgeInspectionFollowUps.FirstOrDefault().InspectionRaitingType);
+                ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "idvalue", reportf.BridgeInspectionFollowUps.FirstOrDefault().IdRecommendationType);
+                ViewBag.IdReferenceFeatureType = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description", reportf.BridgeInspectionFollowUps.FirstOrDefault().IdReferenceFeatureType);
+                ViewBag.InspectionRaitingTypeS = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description");
+                ViewBag.IdRecommendationTypeS = new SelectList(db.RecommendationType, "IdRecommendationType", "idvalue");
+                ViewBag.IdReferenceFeatureTypeS = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description");
+                return View("ReportInspFollowUpET", reportf);
             }
             else
                 if (accion==2)
@@ -911,6 +948,20 @@ namespace LMB.Controllers
                 // CustomSwitches = footer
                 RotativaOptions = { MinimumFontSize = 11, PageMargins = new Margins(13, 15, 5, 8), PageSize = Rotativa.Core.Options.Size.Letter }
             };
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> UpdateReportS(ReportSummarySheet reportsummarysheet)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(reportsummarysheet).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(reportsummarysheet);
         }
 
 
@@ -968,12 +1019,42 @@ namespace LMB.Controllers
 
         }
 
-        public ActionResult DownLoadData()
+        public ActionResult DownLoadData( int id)
         {
-            ViewBag.Files = new SelectList(CombosHelper.GetFiles(), "Value", "Text");
-            ViewBag.ok = " ";
-            return View();
+            var archive = Server.MapPath("~/archive.zip");
+            var temp = Server.MapPath("~/temp");
+            List<Image> listimg = new List<Image>();
+            ImageHelper help = new ImageHelper();
+
+            if (!System.IO.Directory.Exists(temp))
+            {
+                Directory.CreateDirectory(temp);
+            }
+
+            if (System.IO.File.Exists(archive))
+            {
+                System.IO.File.Delete(archive);
+            }
+           
+            // empty the temp folder
+            Directory.EnumerateFiles(temp).ToList().ForEach(f => System.IO.File.Delete(f));
+            var images = db.Insp_Attach.Where(i => i.IDInspection == id).ToList();
+            foreach (var item in images)
+            {
+                var tmp1 = help.Base64ToImage(item.ImageString);
+                if (tmp1 != null)
+                {
+                    listimg.Add(tmp1);
+                }
+                tmp1 = null;
+            }
+            listimg.ForEach(f => System.IO.File.Copy(archive, Path.Combine(temp, Path.GetFileName(archive))));
+            ZipFile.CreateFromDirectory(temp, archive);
+            return File(archive, "application/zip", "archive.zip");
+
         }
+
+
 
         public ActionResult ReportStructuralCondition()
         {
@@ -1524,9 +1605,28 @@ public ActionResult Reports(int? id)
             return View(bfollowup);
         }
 
-        // POST: BridgeInspectionFollowUps/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+        [HttpPost]
+        public async Task<ActionResult> saveRIF(ReportInspFollowUpE reportinspfollowUp)
+        {
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    return View("Index");
+
+                }
+                catch (Exception)
+                {
+
+                    return View("Index");
+                }
+            }
+            return View("Index");
+        }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateF(BridgeInspectionFollowUp bridgeInspectionFollowUp)
