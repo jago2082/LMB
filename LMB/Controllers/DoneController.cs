@@ -449,7 +449,205 @@ namespace LMB.Controllers
             };
         }
 
-        public ActionResult LoadReportBridgeInspection(int? id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult BridgeIRE(LoadRatingCheckList loadratingcheckList)
+        {
+            var inspList = db.ValueCheckList.ToList().Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection);
+            int item59 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection && ins.RowIDQuestion == 2).Min(value => value.Value));
+            int item60 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection && ins.RowIDQuestion == 3).Min(value => value.Value));
+            int item61 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection && ins.RowIDQuestion == 5).Min(value => value.Value));
+            int item62 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection && ins.RowIDQuestion == 4).Min(value => value.Value));
+            int item65 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection && ins.RowIDQuestion == 9).Min(value => value.Value));
+
+            int item36 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection && ins.RowIDQuestion == 10).Min(value => value.Value));
+            int Appraisal = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection && ins.RowIDQuestion == 11).Min(value => value.Value));
+            int Misce = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection && ins.RowIDQuestion == 12).Min(value => value.Value));
+
+
+            foreach (var dato in inspList)
+            {
+                if (dato.IdChecklistQuestion == 1)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val1);
+                if (dato.IdChecklistQuestion == 2)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val2);
+                if (dato.IdChecklistQuestion == 3)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val3);
+                if (dato.IdChecklistQuestion == 4)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val4);
+                if (dato.IdChecklistQuestion == 5)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val5);
+                if (dato.IdChecklistQuestion == 6)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val6);
+                if (dato.IdChecklistQuestion == 7)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val7);
+                if (dato.IdChecklistQuestion == 8)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val8);
+                if (dato.IdChecklistQuestion == 9)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val9);
+                if (dato.IdChecklistQuestion == 10)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val10);
+                if (dato.IdChecklistQuestion == 11)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val11);
+                if (dato.IdChecklistQuestion == 12)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val12);
+                if (dato.IdChecklistQuestion == 13)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val13);
+                if (dato.IdChecklistQuestion == 14)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val14);
+                if (dato.IdChecklistQuestion == 15)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val15);
+                if (dato.IdChecklistQuestion == 16)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val16);
+                if (dato.IdChecklistQuestion == 17)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val17);
+                if (dato.IdChecklistQuestion == 18)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val18);
+                if (dato.IdChecklistQuestion == 19)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val19);
+                if (dato.IdChecklistQuestion == 20)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val20);
+                if (dato.IdChecklistQuestion == 22)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val22);
+                if (dato.IdChecklistQuestion == 23)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val23);
+                if (dato.IdChecklistQuestion == 24)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val24);
+                //if (item59 == 10)
+                //    LoadRatingReport.val25 = "N";
+                //else
+                //    LoadRatingReport.val25 = Convert.ToString(item59);
+
+                if (dato.IdChecklistQuestion == 25)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val25);
+                if (dato.IdChecklistQuestion == 26)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val26);
+                if (dato.IdChecklistQuestion == 27)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val27);
+                if (dato.IdChecklistQuestion == 28)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val28);
+                if (dato.IdChecklistQuestion == 29)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val29);
+                if (dato.IdChecklistQuestion == 30)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val30);
+                if (dato.IdChecklistQuestion == 31)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.va32);
+                if (dato.IdChecklistQuestion == 32)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.va33);
+                if (dato.IdChecklistQuestion == 33)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.va34);
+                if (dato.IdChecklistQuestion == 34)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.va35);
+                if (dato.IdChecklistQuestion == 35)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.va36);
+                if (dato.IdChecklistQuestion == 36)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.va37);
+                if (dato.IdChecklistQuestion == 37)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.va38);
+                if (dato.IdChecklistQuestion == 38)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.va39);
+                //if (item60 == 10)
+                //    LoadRatingReport.val40 = "N";
+                //else
+                //    dato.Value = Convert.ToInt16(loadratingcheckList.val40);
+
+                if (dato.IdChecklistQuestion == 44)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val41);
+                if (dato.IdChecklistQuestion == 45)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val42);
+                if (dato.IdChecklistQuestion == 46)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val43);
+                if (dato.IdChecklistQuestion == 47)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val44);
+                if (dato.IdChecklistQuestion == 48)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val45);
+                if (dato.IdChecklistQuestion == 49)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val46);
+                //if (item61 == 10)
+                //    LoadRatingReport.val47 = "N";
+                //else
+                //    dato.Value = Convert.ToInt16(loadratingcheckList.val47);
+
+                if (dato.IdChecklistQuestion == 39)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val48);
+                if (dato.IdChecklistQuestion == 40)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val49);
+                if (dato.IdChecklistQuestion == 41)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val50);
+                if (dato.IdChecklistQuestion == 42)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val51);
+                if (dato.IdChecklistQuestion == 43)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val52);
+
+                //if (item62 == 10)
+                //    LoadRatingReport.val53 = "N";
+                //else
+                //    dato.Value = Convert.ToInt16(loadratingcheckList.val53);
+
+                if (dato.IdChecklistQuestion == 50)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val54);
+                if (dato.IdChecklistQuestion == 51)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val55);
+                if (dato.IdChecklistQuestion == 52)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val56);
+                if (dato.IdChecklistQuestion == 53)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val57);
+                if (dato.IdChecklistQuestion == 54)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val58);
+                if (dato.IdChecklistQuestion == 55)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val59);
+                if (dato.IdChecklistQuestion == 56)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val60);
+                if (dato.IdChecklistQuestion == 57)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val61);
+                if (dato.IdChecklistQuestion == 58)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val62);
+                if (dato.IdChecklistQuestion == 59)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val59a);
+                //if (item65 == 10)
+                //    LoadRatingReport.val63 = "N";
+                //else
+                //    dato.Value = Convert.ToInt16(loadratingcheckList.val63);
+
+                if (dato.IdChecklistQuestion == 64)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val64);
+                if (dato.IdChecklistQuestion == 65)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val65);
+                //if (Appraisal == 10)
+                //    LoadRatingReport.val66 = "N";
+                //else
+                //    dato.Value = Convert.ToInt16(loadratingcheckList.val66);
+                if (dato.IdChecklistQuestion == 66)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val67);
+                if (dato.IdChecklistQuestion == 67)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val68);
+                if (dato.IdChecklistQuestion == 68)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val69);
+                if (dato.IdChecklistQuestion == 69)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val70);
+                if (dato.IdChecklistQuestion == 70)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val71);
+                //if (Misce == 10)
+                //    LoadRatingReport.val72 = "N";
+                //else
+                //    dato.Value = Convert.ToInt16(loadratingcheckList.val72);
+                if (dato.IdChecklistQuestion == 60)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val73);
+                if (dato.IdChecklistQuestion == 61)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val74);
+                if (dato.IdChecklistQuestion == 62)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val75);
+                if (dato.IdChecklistQuestion == 63)
+                    dato.Value = Convert.ToInt16(loadratingcheckList.val76);
+                //if (item36 == 10)
+                //    LoadRatingReport.val77 = "N";
+                //else
+                //    dato.Value = Convert.ToInt16(loadratingcheckList.val77);
+            }
+            return View("Reports", inspList.FirstOrDefault());
+        }
+
+        public ActionResult LoadReportBridgeInspection(int? id, int? accion)
         {
             var insp = db.InspectionDaily.Include(d => d.District)
                 .Include(c => c.Counties).ToList();
@@ -678,7 +876,20 @@ namespace LMB.Controllers
             string footer = "--footer-right \"Date: [date] [time]\" " + "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"";
 
 
-            //   return View("ReportBridgeInspectionRecord", LoadRatingReport);
+            if (accion == 1)
+            {
+                return View("ReportBridgeInspectionRecordE", LoadRatingReport);
+               
+            }
+            else if (accion == 2)
+            {
+
+                return new ViewAsPdf("ReportBridgeInspectionRecord", LoadRatingReport)
+                {
+
+                    RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(15, 10, 15, 10), PageSize = Rotativa.Core.Options.Size.Letter }
+                };
+            }
 
 
             return new ViewAsPdf("ReportBridgeInspectionRecord", LoadRatingReport)
@@ -686,6 +897,7 @@ namespace LMB.Controllers
 
                 RotativaOptions = { CustomSwitches = footer, PageMargins = new Margins(15, 10, 15, 10), PageSize = Rotativa.Core.Options.Size.Letter }
             };
+
         }
 
 
