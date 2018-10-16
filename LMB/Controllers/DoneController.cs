@@ -1522,7 +1522,11 @@ namespace LMB.Controllers
             var inspListPSN = db.UnderClearValues.Where(ins => ins.IdInspection == id).GroupBy(ins => ins.PSN).Select(group => group.FirstOrDefault());
 
             var inspList = db.UnderClearValues.ToList().Where(ins => ins.IdInspection == id).OrderBy(ins => ins.PSN);
-            var imageUnder = db.Insp_Attach.Where(insp1 => insp1.IDInspection == id).FirstOrDefault().ImageString;
+            var imageUnder = String.Empty;
+            if (!String.IsNullOrEmpty(db.Insp_Attach.Where(insp1 => insp1.IDInspection == id).FirstOrDefault().ImageString))
+            {
+                imageUnder = db.Insp_Attach.Where(insp1 => insp1.IDInspection == id).FirstOrDefault().ImageString;
+            }
             UnderClearReport UnderClearReport = new UnderClearReport();
 
 
