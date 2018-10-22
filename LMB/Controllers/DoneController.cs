@@ -334,7 +334,7 @@ namespace LMB.Controllers
         }
         
 
-               public async Task<ActionResult> IndexInv(int? id)
+        public async Task<ActionResult> IndexInv(int? id)
         {
 
             if (id == null)
@@ -451,19 +451,10 @@ namespace LMB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult BridgeIRE(LoadRatingCheckList loadratingcheckList)
+        public async  Task<ActionResult> BridgeIRE(LoadRatingCheckList loadratingcheckList)
         {
             var inspList = db.ValueCheckList.ToList().Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection);
-            int item59 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection && ins.RowIDQuestion == 2).Min(value => value.Value));
-            int item60 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection && ins.RowIDQuestion == 3).Min(value => value.Value));
-            int item61 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection && ins.RowIDQuestion == 5).Min(value => value.Value));
-            int item62 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection && ins.RowIDQuestion == 4).Min(value => value.Value));
-            int item65 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection && ins.RowIDQuestion == 9).Min(value => value.Value));
-
-            int item36 = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection && ins.RowIDQuestion == 10).Min(value => value.Value));
-            int Appraisal = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection && ins.RowIDQuestion == 11).Min(value => value.Value));
-            int Misce = Convert.ToInt16(db.ValueCheckList.Where(ins => ins.IdInspection == loadratingcheckList.InspectionDaily.IdInspection && ins.RowIDQuestion == 12).Min(value => value.Value));
-
+            
 
             foreach (var dato in inspList)
             {
@@ -643,10 +634,19 @@ namespace LMB.Controllers
                 //    LoadRatingReport.val77 = "N";
                 //else
                 //    dato.Value = Convert.ToInt16(loadratingcheckList.val77);
+                db.Entry(dato).State = EntityState.Modified;
+                await db.SaveChangesAsync();
             }
             return View("Reports", inspList.FirstOrDefault());
         }
 
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> ReportIRE(InventoryReport inventoryreport)
+        //{
+        //    db.Entry(inventoryreport)
+        //}
         public ActionResult LoadReportBridgeInspection(int? id, int? accion)
         {
             var insp = db.InspectionDaily.Include(d => d.District)
@@ -1592,7 +1592,7 @@ namespace LMB.Controllers
 
 
 
-public ActionResult Reports(int? id)
+        public ActionResult Reports(int? id)
         {
             if (id == null)
             {
@@ -1679,6 +1679,7 @@ public ActionResult Reports(int? id)
         // POST: BridgeInspectionFollowUps/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EditF(BridgeInspectionFollowUp bridgeInspectionFollowUp)

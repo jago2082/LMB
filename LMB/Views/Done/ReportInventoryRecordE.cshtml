@@ -1045,6 +1045,10 @@
 </head>
 
 <body lang=EN-US style='tab-interval:.5in'>
+@using (Html.BeginForm("ReportIRE", "Done", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.InspectionDaily.IdInspection)
 
     <div class=WordSection1>
 
@@ -2945,7 +2949,7 @@ mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span>
     </p>
 
 </div>
-
+}
 </body>
 
 </html>
