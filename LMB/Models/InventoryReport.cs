@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -91,6 +92,8 @@ namespace LMB.Models
         public string Id52 { get; set; }
         public string Id53 { get; set; }
         public string Id54 { get; set; }
+        [NotMapped]
+        public bool Id54C { get; set; }
 
     }
 }

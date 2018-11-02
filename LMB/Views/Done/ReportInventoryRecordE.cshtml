@@ -1048,7 +1048,7 @@
 @using (Html.BeginForm("ReportIRE", "Done", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.InspectionDaily.IdInspection)
+    @Html.HiddenFor(model => model.IdInspection)
 
     <div class=WordSection1>
 
@@ -1503,7 +1503,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
         <span style='color:#231F20'>
             @if ((Model.Id1) == "1")
             {
-                Html.CheckBox("Id1", true);
+                @Html.CheckBox("Id1", true);
 
                 @*<w:Sdt CheckBox="t" CheckBoxIsChecked="t"
                     CheckBoxValueChecked="&#9746;" CheckBoxValueUnchecked="&#9744;"
@@ -1530,7 +1530,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
         <span style='color:#231F20'>
             @if ((Model.Id2) == "1")
             {
-                Html.CheckBox("Id2", true);
+                @Html.CheckBox("Id2", true);
                 @*<w:Sdt CheckBox="t" CheckBoxIsChecked="t"
                     CheckBoxValueChecked="&#9746;" CheckBoxValueUnchecked="&#9744;"
                     CheckBoxFontChecked="MS Gothic" CheckBoxFontUnchecked="MS Gothic"
@@ -1538,7 +1538,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
             }
             else
             {
-                Html.CheckBox("Id2", false);
+                @Html.CheckBox("Id2", false);
                 @*<w:Sdt CheckBox="t" CheckBoxIsChecked="f"
                     CheckBoxValueChecked="&#9746;" CheckBoxValueUnchecked="&#9744;"
                     CheckBoxFontChecked="MS Gothic" CheckBoxFontUnchecked="MS Gothic"
@@ -1617,7 +1617,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
         <span style='color:#231F20'>
             @if ((Model.Id5) == "1")
             {
-                Html.CheckBox("Id5", true);
+                @Html.CheckBox("Id5", true);
                 @*<w:Sdt CheckBox="t" CheckBoxIsChecked="t"
                     CheckBoxValueChecked="&#9746;" CheckBoxValueUnchecked="&#9744;"
                     CheckBoxFontChecked="MS Gothic" CheckBoxFontUnchecked="MS Gothic"
@@ -1625,7 +1625,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
             }
             else
             {
-                Html.CheckBox("Id5", false);
+                @Html.CheckBox("Id5", false);
                 @*<w:Sdt CheckBox="t" CheckBoxIsChecked="f"
                     CheckBoxValueChecked="&#9746;" CheckBoxValueUnchecked="&#9744;"
                     CheckBoxFontChecked="MS Gothic" CheckBoxFontUnchecked="MS Gothic"
@@ -1645,7 +1645,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
         <span style='color:#231F20'>
             @if ((Model.Id6) == "1")
             {
-                Html.CheckBox("Id6", true);
+                @Html.CheckBox("Id6", true);
                 @*<w:Sdt CheckBox="t" CheckBoxIsChecked="t"
                     CheckBoxValueChecked="&#9746;" CheckBoxValueUnchecked="&#9744;"
                     CheckBoxFontChecked="MS Gothic" CheckBoxFontUnchecked="MS Gothic"
@@ -1653,7 +1653,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
             }
             else
             {
-                Html.CheckBox("Id6", false);
+                @Html.CheckBox("Id6", false);
                 @*<w:Sdt CheckBox="t" CheckBoxIsChecked="f"
                     CheckBoxValueChecked="&#9746;" CheckBoxValueUnchecked="&#9744;"
                     CheckBoxFontChecked="MS Gothic" CheckBoxFontUnchecked="MS Gothic"
@@ -1677,7 +1677,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
         <span style='color:#231F20'>
             @if ((Model.Id7) == "1")
             {
-                Html.CheckBox("Id7", true);
+                @Html.CheckBox("Id7", true);
                 @*<w:Sdt CheckBox="t" CheckBoxIsChecked="t"
                     CheckBoxValueChecked="&#9746;" CheckBoxValueUnchecked="&#9744;"
                     CheckBoxFontChecked="MS Gothic" CheckBoxFontUnchecked="MS Gothic"
@@ -1685,7 +1685,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
             }
             else
             {
-                Html.CheckBox("Id7", false);
+                @Html.CheckBox("Id7", false);
                 @*<w:Sdt CheckBox="t" CheckBoxIsChecked="f"
                     CheckBoxValueChecked="&#9746;" CheckBoxValueUnchecked="&#9744;"
                     CheckBoxFontChecked="MS Gothic" CheckBoxFontUnchecked="MS Gothic"
@@ -1770,13 +1770,21 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
     <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
         <span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:
   relative;top:.5pt;mso-text-raise:-.5pt'>
-            <w:Sdt CheckBox="t"
+        @if (Model.Id10 == "1")
+        {
+            @Html.CheckBox("Id10", true)
+        }
+        else
+        {
+            @Html.CheckBox("Id10", false)
+        }
+            @*<w:Sdt CheckBox="t"
                    CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
                    CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                    CheckBoxFontUnchecked="MS Gothic" ID="1321457695">
                 <span style='font-family:
    "MS Gothic"'>&#9746;</span>
-            </w:Sdt>Unimpaired
+            </w:Sdt>*@Unimpaired
         </span><span style='font-size:
   12.0pt;mso-bidi-font-size:11.0pt'><o:p></o:p></span>
     </p>
@@ -2261,7 +2269,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
             <span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
                 @if ((Model.Id31) == "1")
                 {
-                    Html.CheckBox("Id31", true);
+                    @Html.CheckBox("Id31", true);
                     @*<w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
                                                         CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                                                         CheckBoxFontUnchecked="MS Gothic" ID="-1728456276">
@@ -2271,7 +2279,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
                 }
                 else
                 {
-                    Html.CheckBox("Id31", false);
+                    @Html.CheckBox("Id31", false);
                     @*<w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
                                                         CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                                                         CheckBoxFontUnchecked="MS Gothic" ID="-1728456276">
@@ -2289,13 +2297,17 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
             <span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
                 @if ((Model.Id49) == "1")
                 {
-                    Html.CheckBox("Id49", true);
+                    @Html.CheckBox("Id49", true);
                     @*<w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
                                                         CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                                                         CheckBoxFontUnchecked="MS Gothic" ID="38560532">
                                                      <span style='font-family:
                         "MS Gothic"'>&#9744;</span>
                                                  </w:Sdt>*@
+                }else
+                {
+                    @Html.CheckBox("Id49", false);
+
                 }
                 3 -<span style='letter-spacing:-.05pt'> </span>10<o:p></o:p>
             </span>
@@ -2307,7 +2319,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
             <span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
                 @if ((Model.Id51) == "1")
                 {
-                    Html.CheckBox("Id51", true);
+                    @Html.CheckBox("Id51", true);
                     @*<w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
                                                         CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                                                         CheckBoxFontUnchecked="MS Gothic" ID="1466858486">
@@ -2317,7 +2329,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
                 }
                 else
                 {
-                    Html.CheckBox("Id51", false);
+                    @Html.CheckBox("Id51", false);
                     @*<w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
                                 CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                                 CheckBoxFontUnchecked="MS Gothic" ID="1466858486">
@@ -2335,7 +2347,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
             <span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
                 @if ((Model.Id53) == "1")
                 {
-                    Html.CheckBox("Id53", true);
+                    @Html.CheckBox("Id53", true);
                     @*<w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
                                                         CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                                                         CheckBoxFontUnchecked="MS Gothic" ID="-335234847">
@@ -2345,7 +2357,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
                 }
                 else
                 {
-                    Html.CheckBox("Id53", false);
+                    @Html.CheckBox("Id53", false);
                     @*<w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
                                                         CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                                                         CheckBoxFontUnchecked="MS Gothic" ID="-335234847">
@@ -2381,7 +2393,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
             <span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
                 @if ((Model.Id31) == "1")
                 {
-                    Html.CheckBox("Id31", true);
+                    @Html.CheckBox("Id31", true);
                     @*<w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
                                                         CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                                                         CheckBoxFontUnchecked="MS Gothic" ID="-90547578">
@@ -2391,7 +2403,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
                 }
                 else
                 {
-                    Html.CheckBox("Id31", false);
+                    @Html.CheckBox("Id31", false);
                     @*<w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
                                 CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                                 CheckBoxFontUnchecked="MS Gothic" ID="-90547578">
@@ -2409,7 +2421,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
             <span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
                 @if ((Model.Id50) == "1")
                 {
-                    Html.CheckBox("Id50", true);
+                    @Html.CheckBox("Id50", true);
                     @*<w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
                                                             CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                                                             CheckBoxFontUnchecked="MS Gothic" ID="522678852">
@@ -2418,7 +2430,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
                                                      </w:Sdt>*@}
                 else
                 {
-                    Html.CheckBox("Id50", false);
+                    @Html.CheckBox("Id50", false);
                     @*<w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
                                                             CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                                                             CheckBoxFontUnchecked="MS Gothic" ID="522678852">
@@ -2436,7 +2448,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
             <span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
                 @if ((Model.Id52) == "1")
                 {
-                    Html.CheckBox("Id52", true);
+                    @Html.CheckBox("Id52", true);
                     @*<w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
                                                         CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                                                         CheckBoxFontUnchecked="MS Gothic" ID="-2110349399">
@@ -2446,7 +2458,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
                 }
                 else
                 {
-                    Html.CheckBox("Id52", false);
+                    @Html.CheckBox("Id52", false);
                     @*<w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
                                                             CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                                                             CheckBoxFontUnchecked="MS Gothic" ID="-2110349399">
@@ -2472,7 +2484,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
             <span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
                 @if ((Model.Id54) == "1")
                 {
-                    Html.CheckBox("Id54", true);
+                    @Html.CheckBox("Id54", true);
                     @*<w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
                                                         CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                                                         CheckBoxFontUnchecked="MS Gothic" ID="2054891505">
@@ -2482,7 +2494,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
                 }
                 else
                 {
-                    Html.CheckBox("Id54", false);
+                    @Html.CheckBox("Id54", false);
                     @*<w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
                                 CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                                 CheckBoxFontUnchecked="MS Gothic" ID="2054891505">
@@ -2604,7 +2616,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
             <span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;color:#231F20'>
                 @if ((Model.Id37) == "1")
                 {
-                    Html.CheckBox("Id37", true);
+                    @Html.CheckBox("Id37", true, new { @value = "Prueba" });
                     @*<w:Sdt CheckBox="t" CheckBoxIsChecked="t" CheckBoxValueChecked="&#9746;"
                                                         CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                                                         CheckBoxFontUnchecked="MS Gothic" ID="-452332671">
@@ -2614,7 +2626,7 @@ mso-bidi-font-size:11.0pt;color:#231F20'>General Description:<o:p></o:p></span>
                 }
                 else
                 {
-                    Html.CheckBox("Id37", false);
+                    @Html.CheckBox("Id37", false, new { @value = "Prueba" });
                     @*<w:Sdt CheckBox="t" CheckBoxIsChecked="f" CheckBoxValueChecked="&#9746;"
                                                         CheckBoxValueUnchecked="&#9744;" CheckBoxFontChecked="MS Gothic"
                                                         CheckBoxFontUnchecked="MS Gothic" ID="-452332671">
@@ -2774,7 +2786,7 @@ width:215px;height:197px'>
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:112.95pt'>
                 <p class=MsoNormal style='margin-top:4.7pt;text-autospace:ideograph-numeric ideograph-other'>
                     <span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;color:#231F20;position:
-  relative;top:.5pt;mso-text-raise:-.5pt'>@Html.DisplayFor(modelItem => Model.Id38)<o:p></o:p></span>
+  relative;top:.5pt;mso-text-raise:-.5pt'>@Html.EditorFor(modelItem => Model.Id38)<o:p></o:p></span>
 </p>
 </td>
 <td width=457 valign=top style='width:342.55pt;border:solid windowtext 1.0pt;
@@ -2949,6 +2961,13 @@ mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span>
     </p>
 
 </div>
+
+    <div class="form-group">
+        <div class="col-md-4 text-center" style="text-align:center;">
+            <input type="submit" value="Save" class="btn btn-success" />
+        </div>
+    </div>
+
 }
 </body>
 

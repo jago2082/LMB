@@ -637,7 +637,8 @@ namespace LMB.Controllers
                 db.Entry(dato).State = EntityState.Modified;
                 await db.SaveChangesAsync();
             }
-            return View("Reports", inspList.FirstOrDefault());
+            var inspd = db2.InspectionDaily.Find(inspList.FirstOrDefault().IdInspection);
+            return View("Reports", inspd);
         }
 
 
@@ -653,7 +654,7 @@ namespace LMB.Controllers
                 .Include(c => c.Counties).ToList();
             var inspList = db.ValueCheckList.ToList().Where(ins => ins.IdInspection == id);
             var ImageList = db.Insp_Question_Attach.ToList().Where(ins => ins.IDValueChecklist == id);
-
+            int? total = 0;
 
             LoadRatingCheckList LoadRatingReport = new LoadRatingCheckList();
             LoadRatingReport.Insp_Question_Attach = ImageList.ToList();
@@ -849,17 +850,17 @@ namespace LMB.Controllers
                     else
                         LoadRatingReport.val72 = Convert.ToString(Misce);
                     if (dato.IdChecklistQuestion == 60)
-                        LoadRatingReport.val73 = Convert.ToString(dato.Value);
+                        LoadRatingReport.val73 = Convert.ToString(dato.Value);total = total + dato.Value;
                     if (dato.IdChecklistQuestion == 61)
-                        LoadRatingReport.val74 = Convert.ToString(dato.Value);
+                        LoadRatingReport.val74 = Convert.ToString(dato.Value); total = total + dato.Value;
                     if (dato.IdChecklistQuestion == 62)
-                        LoadRatingReport.val75 = Convert.ToString(dato.Value);
+                        LoadRatingReport.val75 = Convert.ToString(dato.Value); total = total + dato.Value;
                     if (dato.IdChecklistQuestion == 63)
-                        LoadRatingReport.val76 = Convert.ToString(dato.Value);
+                        LoadRatingReport.val76 = Convert.ToString(dato.Value); total = total + dato.Value;
                     if (item36 == 10)
                         LoadRatingReport.val77 = "N";
                     else
-                        LoadRatingReport.val77 = Convert.ToString(item36);
+                        LoadRatingReport.val77 = Convert.ToString(total);
                 }
             }
             if (LoadRatingReport == null)
@@ -1273,12 +1274,137 @@ namespace LMB.Controllers
             return View("ReportStructuralCondition");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ReportIRE(InventoryReport inventoryreport)
+        {
+            var insp = db.InspectionDaily.Find(inventoryreport.IdInspection);
+
+            var inspList = db.InspectionBasicRegistryValue.Where(ins => ins.IdInspection == inventoryreport.IdInspection).ToList().OrderBy(x => x.idInspBasic);
+            if (inspList != null)
+            {
+                foreach (var data in inspList)
+                {
+                    if (data.idInspBasic == 1)
+                        data.Value =  (Convert.ToBoolean(inventoryreport.Id1) == true) ? "1" : "0"; 
+                    if (data.idInspBasic == 2)
+                        data.Value = (Convert.ToBoolean(inventoryreport.Id2) == true) ? "1" : "0";
+                    if (data.idInspBasic == 3)
+                        data.Value = inventoryreport.Id3;
+                    if (data.idInspBasic == 4)
+                        data.Value = inventoryreport.Id4;
+                    if (data.idInspBasic == 5)
+                        data.Value = inventoryreport.Id5;
+                    if (data.idInspBasic == 6)
+                        data.Value = inventoryreport.Id6;
+                    if (data.idInspBasic == 7)
+                        data.Value = inventoryreport.Id7;
+                    if (data.idInspBasic == 8)
+                        data.Value = inventoryreport.Id8;
+                    if (data.idInspBasic == 9)
+                        data.Value = inventoryreport.Id9;
+                    if (data.idInspBasic == 10)
+                        data.Value = inventoryreport.Id10;
+                    if (data.idInspBasic == 11)
+                        data.Value = inventoryreport.Id11;
+                    if (data.idInspBasic == 12)
+                        data.Value = inventoryreport.Id12;
+                    if (data.idInspBasic == 13)
+                        data.Value = inventoryreport.Id13;
+                    if (data.idInspBasic == 14)
+                        data.Value = inventoryreport.Id14;
+                    if (data.idInspBasic == 15)
+                        data.Value = inventoryreport.Id15;
+                    if (data.idInspBasic == 16)
+                        data.Value = inventoryreport.Id16;
+                    if (data.idInspBasic == 17)
+                        data.Value = inventoryreport.Id17;
+                    if (data.idInspBasic == 18)
+                        data.Value = inventoryreport.Id18;
+                    if (data.idInspBasic == 19)
+                        data.Value = inventoryreport.Id19;
+                    if (data.idInspBasic == 20)
+                        data.Value = inventoryreport.Id20;
+                    if (data.idInspBasic == 21)
+                        data.Value = inventoryreport.Id21;
+                    if (data.idInspBasic == 22)
+                        data.Value = inventoryreport.Id22;
+                    if (data.idInspBasic == 23)
+                        data.Value = inventoryreport.Id23;
+                    if (data.idInspBasic == 24)
+                        data.Value = inventoryreport.Id24;
+                    if (data.idInspBasic == 25)
+                        data.Value = inventoryreport.Id25;
+                    if (data.idInspBasic == 26)
+                        data.Value = inventoryreport.Id26;
+                    if (data.idInspBasic == 27)
+                        data.Value = inventoryreport.Id27;
+                    if (data.idInspBasic == 28)
+                        data.Value = inventoryreport.Id28;
+                    if (data.idInspBasic == 29)
+                        data.Value = inventoryreport.Id29;
+                    if (data.idInspBasic == 30)
+                        data.Value = inventoryreport.Id30;
+                    if (data.idInspBasic == 31)
+                        data.Value = inventoryreport.Id31;
+                    if (data.idInspBasic == 32)
+                        data.Value = inventoryreport.Id32;
+                    if (data.idInspBasic == 33)
+                        data.Value = inventoryreport.Id23;
+                    if (data.idInspBasic == 24)
+                        data.Value = inventoryreport.Id24;
+                    if (data.idInspBasic == 35)
+                        data.Value = inventoryreport.Id35;
+                    if (data.idInspBasic == 36)
+                        data.Value = inventoryreport.Id36;
+                    if (data.idInspBasic == 37)
+                        data.Value= inventoryreport.Id37;
+                    if (data.idInspBasic == 38)
+                        data.Value = inventoryreport.Id38;
+                    if (data.idInspBasic == 39)
+                        data.Value = inventoryreport.Id39;
+                    if (data.idInspBasic == 42)
+                        data.Value = inventoryreport.Id42;
+                    if (data.idInspBasic == 43)
+                        data.Value = inventoryreport.Id43;
+                    if (data.idInspBasic == 44)
+                        data.Value = inventoryreport.Id44;
+                    if (data.idInspBasic == 45)
+                        data.Value = inventoryreport.Id45;
+                    if (data.idInspBasic == 46)
+                        data.Value = inventoryreport.Id46;
+                    if (data.idInspBasic == 47)
+                        data.Value = inventoryreport.Id47;
+                    if (data.idInspBasic == 48)
+                        data.Value = inventoryreport.Id48;
+                    if (data.idInspBasic == 49)
+                        data.Value = inventoryreport.Id49;
+                    if (data.idInspBasic == 50)
+                        data.Value = inventoryreport.Id50;
+                    if (data.idInspBasic == 51)
+                        data.Value = inventoryreport.Id51;
+                    if (data.idInspBasic == 52)
+                        data.Value = inventoryreport.Id52;
+                    if (data.idInspBasic == 53)
+                        data.Value = inventoryreport.Id53;
+                    if (data.idInspBasic == 54)
+                        data.Value = inventoryreport.Id54;
+                    db.Entry(data).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+            var inspd = db2.InspectionDaily.Find(inspList.FirstOrDefault().IdInspection);
+            return View("Reports", inspd);
+            
+        }
+
         public ActionResult ReportInventoryRecord(int? id, int? accion)
         {
             // int id = 5;
             var insp = db.InspectionDaily.Find(id);
 
             var inspList = db.InspectionBasicRegistryValue.ToList().Where(ins => ins.IdInspection == id);
+
 
             InventoryReport InventoryReport = new InventoryReport();
 
@@ -1388,7 +1514,7 @@ namespace LMB.Controllers
                     if (data.idInspBasic == 37)
                         InventoryReport.Id37 = data.Value;
                     if (data.idInspBasic == 38)
-                        InventoryReport.Id38 = data.Value;
+                        InventoryReport.Id38 = data.Value; 
                     if (data.idInspBasic == 39)
                         InventoryReport.Id39 = data.Value;
                     if (data.idInspBasic == 42)
