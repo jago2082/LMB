@@ -1294,17 +1294,17 @@ namespace LMB.Controllers
                     if (data.idInspBasic == 4)
                         data.Value = inventoryreport.Id4;
                     if (data.idInspBasic == 5)
-                        data.Value = inventoryreport.Id5;
+                        data.Value = (Convert.ToBoolean(inventoryreport.Id5) == true) ? "1" : "0";
                     if (data.idInspBasic == 6)
-                        data.Value = inventoryreport.Id6;
+                        data.Value = (Convert.ToBoolean(inventoryreport.Id6) == true) ? "1" : "0";
                     if (data.idInspBasic == 7)
-                        data.Value = inventoryreport.Id7;
+                        data.Value = (Convert.ToBoolean(inventoryreport.Id7) == true) ? "1" : "0";
                     if (data.idInspBasic == 8)
                         data.Value = inventoryreport.Id8;
                     if (data.idInspBasic == 9)
                         data.Value = inventoryreport.Id9;
                     if (data.idInspBasic == 10)
-                        data.Value = inventoryreport.Id10;
+                        data.Value = (Convert.ToBoolean(inventoryreport.Id10) == true) ? "1" : "0";
                     if (data.idInspBasic == 11)
                         data.Value = inventoryreport.Id11;
                     if (data.idInspBasic == 12)
@@ -1346,19 +1346,19 @@ namespace LMB.Controllers
                     if (data.idInspBasic == 30)
                         data.Value = inventoryreport.Id30;
                     if (data.idInspBasic == 31)
-                        data.Value = inventoryreport.Id31;
+                        data.Value = (Convert.ToBoolean(inventoryreport.Id31) == true) ? "1" : "0";
                     if (data.idInspBasic == 32)
                         data.Value = inventoryreport.Id32;
                     if (data.idInspBasic == 33)
-                        data.Value = inventoryreport.Id23;
-                    if (data.idInspBasic == 24)
-                        data.Value = inventoryreport.Id24;
+                        data.Value = inventoryreport.Id33;
+                    if (data.idInspBasic == 34)
+                        data.Value = inventoryreport.Id34;
                     if (data.idInspBasic == 35)
                         data.Value = inventoryreport.Id35;
                     if (data.idInspBasic == 36)
                         data.Value = inventoryreport.Id36;
                     if (data.idInspBasic == 37)
-                        data.Value= inventoryreport.Id37;
+                        data.Value = (Convert.ToBoolean(inventoryreport.Id37) == true) ? "1" : "0";
                     if (data.idInspBasic == 38)
                         data.Value = inventoryreport.Id38;
                     if (data.idInspBasic == 39)
@@ -1378,17 +1378,17 @@ namespace LMB.Controllers
                     if (data.idInspBasic == 48)
                         data.Value = inventoryreport.Id48;
                     if (data.idInspBasic == 49)
-                        data.Value = inventoryreport.Id49;
+                        data.Value = (Convert.ToBoolean(inventoryreport.Id49) == true) ? "1" : "0";
                     if (data.idInspBasic == 50)
-                        data.Value = inventoryreport.Id50;
+                        data.Value = (Convert.ToBoolean(inventoryreport.Id50) == true) ? "1" : "0";
                     if (data.idInspBasic == 51)
-                        data.Value = inventoryreport.Id51;
+                        data.Value = (Convert.ToBoolean(inventoryreport.Id51) == true) ? "1" : "0";
                     if (data.idInspBasic == 52)
-                        data.Value = inventoryreport.Id52;
+                        data.Value = (Convert.ToBoolean(inventoryreport.Id52) == true) ? "1" : "0";
                     if (data.idInspBasic == 53)
-                        data.Value = inventoryreport.Id53;
+                        data.Value = (Convert.ToBoolean(inventoryreport.Id53) == true) ? "1" : "0";
                     if (data.idInspBasic == 54)
-                        data.Value = inventoryreport.Id54;
+                        data.Value = (Convert.ToBoolean(inventoryreport.Id54) == true) ? "1" : "0";
                     db.Entry(data).State = EntityState.Modified;
                     db.SaveChanges();
                 }
