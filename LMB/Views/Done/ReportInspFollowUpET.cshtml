@@ -1,303 +1,303 @@
 ﻿@model LMB.Models.ReportInspFollowUp
-    <style>
-        <!--
-        /* Font Definitions */
-        @@font-face {
-            font-family: Calibri;
-            panose-1: 2 15 5 2 2 2 4 3 2 4;
-            mso-font-charset: 0;
-            mso-generic-font-family: swiss;
-            mso-font-pitch: variable;
-            mso-font-signature: -536859905 -1073732485 9 0 511 0;
-        }
+<style>
+    <!--
+    /* Font Definitions */
+    @@font-face {
+        font-family: Calibri;
+        panose-1: 2 15 5 2 2 2 4 3 2 4;
+        mso-font-charset: 0;
+        mso-generic-font-family: swiss;
+        mso-font-pitch: variable;
+        mso-font-signature: -536859905 -1073732485 9 0 511 0;
+    }
 
-        @@font-face {
-            font-family: Tahoma;
-            panose-1: 2 11 6 4 3 5 4 4 2 4;
-            mso-font-charset: 0;
-            mso-generic-font-family: swiss;
-            mso-font-pitch: variable;
-            mso-font-signature: -520081665 -1073717157 41 0 66047 0;
-        }
-        /* Style Definitions */
-        p.MsoNormal, li.MsoNormal, div.MsoNormal {
-            mso-style-priority: 1;
-            mso-style-unhide: no;
-            mso-style-qformat: yes;
-            mso-style-parent: "";
-            margin: 0in;
-            margin-bottom: .0001pt;
-            mso-pagination: none;
-            text-autospace: none;
-            font-size: 11.0pt;
-            font-family: "Arial","sans-serif";
-            mso-fareast-font-family: Arial;
-        }
+    @@font-face {
+        font-family: Tahoma;
+        panose-1: 2 11 6 4 3 5 4 4 2 4;
+        mso-font-charset: 0;
+        mso-generic-font-family: swiss;
+        mso-font-pitch: variable;
+        mso-font-signature: -520081665 -1073717157 41 0 66047 0;
+    }
+    /* Style Definitions */
+    p.MsoNormal, li.MsoNormal, div.MsoNormal {
+        mso-style-priority: 1;
+        mso-style-unhide: no;
+        mso-style-qformat: yes;
+        mso-style-parent: "";
+        margin: 0in;
+        margin-bottom: .0001pt;
+        mso-pagination: none;
+        text-autospace: none;
+        font-size: 11.0pt;
+        font-family: "Arial","sans-serif";
+        mso-fareast-font-family: Arial;
+    }
 
-        h1 {
-            mso-style-priority: 1;
-            mso-style-unhide: no;
-            mso-style-qformat: yes;
-            mso-style-link: "Heading 1 Char";
-            margin-top: .05pt;
-            margin-right: 0in;
-            margin-bottom: 0in;
-            margin-left: 8.15pt;
-            margin-bottom: .0001pt;
-            mso-pagination: none;
-            mso-outline-level: 1;
-            text-autospace: none;
-            font-size: 12.0pt;
-            font-family: "Arial","sans-serif";
-            mso-fareast-font-family: Arial;
-            mso-font-kerning: 0pt;
-        }
+    h1 {
+        mso-style-priority: 1;
+        mso-style-unhide: no;
+        mso-style-qformat: yes;
+        mso-style-link: "Heading 1 Char";
+        margin-top: .05pt;
+        margin-right: 0in;
+        margin-bottom: 0in;
+        margin-left: 8.15pt;
+        margin-bottom: .0001pt;
+        mso-pagination: none;
+        mso-outline-level: 1;
+        text-autospace: none;
+        font-size: 12.0pt;
+        font-family: "Arial","sans-serif";
+        mso-fareast-font-family: Arial;
+        mso-font-kerning: 0pt;
+    }
 
-        p.MsoBodyText, li.MsoBodyText, div.MsoBodyText {
-            mso-style-noshow: yes;
-            mso-style-priority: 1;
-            mso-style-qformat: yes;
-            mso-style-link: "Body Text Char";
-            margin: 0in;
-            margin-bottom: .0001pt;
-            mso-pagination: none;
-            text-autospace: none;
-            font-size: 10.0pt;
-            font-family: "Calibri","sans-serif";
-            mso-fareast-font-family: Calibri;
-        }
+    p.MsoBodyText, li.MsoBodyText, div.MsoBodyText {
+        mso-style-noshow: yes;
+        mso-style-priority: 1;
+        mso-style-qformat: yes;
+        mso-style-link: "Body Text Char";
+        margin: 0in;
+        margin-bottom: .0001pt;
+        mso-pagination: none;
+        text-autospace: none;
+        font-size: 10.0pt;
+        font-family: "Calibri","sans-serif";
+        mso-fareast-font-family: Calibri;
+    }
 
-        p.MsoAcetate, li.MsoAcetate, div.MsoAcetate {
-            mso-style-noshow: yes;
-            mso-style-priority: 99;
-            mso-style-link: "Balloon Text Char";
-            margin: 0in;
-            margin-bottom: .0001pt;
-            mso-pagination: none;
-            text-autospace: none;
-            font-size: 8.0pt;
-            font-family: "Tahoma","sans-serif";
-            mso-fareast-font-family: Arial;
-        }
+    p.MsoAcetate, li.MsoAcetate, div.MsoAcetate {
+        mso-style-noshow: yes;
+        mso-style-priority: 99;
+        mso-style-link: "Balloon Text Char";
+        margin: 0in;
+        margin-bottom: .0001pt;
+        mso-pagination: none;
+        text-autospace: none;
+        font-size: 8.0pt;
+        font-family: "Tahoma","sans-serif";
+        mso-fareast-font-family: Arial;
+    }
 
-        p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph {
-            mso-style-priority: 1;
-            mso-style-unhide: no;
-            mso-style-qformat: yes;
-            margin: 0in;
-            margin-bottom: .0001pt;
-            mso-pagination: none;
-            text-autospace: none;
-            font-size: 11.0pt;
-            font-family: "Arial","sans-serif";
-            mso-fareast-font-family: Arial;
-        }
+    p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph {
+        mso-style-priority: 1;
+        mso-style-unhide: no;
+        mso-style-qformat: yes;
+        margin: 0in;
+        margin-bottom: .0001pt;
+        mso-pagination: none;
+        text-autospace: none;
+        font-size: 11.0pt;
+        font-family: "Arial","sans-serif";
+        mso-fareast-font-family: Arial;
+    }
 
-        span.Heading1Char {
-            mso-style-name: "Heading 1 Char";
-            mso-style-priority: 9;
-            mso-style-unhide: no;
-            mso-style-locked: yes;
-            mso-style-link: "Heading 1";
-            mso-ansi-font-size: 14.0pt;
-            mso-bidi-font-size: 14.0pt;
-            font-family: "Cambria","serif";
-            mso-ascii-font-family: Cambria;
-            mso-ascii-theme-font: major-latin;
-            mso-fareast-font-family: "Times New Roman";
-            mso-fareast-theme-font: major-fareast;
-            mso-hansi-font-family: Cambria;
-            mso-hansi-theme-font: major-latin;
-            mso-bidi-font-family: "Times New Roman";
-            mso-bidi-theme-font: major-bidi;
-            color: #365F91;
-            mso-themecolor: accent1;
-            mso-themeshade: 191;
-            font-weight: bold;
-        }
+    span.Heading1Char {
+        mso-style-name: "Heading 1 Char";
+        mso-style-priority: 9;
+        mso-style-unhide: no;
+        mso-style-locked: yes;
+        mso-style-link: "Heading 1";
+        mso-ansi-font-size: 14.0pt;
+        mso-bidi-font-size: 14.0pt;
+        font-family: "Cambria","serif";
+        mso-ascii-font-family: Cambria;
+        mso-ascii-theme-font: major-latin;
+        mso-fareast-font-family: "Times New Roman";
+        mso-fareast-theme-font: major-fareast;
+        mso-hansi-font-family: Cambria;
+        mso-hansi-theme-font: major-latin;
+        mso-bidi-font-family: "Times New Roman";
+        mso-bidi-theme-font: major-bidi;
+        color: #365F91;
+        mso-themecolor: accent1;
+        mso-themeshade: 191;
+        font-weight: bold;
+    }
 
-        span.BodyTextChar {
-            mso-style-name: "Body Text Char";
-            mso-style-noshow: yes;
-            mso-style-priority: 99;
-            mso-style-unhide: no;
-            mso-style-locked: yes;
-            mso-style-link: "Body Text";
-            mso-ansi-font-size: 11.0pt;
-            mso-bidi-font-size: 11.0pt;
-            font-family: "Arial","sans-serif";
-            mso-ascii-font-family: Arial;
-            mso-fareast-font-family: Arial;
-            mso-hansi-font-family: Arial;
-            mso-bidi-font-family: Arial;
-        }
+    span.BodyTextChar {
+        mso-style-name: "Body Text Char";
+        mso-style-noshow: yes;
+        mso-style-priority: 99;
+        mso-style-unhide: no;
+        mso-style-locked: yes;
+        mso-style-link: "Body Text";
+        mso-ansi-font-size: 11.0pt;
+        mso-bidi-font-size: 11.0pt;
+        font-family: "Arial","sans-serif";
+        mso-ascii-font-family: Arial;
+        mso-fareast-font-family: Arial;
+        mso-hansi-font-family: Arial;
+        mso-bidi-font-family: Arial;
+    }
 
-        span.BalloonTextChar {
-            mso-style-name: "Balloon Text Char";
-            mso-style-noshow: yes;
-            mso-style-priority: 99;
-            mso-style-unhide: no;
-            mso-style-locked: yes;
-            mso-style-link: "Balloon Text";
-            mso-ansi-font-size: 8.0pt;
-            mso-bidi-font-size: 8.0pt;
-            font-family: "Tahoma","sans-serif";
-            mso-ascii-font-family: Tahoma;
-            mso-fareast-font-family: Arial;
-            mso-hansi-font-family: Tahoma;
-            mso-bidi-font-family: Tahoma;
-        }
+    span.BalloonTextChar {
+        mso-style-name: "Balloon Text Char";
+        mso-style-noshow: yes;
+        mso-style-priority: 99;
+        mso-style-unhide: no;
+        mso-style-locked: yes;
+        mso-style-link: "Balloon Text";
+        mso-ansi-font-size: 8.0pt;
+        mso-bidi-font-size: 8.0pt;
+        font-family: "Tahoma","sans-serif";
+        mso-ascii-font-family: Tahoma;
+        mso-fareast-font-family: Arial;
+        mso-hansi-font-family: Tahoma;
+        mso-bidi-font-family: Tahoma;
+    }
 
-        p.TableParagraph, li.TableParagraph, div.TableParagraph {
-            mso-style-name: "Table Paragraph";
-            mso-style-priority: 1;
-            mso-style-unhide: no;
-            mso-style-qformat: yes;
-            margin: 0in;
-            margin-bottom: .0001pt;
-            mso-pagination: none;
-            text-autospace: none;
-            font-size: 11.0pt;
-            font-family: "Arial","sans-serif";
-            mso-fareast-font-family: Arial;
-        }
+    p.TableParagraph, li.TableParagraph, div.TableParagraph {
+        mso-style-name: "Table Paragraph";
+        mso-style-priority: 1;
+        mso-style-unhide: no;
+        mso-style-qformat: yes;
+        margin: 0in;
+        margin-bottom: .0001pt;
+        mso-pagination: none;
+        text-autospace: none;
+        font-size: 11.0pt;
+        font-family: "Arial","sans-serif";
+        mso-fareast-font-family: Arial;
+    }
 
-        span.SpellE {
-            mso-style-name: "";
-            mso-spl-e: yes;
-        }
+    span.SpellE {
+        mso-style-name: "";
+        mso-spl-e: yes;
+    }
 
-        .MsoChpDefault {
-            mso-style-type: export-only;
-            mso-default-props: yes;
-            font-size: 10.0pt;
-            mso-ansi-font-size: 10.0pt;
-            mso-bidi-font-size: 10.0pt;
-            font-family: "Calibri","sans-serif";
-            mso-ascii-font-family: Calibri;
-            mso-ascii-theme-font: minor-latin;
-            mso-fareast-font-family: Calibri;
-            mso-fareast-theme-font: minor-latin;
-            mso-hansi-font-family: Calibri;
-            mso-hansi-theme-font: minor-latin;
-            mso-bidi-font-family: "Times New Roman";
-            mso-bidi-theme-font: minor-bidi;
-        }
+    .MsoChpDefault {
+        mso-style-type: export-only;
+        mso-default-props: yes;
+        font-size: 10.0pt;
+        mso-ansi-font-size: 10.0pt;
+        mso-bidi-font-size: 10.0pt;
+        font-family: "Calibri","sans-serif";
+        mso-ascii-font-family: Calibri;
+        mso-ascii-theme-font: minor-latin;
+        mso-fareast-font-family: Calibri;
+        mso-fareast-theme-font: minor-latin;
+        mso-hansi-font-family: Calibri;
+        mso-hansi-theme-font: minor-latin;
+        mso-bidi-font-family: "Times New Roman";
+        mso-bidi-theme-font: minor-bidi;
+    }
 
-        @@page WordSection1 {
-            size: 8.5in 11.0in;
-            margin: 33.0pt 28.0pt 14.0pt 30.0pt;
-            mso-header-margin: .5in;
-            mso-footer-margin: .5in;
-            mso-paper-source: 0;
-        }
+    @@page WordSection1 {
+        size: 8.5in 11.0in;
+        margin: 33.0pt 28.0pt 14.0pt 30.0pt;
+        mso-header-margin: .5in;
+        mso-footer-margin: .5in;
+        mso-paper-source: 0;
+    }
 
-        div.WordSection1 {
-            page: WordSection1;
-        }
+    div.WordSection1 {
+        page: WordSection1;
+    }
 
-        @@page WordSection2 {
-            size: 8.5in 11.0in;
-            margin: 33.0pt 28.0pt 14.0pt 30.0pt;
-            mso-header-margin: .5in;
-            mso-footer-margin: .5in;
-            mso-columns: 2 not-even 87.65pt 3.5pt 462.85pt;
-            mso-paper-source: 0;
-        }
+    @@page WordSection2 {
+        size: 8.5in 11.0in;
+        margin: 33.0pt 28.0pt 14.0pt 30.0pt;
+        mso-header-margin: .5in;
+        mso-footer-margin: .5in;
+        mso-columns: 2 not-even 87.65pt 3.5pt 462.85pt;
+        mso-paper-source: 0;
+    }
 
-        div.WordSection2 {
-            page: WordSection2;
-        }
+    div.WordSection2 {
+        page: WordSection2;
+    }
 
-        @@page WordSection3 {
-            size: 8.5in 11.0in;
-            margin: 33.0pt 114.9pt 14.0pt 30.0pt;
-            mso-header-margin: .5in;
-            mso-footer-margin: .5in;
-            mso-paper-source: 0;
-        }
+    @@page WordSection3 {
+        size: 8.5in 11.0in;
+        margin: 33.0pt 114.9pt 14.0pt 30.0pt;
+        mso-header-margin: .5in;
+        mso-footer-margin: .5in;
+        mso-paper-source: 0;
+    }
 
-        div.WordSection3 {
-            page: WordSection3;
-        }
+    div.WordSection3 {
+        page: WordSection3;
+    }
 
-        @@page WordSection4 {
-            size: 8.5in 11.0in;
-            margin: 27.0pt 28.0pt 14.0pt 30.0pt;
-            mso-header-margin: .5in;
-            mso-footer-margin: .5in;
-            mso-columns: 3 not-even 61.0pt 30.1pt 379.25pt 32.8pt 50.85pt;
-            mso-paper-source: 0;
-        }
+    @@page WordSection4 {
+        size: 8.5in 11.0in;
+        margin: 27.0pt 28.0pt 14.0pt 30.0pt;
+        mso-header-margin: .5in;
+        mso-footer-margin: .5in;
+        mso-columns: 3 not-even 61.0pt 30.1pt 379.25pt 32.8pt 50.85pt;
+        mso-paper-source: 0;
+    }
 
-        div.WordSection4 {
-            page: WordSection4;
-        }
-        -->
-    </style>
+    div.WordSection4 {
+        page: WordSection4;
+    }
+    -->
+</style>
 
-    <div class=WordSection1>
+<div class=WordSection1>
 
-        <table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width=1110
-               style='border-collapse:collapse;mso-table-layout-alt:fixed;border:none;
+    <table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width=1110
+           style='border-collapse:collapse;mso-table-layout-alt:fixed;border:none;
  mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
  none;mso-border-insidev:none'>
-            <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;page-break-inside:avoid'>
-                <td width=118 valign=top style='width:88.4pt;padding:0in 5.4pt 0in 5.4pt'>
-                    <p class=MsoNormal style='margin-left:2.3pt;text-align:justify;mso-layout-grid-align:
+        <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;page-break-inside:avoid'>
+            <td width=118 valign=top style='width:88.4pt;padding:0in 5.4pt 0in 5.4pt'>
+                <p class=MsoNormal style='margin-left:2.3pt;text-align:justify;mso-layout-grid-align:
   none'>
-                        <span style='font-size:14.0pt;mso-bidi-font-size:9.0pt;color:#231F20;
+                    <span style='font-size:14.0pt;mso-bidi-font-size:9.0pt;color:#231F20;
   mso-no-proof:yes'>
-                            <!--[if gte vml 1]><v:shapetype id="_x0000_t75"
-                             coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@@4@@5l@@4@@11@@9@@11@@9@@5xe"
-                             filled="f" stroked="f">
-                             <v:stroke joinstyle="miter"/>
-                             <v:formulas>
-                              <v:f eqn="if lineDrawn pixelLineWidth 0"/>
-                              <v:f eqn="sum @@0 1 0"/>
-                              <v:f eqn="sum 0 0 @@1"/>
-                              <v:f eqn="prod @@2 1 2"/>
-                              <v:f eqn="prod @@3 21600 pixelWidth"/>
-                              <v:f eqn="prod @@3 21600 pixelHeight"/>
-                              <v:f eqn="sum @@0 0 1"/>
-                              <v:f eqn="prod @@6 1 2"/>
-                              <v:f eqn="prod @@7 21600 pixelWidth"/>
-                              <v:f eqn="sum @@8 21600 0"/>
-                              <v:f eqn="prod @@7 21600 pixelHeight"/>
-                              <v:f eqn="sum @@10 21600 0"/>
-                             </v:formulas>
-                             <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
-                             <o:lock v:ext="edit" aspectratio="t"/>
-                            </v:shapetype><v:shape id="Picture_x0020_1" o:spid="_x0000_i1025" type="#_x0000_t75"
-                             style='width:69.75pt;height:47.25pt;visibility:visible;mso-wrap-style:square'>
-                             <v:imagedata src="Inspection%20Follow-Up2_files/image001.wmz" o:title=""/>
-                            </v:shape><![endif]-->
-                            <![if !vml]>
-                            @if (!string.IsNullOrEmpty(Model.Configuration.ImageContract))
-                            {
-                                string image = string.Format("data:image/png;base64,{0}", Model.Configuration.ImageContract);
-                                <img width=93 height=63
-                                     src=@image v:shapes="Picture_x0020_1">}
-                            <![endif]>
-                        </span><span style='font-size:14.0pt;mso-bidi-font-size:9.0pt;color:#231F20'><o:p></o:p></span>
-                    </p>
-                </td>
-                <td width=805 style='width:604.0pt;padding:0in 5.4pt 0in 5.4pt'>
-                    <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+                        <!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+                         coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@@4@@5l@@4@@11@@9@@11@@9@@5xe"
+                         filled="f" stroked="f">
+                         <v:stroke joinstyle="miter"/>
+                         <v:formulas>
+                          <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+                          <v:f eqn="sum @@0 1 0"/>
+                          <v:f eqn="sum 0 0 @@1"/>
+                          <v:f eqn="prod @@2 1 2"/>
+                          <v:f eqn="prod @@3 21600 pixelWidth"/>
+                          <v:f eqn="prod @@3 21600 pixelHeight"/>
+                          <v:f eqn="sum @@0 0 1"/>
+                          <v:f eqn="prod @@6 1 2"/>
+                          <v:f eqn="prod @@7 21600 pixelWidth"/>
+                          <v:f eqn="sum @@8 21600 0"/>
+                          <v:f eqn="prod @@7 21600 pixelHeight"/>
+                          <v:f eqn="sum @@10 21600 0"/>
+                         </v:formulas>
+                         <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+                         <o:lock v:ext="edit" aspectratio="t"/>
+                        </v:shapetype><v:shape id="Picture_x0020_1" o:spid="_x0000_i1025" type="#_x0000_t75"
+                         style='width:69.75pt;height:47.25pt;visibility:visible;mso-wrap-style:square'>
+                         <v:imagedata src="Inspection%20Follow-Up2_files/image001.wmz" o:title=""/>
+                        </v:shape><![endif]-->
+                        <![if !vml]>
+                        @if (!string.IsNullOrEmpty(Model.Configuration.ImageContract))
+                        {
+                            string image = string.Format("data:image/png;base64,{0}", Model.Configuration.ImageContract);
+                            <img width=93 height=63
+                                 src=@image v:shapes="Picture_x0020_1">}
+                        <![endif]>
+                    </span><span style='font-size:14.0pt;mso-bidi-font-size:9.0pt;color:#231F20'><o:p></o:p></span>
+                </p>
+            </td>
+            <td width=805 style='width:604.0pt;padding:0in 5.4pt 0in 5.4pt'>
+                <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
   none'>
-                        <b>
-                            <span style='font-size:18.0pt;color:#231F20'>
-                                <span class=SpellE>@Model.Reports.Title</span>
-                            </span>
-                        </b><span style='font-size:18.0pt;color:#231F20'><o:p></o:p></span>
-                    </p>
-                </td>
-                <td width=187 colspan=2 style='width:140.1pt;padding:0in 5.4pt 0in 5.4pt'>
-                    <p class=MsoNormal align=right style='text-align:right;mso-layout-grid-align:
+                    <b>
+                        <span style='font-size:18.0pt;color:#231F20'>
+                            <span class=SpellE>@Model.Reports.Title</span>
+                        </span>
+                    </b><span style='font-size:18.0pt;color:#231F20'><o:p></o:p></span>
+                </p>
+            </td>
+            <td width=187 colspan=2 style='width:140.1pt;padding:0in 5.4pt 0in 5.4pt'>
+                <p class=MsoNormal align=right style='text-align:right;mso-layout-grid-align:
   none'>
-                        <span class=SpellE><span style='mso-bidi-font-size:7.0pt;color:#231F20'>@Model.Reports.FormName</span></span><span style='mso-bidi-font-size:7.0pt;color:#231F20'><o:p></o:p></span>
-                    </p>
-                    <p class=MsoNormal align=right style='text-align:right;mso-layout-grid-align:
+                    <span class=SpellE><span style='mso-bidi-font-size:7.0pt;color:#231F20'>@Model.Reports.FormName</span></span><span style='mso-bidi-font-size:7.0pt;color:#231F20'><o:p></o:p></span>
+                </p>
+                <p class=MsoNormal align=right style='text-align:right;mso-layout-grid-align:
   none'><span style='mso-bidi-font-size:7.0pt;color:#231F20'>@Model.Reports.Revision<o:p></o:p></span></p>
 <p class=MsoNormal align=right style='text-align:right;mso-layout-grid-align:
   none'><span style='mso-bidi-font-size:7.0pt;color:#231F20'>Page 1 of 2<o:p></o:p></span></p>
@@ -437,7 +437,7 @@
             <span style='font-size:
   2.0pt;mso-bidi-font-size:14.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
         </p>
-    </td>   
+    </td>
     <td width=105 colspan=4 valign=bottom style='width:78.8pt;border:none;
   mso-border-top-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
   height:1.0pt'>
@@ -890,7 +890,7 @@
 
 <p class=MsoNormal style='mso-layout-grid-align:none'>
     <span style='font-size:
-9.0pt;color:#231F20'><span style='mso-tab-count:1'>                </span><o:p></o:p></span>
+9.0pt;color:#231F20'><span style='mso-tab-count:1'>                </span><o:p></o:p></span>
 </p>
 
 <p class=MsoNormal style='mso-layout-grid-align:none'>
@@ -904,7 +904,7 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
     </b><span style='font-size:12.0pt;mso-bidi-font-size:8.0pt;color:#231F20'>
         - Critical (30
         Days) <b>U </b>- Urgent (6 Months) <b>R </b>- Routine (24 Months) <b>NR </b>-
-        Prev. Rec. Not Repaired  <span><button id="lineItemButton">Add Row</button></span> 
+        Prev. Rec. Not Repaired  <span><button id="lineItemButton">Add Row</button></span>
     </span><span style='font-size:10.0pt;mso-bidi-font-size:
 8.0pt;color:#231F20'><o:p></o:p></span>
 </p>
@@ -952,54 +952,58 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
     </tr>
     @foreach (var item in Model.BridgeInspectionFollowUps)
     {
-        <tr style='mso-yfti-irow:1;height:33.85pt'>
-            <td width=105 style='width:79.05pt;border:solid #231F20 1.0pt;border-top:
+        <tbody>
+            <tr style='mso-yfti-irow:1;height:33.85pt'>
+                <td width=105 style='width:79.05pt;border:solid #231F20 1.0pt;border-top:
   none;mso-border-top-alt:solid #231F20 .75pt;mso-border-top-alt:.75pt;
   mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;mso-border-right-alt:
   .5pt;mso-border-color-alt:#231F20;mso-border-style-alt:solid;padding:0in 0in 0in 0in;
   height:33.85pt'>
-                <p class=TableParagraph align=center style='text-align:center'>
-                    <span style='font-size:13.0pt'>@Html.DropDownList("IdReferenceFeatureType", null, htmlAttributes: new { @class = "form-control" })<o:p></o:p></span>
-                </p>
-            </td>
-            <td width=834 style='width:625.5pt;border-top:none;border-left:none;
+                    <p class=TableParagraph align=center style='text-align:center'>
+                        <span style='font-size:13.0pt'>@Html.DisplayFor(modelItem => item.ReferenceFeatureType.Description)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=834 style='width:625.5pt;border-top:none;border-left:none;
   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
   mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
   mso-border-top-alt:.75pt;mso-border-left-alt:.5pt;mso-border-bottom-alt:.75pt;
   mso-border-right-alt:.5pt;mso-border-color-alt:#231F20;mso-border-style-alt:
   solid;padding:0in 0in 0in 0in;height:33.85pt'>
-                <p class=TableParagraph align=center style='margin-top:5.3pt;margin-right:
+                    <p class=TableParagraph align=center style='margin-top:5.3pt;margin-right:
   162.35pt;margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:
   center;text-indent:4.5pt'>
-                    @if (!string.IsNullOrEmpty(item.Description))
-                    {
-                        <span style='font-size:13.0pt'>@Html.DisplayFor(modelItem => item.Description)<o:p></o:p></span>
-                    }
-                    else
-                    {
-                        <span style='font-size:13.0pt'>No action required.<o:p></o:p></span>
-                    }
-                </p>
-            </td>
-            <td width=84 style='width:63.0pt;border-top:none;border-left:none;border-bottom:
+                        @if (!string.IsNullOrEmpty(item.Description))
+                        {
+                            <span style='font-size:13.0pt'>@Html.DisplayFor(modelItem => item.Description)<o:p></o:p></span>
+                        }
+                        else
+                        {
+                            <span style='font-size:13.0pt'>No action required.<o:p></o:p></span>
+                        }
+                    </p>
+                </td>
+                <td width=84 style='width:63.0pt;border-top:none;border-left:none;border-bottom:
   solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;mso-border-top-alt:solid #231F20 .75pt;
   mso-border-left-alt:solid #231F20 .5pt;mso-border-top-alt:.75pt;mso-border-left-alt:
   .5pt;mso-border-bottom-alt:.75pt;mso-border-right-alt:.5pt;mso-border-color-alt:
   #231F20;mso-border-style-alt:solid;padding:0in 0in 0in 0in;height:33.85pt'>
-                <p class=TableParagraph align=center style='text-align:center'>
-                    <span style='font-size:13.0pt'>@Html.DropDownList("InspectionRaitingType", null, htmlAttributes: new { @class = "form-control" })<o:p></o:p></span>
-                </p>
-            </td>
-            <td width=84 style='width:63.0pt;border-top:none;border-left:none;border-bottom:
+                    <p class=TableParagraph align=center style='text-align:center'>
+                        <span style='font-size:13.0pt'>@Html.DisplayFor(modelItem => item.InspectionRaiting.Description)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td width=84 style='width:63.0pt;border-top:none;border-left:none;border-bottom:
   solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;mso-border-top-alt:solid #231F20 .75pt;
   mso-border-left-alt:solid #231F20 .5pt;mso-border-top-alt:.75pt;mso-border-left-alt:
   .5pt;mso-border-bottom-alt:.75pt;mso-border-right-alt:.5pt;mso-border-color-alt:
   #231F20;mso-border-style-alt:solid;padding:0in 0in 0in 0in;height:33.85pt'>
-                <p class=TableParagraph align=center style='text-align:center'>
-                    <span style='font-size:13.0pt'>@Html.DropDownList("IdRecommendationType", null, htmlAttributes: new { @class = "form-control" })<o:p></o:p></span>
-                </p>
-            </td>
-        </tr>
+                    <p class=TableParagraph align=center style='text-align:center'>
+                        <span style='font-size:13.0pt'>@Html.DisplayFor(modelItem => item.RecommendationType.idvalue)<o:p></o:p></span>
+                    </p>
+                </td>
+                <td>
+                    <button type="button" class="btn"><i class="glyphicon glyphicon-pencil"></i> </button>
+            </tr>
+        </tbody>
     }
 </table>
 
@@ -1743,14 +1747,177 @@ normal'><span style='font-size:2.0pt;mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p
     </p>
 
 </div>
+<!-- Modal -->
+<div id="modalUser" data-backdrop="false" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Assign User</h4>
+            </div>
+            <div class="modal-body">
+               
+                <div class="form-horizontal">
+                    <h4>BridgeInspectionFollowUp</h4>
+                    <hr />
+                    @Html.HiddenFor(model => model.InspectionDaily.IdInspection)
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.Label("Description", "Description", htmlAttributes: new { @class = "form-control" })
+                        <div class="col-md-10">
+                            @Html.Editor("Description", "Description" )
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("ReferenceFeatureTyp", "Reference Feature Type", htmlAttributes: new { @class = "form-control" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("IdReferenceFeatureType", null, htmlAttributes: new { @class = "form-control",@required="required" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("RecommendationType", "Recommendation Type", htmlAttributes: new { @class = "form-control" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("IdRecommendationType", null, htmlAttributes: new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("InspectionRaitingType", "InspectionRaitingType", htmlAttributes: new { @class = "form-control" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("InspectionRaitingType", null, htmlAttributes: new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="save">Save</button>
+                <button id="closemodal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<!-- Modal -->
+<div id="modalEdit" data-backdrop="false" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Assign User</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-horizontal">
+                    <h4>BridgeInspectionFollowUp</h4>
+                    <hr />
+                    @Html.Hidden("IdBridgeInspectionFollowUp")
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.Label("Description", "Description", htmlAttributes: new { @class = "form-control" })
+                        <div class="col-md-10">
+                            @Html.Editor("EDescription", "EDescription")
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("ReferenceFeatureTyp", "Reference Feature Type", htmlAttributes: new { @class = "form-control" })
+                        <div class="col-md-10">
+                            @Html.Editor("ReferenceFeature", "ReferenceFeature")
+                            @Html.DropDownList("IdReferenceFeatureType", null, htmlAttributes: new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("RecommendationType", "Recommendation Type", htmlAttributes: new { @class = "form-control" })
+                        <div class="col-md-10">
+                            @Html.Editor("RecommendationType", "RecommendationType")
+                            @Html.DropDownList("IdRecommendationType", null, htmlAttributes: new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("InspectionRaitingType", "InspectionRaitingType", htmlAttributes: new { @class = "form-control" })
+                        <div class="col-md-10">
+                            @Html.Editor("EInspectionRaitingTypee", "EInspectionRaitingType")
+                            @Html.DropDownList("InspectionRaitingType", null, htmlAttributes: new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="save">Save</button>
+                    <button id="closemodal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-
-<script type="text/javascript">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.25.6/sweetalert2.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.25.6/sweetalert2.all.min.js"></script>
+    <script type="text/javascript">
     $("#lineItemButton").click(function () {
-        var data = $("#tableFollow tr:eq(1)").clone(true).appendTo("#tableFollow");
-        data.find('input').val('');
+        $("#modalUser").modal("show");
+    });
+
+    $('.MsoNormalTable tbody').on('click','.btn',function(){
+        var currow = $(this).closest('tr');
+        var col1 = $.trim( currow.find('td:eq(0)').text());
+        var col2 = $.trim(currow.find('td:eq(1)').text());
+        var col3 = $.trim(currow.find('td:eq(2)').text());
+        var col4 = $.trim(currow.find('td:eq(3)').text());
+
+        $('#EDescription').val(col2);
+        $('#ReferenceFeature').val(col1);
+        $('#IdReferenceFeatureType option').filter(function() {
+            return $(this).text() ==col1;
+            }).prop("selected", true);
+        $('#RecommendationType').val(col4);
+        $('#IdRecommendationType option').filter(function() {
+            return $(this).text() ==col4;
+        }).prop("selected", true);
+        $('#EInspectionRaitingTypee').val(col3);
+        $('#InspectionRaitingType option').filter(function() {
+            return $(this).text() ==col3;
+        }).prop("selected", true);
+        $("#modalEdit").modal("show");
+    });
+    //$(".use-address").click(function(){
+
+    //    
+    //});
+
+    $("#save").on("click", function () {
+        var Url = '@Url.Action("SaveRFU", "Done")';
+        var BinspF = {
+            IdInspection:  @Html.Raw(ViewBag.Idinspection),
+            Description: $("#Description").val(),
+            IdReferenceFeatureType: $("#IdReferenceFeatureType").val(),
+            IdRecommendationType: $("#IdRecommendationType").val(),
+            InspectionRaitingType: $("#InspectionRaitingType").val()
+        }
+
+        $.post(Url, {"bridgeInspectionFollowUp": BinspF })
+        .done(function (data) {
+            swal('Info', 'Success', 'success');
+            $("#modalUser").trigger('click');
+            location.reload();
+        })
+        .fail(function (xhr, status, error) {
+            swal('Error', xhr.responseText, 'error');
         });
-</script>
+
+    });
+    </script>
 }

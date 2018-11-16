@@ -1078,6 +1078,23 @@ namespace LMB.Controllers
 
 
 
+        [HttpPost]
+        public async Task<ActionResult> SaveRFU(BridgeInspectionFollowUp bridgeInspectionFollowUp)
+        {
+            if (ModelState.IsValid)
+            {
+                db.BridgeInspectionFollowUps.Add(bridgeInspectionFollowUp);
+                await db.SaveChangesAsync();
+                var inspd = db.InspectionDaily.Find(bridgeInspectionFollowUp.IdInspection);
+                return View("Reports", inspd);
+            }
+
+            ViewBag.InspectionRaitingType = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description", bridgeInspectionFollowUp.InspectionRaitingType);
+            ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "idvalue", bridgeInspectionFollowUp.IdRecommendationType);
+            ViewBag.IdReferenceFeatureType = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description", bridgeInspectionFollowUp.IdReferenceFeatureType);
+            return View(bridgeInspectionFollowUp);
+        }
+
         public async Task<ActionResult> ReportInspFollowUp(int id, int? accion)
         {
             ViewBag.Idinspection = id;
@@ -1135,12 +1152,15 @@ namespace LMB.Controllers
 
             if (accion==1)
             {
-                ViewBag.InspectionRaitingType = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description", reportf.BridgeInspectionFollowUps.FirstOrDefault().InspectionRaitingType);
-                ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "idvalue", reportf.BridgeInspectionFollowUps.FirstOrDefault().IdRecommendationType);
-                ViewBag.IdReferenceFeatureType = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description", reportf.BridgeInspectionFollowUps.FirstOrDefault().IdReferenceFeatureType);
-                ViewBag.InspectionRaitingTypeS = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description");
-                ViewBag.IdRecommendationTypeS = new SelectList(db.RecommendationType, "IdRecommendationType", "idvalue");
-                ViewBag.IdReferenceFeatureTypeS = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description");
+                //ViewBag.InspectionRaitingType = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description", reportf.BridgeInspectionFollowUps.FirstOrDefault().InspectionRaitingType);
+                //ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "idvalue", reportf.BridgeInspectionFollowUps.FirstOrDefault().IdRecommendationType);
+                //ViewBag.IdReferenceFeatureType = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description", reportf.BridgeInspectionFollowUps.FirstOrDefault().IdReferenceFeatureType);
+                //ViewBag.InspectionRaitingTypeS = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description");
+                //ViewBag.IdRecommendationTypeS = new SelectList(db.RecommendationType, "IdRecommendationType", "idvalue");
+                //ViewBag.IdReferenceFeatureTypeS = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description");
+                ViewBag.InspectionRaitingType = new SelectList(db.InspectionRaiting, "InspectionRaitingType", "Description");
+                ViewBag.IdRecommendationType = new SelectList(db.RecommendationType, "IdRecommendationType", "idvalue");
+                ViewBag.IdReferenceFeatureType = new SelectList(db.ReferenceFeatureType, "IdReferenceFeatureType", "Description");
                 return View("ReportInspFollowUpET", reportf);
             }
             else

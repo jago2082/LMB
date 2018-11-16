@@ -51,7 +51,7 @@ namespace LMB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IdBridgeInspectionFollowUp,Description,IdReferenceFeatureType,IdRecommendationType,InspectionRaitingType")] BridgeInspectionFollowUp bridgeInspectionFollowUp)
+        public async Task<ActionResult> Create(BridgeInspectionFollowUp bridgeInspectionFollowUp)
         {
             if (ModelState.IsValid)
             {

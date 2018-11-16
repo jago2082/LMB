@@ -1,4 +1,4 @@
-﻿@model LMB.Models.ReportInspFollowUpE
+﻿@model LMB.Models.ReportInspFollowUp
 
 @{
     Layout = null;
@@ -1076,134 +1076,128 @@
 </tr>
  <![endif]>
 </table>
-@using (Html.BeginForm("saveRIF", "Done", FormMethod.Post, new { id = "myform" }))
-{
-        @Html.AntiForgeryToken()
 
-        <p class=MsoNormal style='mso-layout-grid-align:none'>
-            <span style='font-size:
+<p class=MsoNormal style='mso-layout-grid-align:none'>
+    <span style='font-size:
 9.0pt;color:#231F20'><o:p>&nbsp;</o:p></span>
-        </p>
+</p>
 
-        <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=1103
-               style='width:827.6pt;margin-left:8.6pt;border-collapse:collapse;border:none;
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=1103
+       style='width:827.6pt;margin-left:8.6pt;border-collapse:collapse;border:none;
  mso-border-alt:solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:
  0in 5.4pt 0in 5.4pt;mso-border-insideh:none;mso-border-insidev:none'>
-            <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:19.05pt'>
-                <td width=1103 colspan=7 valign=bottom style='width:827.6pt;border:solid windowtext 1.0pt;
+    <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:19.05pt'>
+        <td width=1103 colspan=7 valign=bottom style='width:827.6pt;border:solid windowtext 1.0pt;
   border-bottom:none;mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:
   solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;padding:
   0in 5.4pt 0in 5.4pt;height:19.05pt'>
-                    <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+            <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
   none'>
-                        <b><u><span style='font-size:12.5pt;color:#231F20'>Reference Features</span></u></b><u>
-                            <span style='font-size:12.5pt;color:#231F20'><o:p></o:p></span>
-                        </u>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:1;height:19.05pt'>
-                <td width=280 valign=bottom style='width:210.15pt;border:none;border-left:
+                <b><u><span style='font-size:12.5pt;color:#231F20'>Reference Features</span></u></b><u>
+                    <span style='font-size:12.5pt;color:#231F20'><o:p></o:p></span>
+                </u>
+            </p>
+        </td>
+    </tr>
+    <tr style='mso-yfti-irow:1;height:19.05pt'>
+        <td width=280 valign=bottom style='width:210.15pt;border:none;border-left:
   solid windowtext 1.0pt;mso-border-left-alt:solid windowtext .5pt;padding:
   0in 5.4pt 0in 5.4pt;height:19.05pt'>
-                    <p class=MsoNormal style='mso-layout-grid-align:none'>
-                        <span style='font-size:
+            <p class=MsoNormal style='mso-layout-grid-align:none'>
+                <span style='font-size:
   12.5pt;color:#231F20'>1. Roadway - Wearing Surface<o:p></o:p></span>
-                    </p>
-                </td>
-                <td width=254 valign=bottom style='width:190.25pt;border:none;padding:0in 5.4pt 0in 5.4pt;
+            </p>
+        </td>
+        <td width=254 valign=bottom style='width:190.25pt;border:none;padding:0in 5.4pt 0in 5.4pt;
   height:19.05pt'>
-                    <p class=MsoNormal style='mso-layout-grid-align:none'>
-                        <span style='font-size:
+            <p class=MsoNormal style='mso-layout-grid-align:none'>
+                <span style='font-size:
   12.5pt;color:#231F20'>5. Superstructure - Bearings<o:p></o:p></span>
-                    </p>
-                </td>
-                <td width=283 colspan=2 valign=bottom style='width:212.15pt;border:none;
+            </p>
+        </td>
+        <td width=283 colspan=2 valign=bottom style='width:212.15pt;border:none;
   padding:0in 5.4pt 0in 5.4pt;height:19.05pt'>
-                    <p class=MsoNormal style='mso-layout-grid-align:none'>
-                        <span style='font-size:
+            <p class=MsoNormal style='mso-layout-grid-align:none'>
+                <span style='font-size:
   12.5pt;color:#231F20'>9. Substructure - Other<o:p></o:p></span>
-                    </p>
-                </td>
-                <td width=287 colspan=3 valign=bottom style='width:215.0pt;border:none;
+            </p>
+        </td>
+        <td width=287 colspan=3 valign=bottom style='width:215.0pt;border:none;
   border-right:solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:19.05pt'>
-                    <p class=MsoNormal style='mso-layout-grid-align:none'>
-                        <span style='font-size:
+            <p class=MsoNormal style='mso-layout-grid-align:none'>
+                <span style='font-size:
   12.5pt;color:#231F20'>13. Structural Paint System<o:p></o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:2;height:19.05pt'>
-                <td width=280 valign=bottom style='width:210.15pt;border:none;border-left:
+            </p>
+        </td>
+    </tr>
+    <tr style='mso-yfti-irow:2;height:19.05pt'>
+        <td width=280 valign=bottom style='width:210.15pt;border:none;border-left:
   solid windowtext 1.0pt;mso-border-left-alt:solid windowtext .5pt;padding:
   0in 5.4pt 0in 5.4pt;height:19.05pt'>
-                    <p class=MsoNormal style='mso-layout-grid-align:none'>
-                        <span style='font-size:
+            <p class=MsoNormal style='mso-layout-grid-align:none'>
+                <span style='font-size:
   12.5pt;color:#231F20'>2. Roadway - Deck<o:p></o:p></span>
-                    </p>
-                </td>
-                <td width=254 valign=bottom style='width:190.25pt;border:none;padding:0in 5.4pt 0in 5.4pt;
+            </p>
+        </td>
+        <td width=254 valign=bottom style='width:190.25pt;border:none;padding:0in 5.4pt 0in 5.4pt;
   height:19.05pt'>
-                    <p class=MsoNormal style='mso-layout-grid-align:none'>
-                        <span style='font-size:
+            <p class=MsoNormal style='mso-layout-grid-align:none'>
+                <span style='font-size:
   12.5pt;color:#231F20'>6. Superstructure - Other<o:p></o:p></span>
-                    </p>
-                </td>
-                <td width=283 colspan=2 valign=bottom style='width:212.15pt;border:none;
+            </p>
+        </td>
+        <td width=283 colspan=2 valign=bottom style='width:212.15pt;border:none;
   padding:0in 5.4pt 0in 5.4pt;height:19.05pt'>
-                    <p class=MsoNormal style='mso-layout-grid-align:none'>
-                        <span style='font-size:
+            <p class=MsoNormal style='mso-layout-grid-align:none'>
+                <span style='font-size:
   12.5pt;color:#231F20'>10. Channel &amp; Channel Protection<o:p></o:p></span>
-                    </p>
-                </td>
-                <td width=287 colspan=3 valign=bottom style='width:215.0pt;border:none;
+            </p>
+        </td>
+        <td width=287 colspan=3 valign=bottom style='width:215.0pt;border:none;
   border-right:solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:19.05pt'>
-                    <p class=MsoNormal style='mso-layout-grid-align:none'>
-                        <span style='font-size:
+            <p class=MsoNormal style='mso-layout-grid-align:none'>
+                <span style='font-size:
   12.5pt;color:#231F20'>14. Vertical Clearance Signs<o:p></o:p></span>
-                    </p>
-                </td>
-            </tr>
-            <tr style='mso-yfti-irow:3;height:19.05pt'>
-                <td width=280 valign=bottom style='width:210.15pt;border:none;border-left:
+            </p>
+        </td>
+    </tr>
+    <tr style='mso-yfti-irow:3;height:19.05pt'>
+        <td width=280 valign=bottom style='width:210.15pt;border:none;border-left:
   solid windowtext 1.0pt;mso-border-left-alt:solid windowtext .5pt;padding:
   0in 5.4pt 0in 5.4pt;height:19.05pt'>
-                    <p class=MsoNormal style='mso-layout-grid-align:none'>
-                        <span style='font-size:
+            <p class=MsoNormal style='mso-layout-grid-align:none'>
+                <span style='font-size:
   12.5pt;color:#231F20'>3. Roadway - Other<o:p></o:p></span>
-                    </p>
-                </td>
-                <td width=254 valign=bottom style='width:190.25pt;border:none;padding:0in 5.4pt 0in 5.4pt;
+            </p>
+        </td>
+        <td width=254 valign=bottom style='width:190.25pt;border:none;padding:0in 5.4pt 0in 5.4pt;
   height:19.05pt'>
-                    <p class=MsoNormal style='mso-layout-grid-align:none'>
-                        <span style='font-size:
+            <p class=MsoNormal style='mso-layout-grid-align:none'>
+                <span style='font-size:
   12.5pt;color:#231F20'>7. Substructure - Abutments<o:p></o:p></span>
-                    </p>
-                </td>
-                <td width=283 colspan=2 valign=bottom style='width:212.15pt;border:none;
+            </p>
+        </td>
+        <td width=283 colspan=2 valign=bottom style='width:212.15pt;border:none;
   padding:0in 5.4pt 0in 5.4pt;height:19.05pt'>
-                    <p class=MsoNormal style='mso-layout-grid-align:none'>
-                        <span style='font-size:
+            <p class=MsoNormal style='mso-layout-grid-align:none'>
+                <span style='font-size:
   12.5pt;color:#231F20'>11. Retaining Walls or Rip Rap<o:p></o:p></span>
-                    </p>
-                </td>
-                <td width=37 valign=bottom style='width:27.6pt;border:none;padding:0in 5.4pt 0in 5.4pt;
+            </p>
+        </td>
+        <td width=37 valign=bottom style='width:27.6pt;border:none;padding:0in 5.4pt 0in 5.4pt;
   height:19.05pt'>
-                    <p class=MsoNormal style='mso-layout-grid-align:none'>
-                        <span style='font-size:
+            <p class=MsoNormal style='mso-layout-grid-align:none'>
+                <span style='font-size:
   12.5pt;color:#231F20'>15.<o:p></o:p></span>
-                    </p>
-                </td>
-                <td width=234 valign=bottom style='width:175.35pt;border:none;'>
-                    <p class=MsoNormal style='text-align:justify;mso-layout-grid-align:none;
-  text-autospace:ideograph-other'><span style='font-size:12.5pt;color:#231F20'>
-                        <o:p>
-                            @Html.EditorFor(model => model.Dato1)
-                        </o:p>
-                        </span>
-                    </p>
+            </p>
+        </td>
+        <td width=234 valign=bottom style='width:175.35pt;border:none;border-bottom:
+  solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .25pt;
+  padding:0in 5.4pt 0in 5.4pt;height:19.05pt'>
+            <p class=MsoNormal style='text-align:justify;mso-layout-grid-align:none;
+  text-autospace:ideograph-other'><span style='font-size:12.5pt;color:#231F20'>@Model.Dato1<o:p></o:p></span></p>
 </td>
 <td width=16 valign=bottom style='width:12.1pt;border:none;border-right:solid windowtext 1.0pt;
   mso-border-right-alt:solid windowtext .25pt;padding:0in 5.4pt 0in 5.4pt;
@@ -1242,16 +1236,12 @@
             <span style='font-size:12.5pt;color:#231F20'>16.<o:p></o:p></span>
         </p>
     </td>
-    <td width=234 valign=bottom style='width:175.35pt;border:none;mso-border-top-alt:
+    <td width=234 valign=bottom style='width:175.35pt;border:none;border-bottom:
+  solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .25pt;mso-border-top-alt:
   solid windowtext .25pt;mso-border-bottom-alt:solid windowtext .25pt;
   padding:0in 5.4pt 0in 5.4pt;height:19.05pt'>
         <p class=MsoNormal style='text-align:justify;mso-layout-grid-align:none;
-  text-autospace:ideograph-other'><span style='font-size:12.5pt;color:#231F20'>
-            <o:p>
-                    @Html.EditorFor(model => model.Dato2)
-            </o:p>
-            </span>
-        </p>
+  text-autospace:ideograph-other'><span style='font-size:12.5pt;color:#231F20'>@Model.Dato2<o:p></o:p></span></p>
 </td>
 <td width=16 valign=bottom style='width:12.1pt;border:none;border-right:solid windowtext 1.0pt;
   mso-border-right-alt:solid windowtext .25pt;padding:0in 5.4pt 0in 5.4pt;
@@ -1309,7 +1299,7 @@
 
 <p class=MsoNormal style='mso-layout-grid-align:none'>
     <span style='font-size:
-9.0pt;color:#231F20'><span style='mso-tab-count:1'>                </span><o:p></o:p></span>
+9.0pt;color:#231F20'><span style='mso-tab-count:1'>                </span><o:p></o:p></span>
 </p>
 
 <p class=MsoNormal style='mso-layout-grid-align:none'>
@@ -1369,6 +1359,18 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
   .75pt'><span style='font-size:13.0pt'>Type<o:p></o:p></span></p>
         </td>
     </tr>
+    <tr>
+        <td>
+            <div id="buttons">
+
+                <a id="addinsp" data-target="#modalAdd" data-toggle="modal" data-id="" onclick="location.href='@Url.Action("Create")'" href="#" class="unlock" title="Add Inspection">
+                    <img width="30" alt="Add Inspection" title="Add Inspection" src="~/img/ic_addinsp.png">
+                </a>
+            </div>
+        </td>
+    </tr>
+    @foreach (var item in Model.BridgeInspectionFollowUps)
+    {
         <tr style='mso-yfti-irow:1;height:33.85pt'>
             <td width=105 style='width:79.05pt;border:solid #231F20 1.0pt;border-top:
   none;mso-border-top-alt:solid #231F20 .75pt;mso-border-top-alt:.75pt;
@@ -1376,7 +1378,7 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
   .5pt;mso-border-color-alt:#231F20;mso-border-style-alt:solid;padding:0in 0in 0in 0in;
   height:33.85pt'>
                 <p class=TableParagraph align=center style='text-align:center'>
-                    <span style='font-size:13.0pt'>@Html.DropDownList("BridgeInspectionFollowUp1.IdReferenceFeatureType", null, htmlAttributes: new { })<o:p></o:p></span>
+                    <span style='font-size:13.0pt'>@Html.DisplayFor(modelItem => item.ReferenceFeatureType.IdReferenceFeatureType)<o:p></o:p></span>
                 </p>
             </td>
             <td width=834 style='width:625.5pt;border-top:none;border-left:none;
@@ -1388,9 +1390,9 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
                 <p class=TableParagraph align=center style='margin-top:5.3pt;margin-right:
   162.35pt;margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:
   center;text-indent:4.5pt'>
-                    @if (!string.IsNullOrEmpty(Model.BridgeInspectionFollowUp1.Description))
+                    @if (!string.IsNullOrEmpty(item.Description))
                     {
-                        <span style='font-size:13.0pt'>@Html.EditorFor(model => Model.BridgeInspectionFollowUp1.Description)<o:p></o:p></span>
+                        <span style='font-size:13.0pt'>@Html.DisplayFor(modelItem => item.Description)<o:p></o:p></span>
                     }
                     else
                     {
@@ -1404,7 +1406,7 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
   .5pt;mso-border-bottom-alt:.75pt;mso-border-right-alt:.5pt;mso-border-color-alt:
   #231F20;mso-border-style-alt:solid;padding:0in 0in 0in 0in;height:33.85pt'>
                 <p class=TableParagraph align=center style='text-align:center'>
-                    <span style='font-size:13.0pt'>@Html.DropDownList("BridgeInspectionFollowUp1.IdReferenceFeatureType", null, htmlAttributes: new {  })<o:p></o:p></span>
+                    <span style='font-size:13.0pt'>@Html.DisplayFor(modelItem => item.InspectionRaiting.Value)<o:p></o:p></span>
                 </p>
             </td>
             <td width=84 style='width:63.0pt;border-top:none;border-left:none;border-bottom:
@@ -1413,7 +1415,7 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
   .5pt;mso-border-bottom-alt:.75pt;mso-border-right-alt:.5pt;mso-border-color-alt:
   #231F20;mso-border-style-alt:solid;padding:0in 0in 0in 0in;height:33.85pt'>
                 <p class=TableParagraph align=center style='text-align:center'>
-                    <span style='font-size:13.0pt'>@Html.DropDownList("BridgeInspectionFollowUp1.IdRecommendationType", null, htmlAttributes: new {  })<o:p></o:p></span>
+                    <span style='font-size:13.0pt'>@Html.DisplayFor(modelItem => item.RecommendationType.idvalue)<o:p></o:p></span>
                 </p>
             </td>
         </tr>
@@ -1422,7 +1424,7 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
   border-top:none;mso-border-top-alt:solid #231F20 .75pt;mso-border-alt:solid #231F20 .5pt;
   mso-border-top-alt:solid #231F20 .75pt;padding:0in 0in 0in 0in;height:33.85pt'>
                 <p class=TableParagraph align=center style='text-align:center'>
-                    <span style='font-size:13.0pt'><o:p>@Html.EditorFor(model => Model.BridgeInspectionFollowUp2.ReferenceFeatureType.IdReferenceFeatureType)</o:p></span>
+                    <span style='font-size:13.0pt'><o:p>&nbsp;</o:p></span>
                 </p>
             </td>
             <td width=834 valign=top style='width:625.5pt;border-top:none;border-left:
@@ -1430,7 +1432,7 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
   mso-border-top-alt:solid #231F20 .75pt;mso-border-left-alt:solid #231F20 .5pt;
   mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
   padding:0in 0in 0in 0in;height:33.85pt'>
-                <p class=TableParagraph align=center style='text-align:center'><span style='font-size:13.0pt'><o:p>@Html.EditorFor(model => Model.BridgeInspectionFollowUp2.Description)</o:p></span></p>
+                <p class=TableParagraph><span style='font-size:13.0pt'><o:p>&nbsp;</o:p></span></p>
             </td>
             <td width=84 valign=top style='width:63.0pt;border-top:none;border-left:none;
   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
@@ -1438,7 +1440,7 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
   mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
   padding:0in 0in 0in 0in;height:33.85pt'>
                 <p class=TableParagraph align=center style='text-align:center'>
-                    <span style='font-size:13.0pt'><o:p>@Html.EditorFor(model => Model.BridgeInspectionFollowUp2.InspectionRaiting.Value)</o:p></span>
+                    <span style='font-size:13.0pt'><o:p>&nbsp;</o:p></span>
                 </p>
             </td>
             <td width=84 valign=top style='width:63.0pt;border-top:none;border-left:none;
@@ -1447,7 +1449,7 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
   mso-border-alt:solid #231F20 .5pt;mso-border-top-alt:solid #231F20 .75pt;
   padding:0in 0in 0in 0in;height:33.85pt'>
                 <p class=TableParagraph align=center style='text-align:center'>
-                    <span style='font-size:13.0pt'><o:p>@Html.EditorFor(model => Model.BridgeInspectionFollowUp2.RecommendationType.idvalue)</o:p></span>
+                    <span style='font-size:13.0pt'><o:p>&nbsp;</o:p></span>
                 </p>
             </td>
         </tr>
@@ -1456,21 +1458,21 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
   border-top:none;mso-border-top-alt:solid #231F20 .5pt;mso-border-alt:solid #231F20 .5pt;
   padding:0in 0in 0in 0in;height:33.85pt'>
                 <p class=TableParagraph align=center style='text-align:center'>
-                    <span style='font-size:13.0pt'><o:p>@Html.EditorFor(model => Model.BridgeInspectionFollowUp3.ReferenceFeatureType.IdReferenceFeatureType)</o:p></span>
+                    <span style='font-size:13.0pt'><o:p>&nbsp;</o:p></span>
                 </p>
             </td>
             <td width=834 valign=top style='width:625.5pt;border-top:none;border-left:
   none;border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
   mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
   mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:33.85pt'>
-                <p class=TableParagraph align=center style='text-align:center'><span style='font-size:13.0pt'><o:p>@Html.EditorFor(model => Model.BridgeInspectionFollowUp3.Description)</o:p></span></p>
+                <p class=TableParagraph><span style='font-size:13.0pt'><o:p>&nbsp;</o:p></span></p>
             </td>
             <td width=84 valign=top style='width:63.0pt;border-top:none;border-left:none;
   border-bottom:solid #231F20 1.0pt;border-right:solid #231F20 1.0pt;
   mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
   mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:33.85pt'>
                 <p class=TableParagraph align=center style='text-align:center'>
-                    <span style='font-size:13.0pt'><o:p>@Html.EditorFor(model => Model.BridgeInspectionFollowUp3.RecommendationType.idvalue)</o:p></span>
+                    <span style='font-size:13.0pt'><o:p>&nbsp;</o:p></span>
                 </p>
             </td>
             <td width=84 valign=top style='width:63.0pt;border-top:none;border-left:none;
@@ -1478,7 +1480,7 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
   mso-border-top-alt:solid #231F20 .5pt;mso-border-left-alt:solid #231F20 .5pt;
   mso-border-alt:solid #231F20 .5pt;padding:0in 0in 0in 0in;height:33.85pt'>
                 <p class=TableParagraph align=center style='text-align:center'>
-                    <span style='font-size:13.0pt'><o:p>@Html.EditorFor(model => Model.BridgeInspectionFollowUp3.RecommendationType.idvalue)</o:p></span>
+                    <span style='font-size:13.0pt'><o:p>&nbsp;</o:p></span>
                 </p>
             </td>
         </tr>
@@ -2092,6 +2094,7 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
                 </p>
             </td>
         </tr>
+    }
 </table>
 
 <p class=MsoNormal><span style='font-size:4.0pt;mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span></p>
@@ -2131,6 +2134,9 @@ mso-bidi-font-size:8.0pt;color:#231F20'>Recommendation Type: C</span>
     <span style='font-size:10.0pt;
 mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span>
 </p>
+
+</div>
+
 <span style='font-size:10.0pt;mso-bidi-font-size:11.0pt;font-family:"Arial","sans-serif";
 mso-fareast-font-family:Arial;mso-ansi-language:EN-US;mso-fareast-language:
 EN-US;mso-bidi-language:AR-SA'>
@@ -2831,12 +2837,38 @@ normal'><span style='font-size:2.0pt;mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p
     </p>
 
 </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+    <!-- Modal -->
+    <div id="modalUser" data-backdrop="false" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Assign User</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="bookId" id="bookId" value="" />
+                    <input type="hidden" name="userId" id="userId" value="" />
+
+
+                    <div class="form-group">
+                        <label for="sel1">User</label>
+                        @Html.DropDownList("Userdb", null, "[Select a User]", htmlAttributes: new { @class = "form-control", @onchange = "getval(this);" })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="save">Save</button>
+                    <button id="closemodal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
         </div>
     </div>
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        }
 </body>
 
 </html>
